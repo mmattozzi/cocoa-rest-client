@@ -26,6 +26,7 @@
 @synthesize saveRequestSheet;
 @synthesize saveRequestTextField;
 @synthesize savedRequestsDrawer;
+@synthesize headersTab;
 
 - (id) init {
 	self = [super init];
@@ -73,6 +74,8 @@
 	// [alert runModal];
 	
 	[responseText setString:[NSString stringWithFormat:@"Loading %@", [urlBox stringValue]]];
+	[responseTextHeaders setString:@""];
+	[headersTab setLabel:@"Response Headers"];
 	[urlBox insertItemWithObjectValue: [urlBox stringValue] atIndex:0];
 	
 	if (! receivedData) {
@@ -100,6 +103,7 @@
 	NSLog(@"Sending method %@", method);
 	[request setHTTPMethod:method];
 	[request setAllHTTPHeaderFields:headersDictionary];
+	[request setTimeoutInterval:20];
 	if (body != NULL) {
 		NSLog(@"Setting body");
 		[request setHTTPBody:body];
@@ -130,6 +134,9 @@
 	NSMutableString *headers = [[NSMutableString alloc] init];
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
 	[headers appendFormat:@"HTTP %d\n\n", [httpResponse statusCode]];
+	
+	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%d)", [httpResponse statusCode]]];
+	
 	NSDictionary *headerDict = [httpResponse allHeaderFields];
 	for (NSString *key in headerDict) {
 		[headers appendFormat:@"%@: %@\n", key, [headerDict objectForKey:key]];
@@ -146,6 +153,8 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"Did fail");
+	[headersTab setLabel:@"Response Headers (Failed)"];
+	[responseText setString:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge

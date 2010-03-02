@@ -15,6 +15,7 @@
 	NSButton *submitButton;
 	NSTextView *requestText;
 	NSTextView *responseText;
+	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
 	NSPopUpButton *methodButton;
 	NSTableView *headersTableView;
@@ -49,6 +50,7 @@
 @property (assign) IBOutlet NSPanel *saveRequestSheet;
 @property (assign) IBOutlet NSTextField *saveRequestTextField;
 @property (assign) IBOutlet NSDrawer *savedRequestsDrawer;
+@property (assign) IBOutlet NSTabViewItem *headersTab;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
