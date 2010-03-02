@@ -1,0 +1,17 @@
+The goal of this project is to build a lightweight native Cocoa app for testing and debugging HTTP Restful services.
+This project was greatly inspired by the Java rest-client (http://code.google.com/p/rest-client/). 
+
+Features:
+- Make GET, PUT, POST, DELETE, HEAD calls
+- Set request body to arbitrary content
+- Set request headers
+- Set HTTP basic auth
+- Auto-format (pretty print) XML and JSON responses
+- Display response headers
+- Quick save requests in a handy drawer
+
+Credits:
+- Contains json-framework/SBJSON library (http://code.google.com/p/json-framework/) embedded in it, source and all
+- Mucho guidance from Open Kosmaczewski blog (http://kosmaczewski.net/2008/03/26/playing-with-http-libraries/)
+
+Still a work in progress, but pretty functional! 

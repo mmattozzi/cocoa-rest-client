@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {741, 265}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 45}";
+		};
+	};
+	256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 806}}";
+			sepNavSelRange = "{1477, 0}";
+			sepNavVisRange = "{1537, 571}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 4810}}";
+			sepNavSelRange = "{12326, 0}";
+			sepNavVisRange = "{12072, 916}";
+		};
+	};
+	256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 205}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 161}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = AF1FC42110F4296E00ED5A57 /* CocoaRestClient */;
+		activeTarget = 8D1107260486CEB800E47090 /* CocoaRestClient */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* CocoaRestClient */,
+		);
+		breakpoints = (
+			AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:302 */,
+			AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:319 */,
+			AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:304 */,
+			AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:282 */,
+		);
+		codeSenseManager = AF1FC43310F4297A00ED5A57 /* Code sense */;
+		executables = (
+			AF1FC42110F4296E00ED5A57 /* CocoaRestClient */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					700,
+					20,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					660,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 288935772;
+			PBXWorkspaceStateSaveDate = 288935772;
+		};
+		perUserProjectItems = {
+			AF074F5E10F5964400EE44D8 /* PBXTextBookmark */ = AF074F5E10F5964400EE44D8 /* PBXTextBookmark */;
+			AF1FC48710F435C300ED5A57 /* PBXTextBookmark */ = AF1FC48710F435C300ED5A57 /* PBXTextBookmark */;
+			AF1FC48910F435C300ED5A57 /* PBXTextBookmark */ = AF1FC48910F435C300ED5A57 /* PBXTextBookmark */;
+			AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */ = AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */;
+			AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */ = AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */;
+			AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */ = AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */;
+			AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */ = AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */;
+			AF7A149E113B588400F0D6F5 /* PBXTextBookmark */ = AF7A149E113B588400F0D6F5 /* PBXTextBookmark */;
+			AF7A14A2113B596400F0D6F5 /* PBXBookmark */ = AF7A14A2113B596400F0D6F5 /* PBXBookmark */;
+			AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */ = AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */;
+			AF7A14AE113B787100F0D6F5 /* PBXTextBookmark */ = AF7A14AE113B787100F0D6F5 /* PBXTextBookmark */;
+			AF7A14AF113B787100F0D6F5 /* PlistBookmark */ = AF7A14AF113B787100F0D6F5 /* PlistBookmark */;
+			AF7A14B0113B787100F0D6F5 /* PlistBookmark */ = AF7A14B0113B787100F0D6F5 /* PlistBookmark */;
+			AF944A7310F93E5800C03788 /* PBXTextBookmark */ = AF944A7310F93E5800C03788 /* PBXTextBookmark */;
+			AF944A8210F9405400C03788 /* PBXTextBookmark */ = AF944A8210F9405400C03788 /* PBXTextBookmark */;
+		};
+		sourceControlManager = AF1FC43210F4297A00ED5A57 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {871, 523}}";
+			sepNavSelRange = "{134, 0}";
+			sepNavVisRange = "{0, 257}";
+			sepNavWindowFrame = "{{15, 243}, {856, 630}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* CocoaRestClient */ = {
+		activeExec = 0;
+		executables = (
+			AF1FC42110F4296E00ED5A57 /* CocoaRestClient */,
+		);
+	};
+	AF074F4B10F595AF00EE44D8 /* JSON.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {871, 663}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{340, 1957}";
+		};
+	};
+	AF074F4D10F595AF00EE44D8 /* NSObject+SBJSON.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {878, 598}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3, 1437}";
+		};
+	};
+	AF074F4E10F595AF00EE44D8 /* NSString+SBJSON.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {844, 676}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1514}";
+		};
+	};
+	AF074F5210F595AF00EE44D8 /* SBJsonBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 1144}}";
+			sepNavSelRange = "{1998, 0}";
+			sepNavVisRange = "{1775, 547}";
+		};
+	};
+	AF074F5410F595AF00EE44D8 /* SBJsonParser.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {871, 988}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1515}";
+		};
+	};
+	AF074F5E10F5964400EE44D8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF074F4E10F595AF00EE44D8 /* NSString+SBJSON.h */;
+		name = "NSString+SBJSON.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1514;
+		vrLoc = 0;
+	};
+	AF1FC42110F4296E00ED5A57 /* CocoaRestClient */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = CocoaRestClient;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	AF1FC43210F4297A00ED5A57 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	AF1FC43310F4297A00ED5A57 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	AF1FC48710F435C300ED5A57 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 45;
+		vrLoc = 0;
+	};
+	AF1FC48910F435C300ED5A57 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */;
+		name = "CocoaRestClient_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 161;
+		vrLoc = 0;
+	};
+	AF7A13161139746100F0D6F5 /* objc.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = objc.h;
+		path = /Developer/SDKs/MacOSX10.4u.sdk/usr/include/objc/objc.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {871, 1196}}";
+			sepNavSelRange = "{1052, 0}";
+			sepNavVisRange = "{834, 615}";
+		};
+	};
+	AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF074F5410F595AF00EE44D8 /* SBJsonParser.h */;
+		name = "SBJsonParser.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1515;
+		vrLoc = 0;
+	};
+	AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF7A13161139746100F0D6F5 /* objc.h */;
+		name = "objc.h: 24";
+		rLen = 0;
+		rLoc = 1052;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 834;
+	};
+	AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 7";
+		rLen = 0;
+		rLoc = 134;
+		rType = 0;
+		vrLen = 257;
+		vrLoc = 0;
+	};
+	AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF074F4B10F595AF00EE44D8 /* JSON.h */;
+		name = "JSON.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1957;
+		vrLoc = 340;
+	};
+	AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:302 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		functionName = "-doneSaveRequest:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 302;
+		location = CocoaRestClient;
+		modificationTime = 289028347.387131;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:319 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		functionName = "-saveCurrentRequestAsDictionary";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 319;
+		location = CocoaRestClient;
+		modificationTime = 289028347.387542;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:304 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		functionName = "-doneSaveRequest:";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 304;
+		location = CocoaRestClient;
+		modificationTime = 289028434.586834;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:282 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		functionName = "-outlineClick:";
+		hitCount = 3;
+		ignoreCount = 0;
+		lineNumber = 282;
+		location = CocoaRestClient;
+		modificationTime = 289028497.611638;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	AF7A149E113B588400F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 345";
+		rLen = 0;
+		rLoc = 12326;
+		rType = 0;
+		vrLen = 884;
+		vrLoc = 12104;
+	};
+	AF7A14A2113B596400F0D6F5 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */;
+	};
+	AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF074F4D10F595AF00EE44D8 /* NSObject+SBJSON.m */;
+		name = "NSObject+SBJSON.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1437;
+		vrLoc = 3;
+	};
+	AF7A14AE113B787100F0D6F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */;
+		name = "CocoaRestClientAppDelegate.h: 39";
+		rLen = 0;
+		rLoc = 859;
+		rType = 0;
+		vrLen = 1063;
+		vrLoc = 699;
+	};
+	AF7A14AF113B787100F0D6F5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/mmattozzi/xcode/CocoaRestClient/CocoaRestClient-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	AF7A14B0113B787100F0D6F5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/mmattozzi/xcode/CocoaRestClient/CocoaRestClient-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	AF944A7310F93E5800C03788 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF944A7410F93E5800C03788 /* NSTableColumn.h */;
+		name = "NSTableColumn.h: 16";
+		rLen = 47;
+		rLoc = 256;
+		rType = 0;
+		vrLen = 1487;
+		vrLoc = 945;
+	};
+	AF944A7410F93E5800C03788 /* NSTableColumn.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NSTableColumn.h;
+		path = /Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSTableColumn.h;
+		sourceTree = "<absolute>";
+	};
+	AF944A8210F9405400C03788 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AF944A8310F9405400C03788 /* NSApplication.h */;
+		name = "NSApplication.h: 333";
+		rLen = 0;
+		rLoc = 15379;
+		rType = 0;
+		vrLen = 1600;
+		vrLoc = 14235;
+	};
+	AF944A8310F9405400C03788 /* NSApplication.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NSApplication.h;
+		path = /Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSApplication.h;
+		sourceTree = "<absolute>";
+	};
+}
