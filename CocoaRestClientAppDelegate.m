@@ -73,7 +73,14 @@
 	// [alert setInformativeText: [urlBox stringValue]];
 	// [alert runModal];
 	
-	[responseText setString:[NSString stringWithFormat:@"Loading %@", [urlBox stringValue]]];
+	// Append http if it's not there
+	NSString *urlStr = [urlBox stringValue];
+	if (! [urlStr hasPrefix:@"http"] && ! [urlStr hasPrefix:@"https"]) {
+		urlStr = [[NSString alloc] initWithFormat:@"http://%@", urlStr];
+		[urlBox setStringValue:urlStr];
+	}
+	
+	[responseText setString:[NSString stringWithFormat:@"Loading %@", urlStr]];
 	[responseTextHeaders setString:@""];
 	[headersTab setLabel:@"Response Headers"];
 	[urlBox insertItemWithObjectValue: [urlBox stringValue] atIndex:0];
@@ -84,7 +91,7 @@
 	[receivedData setLength:0];
 	contentType = NULL;
 	
-	NSURL *url = [NSURL URLWithString:[urlBox stringValue]];
+	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *method = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSData *body = NULL;
 	if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
@@ -99,6 +106,7 @@
 	}
 	
 	NSLog(@"Building req");
+	
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 	NSLog(@"Sending method %@", method);
 	[request setHTTPMethod:method];

@@ -9,16 +9,16 @@
 	};
 	256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {909, 923}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1095, 923}}";
 			sepNavSelRange = "{1654, 0}";
-			sepNavVisRange = "{157, 634}";
+			sepNavVisRange = "{36, 904}";
 		};
 	};
 	256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {909, 5148}}";
-			sepNavSelRange = "{234, 0}";
-			sepNavVisRange = "{3, 609}";
+			sepNavIntBoundsRect = "{{0, 0}, {1095, 5226}}";
+			sepNavSelRange = "{2361, 0}";
+			sepNavVisRange = "{1284, 1482}";
 		};
 	};
 	256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */ = {
@@ -29,17 +29,17 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Debug;
 		activeExecutable = AF1FC42110F4296E00ED5A57 /* CocoaRestClient */;
 		activeTarget = 8D1107260486CEB800E47090 /* CocoaRestClient */;
 		addToTargets = (
 			8D1107260486CEB800E47090 /* CocoaRestClient */,
 		);
 		breakpoints = (
-			AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:311 */,
-			AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:328 */,
-			AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:313 */,
-			AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:291 */,
+			AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:319 */,
+			AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:336 */,
+			AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:321 */,
+			AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:299 */,
 		);
 		codeSenseManager = AF1FC43310F4297A00ED5A57 /* Code sense */;
 		executables = (
@@ -74,7 +74,7 @@
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
-					731,
+					917,
 					20,
 					20,
 					48,
@@ -114,26 +114,30 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 290998720;
-			PBXWorkspaceStateSaveDate = 290998720;
+			PBXPerProjectTemplateStateSaveDate = 298424076;
+			PBXWorkspaceStateSaveDate = 298424076;
 		};
 		perUserProjectItems = {
-			AF0E9C9B113CBC1F00CDF0A2 /* PBXTextBookmark */ = AF0E9C9B113CBC1F00CDF0A2 /* PBXTextBookmark */;
-			AF1FC48910F435C300ED5A57 /* PBXTextBookmark */ = AF1FC48910F435C300ED5A57 /* PBXTextBookmark */;
-			AF284AF1115849CF005F6A0B /* PlistBookmark */ = AF284AF1115849CF005F6A0B /* PlistBookmark */;
-			AF284AF611584BE3005F6A0B /* PlistBookmark */ = AF284AF611584BE3005F6A0B /* PlistBookmark */;
-			AF4392B6115847C400DBF214 /* PBXTextBookmark */ = AF4392B6115847C400DBF214 /* PBXTextBookmark */;
-			AF4392B7115847C400DBF214 /* PBXTextBookmark */ = AF4392B7115847C400DBF214 /* PBXTextBookmark */;
-			AF4392B8115847C400DBF214 /* PBXBookmark */ = AF4392B8115847C400DBF214 /* PBXBookmark */;
-			AF4392CB1158499F00DBF214 /* PBXTextBookmark */ = AF4392CB1158499F00DBF214 /* PBXTextBookmark */;
-			AF4392CC1158499F00DBF214 /* PBXTextBookmark */ = AF4392CC1158499F00DBF214 /* PBXTextBookmark */;
-			AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */ = AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */;
-			AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */ = AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */;
-			AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */ = AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */;
-			AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */ = AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */;
-			AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */ = AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */;
-			AF944A7310F93E5800C03788 /* PBXTextBookmark */ = AF944A7310F93E5800C03788 /* PBXTextBookmark */;
-			AF944A8210F9405400C03788 /* PBXTextBookmark */ = AF944A8210F9405400C03788 /* PBXTextBookmark */;
+			AF1D0B7811C9971900585525 /* PBXTextBookmark */ = AF1D0B7811C9971900585525 /* PBXTextBookmark */;
+			AF1D0B7E11C9976900585525 /* PBXTextBookmark */ = AF1D0B7E11C9976900585525 /* PBXTextBookmark */;
+			AF1D0B8B11C99A5700585525 /* PBXTextBookmark */ = AF1D0B8B11C99A5700585525 /* PBXTextBookmark */;
+			AF1D0B8F11C99B0300585525 /* PBXTextBookmark */ = AF1D0B8F11C99B0300585525 /* PBXTextBookmark */;
+			AF1FC48910F435C300ED5A57 = AF1FC48910F435C300ED5A57 /* PBXTextBookmark */;
+			AF238C4211C14635006BEA71 = AF238C4211C14635006BEA71 /* PlistBookmark */;
+			AF238C4311C14635006BEA71 = AF238C4311C14635006BEA71 /* PBXTextBookmark */;
+			AF238C4811C14752006BEA71 = AF238C4811C14752006BEA71 /* PBXTextBookmark */;
+			AF4392B6115847C400DBF214 = AF4392B6115847C400DBF214 /* PBXTextBookmark */;
+			AF4392B7115847C400DBF214 = AF4392B7115847C400DBF214 /* PBXTextBookmark */;
+			AF4392B8115847C400DBF214 = AF4392B8115847C400DBF214 /* PBXBookmark */;
+			AF4392CB1158499F00DBF214 = AF4392CB1158499F00DBF214 /* PBXTextBookmark */;
+			AF4392CC1158499F00DBF214 = AF4392CC1158499F00DBF214 /* PBXTextBookmark */;
+			AF7A132A1139754A00F0D6F5 = AF7A132A1139754A00F0D6F5 /* PBXTextBookmark */;
+			AF7A132C1139754A00F0D6F5 = AF7A132C1139754A00F0D6F5 /* PBXTextBookmark */;
+			AF7A13B3113A2A4100F0D6F5 = AF7A13B3113A2A4100F0D6F5 /* PBXTextBookmark */;
+			AF7A13B4113A2A4100F0D6F5 = AF7A13B4113A2A4100F0D6F5 /* PBXTextBookmark */;
+			AF7A14A3113B596400F0D6F5 = AF7A14A3113B596400F0D6F5 /* PBXTextBookmark */;
+			AF944A7310F93E5800C03788 = AF944A7310F93E5800C03788 /* PBXTextBookmark */;
+			AF944A8210F9405400C03788 = AF944A8210F9405400C03788 /* PBXTextBookmark */;
 		};
 		sourceControlManager = AF1FC43210F4297A00ED5A57 /* Source Control */;
 		userBuildSettings = {
@@ -195,15 +199,45 @@
 			sepNavVisRange = "{0, 1515}";
 		};
 	};
-	AF0E9C9B113CBC1F00CDF0A2 /* PBXTextBookmark */ = {
+	AF1D0B7811C9971900585525 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */;
-		name = "CocoaRestClientAppDelegate.h: 55";
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 241";
 		rLen = 0;
-		rLoc = 1654;
+		rLoc = 9248;
 		rType = 0;
-		vrLen = 634;
-		vrLoc = 157;
+		vrLen = 1490;
+		vrLoc = 1301;
+	};
+	AF1D0B7E11C9976900585525 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 241";
+		rLen = 0;
+		rLoc = 9248;
+		rType = 0;
+		vrLen = 1392;
+		vrLoc = 1301;
+	};
+	AF1D0B8B11C99A5700585525 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 83";
+		rLen = 0;
+		rLoc = 2736;
+		rType = 0;
+		vrLen = 1673;
+		vrLoc = 1956;
+	};
+	AF1D0B8F11C99B0300585525 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 79";
+		rLen = 0;
+		rLoc = 2361;
+		rType = 0;
+		vrLen = 1482;
+		vrLoc = 1284;
 	};
 	AF1FC42110F4296E00ED5A57 /* CocoaRestClient */ = {
 		isa = PBXExecutable;
@@ -261,27 +295,36 @@
 		vrLen = 161;
 		vrLoc = 0;
 	};
-	AF284AF1115849CF005F6A0B /* PlistBookmark */ = {
+	AF238C4211C14635006BEA71 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
 		);
-		name = "/Users/mmattozzi/xcode/CocoaRestClient/CocoaRestClient-Info.plist";
+		name = "/Users/mmattozzi/workspace/cocoa-rest-client/CocoaRestClient-Info.plist";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
-	AF284AF611584BE3005F6A0B /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/mmattozzi/xcode/CocoaRestClient/CocoaRestClient-Info.plist";
+	AF238C4311C14635006BEA71 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */;
+		name = "CocoaRestClientAppDelegate.h: 55";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 1654;
+		rType = 0;
+		vrLen = 904;
+		vrLoc = 36;
+	};
+	AF238C4811C14752006BEA71 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */;
+		name = "CocoaRestClientAppDelegate.m: 15";
+		rLen = 0;
+		rLoc = 254;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 8469;
 	};
 	AF4392B6115847C400DBF214 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -374,7 +417,7 @@
 		vrLen = 1957;
 		vrLoc = 340;
 	};
-	AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:311 */ = {
+	AF7A13E4113A31CD00F0D6F5 /* CocoaRestClientAppDelegate.m:319 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -386,13 +429,13 @@
 		functionName = "-doneSaveRequest:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 311;
+		lineNumber = 319;
 		location = CocoaRestClient;
 		modificationTime = 289028347.387131;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
-	AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:328 */ = {
+	AF7A1417113A370700F0D6F5 /* CocoaRestClientAppDelegate.m:336 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -404,13 +447,13 @@
 		functionName = "-saveCurrentRequestAsDictionary";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 328;
+		lineNumber = 336;
 		location = CocoaRestClient;
 		modificationTime = 289028347.387542;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
-	AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:313 */ = {
+	AF7A1429113A38FB00F0D6F5 /* CocoaRestClientAppDelegate.m:321 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -422,13 +465,13 @@
 		functionName = "-doneSaveRequest:";
 		hitCount = 1;
 		ignoreCount = 0;
-		lineNumber = 313;
+		lineNumber = 321;
 		location = CocoaRestClient;
 		modificationTime = 289028434.586834;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
-	AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:291 */ = {
+	AF7A142E113A395800F0D6F5 /* CocoaRestClientAppDelegate.m:299 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -440,7 +483,7 @@
 		functionName = "-outlineClick:";
 		hitCount = 3;
 		ignoreCount = 0;
-		lineNumber = 291;
+		lineNumber = 299;
 		location = CocoaRestClient;
 		modificationTime = 289028497.6116379;
 		originalNumberOfMultipleMatches = 1;
