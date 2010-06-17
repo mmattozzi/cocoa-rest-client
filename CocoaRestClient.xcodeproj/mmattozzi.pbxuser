@@ -30,7 +30,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = AF1FC42110F4296E00ED5A57 /* CocoaRestClient */;
 		activeTarget = 8D1107260486CEB800E47090 /* CocoaRestClient */;
 		addToTargets = (
@@ -552,7 +552,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
