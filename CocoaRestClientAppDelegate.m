@@ -27,9 +27,13 @@
 @synthesize saveRequestTextField;
 @synthesize savedRequestsDrawer;
 @synthesize headersTab;
+@synthesize timeoutSheet;
+@synthesize timeoutField;
 
 - (id) init {
 	self = [super init];
+	
+	timeout = 20; 
 	
 	headersTable = [[NSMutableArray alloc] init];
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
@@ -111,7 +115,7 @@
 	NSLog(@"Sending method %@", method);
 	[request setHTTPMethod:method];
 	[request setAllHTTPHeaderFields:headersDictionary];
-	[request setTimeoutInterval:20];
+	[request setTimeoutInterval:timeout];
 	if (body != NULL) {
 		NSLog(@"Setting body");
 		[request setHTTPBody:body];
@@ -320,6 +324,19 @@
 	}
 	[saveRequestSheet orderOut:nil];
     [NSApp endSheet:saveRequestSheet];
+}
+
+- (IBAction) openTimeoutDialog:(id) sender {
+	[timeoutField setIntValue:timeout];
+	[NSApp beginSheet:timeoutSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+}
+
+- (IBAction) closeTimoutDialog:(id) sender {
+	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
+		timeout = [timeoutField intValue];
+	}
+	[timeoutSheet orderOut:nil];
+    [NSApp endSheet:timeoutSheet];
 }
 
 - (NSMutableDictionary *) saveCurrentRequestAsDictionary {

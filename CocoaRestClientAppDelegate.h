@@ -34,6 +34,11 @@
 	
 	NSPanel *saveRequestSheet;
 	NSTextField *saveRequestTextField;
+	
+	NSPanel *timeoutSheet;
+	NSTextField *timeoutField;
+	
+	NSInteger timeout;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -51,6 +56,8 @@
 @property (assign) IBOutlet NSTextField *saveRequestTextField;
 @property (assign) IBOutlet NSDrawer *savedRequestsDrawer;
 @property (assign) IBOutlet NSTabViewItem *headersTab;
+@property (assign) IBOutlet NSPanel *timeoutSheet;
+@property (assign) IBOutlet NSTextField *timeoutField;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -66,5 +73,7 @@
 - (void) loadDataFromDisk;
 - (void) saveDataToDisk;
 - (void) applicationWillTerminate: (NSNotification *)note;
+- (IBAction) openTimeoutDialog:(id) sender;
+- (IBAction) closeTimoutDialog:(id) sender;
 
 @end
