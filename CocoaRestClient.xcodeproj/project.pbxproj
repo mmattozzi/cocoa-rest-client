@@ -19,6 +19,11 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
+		D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */; };
+		D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */; };
+		D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A03011E8F61D00F5A80B /* CRCFileRequest.m */; };
+		D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A0A111E901FB00F5A80B /* CRCRequest.m */; };
+		D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +53,16 @@
 		AF074F5610F595AF00EE44D8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCFormEncodedRequest.h; sourceTree = "<group>"; };
+		D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCFormEncodedRequest.m; sourceTree = "<group>"; };
+		D714A01E11E8C0F400F5A80B /* CRCRawRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCRawRequest.h; sourceTree = "<group>"; };
+		D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCRawRequest.m; sourceTree = "<group>"; };
+		D714A02F11E8F61D00F5A80B /* CRCFileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCFileRequest.h; sourceTree = "<group>"; };
+		D714A03011E8F61D00F5A80B /* CRCFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCFileRequest.m; sourceTree = "<group>"; };
+		D714A0A011E901FB00F5A80B /* CRCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCRequest.h; sourceTree = "<group>"; };
+		D714A0A111E901FB00F5A80B /* CRCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCRequest.m; sourceTree = "<group>"; };
+		D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCMultipartRequest.h; sourceTree = "<group>"; };
+		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCMultipartRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +95,16 @@
 				AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */,
 				256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */,
+				D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */,
+				D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */,
+				D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */,
+				D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */,
+				D714A01E11E8C0F400F5A80B /* CRCRawRequest.h */,
+				D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */,
+				D714A02F11E8F61D00F5A80B /* CRCFileRequest.h */,
+				D714A03011E8F61D00F5A80B /* CRCFileRequest.m */,
+				D714A0A011E901FB00F5A80B /* CRCRequest.h */,
+				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -215,6 +240,11 @@
 				AF074F5B10F595AF00EE44D8 /* SBJsonBase.m in Sources */,
 				AF074F5C10F595AF00EE44D8 /* SBJsonParser.m in Sources */,
 				AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */,
+				D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */,
+				D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */,
+				D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */,
+				D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */,
+				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +310,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = 4.0;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -296,6 +326,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;

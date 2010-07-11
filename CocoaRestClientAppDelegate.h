@@ -19,6 +19,8 @@
 	NSTextView *responseTextHeaders;
 	NSPopUpButton *methodButton;
 	NSTableView *headersTableView;
+	NSTableView *filesTableView;
+	NSTableView *paramsTableView;
 	
 	NSTextField *username;
 	NSTextField *password;
@@ -27,6 +29,8 @@
 	NSString *contentType;
 	
 	NSMutableArray *headersTable;
+	NSMutableArray *filesTable;
+	NSMutableArray *paramsTable;
 	
 	NSDrawer *savedRequestsDrawer;
 	NSMutableArray *savedRequestsArray;
@@ -39,7 +43,18 @@
 	NSTextField *timeoutField;
 	
 	NSInteger timeout;
+	
+	NSButton *plusParam;
+	NSButton *minusParam;
+	BOOL rawRequestInput;
+	
 }
+
+
+
+@property (nonatomic, readonly) NSMutableArray *headersTable;
+@property (nonatomic, readonly) NSMutableArray *filesTable;
+@property (nonatomic, readonly) NSMutableArray *paramsTable;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSComboBox *urlBox;
@@ -49,6 +64,8 @@
 @property (assign) IBOutlet NSPopUpButton *methodButton;
 @property (assign) IBOutlet NSTextView *requestText;
 @property (assign) IBOutlet NSTableView *headersTableView;
+@property (assign) IBOutlet NSTableView *filesTableView;
+@property (assign) IBOutlet NSTableView *paramsTableView;
 @property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextField *password;
 @property (assign) IBOutlet NSOutlineView *savedOutlineView;
@@ -58,6 +75,9 @@
 @property (assign) IBOutlet NSTabViewItem *headersTab;
 @property (assign) IBOutlet NSPanel *timeoutSheet;
 @property (assign) IBOutlet NSTextField *timeoutField;
+@property (assign) IBOutlet NSButton *plusParam;
+@property (assign) IBOutlet NSButton *minusParam;
+@property (assign) BOOL rawRequestInput;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -67,7 +87,6 @@
 - (IBAction) saveRequest:(id) sender;
 - (IBAction) doneSaveRequest:(id) sender;
 - (void) loadSavedRequest:(NSDictionary *) request;
-- (NSMutableDictionary *) saveCurrentRequestAsDictionary;
 - (IBAction) deleteSavedRequest:(id) sender;
 - (NSString *) pathForDataFile;
 - (void) loadDataFromDisk;
@@ -75,5 +94,11 @@
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (IBAction) openTimeoutDialog:(id) sender;
 - (IBAction) closeTimoutDialog:(id) sender;
+- (IBAction) plusFileRow:(id)sender;
+- (IBAction) minusFileRow:(id)sender;
+- (IBAction) plusParamsRow:(id)sender;
+- (IBAction) minusParamsRow:(id)sender;
+
+- (void)setRawRequestInput:(BOOL)value;
 
 @end
