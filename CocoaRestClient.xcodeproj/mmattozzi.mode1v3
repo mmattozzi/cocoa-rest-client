@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,12 +274,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>32</integer>
+									<integer>16</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 3}, {267, 732}}</string>
+							<string>{{0, 44}, {267, 732}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -311,12 +310,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>background-header.png</string>
+								<string>CocoaRestClientAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>background-header.png</string>
+										<string>CocoaRestClientAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AFE4652411EAAA7900EF2E15</string>
+										<string>AFE4655C11EAB6E500EF2E15</string>
 										<key>history</key>
 										<array>
 											<string>AF1FC48910F435C300ED5A57</string>
@@ -341,11 +342,16 @@
 											<string>AF4392B8115847C400DBF214</string>
 											<string>AF4392CB1158499F00DBF214</string>
 											<string>AF4392CC1158499F00DBF214</string>
-											<string>AF1D0BB711C9A69600585525</string>
-											<string>AFA5F65611EA8D680056E2B8</string>
 											<string>AFA5F65711EA8D680056E2B8</string>
 											<string>AFE4652211EAAA7900EF2E15</string>
-											<string>AFE4652311EAAA7900EF2E15</string>
+											<string>AFE4653E11EAB43D00EF2E15</string>
+											<string>AFE4653F11EAB43D00EF2E15</string>
+											<string>AFE4654311EAB47300EF2E15</string>
+											<string>AFE4654F11EAB61F00EF2E15</string>
+											<string>AFE4655811EAB6E500EF2E15</string>
+											<string>AFE4655911EAB6E500EF2E15</string>
+											<string>AFE4655A11EAB6E500EF2E15</string>
+											<string>AFE4655B11EAB6E500EF2E15</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -543,12 +549,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>AFE4652F11EAAA7900EF2E15</string>
+		<string>AFE4655D11EAB6E500EF2E15</string>
 		<string>AFE4653011EAAA7900EF2E15</string>
 		<string>AFE4653111EAAA7900EF2E15</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>AF1FC43010F4297A00ED5A57</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/mmattozzi/workspace/cocoa-rest-client/CocoaRestClient.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -884,6 +890,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -929,7 +937,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

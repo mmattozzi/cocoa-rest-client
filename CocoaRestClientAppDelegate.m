@@ -243,16 +243,17 @@ static CRCContentType requestContentType;
 	}
 	else 
 	{
-		
-		switch(requestContentType)
-		{
-			case CRCContentTypeFormEncoded:
-				[CRCFormEncodedRequest createRequest:request];
-				break;
+		if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
+			switch(requestContentType)
+			{
+				case CRCContentTypeFormEncoded:
+					[CRCFormEncodedRequest createRequest:request];
+					break;
 				
-			case CRCContentTypeMultipart:
-				[CRCMultipartRequest createRequest:request];
-				break;
+				case CRCContentTypeMultipart:
+					[CRCMultipartRequest createRequest:request];
+					break;
+			}
 		}
 	}
 	
@@ -653,7 +654,6 @@ static CRCContentType requestContentType;
 	
 	NSMutableArray *headersTranslated = [[NSMutableArray alloc] init];
 	for(NSDictionary *header in headers) {
-		NSLog(@"Thing");
 		if ([header objectForKey:@"header-name"]) {
 			NSMutableDictionary *headerTranslated = [[NSMutableDictionary alloc] init];
 			[headerTranslated setObject:[header objectForKey:@"header-name"] forKey:@"key"];
