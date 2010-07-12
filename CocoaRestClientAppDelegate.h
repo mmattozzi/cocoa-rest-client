@@ -98,6 +98,7 @@
 - (IBAction) minusFileRow:(id)sender;
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
+- (IBAction) contentTypeMenuItemSelected:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

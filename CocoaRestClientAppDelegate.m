@@ -435,6 +435,32 @@ static CRCContentType requestContentType;
 	[filesTableView reloadData];
 }
 
+#pragma mark Menu methods
+- (IBAction) contentTypeMenuItemSelected:(id)sender
+{
+	if([headersTable count] > 0)
+	{
+		for(NSMutableDictionary * row in headersTable)
+		{
+			if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"])
+			{
+				[row setObject:[sender title] forKey:@"value"];
+				[headersTableView reloadData];		
+				break;
+			}	
+		}
+	}
+	else 
+	{
+		NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+		[row setObject:@"Content-Type" forKey:@"key"];
+		[row setObject:[sender title] forKey:@"value"];
+		[headersTable addObject:row];
+		[headersTableView reloadData];		
+		[row release];
+	}
+
+}
 
 #pragma mark Table view methods
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) tableView {
