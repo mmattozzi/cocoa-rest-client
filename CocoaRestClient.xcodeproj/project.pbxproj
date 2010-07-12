@@ -24,6 +24,8 @@
 		D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A03011E8F61D00F5A80B /* CRCFileRequest.m */; };
 		D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A0A111E901FB00F5A80B /* CRCRequest.m */; };
 		D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */; };
+		D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D998B311EAA29B005B8811 /* CRCTopView.m */; };
+		D7D998B611EAA2B2005B8811 /* background-header.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D998B511EAA2B2005B8811 /* background-header.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,9 @@
 		D714A0A111E901FB00F5A80B /* CRCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCRequest.m; sourceTree = "<group>"; };
 		D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCMultipartRequest.h; sourceTree = "<group>"; };
 		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCMultipartRequest.m; sourceTree = "<group>"; };
+		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCTopView.h; sourceTree = "<group>"; };
+		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCTopView.m; sourceTree = "<group>"; };
+		D7D998B511EAA2B2005B8811 /* background-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-header.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,8 @@
 				D714A03011E8F61D00F5A80B /* CRCFileRequest.m */,
 				D714A0A011E901FB00F5A80B /* CRCRequest.h */,
 				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
+				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
+				D7D998B311EAA29B005B8811 /* CRCTopView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D7D998B511EAA2B2005B8811 /* background-header.png */,
 				AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */,
 				8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -222,6 +230,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
+				D7D998B611EAA2B2005B8811 /* background-header.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +254,7 @@
 				D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */,
 				D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */,
 				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
+				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
