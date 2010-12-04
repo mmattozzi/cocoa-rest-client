@@ -49,6 +49,8 @@
 	BOOL rawRequestInput;
 	NSTabView *tabView;
 	NSTabViewItem *reqHeadersTab;
+	NSDate *startDate;
+	NSTextField *status;
 	
 }
 
@@ -82,6 +84,7 @@
 @property (assign) BOOL rawRequestInput;
 @property (assign) IBOutlet NSTabView *tabView;
 @property (assign) IBOutlet NSTabViewItem *reqHeadersTab;
+@property (assign) IBOutlet NSTextField *status;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -105,6 +108,7 @@
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
 - (IBAction) handleOpenWindow:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
+- (IBAction) helpInfo:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

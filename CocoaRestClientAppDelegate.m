@@ -57,6 +57,9 @@ static CRCContentType requestContentType;
 @synthesize timeoutField;
 @synthesize plusParam, minusParam;
 @synthesize rawRequestInput;
+@synthesize tabView;
+@synthesize reqHeadersTab;
+@synthesize status;
 
 - (id) init {
 	self = [super init];
@@ -197,6 +200,7 @@ static CRCContentType requestContentType;
 	}
 	
 	[responseText setString:[NSString stringWithFormat:@"Loading %@", urlStr]];
+	[status setStringValue:@"Opening URL..."];
 	[responseTextHeaders setString:@""];
 	[headersTab setLabel:@"Response Headers"];
 	[urlBox insertItemWithObjectValue: [urlBox stringValue] atIndex:0];
@@ -266,6 +270,10 @@ static CRCContentType requestContentType;
 	//NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	//[responseText setString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
 	
+	if (startDate != nil) {
+		[startDate release];
+	}
+	startDate = [NSDate date];
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 	if (! connection) {
 		NSLog(@"Could not open connection to resource");
@@ -283,6 +291,7 @@ static CRCContentType requestContentType;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	NSLog(@"Did receive response");
 	
+	[status setStringValue:@"Receiving Data..."];
 	NSMutableString *headers = [[NSMutableString alloc] init];
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
 	[headers appendFormat:@"HTTP %d\n\n", [httpResponse statusCode]];
@@ -307,6 +316,7 @@ static CRCContentType requestContentType;
 	NSLog(@"Did fail");
 	[headersTab setLabel:@"Response Headers (Failed)"];
 	[responseText setString:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
+	[status setStringValue:@"Failed"];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
@@ -324,6 +334,9 @@ static CRCContentType requestContentType;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSTimeInterval elapsed = [startDate timeIntervalSinceNow];
+	[status setStringValue:[NSString stringWithFormat:@"Finished in %f seconds", -1*elapsed]];
+	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
 		if ([contentType isEqualToString:@"application/atom+xml"] || 
@@ -791,6 +804,10 @@ static CRCContentType requestContentType;
 
 - (void) applicationWillTerminate: (NSNotification *)note {
 	[self saveDataToDisk];
+}
+
+- (IBAction) helpInfo:(id)sender {
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://code.google.com/p/cocoa-rest-client/"]]; 
 }
 
 @end
