@@ -14,6 +14,8 @@
 #import <Foundation/Foundation.h>
 #import "JSON.h"
 
+#define MAIN_WINDOW_MENU_TAG 150
+
 enum {
 	CRCContentTypeMultipart,
 	CRCContentTypeFormEncoded,
@@ -438,6 +440,7 @@ static CRCContentType requestContentType;
 #pragma mark Menu methods
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
+	BOOL inserted = FALSE;
 	if([headersTable count] > 0)
 	{
 		for(NSMutableDictionary * row in headersTable)
@@ -445,13 +448,14 @@ static CRCContentType requestContentType;
 			if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"])
 			{
 				[row setObject:[sender title] forKey:@"value"];
-				[headersTableView reloadData];		
+				[headersTableView reloadData];
+				inserted = TRUE;
 				break;
 			}	
 		}
 	}
-	else 
-	{
+	
+	if (! inserted) {
 		NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
 		[row setObject:@"Content-Type" forKey:@"key"];
 		[row setObject:[sender title] forKey:@"value"];
@@ -460,6 +464,7 @@ static CRCContentType requestContentType;
 		[row release];
 	}
 
+	[tabView selectTabViewItem:reqHeadersTab];
 }
 
 #pragma mark Table view methods
@@ -765,6 +770,23 @@ static CRCContentType requestContentType;
 - (void) loadDataFromDisk {
 	NSString *path = [self pathForDataFile];
 	savedRequestsArray = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+}
+
+- (IBAction) handleOpenWindow:(id)sender {
+	[window makeKeyAndOrderFront:self];
+}
+
+// Including this to disable Open Window menu item when window is already open
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+	//check to see if the Main Menu NSMenuItem is
+	//being validcated
+	if([item tag] == MAIN_WINDOW_MENU_TAG)
+	{
+		return ![window isVisible];
+	}
+	
+	return TRUE;
 }
 
 - (void) applicationWillTerminate: (NSNotification *)note {

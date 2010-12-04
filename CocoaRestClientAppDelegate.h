@@ -47,6 +47,8 @@
 	NSButton *plusParam;
 	NSButton *minusParam;
 	BOOL rawRequestInput;
+	NSTabView *tabView;
+	NSTabViewItem *reqHeadersTab;
 	
 }
 
@@ -78,6 +80,8 @@
 @property (assign) IBOutlet NSButton *plusParam;
 @property (assign) IBOutlet NSButton *minusParam;
 @property (assign) BOOL rawRequestInput;
+@property (assign) IBOutlet NSTabView *tabView;
+@property (assign) IBOutlet NSTabViewItem *reqHeadersTab;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -99,6 +103,8 @@
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
+- (IBAction) handleOpenWindow:(id)sender;
+- (BOOL)validateMenuItem:(NSMenuItem *)item;
 
 - (void)setRawRequestInput:(BOOL)value;
 
