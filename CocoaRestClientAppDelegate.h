@@ -109,6 +109,7 @@
 - (IBAction) handleOpenWindow:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 - (IBAction) helpInfo:(id)sender;
+- (IBAction) reloadLastRequest:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

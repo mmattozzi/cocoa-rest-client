@@ -28,13 +28,13 @@
 		request.requestText = [application.requestText string];
 	
 	if([application.headersTable count] > 0)
-		request.headers = application.headersTable;
+		request.headers = [[NSArray alloc] initWithArray:application.headersTable copyItems:YES];
 	
 	if([application.paramsTable count] > 0 && !request.rawRequestInput)
-		request.params = application.paramsTable;
+		request.params = [[NSArray alloc] initWithArray:application.paramsTable copyItems:YES];
 	
 	if([application.filesTable count] > 0)
-		request.files = application.filesTable;
+		request.files = [[NSArray alloc] initWithArray:application.filesTable copyItems:YES];
 	
 	return [request autorelease];
 }

@@ -30,6 +30,7 @@ static CRCContentType requestContentType;
 
 
 @interface CocoaRestClientAppDelegate(Private)
+CRCRequest *lastRequest;
 - (void)determineRequestContentType;
 - (void)loadSavedDictionary:(NSDictionary *)request;
 - (void)loadSavedCRCRequest:(CRCRequest *)request;
@@ -269,6 +270,11 @@ static CRCContentType requestContentType;
 	//NSError *error = [[NSError alloc] init];
 	//NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	//[responseText setString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+	
+	if (lastRequest != nil) {
+		[lastRequest release];
+	}
+	lastRequest = [CRCRequest requestWithApplication:self];
 	
 	if (startDate != nil) {
 		[startDate release];
@@ -808,6 +814,13 @@ static CRCContentType requestContentType;
 
 - (IBAction) helpInfo:(id)sender {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://code.google.com/p/cocoa-rest-client/"]]; 
+}
+
+- (IBAction) reloadLastRequest:(id)sender {
+	if (lastRequest != nil) {
+		[self loadSavedCRCRequest:(CRCRequest *)lastRequest];
+		[self runSubmit: self];
+	}
 }
 
 @end
