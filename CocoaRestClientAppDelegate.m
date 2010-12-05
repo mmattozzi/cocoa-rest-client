@@ -744,23 +744,36 @@ CRCRequest *lastRequest;
 		[requestText setString:@""];
 	}
 	
-	NSArray * headers = request.headers;
-	NSArray * params  = request.params;
-	NSArray * files   = request.files;
+	NSArray *headers = [[NSArray alloc] initWithArray:request.headers copyItems:YES];
+	NSArray *params = [[NSArray alloc] initWithArray:request.params copyItems:YES];
+	NSArray *files = [[NSArray alloc] initWithArray:request.files copyItems:YES];
 	
 	[headersTable removeAllObjects];
 	[paramsTable removeAllObjects];
 	[filesTable removeAllObjects];
 	
-	if (headers) 
-		[headersTable addObjectsFromArray:headers];
+	// Make headers, params, and files mutable dictionaries when they get loaded so that 
+	// they can still be updated after being loaded.
+	if (headers) {
+		for(NSDictionary *header in headers) {
+			NSMutableDictionary *headerTranslated = [[NSMutableDictionary alloc] initWithDictionary:header];
+			[headersTable addObject:headerTranslated];
+		}
+	}
 	
-	if (params) 
-		[paramsTable addObjectsFromArray:params];
+	if (params) {
+		for(NSDictionary *param in params) {
+			NSMutableDictionary *paramTranslated = [[NSMutableDictionary alloc] initWithDictionary:param];
+			[paramsTable addObject:paramTranslated];
+		}
+	}
 	
-	if (files) 
-		[filesTable addObjectsFromArray:files];
-	
+	if (files) {
+		for(NSDictionary *file in files) {
+			NSMutableDictionary *fileTranslated = [[NSMutableDictionary alloc] initWithDictionary:file];
+			[filesTable addObject:fileTranslated];
+		}
+	}
 	
 	[headersTableView reloadData];
 	[filesTableView reloadData];

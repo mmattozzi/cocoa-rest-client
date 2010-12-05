@@ -299,7 +299,7 @@
 							<real>267</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>48 229 1363 791 0 0 1680 1028 </string>
+						<string>48 230 1363 791 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AF1A3FDE12AB1A14001D89E0</string>
+										<string>AF1A401A12AB2101001D89E0</string>
 										<key>history</key>
 										<array>
 											<string>AF1FC48910F435C300ED5A57</string>
@@ -357,9 +357,9 @@
 											<string>AF1A3FD112AB1806001D89E0</string>
 											<string>AF1A3FD212AB1806001D89E0</string>
 											<string>AF1A3FD312AB1806001D89E0</string>
-											<string>AF1A3FD412AB1806001D89E0</string>
-											<string>AF1A3FD512AB1806001D89E0</string>
-											<string>AF1A3FD612AB1806001D89E0</string>
+											<string>AF1A3FF512AB1E01001D89E0</string>
+											<string>AF1A3FF612AB1E01001D89E0</string>
+											<string>AF1A401312AB20DB001D89E0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -373,7 +373,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1074, 523}}</string>
 								<key>RubberWindowFrame</key>
-								<string>48 229 1363 791 0 0 1680 1028 </string>
+								<string>48 230 1363 791 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -393,7 +393,7 @@
 								<key>Frame</key>
 								<string>{{0, 528}, {1074, 222}}</string>
 								<key>RubberWindowFrame</key>
-								<string>48 229 1363 791 0 0 1680 1028 </string>
+								<string>48 230 1363 791 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -557,6 +557,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>AF1A401B12AB2101001D89E0</string>
 		<string>AF1A3EC212AAC68A001D89E0</string>
 		<string>AF1A3EC312AAC68A001D89E0</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -566,7 +567,7 @@
 		<string>/Users/mmattozzi/workspace/cocoa-rest-client/CocoaRestClient.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>48 229 1363 791 0 0 1680 1028 </string>
+	<string>48 230 1363 791 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
