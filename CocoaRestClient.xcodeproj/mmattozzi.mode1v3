@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,8 +274,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>35</integer>
-									<integer>32</integer>
+									<integer>16</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -312,12 +310,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CocoaRestClient-Info.plist</string>
+								<string>CocoaRestClientAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CocoaRestClient-Info.plist</string>
+										<string>CocoaRestClientAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AF1A3F5E12AAE498001D89E0</string>
+										<string>AF1A3F6C12AB0D94001D89E0</string>
 										<key>history</key>
 										<array>
 											<string>AF1FC48910F435C300ED5A57</string>
@@ -350,9 +350,9 @@
 											<string>AF1A3E6C12AABF8F001D89E0</string>
 											<string>AF1A3F2012AAD8A5001D89E0</string>
 											<string>AF1A3F4512AAE14C001D89E0</string>
-											<string>AF1A3F5B12AAE498001D89E0</string>
 											<string>AF1A3F5C12AAE498001D89E0</string>
-											<string>AF1A3F5D12AAE498001D89E0</string>
+											<string>AF1A3F6612AB0D32001D89E0</string>
+											<string>AF1A3F6712AB0D32001D89E0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -550,7 +550,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>AF1A3F5F12AAE498001D89E0</string>
+		<string>AF1A3F6D12AB0D94001D89E0</string>
 		<string>AF1A3EC212AAC68A001D89E0</string>
 		<string>AF1A3EC312AAC68A001D89E0</string>
 		<string>1CD10A99069EF8BA00B06720</string>
