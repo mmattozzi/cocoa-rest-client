@@ -299,7 +299,7 @@ static CRCContentType requestContentType;
 	[status setStringValue:@"Receiving Data..."];
 	NSMutableString *headers = [[NSMutableString alloc] init];
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-	[headers appendFormat:@"HTTP %d\n\n", [httpResponse statusCode]];
+	[headers appendFormat:@"HTTP %d %@\n\n", [httpResponse statusCode], [[NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] capitalizedString]];
 	
 	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%d)", [httpResponse statusCode]]];
 	
