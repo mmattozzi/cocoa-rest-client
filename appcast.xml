@@ -10,10 +10,10 @@
 			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.2.2.html</sparkle:releaseNotesLink>
 			<pubDate>Thu, 08 Sep 2011 22:53:00 -0400</pubDate>
 			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.2.2.dmg" 
-				sparkle:version="2" length="2223004" 
+				sparkle:version="2" length="1313136" 
 				sparkle:shortVersionString="1.2.2" 
 				type="application/octet-stream" 
-				sparkle:dsaSignature="MC0CFQCw/wB4EVHp6qYA+7iLy60x+0frSAIUeyqO/thoGimAMzwCKphbs8ACOOE=" />
+				sparkle:dsaSignature="MC4CFQCIuUAYHOEOFBe8qg6cehLHMVsnXQIVAL4CLm9In2drYZPQOtzoj5iZn9Dy" />
 		</item>
 	</channel>
 </rss>
