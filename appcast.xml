@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>Cocoa Rest Client's Changelog</title>
+		<link>http://cocoa-rest-client.googlecode.com/svn/trunk/appcast.xml</link>
+		<description>Most recent changes with links to updates.</description>
+		<language>en</language>
+		<item>
+			<title>Version 1.2.2</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.2.2.html</sparkle:releaseNotesLink>
+			<pubDate>Thu, 08 Sep 2011 22:53:00 -0400</pubDate>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.2.2.dmg" 
+				sparkle:version="2" length="2223004" 
+				sparkle:shortVersionString="1.2.2" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MC0CFQCw/wB4EVHp6qYA+7iLy60x+0frSAIUeyqO/thoGimAMzwCKphbs8ACOOE=" />
+		</item>
+	</channel>
+</rss>

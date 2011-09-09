@@ -19,6 +19,9 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
+		AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
+		AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
+		AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AFCE79561419B54600E22468 /* dsa_pub.pem */; };
 		AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFE1837612E394E5001B1B29 /* LICENSE.txt */; };
 		D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */; };
 		D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */; };
@@ -28,6 +31,19 @@
 		D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D998B311EAA29B005B8811 /* CRCTopView.m */; };
 		D7D998B611EAA2B2005B8811 /* background-header.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D998B511EAA2B2005B8811 /* background-header.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFCE79541419B49700E22468 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -56,6 +72,8 @@
 		AF074F5610F595AF00EE44D8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCFormEncodedRequest.h; sourceTree = "<group>"; };
 		D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCFormEncodedRequest.m; sourceTree = "<group>"; };
@@ -78,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +187,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AFCE79561419B54600E22468 /* dsa_pub.pem */,
 				AFE1837612E394E5001B1B29 /* LICENSE.txt */,
 				D7D998B511EAA2B2005B8811 /* background-header.png */,
 				AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */,
@@ -181,6 +201,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AFCE79521419B47900E22468 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -197,6 +218,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				AFCE79541419B49700E22468 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -215,7 +237,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CocoaRestClient" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaRestClient */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +261,7 @@
 				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
 				D7D998B611EAA2B2005B8811 /* background-header.png in Resources */,
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
+				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +316,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -299,6 +330,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -307,6 +339,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -314,7 +350,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};

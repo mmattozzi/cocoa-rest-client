@@ -30,7 +30,6 @@ static CRCContentType requestContentType;
 
 
 @interface CocoaRestClientAppDelegate(Private)
-CRCRequest *lastRequest;
 - (void)determineRequestContentType;
 - (void)loadSavedDictionary:(NSDictionary *)request;
 - (void)loadSavedCRCRequest:(CRCRequest *)request;

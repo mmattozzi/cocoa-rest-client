@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CRCRequest;
+
 @interface CocoaRestClientAppDelegate : NSObject {
     NSWindow *window;
 	
@@ -51,6 +53,9 @@
 	NSTabViewItem *reqHeadersTab;
 	NSDate *startDate;
 	NSTextField *status;
+    
+    @private 
+    CRCRequest *lastRequest;
 	
 }
 
