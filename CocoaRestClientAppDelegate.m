@@ -828,6 +828,10 @@ static CRCContentType requestContentType;
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://code.google.com/p/cocoa-rest-client/"]]; 
 }
 
+- (IBAction) licenseInfo:(id)sender {
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://cocoa-rest-client.googlecode.com/svn/trunk/LICENSE.txt"]]; 
+}
+
 - (IBAction) reloadLastRequest:(id)sender {
 	if (lastRequest != nil) {
 		[self loadSavedCRCRequest:(CRCRequest *)lastRequest];
