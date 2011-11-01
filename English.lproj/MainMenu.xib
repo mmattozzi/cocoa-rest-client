@@ -582,6 +582,15 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="334230620">
+									<reference key="NSMenu" ref="461660155"/>
+									<string key="NSTitle">Follow HTTP Redirects</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<int key="NSState">1</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 							</object>
 						</object>
 					</object>
@@ -3375,6 +3384,14 @@
 					</object>
 					<int key="connectionID">918</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">followRedirects:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="334230620"/>
+					</object>
+					<int key="connectionID">923</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -4514,6 +4531,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="31988067"/>
+							<reference ref="334230620"/>
 						</object>
 						<reference key="parent" ref="468363287"/>
 					</object>
@@ -4883,6 +4901,11 @@
 						<reference key="object" ref="917235036"/>
 						<reference key="parent" ref="581012361"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">922</int>
+						<reference key="object" ref="334230620"/>
+						<reference key="parent" ref="461660155"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -5173,6 +5196,7 @@
 					<string>914.IBPluginDependency</string>
 					<string>915.IBPluginDependency</string>
 					<string>917.IBPluginDependency</string>
+					<string>922.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -5460,6 +5484,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -5474,7 +5499,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">921</int>
+			<int key="maxID">923</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5500,6 +5525,7 @@
 							<string>contentTypeMenuItemSelected:</string>
 							<string>deleteSavedRequest:</string>
 							<string>doneSaveRequest:</string>
+							<string>followRedirects:</string>
 							<string>handleOpenWindow:</string>
 							<string>helpInfo:</string>
 							<string>licenseInfo:</string>
@@ -5537,6 +5563,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
@@ -5549,6 +5576,7 @@
 							<string>contentTypeMenuItemSelected:</string>
 							<string>deleteSavedRequest:</string>
 							<string>doneSaveRequest:</string>
+							<string>followRedirects:</string>
 							<string>handleOpenWindow:</string>
 							<string>helpInfo:</string>
 							<string>licenseInfo:</string>
@@ -5588,6 +5616,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">doneSaveRequest:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">followRedirects:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

@@ -66,6 +66,7 @@ static CRCContentType requestContentType;
 	
 	timeout = 20; 
 	allowSelfSignedCerts = YES;
+    followRedirects = YES;
     
 	headersTable = [[NSMutableArray alloc] init];
 	filesTable   = [[NSMutableArray alloc] init];
@@ -330,6 +331,24 @@ static CRCContentType requestContentType;
 	[status setStringValue:@"Failed"];
 }
 
+// This controls if HTTP redirects are followed
+- (NSURLRequest *)connection: (NSURLConnection *)inConnection
+             willSendRequest: (NSURLRequest *)inRequest
+            redirectResponse: (NSURLResponse *)inRedirectResponse;
+{
+    if (inRedirectResponse) {
+        if (! followRedirects) {
+            return nil;
+        } else {
+            NSMutableURLRequest *r = [[inRequest mutableCopy] autorelease]; // original request
+            [r setURL: [inRequest URL]];
+            return r;
+        }
+    } else {
+        return inRequest;
+    }
+}
+
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
     if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {
         return NO;
@@ -512,6 +531,16 @@ static CRCContentType requestContentType;
         [sender setState:NSOffState];
     } else {
         allowSelfSignedCerts = YES;
+        [sender setState:NSOnState];
+    }
+}
+
+- (IBAction) followRedirects:(id)sender {
+    if ([sender state] == NSOnState) {
+        followRedirects = NO;
+        [sender setState:NSOffState];
+    } else {
+        followRedirects = YES;
         [sender setState:NSOnState];
     }
 }
