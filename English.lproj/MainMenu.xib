@@ -1757,7 +1757,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{11, 111}, {96, 32}}</string>
 												<reference key="NSSuperview" ref="556453163"/>
-												<reference key="NSNextKeyView" ref="260036480"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="929377763">
 													<int key="NSCellFlags">67239424</int>
@@ -2494,7 +2493,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{370, 14}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="616871651"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="456701197"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="425509552">
@@ -2516,8 +2514,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{470, 14}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="616871651"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="148870849">
 								<int key="NSCellFlags">67239424</int>
@@ -2538,7 +2534,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 20}, {341, 22}}</string>
 							<reference key="NSSuperview" ref="616871651"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="235145110"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="42777071">
@@ -2556,7 +2551,6 @@
 					</object>
 					<string key="NSFrame">{{7, 11}, {580, 62}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="241319255"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
@@ -5480,7 +5474,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">918</int>
+			<int key="maxID">921</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5500,6 +5494,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>allowSelfSignedCerts:</string>
 							<string>clearAuth:</string>
 							<string>closeTimoutDialog:</string>
 							<string>contentTypeMenuItemSelected:</string>
@@ -5522,6 +5517,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5547,6 +5543,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>allowSelfSignedCerts:</string>
 							<string>clearAuth:</string>
 							<string>closeTimoutDialog:</string>
 							<string>contentTypeMenuItemSelected:</string>
@@ -5569,6 +5566,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">allowSelfSignedCerts:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">clearAuth:</string>
 								<string key="candidateClassName">id</string>

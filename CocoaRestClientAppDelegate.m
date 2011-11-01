@@ -65,7 +65,8 @@ static CRCContentType requestContentType;
 	self = [super init];
 	
 	timeout = 20; 
-	
+	allowSelfSignedCerts = YES;
+    
 	headersTable = [[NSMutableArray alloc] init];
 	filesTable   = [[NSMutableArray alloc] init];
 	paramsTable  = [[NSMutableArray alloc] init];
@@ -293,6 +294,11 @@ static CRCContentType requestContentType;
 	//[responseText setString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
 }
 
+-(NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                 willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    return nil;
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	NSLog(@"Did receive response");
 	
@@ -324,18 +330,33 @@ static CRCContentType requestContentType;
 	[status setStringValue:@"Failed"];
 }
 
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+    if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {
+        return NO;
+    } else if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        return allowSelfSignedCerts;
+    } else {
+        return YES;
+    }
+}
+
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-	if ([challenge previousFailureCount] == 0) {
-		NSURLCredential *newCredential;
-		newCredential = [NSURLCredential credentialWithUser:[username stringValue]
-												   password:[password stringValue]
-												persistence:NSURLCredentialPersistenceNone];
-		[[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-	} else {
-		[[challenge sender] cancelAuthenticationChallenge:challenge];
-		[responseText setString:@"Authentication Failed"];
-	}
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+        [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+    } else {
+        if ([challenge previousFailureCount] == 0) {
+            NSURLCredential *newCredential;
+            newCredential = [NSURLCredential credentialWithUser:[username stringValue]
+                                                       password:[password stringValue]
+                                                    persistence:NSURLCredentialPersistenceNone];
+            [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+        } else {
+            [[challenge sender] cancelAuthenticationChallenge:challenge];
+            [responseText setString:@"Authentication Failed"];
+        }
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -483,6 +504,16 @@ static CRCContentType requestContentType;
 	}
 
 	[tabView selectTabViewItem:reqHeadersTab];
+}
+
+- (IBAction) allowSelfSignedCerts:(id)sender {
+    if ([sender state] == NSOnState) {
+        allowSelfSignedCerts = NO;
+        [sender setState:NSOffState];
+    } else {
+        allowSelfSignedCerts = YES;
+        [sender setState:NSOnState];
+    }
 }
 
 #pragma mark Table view methods

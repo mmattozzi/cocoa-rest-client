@@ -45,6 +45,8 @@
 	NSTextField *timeoutField;
 	
 	NSInteger timeout;
+    
+    BOOL allowSelfSignedCerts;
 	
 	NSButton *plusParam;
 	NSButton *minusParam;
@@ -116,6 +118,7 @@
 - (IBAction) helpInfo:(id)sender;
 - (IBAction) licenseInfo:(id)sender;
 - (IBAction) reloadLastRequest:(id)sender;
+- (IBAction) allowSelfSignedCerts:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 
