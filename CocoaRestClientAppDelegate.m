@@ -315,7 +315,7 @@ static CRCContentType requestContentType;
 		[headers appendFormat:@"%@: %@\n", key, [headerDict objectForKey:key]];
 		if ([key isEqualToString:@"Content-Type"]) {
 			NSString *contentTypeLine = [headerDict objectForKey:key];
-			NSArray *parts = [contentTypeLine componentsSeparatedByString:@"; "];
+			NSArray *parts = [contentTypeLine componentsSeparatedByString:@";"];
 			contentType = [[NSString alloc] initWithString:[parts objectAtIndex:0]];
 			NSLog(@"Got content type = %@", contentType);
 		}
@@ -399,11 +399,14 @@ static CRCContentType requestContentType;
 			NSLog(@"Formatting JSON");
 			SBJSON *parser = [[SBJSON alloc] init];
 			[parser setHumanReadable:YES];
-			id jsonObj = [parser objectWithString:[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]];
+            NSString *jsonStringFromData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+			id jsonObj = [parser objectWithString:jsonStringFromData];
 			NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]; 
 			[responseText setString:jsonFormattedString];
 			needToPrintPlain = NO;
 			[parser release];
+            [jsonStringFromData release];
+            [jsonObj release];
 		}
 	} 
 	
