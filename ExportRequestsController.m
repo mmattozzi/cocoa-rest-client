@@ -46,6 +46,18 @@
     if ( [picker runModal] == NSOKButton ) {
 		NSString* path = [picker filename];
         NSLog(@"Saving requests to %@", path);
+        
+        NSMutableArray *requestsToExport = [[NSMutableArray alloc] init];
+        for (id object in requestsTableModel) {
+            CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
+            if ([req enabled]) {
+                [requestsToExport addObject:[req request]];
+            }
+        }
+        
+        if ([requestsToExport count] > 0) {
+            [NSKeyedArchiver archiveRootObject:requestsToExport toFile:path];
+        }
     }
     
     [NSApp endSheet:[self window]];
