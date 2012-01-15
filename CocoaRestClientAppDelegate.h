@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ExportRequestsController.h"
 
 @class CRCRequest;
 
@@ -45,6 +46,8 @@
 	NSTextField *timeoutField;
 	
 	NSInteger timeout;
+    
+    ExportRequestsController *exportRequestsController;
     
     BOOL allowSelfSignedCerts;
     BOOL followRedirects;
@@ -121,6 +124,8 @@
 - (IBAction) reloadLastRequest:(id)sender;
 - (IBAction) allowSelfSignedCerts:(id)sender;
 - (IBAction) followRedirects:(id)sender;
+- (IBAction) importRequests:(id)sender;
+- (IBAction) exportRequests:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

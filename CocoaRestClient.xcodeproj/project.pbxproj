@@ -19,6 +19,9 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
+		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
+		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
+		AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */; };
 		AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
 		AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
 		AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AFCE79561419B54600E22468 /* dsa_pub.pem */; };
@@ -73,6 +76,11 @@
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExportRequests.xib; sourceTree = "<group>"; };
+		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
+		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
+		AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckableRequestWrapper.h; sourceTree = "<group>"; };
+		AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckableRequestWrapper.m; sourceTree = "<group>"; };
 		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -134,6 +142,10 @@
 				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
 				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
 				D7D998B311EAA29B005B8811 /* CRCTopView.m */,
+				AFBF08C314C32D30000E7411 /* ExportRequestsController.h */,
+				AFBF08C414C32D30000E7411 /* ExportRequestsController.m */,
+				AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */,
+				AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 				8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -264,6 +277,7 @@
 				D7D998B611EAA2B2005B8811 /* background-header.png in Resources */,
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
+				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +302,8 @@
 				D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */,
 				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
 				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
+				AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */,
+				AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -103,6 +103,9 @@ static CRCContentType requestContentType;
 	[savedRequestsArray addObject:req1];
 	*/
 	[self loadDataFromDisk];
+    
+    exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
+    exportRequestsController.savedRequestsArray = savedRequestsArray;
 	 
 	return self;
 }
@@ -864,6 +867,38 @@ static CRCContentType requestContentType;
 - (void) loadDataFromDisk {
 	NSString *path = [self pathForDataFile];
 	savedRequestsArray = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+}
+
+- (IBAction) importRequests:(id)sender {
+    
+    NSOpenPanel* picker = [NSOpenPanel openPanel];
+	
+	[picker setCanChooseFiles:YES];
+	[picker setCanChooseDirectories:NO];
+	[picker setAllowsMultipleSelection:NO];
+    
+    if ( [picker runModalForDirectory:nil file:nil] == NSOKButton )
+	{
+		
+		for(NSURL* url in [picker URLs])
+		{
+            NSString *path = [url path];
+            NSLog(@"Loading requests from %@", path);
+			[savedRequestsArray addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+            [savedOutlineView reloadItem:nil reloadChildren:YES];
+		}
+        
+	}
+    
+}
+
+- (IBAction) exportRequests:(id)sender {
+    [exportRequestsController prepareToDisplay];
+    [NSApp beginSheet: [exportRequestsController window]
+       modalForWindow: window
+        modalDelegate: exportRequestsController
+       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo: nil];
 }
 
 - (IBAction) handleOpenWindow:(id)sender {
