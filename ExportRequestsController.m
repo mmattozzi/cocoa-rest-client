@@ -13,6 +13,7 @@
 @implementation ExportRequestsController
 
 @synthesize savedRequestsArray;
+@synthesize tableView;
 
 - (id)initWithWindow:(NSWindow *)awindow {
     self = [super initWithWindow:awindow];
@@ -75,8 +76,18 @@
     [requestsTableModel removeAllObjects];
     
     for (id object in savedRequestsArray) {
-        CRCRequest *crcRequest = (CRCRequest *) object;
-        [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[crcRequest name] enabled:YES request:crcRequest]];
+        // Handle current request model
+        if ([object isKindOfClass:[CRCRequest class]])
+        {
+            CRCRequest *crcRequest = (CRCRequest *) object;
+            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[crcRequest name] enabled:YES request:crcRequest]];
+        }
+        // Handle older version of requests
+        else if([object isKindOfClass:[NSDictionary class]] )
+        {
+            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[object objectForKey:@"name"] enabled:YES request:object]];
+        }
+        
     }
     
     [tableView reloadData];
@@ -114,6 +125,22 @@
     NSLog(@"Calling setObjectValue with value: %@", value);
     
     [(CheckableRequestWrapper *) [requestsTableModel objectAtIndex:row] setEnabled:[value boolValue]];
+}
+
+- (IBAction) clickedAllCheckbox:(id)sender {
+    if ([(NSButton *) sender state] == NSOnState) {
+        for (id object in requestsTableModel) {
+            CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
+            [req setEnabled:YES];
+        }
+    } else {
+        for (id object in requestsTableModel) {
+            CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
+            [req setEnabled:NO];
+        }
+    }
+    
+    [tableView reloadData];
 }
 
 @end

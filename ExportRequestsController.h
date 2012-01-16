@@ -20,5 +20,6 @@
 - (void) prepareToDisplay;
 - (IBAction) confirmExport:(id)sender;
 - (IBAction) cancelExport:(id)sender;
+- (IBAction) clickedAllCheckbox:(id)sender;
 
 @end
