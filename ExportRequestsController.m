@@ -14,11 +14,17 @@
 
 @synthesize savedRequestsArray;
 @synthesize tableView;
+@synthesize importButton;
+@synthesize exportButton;
+@synthesize allButton;
+@synthesize savedOutlineView;
+@synthesize label;
 
 - (id)initWithWindow:(NSWindow *)awindow {
     self = [super initWithWindow:awindow];
     if (self) {
         requestsTableModel = [[NSMutableArray alloc] init];
+        isExportsWindow = YES;
     }
     
     return self;
@@ -28,10 +34,26 @@
     [super dealloc];
 }
 
+- (void) setupWindow {
+    if (isExportsWindow) {
+        [importButton setHidden:YES];
+        [exportButton setHidden:NO];
+        [[self window] setTitle:@"Export Requests"];
+        [label setStringValue:@"Select Requests to Export:"];
+    } else {
+        [importButton setHidden:NO];
+        [exportButton setHidden:YES];
+        [[self window] setTitle:@"Import Requests"];
+        [label setStringValue:@"Select Requests to Import:"];
+    }
+    [allButton setState:NSOnState];
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self setupWindow];
 }
 
 - (IBAction) confirmExport:(id)sender {
@@ -64,6 +86,21 @@
     [NSApp endSheet:[self window]];
 }
 
+- (IBAction) confirmImport:(id)sender {
+    NSLog(@"Pressed import");
+    
+    for (id object in requestsTableModel) {
+        CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
+        if ([req enabled]) {
+            [savedRequestsArray addObject:[req request]];
+        }
+    }
+    
+    [savedOutlineView reloadItem:nil reloadChildren:YES];
+    
+    [NSApp endSheet:[self window]];
+}
+
 - (IBAction) cancelExport:(id)sender {
     [NSApp endSheet:[self window]];
 }
@@ -72,10 +109,37 @@
     [sheet orderOut:self];
 }
 
-- (void) prepareToDisplay {
+- (void) prepareToDisplayExports {
+    isExportsWindow = YES;
+    [self setupWindow];
+    
     [requestsTableModel removeAllObjects];
     
     for (id object in savedRequestsArray) {
+        // Handle current request model
+        if ([object isKindOfClass:[CRCRequest class]])
+        {
+            CRCRequest *crcRequest = (CRCRequest *) object;
+            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[crcRequest name] enabled:YES request:crcRequest]];
+        }
+        // Handle older version of requests
+        else if([object isKindOfClass:[NSDictionary class]] )
+        {
+            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[object objectForKey:@"name"] enabled:YES request:object]];
+        }
+        
+    }
+    
+    [tableView reloadData];
+}
+
+- (void) prepareToDisplayImports:(NSArray *)importRequests {
+    isExportsWindow = NO;
+    [self setupWindow];
+    
+    [requestsTableModel removeAllObjects];
+    
+    for (id object in importRequests) {
         // Handle current request model
         if ([object isKindOfClass:[CRCRequest class]])
         {

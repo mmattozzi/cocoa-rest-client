@@ -106,7 +106,7 @@ static CRCContentType requestContentType;
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = savedRequestsArray;
-	 
+     
 	return self;
 }
 
@@ -146,6 +146,7 @@ static CRCContentType requestContentType;
 	
 	[urlBox setNumberOfVisibleItems:10];
 	[savedRequestsDrawer open];
+    exportRequestsController.savedOutlineView = savedOutlineView;
 }
 
 - (void) determineRequestContentType{
@@ -877,6 +878,8 @@ static CRCContentType requestContentType;
 	[picker setCanChooseDirectories:NO];
 	[picker setAllowsMultipleSelection:NO];
     
+    NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
+    
     if ( [picker runModalForDirectory:nil file:nil] == NSOKButton )
 	{
 		
@@ -884,16 +887,20 @@ static CRCContentType requestContentType;
 		{
             NSString *path = [url path];
             NSLog(@"Loading requests from %@", path);
-			[savedRequestsArray addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
-            [savedOutlineView reloadItem:nil reloadChildren:YES];
+			[loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
 		}
         
 	}
-    
+    [exportRequestsController prepareToDisplayImports:loadedRequests];
+    [NSApp beginSheet: [exportRequestsController window]
+       modalForWindow: window
+        modalDelegate: exportRequestsController
+       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo: nil];
 }
 
 - (IBAction) exportRequests:(id)sender {
-    [exportRequestsController prepareToDisplay];
+    [exportRequestsController prepareToDisplayExports];
     [NSApp beginSheet: [exportRequestsController window]
        modalForWindow: window
         modalDelegate: exportRequestsController
