@@ -60,6 +60,8 @@ static CRCContentType requestContentType;
 @synthesize tabView;
 @synthesize reqHeadersTab;
 @synthesize status;
+@synthesize requestHeadersSentText;
+@synthesize progressIndicator;
 
 - (id) init {
 	self = [super init];
@@ -141,12 +143,14 @@ static CRCContentType requestContentType;
 	
 	[responseText setFont:[NSFont fontWithName:@"Courier New" size:12]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:12]];
-	
+	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:12]];
+    
 	[requestText setFont:[NSFont fontWithName:@"Courier New" size:12]];
 	
 	[urlBox setNumberOfVisibleItems:10];
+    [progressIndicator setHidden:YES];
 	[savedRequestsDrawer open];
-    exportRequestsController.savedOutlineView = savedOutlineView;
+    exportRequestsController.savedOutlineView = savedOutlineView;    
 }
 
 - (void) determineRequestContentType{
@@ -192,6 +196,8 @@ static CRCContentType requestContentType;
 	
 	[self determineRequestContentType];
 	NSLog(@"Got submit press");
+    [progressIndicator setHidden:NO];
+    [progressIndicator startAnimation:self];
 	
 	// NSAlert *alert = [NSAlert new];
 	// [alert setMessageText:@"Clicked submit"];
@@ -269,13 +275,6 @@ static CRCContentType requestContentType;
 		}
 	}
 	
-	NSLog(@"Sending method %@", method);
-	
-	//NSURLResponse *response = [[NSURLResponse alloc] init];
-	//NSError *error = [[NSError alloc] init];
-	//NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-	//[responseText setString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
-	
 	if (lastRequest != nil) {
 		[lastRequest release];
 	}
@@ -296,7 +295,6 @@ static CRCContentType requestContentType;
 #pragma mark Url Connection Delegate methods
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receivedData appendData:data];
-	//[responseText setString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
 }
 
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection
@@ -333,6 +331,8 @@ static CRCContentType requestContentType;
 	[headersTab setLabel:@"Response Headers (Failed)"];
 	[responseText setString:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
 	[status setStringValue:@"Failed"];
+    [progressIndicator stopAnimation:self];
+    [progressIndicator setHidden:YES];
 }
 
 // This controls if HTTP redirects are followed
@@ -340,6 +340,15 @@ static CRCContentType requestContentType;
              willSendRequest: (NSURLRequest *)inRequest
             redirectResponse: (NSURLResponse *)inRedirectResponse;
 {
+    NSMutableString *headers = [[NSMutableString alloc] init];
+    if (inRequest) {
+        NSDictionary *sentHeaders = [inRequest allHTTPHeaderFields];
+        for (NSString *key in sentHeaders) {
+            [headers appendFormat:@"%@: %@\n", key, [sentHeaders objectForKey:key]];
+        }
+        [requestHeadersSentText setString:headers];
+    }
+    
     if (inRedirectResponse) {
         if (! followRedirects) {
             return nil;
@@ -418,6 +427,9 @@ static CRCContentType requestContentType;
 	if (needToPrintPlain) {
 		[responseText setString:[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]];
 	}
+    
+    [progressIndicator stopAnimation:self];
+    [progressIndicator setHidden:YES];
 }
 
 #pragma mark -
@@ -452,35 +464,8 @@ static CRCContentType requestContentType;
 	[picker setCanChooseDirectories:NO];
 	[picker setAllowsMultipleSelection:NO];
 	
-
-	// 10.6
-	/*
-	[picker beginSheetModalForWindow:window completionHandler:^(NSInteger actionStatus) {
-		if(actionStatus == NSOKButton)
-		{
-			for(NSURL* url in [picker URLs])
-			{
-				NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-				[row setObject:@"" forKey:@"key"];
-				[row setObject:[url relativePath] forKey:@"value"];
-				[row setObject:url  forKey:@"url"];
-				
-				[filesTable addObject:row];
-				[filesTableView reloadData];
-				[filesTableView selectRow:([filesTable count] - 1) byExtendingSelection:NO];
-				[filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
-				[row release];
-			}
-		}
-	}];
-	 */
-
-	// 10.5
-	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton )
-	{
-		
-		for(NSURL* url in [picker URLs])
-		{
+	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
+		for(NSURL* url in [picker URLs]) {
 			NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
 			[row setObject:@"" forKey:@"key"];
 			[row setObject:[url relativePath] forKey:@"value"];
@@ -492,7 +477,6 @@ static CRCContentType requestContentType;
 			[filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
 			[row release];
 		}
-
 	}
 
 }
@@ -719,6 +703,41 @@ static CRCContentType requestContentType;
 	}
 	[saveRequestSheet orderOut:nil];
     [NSApp endSheet:saveRequestSheet];
+}
+
+//
+// Find the name attribute of the given request, assuming the input object is a request.
+// On unknown input type, return "Unnamed". 
+//
++ (NSString *) nameForRequest:(id)object {
+    // Handle current request model
+    if ([object isKindOfClass:[CRCRequest class]])
+    {
+        CRCRequest *crcRequest = (CRCRequest *) object;
+        return crcRequest.name;
+    }
+    // Handle older version of requests
+    else if([object isKindOfClass:[NSDictionary class]] )
+    {
+        return [object objectForKey:@"name"];
+    }
+    return @"Unnamed";
+}
+
+//
+// Overwrite the selected request with the settings currently in the Application window, using the 
+// same name as the selected request.
+//
+- (IBAction) overwriteRequest:(id)sender {
+    NSLog(@"Overwriting request");
+    int row = [savedOutlineView selectedRow];
+    if (row > -1) {
+        CRCRequest * request = [CRCRequest requestWithApplication:self];
+        NSString *name = [CocoaRestClientAppDelegate nameForRequest:[savedRequestsArray objectAtIndex:row]];
+        request.name = name;
+        [savedRequestsArray replaceObjectAtIndex:row withObject:request];
+        [savedOutlineView reloadItem:nil reloadChildren:YES];
+    }
 }
 
 - (IBAction) openTimeoutDialog:(id) sender {

@@ -18,6 +18,7 @@
 	NSButton *submitButton;
 	NSTextView *requestText;
 	NSTextView *responseText;
+    NSTextView *requestHeadersSentText;
 	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
 	NSPopUpButton *methodButton;
@@ -59,6 +60,7 @@
 	NSTabViewItem *reqHeadersTab;
 	NSDate *startDate;
 	NSTextField *status;
+    NSProgressIndicator *progressIndicator;
     
     @private 
     CRCRequest *lastRequest;
@@ -96,6 +98,8 @@
 @property (assign) IBOutlet NSTabView *tabView;
 @property (assign) IBOutlet NSTabViewItem *reqHeadersTab;
 @property (assign) IBOutlet NSTextField *status;
+@property (assign) IBOutlet NSTextView *requestHeadersSentText;
+@property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -103,6 +107,7 @@
 - (IBAction) clearAuth:(id)sender;
 - (IBAction) outlineClick:(id)sender;
 - (IBAction) saveRequest:(id) sender;
+- (IBAction) overwriteRequest:(id) sender;
 - (IBAction) doneSaveRequest:(id) sender;
 - (void) loadSavedRequest:(NSDictionary *) request;
 - (IBAction) deleteSavedRequest:(id) sender;
