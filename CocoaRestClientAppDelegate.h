@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ExportRequestsController.h"
+#import "CRCDrawerView.h"
 
 @class CRCRequest;
+@class CRCDrawerView;
 
 @interface CocoaRestClientAppDelegate : NSObject {
     NSWindow *window;
@@ -62,6 +64,8 @@
 	NSTextField *status;
     NSProgressIndicator *progressIndicator;
     
+    CRCDrawerView *drawerView;
+    
     @private 
     CRCRequest *lastRequest;
 	
@@ -100,6 +104,7 @@
 @property (assign) IBOutlet NSTextField *status;
 @property (assign) IBOutlet NSTextView *requestHeadersSentText;
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
+@property (assign) IBOutlet CRCDrawerView *drawerView;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
@@ -131,6 +136,7 @@
 - (IBAction) followRedirects:(id)sender;
 - (IBAction) importRequests:(id)sender;
 - (IBAction) exportRequests:(id)sender;
+- (void) importRequestsFromArray:(NSArray *)requests;
 
 - (void)setRawRequestInput:(BOOL)value;
 

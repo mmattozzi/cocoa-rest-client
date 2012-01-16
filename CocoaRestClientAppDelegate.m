@@ -62,6 +62,7 @@ static CRCContentType requestContentType;
 @synthesize status;
 @synthesize requestHeadersSentText;
 @synthesize progressIndicator;
+@synthesize drawerView;
 
 - (id) init {
 	self = [super init];
@@ -150,7 +151,10 @@ static CRCContentType requestContentType;
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
 	[savedRequestsDrawer open];
-    exportRequestsController.savedOutlineView = savedOutlineView;    
+    exportRequestsController.savedOutlineView = savedOutlineView;
+    
+    drawerView.cocoaRestClientAppDelegate = self;
+    [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
 }
 
 - (void) determineRequestContentType{
@@ -889,6 +893,15 @@ static CRCContentType requestContentType;
 	savedRequestsArray = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
 }
 
+- (void) importRequestsFromArray:(NSArray *)requests {
+    [exportRequestsController prepareToDisplayImports:requests];
+    [NSApp beginSheet: [exportRequestsController window]
+       modalForWindow: window
+        modalDelegate: exportRequestsController
+       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo: nil];
+}
+
 - (IBAction) importRequests:(id)sender {
     
     NSOpenPanel* picker = [NSOpenPanel openPanel];
@@ -901,21 +914,17 @@ static CRCContentType requestContentType;
     
     if ( [picker runModalForDirectory:nil file:nil] == NSOKButton )
 	{
-		
 		for(NSURL* url in [picker URLs])
 		{
             NSString *path = [url path];
             NSLog(@"Loading requests from %@", path);
 			[loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
 		}
-        
 	}
-    [exportRequestsController prepareToDisplayImports:loadedRequests];
-    [NSApp beginSheet: [exportRequestsController window]
-       modalForWindow: window
-        modalDelegate: exportRequestsController
-       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-          contextInfo: nil];
+    
+    if ([loadedRequests count] > 0) {
+        [self importRequestsFromArray:loadedRequests];
+    }
 }
 
 - (IBAction) exportRequests:(id)sender {
