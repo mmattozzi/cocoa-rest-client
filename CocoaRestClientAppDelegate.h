@@ -137,6 +137,7 @@
 - (IBAction) importRequests:(id)sender;
 - (IBAction) exportRequests:(id)sender;
 - (void) importRequestsFromArray:(NSArray *)requests;
+- (void) invalidFileAlert;
 
 - (void)setRawRequestInput:(BOOL)value;
 

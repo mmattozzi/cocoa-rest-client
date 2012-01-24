@@ -57,7 +57,12 @@
             NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
             
             for (id file in files) {
-                [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:file]]; 
+                @try {
+                    [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:file]];
+                }
+                @catch (NSException *exception) {
+                    [cocoaRestClientAppDelegate invalidFileAlert];
+                }
             }
             
             if ([loadedRequests count] > 0) {

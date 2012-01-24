@@ -902,6 +902,15 @@ static CRCContentType requestContentType;
           contextInfo: nil];
 }
 
+- (void) invalidFileAlert {
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"Invalid file"];
+    [alert setInformativeText:@"Unable to read stored requests from file."];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
 - (IBAction) importRequests:(id)sender {
     
     NSOpenPanel* picker = [NSOpenPanel openPanel];
@@ -912,14 +921,17 @@ static CRCContentType requestContentType;
     
     NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
     
-    if ( [picker runModalForDirectory:nil file:nil] == NSOKButton )
-	{
-		for(NSURL* url in [picker URLs])
-		{
-            NSString *path = [url path];
-            NSLog(@"Loading requests from %@", path);
-			[loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
-		}
+    if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
+        @try {
+            for(NSURL* url in [picker URLs]) {
+                NSString *path = [url path];
+                NSLog(@"Loading requests from %@", path);
+                [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
+            }
+        }
+        @catch (NSException *exception) {
+            [self invalidFileAlert];
+        }
 	}
     
     if ([loadedRequests count] > 0) {
