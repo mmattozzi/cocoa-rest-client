@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
 		<item>
+			<title>Version 1.3.0</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.0.html</sparkle:releaseNotesLink>
+			<pubDate>Tue, 24 Jan 2012 19:24:00 -0400</pubDate>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.3.0.dmg" 
+				sparkle:version="5" length="1356215" 
+				sparkle:shortVersionString="1.3.0" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MC0CFG7VTAjVsNjq+aQa1dp5DKdKwynAAhUAtT2PXs70focBXbJ8hacrZUVkjEE=" />
+		</item>
+		<item>
 			<title>Version 1.2.4</title>
 			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.2.4.html</sparkle:releaseNotesLink>
 			<pubDate>Wed, 07 Dec 2011 21:52:00 -0400</pubDate>
