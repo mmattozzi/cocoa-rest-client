@@ -429,7 +429,19 @@ static CRCContentType requestContentType;
 	
 	// Bail out, just print the text
 	if (needToPrintPlain) {
-		[responseText setString:[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]];
+        // TODO: Use charset to select decoding
+        // Attempt to decode the text as UTF8
+        NSString *plainString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+        if (! plainString) {
+            // If not UTF8 try ISO-8859-1
+            plainString = [[NSString alloc] initWithData:receivedData encoding:NSISOLatin1StringEncoding];
+        }
+        // Successfully decoded the response string
+        if (plainString) {
+            [responseText setString:plainString];
+        } else {
+            [responseText setString:@"Unable to decode charset of response to printable string."];
+        }
 	}
     
     [progressIndicator stopAnimation:self];
