@@ -231,24 +231,14 @@ static CRCContentType requestContentType;
 	NSString *method              = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSMutableURLRequest * request = nil;
 	
-	// headers first
-	NSMutableDictionary *headersDictionary = [[NSMutableDictionary alloc] init];
-	
-	for(NSDictionary * row in headersTable)
-	{
-		[headersDictionary setObject:[row objectForKey:@"value"] 
-							  forKey:[row objectForKey:@"key"]];
-		
-		NSLog(@"%@ = %@", [row objectForKey:@"key"], [row objectForKey:@"value"]);
-	}
-	
 	// initialize request
 	request = [NSMutableURLRequest requestWithURL:url];
 	[request setHTTPMethod:method];
-	[request setAllHTTPHeaderFields:headersDictionary];
 	[request setTimeoutInterval:timeout];
 	
 	NSLog(@"Building req");
+    
+    BOOL contentTypeSet = NO;
 	
 	if(self.rawRequestInput)
 	{
@@ -270,15 +260,30 @@ static CRCContentType requestContentType;
 			{
 				case CRCContentTypeFormEncoded:
 					[CRCFormEncodedRequest createRequest:request];
+                    contentTypeSet = YES;
 					break;
 				
 				case CRCContentTypeMultipart:
 					[CRCMultipartRequest createRequest:request];
+                    contentTypeSet = YES;
 					break;
 			}
 		}
 	}
 	
+    // Set headers
+	NSMutableDictionary *headersDictionary = [[NSMutableDictionary alloc] init];
+	
+	for(NSDictionary * row in headersTable)
+	{
+        if (! [[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"] || ! contentTypeSet) {
+            [headersDictionary setObject:[row objectForKey:@"value"] 
+                                  forKey:[row objectForKey:@"key"]];
+        }
+	}
+    
+    [request setAllHTTPHeaderFields:headersDictionary];
+    
 	if (lastRequest != nil) {
 		[lastRequest release];
 	}
