@@ -16,16 +16,13 @@ Features
 * Auto-format (pretty print) XML and JSON responses
 * Display response headers
 * Quick save requests in a handy drawer
-* Send multipart/form-data
-* Upload files via multipart/form-data
+* Upload files and form data via multipart/form-data
 * Enter POST/PUT input as raw input or key/value pairs
 * Reports response latency
 * Command-R reloads last request
 * Lightweight: Real memory usage hovers around 40MB
-* Automatic updates
-* SSL Support
+* SSL Support (including untrusted certificates)
 * Optionally follows HTTP redirects
-* Go full screen in Lion
 * Import and export requests
 
 Screenshots
