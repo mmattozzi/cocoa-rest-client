@@ -227,7 +227,8 @@ static CRCContentType requestContentType;
 	[receivedData setLength:0];
 	contentType = NULL;
 	
-	NSURL *url                    = [NSURL URLWithString:urlStr];
+	NSString *urlEscaped = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSURL *url                    = [NSURL URLWithString:urlEscaped];
 	NSString *method              = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSMutableURLRequest * request = nil;
 	
