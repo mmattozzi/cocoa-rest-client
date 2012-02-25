@@ -440,7 +440,7 @@ static CRCContentType requestContentType;
 	
 	[paramsTable addObject:row];
 	[paramsTableView reloadData];
-	[paramsTableView selectRow:([paramsTable count] - 1) byExtendingSelection:NO];
+	[paramsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([paramsTable count] - 1)] byExtendingSelection:NO];
 	[paramsTableView editColumn:0 row:([paramsTable count] - 1) withEvent:nil select:YES];
 	
 	[row release];
@@ -482,7 +482,7 @@ static CRCContentType requestContentType;
 			
 			[filesTable addObject:row];
 			[filesTableView reloadData];
-			[filesTableView selectRow:([filesTable count] - 1) byExtendingSelection:NO];
+			[filesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([filesTable count] - 1)] byExtendingSelection:NO];
 			[filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
 			[row release];
 		}
@@ -622,7 +622,7 @@ static CRCContentType requestContentType;
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
 	[headersTable addObject:row];
 	[headersTableView reloadData];
-	[headersTableView selectRow:([headersTable count] - 1) byExtendingSelection:NO];
+	[headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([headersTable count] - 1)] byExtendingSelection:NO];
 	[headersTableView editColumn:0 row:([headersTable count] - 1) withEvent:nil select:YES];
 	
 	[row release];
