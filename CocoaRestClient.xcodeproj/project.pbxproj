@@ -78,15 +78,15 @@
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
-		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbingTableView.h; sourceTree = "<group>"; };
-		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbingTableView.m; sourceTree = "<group>"; };
+		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
+		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
 		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
 		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
 		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
 		AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckableRequestWrapper.h; sourceTree = "<group>"; };
 		AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckableRequestWrapper.m; sourceTree = "<group>"; };
-		AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCDrawerView.h; sourceTree = "<group>"; };
-		AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCDrawerView.m; sourceTree = "<group>"; };
+		AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCDrawerView.h; path = view/CRCDrawerView.h; sourceTree = "<group>"; };
+		AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCDrawerView.m; path = view/CRCDrawerView.m; sourceTree = "<group>"; };
 		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		D714A0A111E901FB00F5A80B /* CRCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCRequest.m; path = request/CRCRequest.m; sourceTree = "<group>"; };
 		D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCMultipartRequest.h; path = request/CRCMultipartRequest.h; sourceTree = "<group>"; };
 		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCMultipartRequest.m; path = request/CRCMultipartRequest.m; sourceTree = "<group>"; };
-		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCTopView.h; sourceTree = "<group>"; };
-		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCTopView.m; sourceTree = "<group>"; };
+		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCTopView.h; path = view/CRCTopView.h; sourceTree = "<group>"; };
+		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCTopView.m; path = view/CRCTopView.m; sourceTree = "<group>"; };
 		D7D998B511EAA2B2005B8811 /* background-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-header.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,20 +121,15 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
-				AFBB7D4614F9587A00424C12 /* TabbingTableView.m */,
+				AFBB7D4814F985AB00424C12 /* view */,
 				AFBB7D4314F939D300424C12 /* JSON */,
 				256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */,
 				AFBB7D4414F93DE400424C12 /* request */,
-				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
-				D7D998B311EAA29B005B8811 /* CRCTopView.m */,
 				AFBF08C314C32D30000E7411 /* ExportRequestsController.h */,
 				AFBF08C414C32D30000E7411 /* ExportRequestsController.m */,
 				AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */,
 				AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */,
-				AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */,
-				AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -247,6 +242,19 @@
 				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
 			);
 			name = request;
+			sourceTree = "<group>";
+		};
+		AFBB7D4814F985AB00424C12 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
+				AFBB7D4614F9587A00424C12 /* TabbingTableView.m */,
+				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
+				D7D998B311EAA29B005B8811 /* CRCTopView.m */,
+				AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */,
+				AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
