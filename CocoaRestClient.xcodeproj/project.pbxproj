@@ -77,7 +77,7 @@
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
-		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExportRequests.xib; sourceTree = "<group>"; };
+		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
 		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
 		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
 		AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckableRequestWrapper.h; sourceTree = "<group>"; };
