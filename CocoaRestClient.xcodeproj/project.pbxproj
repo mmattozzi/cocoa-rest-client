@@ -20,6 +20,8 @@
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
+		AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBB7D4914F98B4000424C12 /* Preferences.xib */; };
+		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
 		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
 		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
 		AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */; };
@@ -80,6 +82,9 @@
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
 		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
 		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
+		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
 		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
 		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
@@ -121,6 +126,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
+				AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */,
 				AFBB7D4814F985AB00424C12 /* view */,
 				AFBB7D4314F939D300424C12 /* JSON */,
 				256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */,
@@ -193,6 +200,7 @@
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */,
+				AFBB7D4914F98B4000424C12 /* Preferences.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaRestClient */;
 			projectDirPath = "";
@@ -312,6 +321,7 @@
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
+				AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +350,7 @@
 				AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */,
 				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
+				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +371,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AFBB7D4914F98B4000424C12 /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFBB7D4A14F98B4000424C12 /* English */,
+			);
+			name = Preferences.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

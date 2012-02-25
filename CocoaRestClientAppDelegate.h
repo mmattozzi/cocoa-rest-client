@@ -10,6 +10,10 @@
 #import "ExportRequestsController.h"
 #import "CRCDrawerView.h"
 #import "TabbingTableView.h"
+#import "PreferencesController.h"
+
+extern NSString* const FOLLOW_REDIRECTS;
+extern NSString* const RESPONSE_TIMEOUT;
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -49,13 +53,10 @@
 	NSPanel *timeoutSheet;
 	NSTextField *timeoutField;
 	
-	NSInteger timeout;
-    
-    ExportRequestsController *exportRequestsController;
+	ExportRequestsController *exportRequestsController;
     
     BOOL allowSelfSignedCerts;
-    BOOL followRedirects;
-	
+    
 	NSButton *plusParam;
 	NSButton *minusParam;
 	BOOL rawRequestInput;
@@ -106,6 +107,7 @@
 @property (assign) IBOutlet NSTextView *requestHeadersSentText;
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 @property (assign) IBOutlet CRCDrawerView *drawerView;
+@property (retain) PreferencesController *preferencesController;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) doubleClickedHeaderRow:(id)sender;
@@ -137,12 +139,12 @@
 - (IBAction) licenseInfo:(id)sender;
 - (IBAction) reloadLastRequest:(id)sender;
 - (IBAction) allowSelfSignedCerts:(id)sender;
-- (IBAction) followRedirects:(id)sender;
 - (IBAction) importRequests:(id)sender;
 - (IBAction) exportRequests:(id)sender;
 - (void) importRequestsFromArray:(NSArray *)requests;
 - (void) invalidFileAlert;
 - (IBAction)deleteRow:(id)sender;
+- (IBAction)showPreferences:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

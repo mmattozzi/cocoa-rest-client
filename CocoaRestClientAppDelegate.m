@@ -13,8 +13,12 @@
 #import "CRCRequest.h"
 #import <Foundation/Foundation.h>
 #import "JSON.h"
+#import <Sparkle/SUUpdater.h>
 
 #define MAIN_WINDOW_MENU_TAG 150
+
+NSString* const FOLLOW_REDIRECTS = @"followRedirects";
+NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 
 enum {
 	CRCContentTypeMultipart,
@@ -63,13 +67,17 @@ static CRCContentType requestContentType;
 @synthesize requestHeadersSentText;
 @synthesize progressIndicator;
 @synthesize drawerView;
+@synthesize preferencesController;
 
 - (id) init {
 	self = [super init];
 	
-	timeout = 20; 
+    NSDictionary *defaults = [[NSMutableDictionary alloc] init];
+    [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
 	allowSelfSignedCerts = YES;
-    followRedirects = YES;
     
 	headersTable = [[NSMutableArray alloc] init];
 	filesTable   = [[NSMutableArray alloc] init];
@@ -209,7 +217,7 @@ static CRCContentType requestContentType;
 	// initialize request
 	request = [NSMutableURLRequest requestWithURL:url];
 	[request setHTTPMethod:method];
-	[request setTimeoutInterval:timeout];
+	[request setTimeoutInterval:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
 	
 	BOOL contentTypeSet = NO;
 	
@@ -326,7 +334,7 @@ static CRCContentType requestContentType;
     }
     
     if (inRedirectResponse) {
-        if (! followRedirects) {
+        if (! [[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]) {
             return nil;
         } else {
             NSMutableURLRequest *r = [[inRequest mutableCopy] autorelease]; // original request
@@ -528,16 +536,6 @@ static CRCContentType requestContentType;
         [sender setState:NSOffState];
     } else {
         allowSelfSignedCerts = YES;
-        [sender setState:NSOnState];
-    }
-}
-
-- (IBAction) followRedirects:(id)sender {
-    if ([sender state] == NSOnState) {
-        followRedirects = NO;
-        [sender setState:NSOffState];
-    } else {
-        followRedirects = YES;
         [sender setState:NSOnState];
     }
 }
@@ -758,13 +756,13 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) openTimeoutDialog:(id) sender {
-	[timeoutField setIntValue:timeout];
+	[timeoutField setIntValue:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
 	[NSApp beginSheet:timeoutSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
 - (IBAction) closeTimoutDialog:(id) sender {
 	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
-		timeout = [timeoutField intValue];
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[timeoutField intValue]] forKey:RESPONSE_TIMEOUT];
 	}
 	[timeoutSheet orderOut:nil];
     [NSApp endSheet:timeoutSheet];
@@ -1001,6 +999,17 @@ static CRCContentType requestContentType;
     } else if ([filesTableView selectedRow] > -1) {
         [self minusFileRow:sender];
     }
+}
+
+- (IBAction) showPreferences:(id)sender {
+    NSLog(@"Check for updates: %d", [[SUUpdater sharedUpdater] automaticallyChecksForUpdates]);
+    NSLog(@"Downloads updates: %d", [[SUUpdater sharedUpdater] automaticallyDownloadsUpdates]);
+    NSLog(@"Update check freq: %f", [[SUUpdater sharedUpdater] updateCheckInterval]);
+    
+    if(!self.preferencesController)
+        self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
+    
+    [self.preferencesController showWindow:self];
 }
 
 @end
