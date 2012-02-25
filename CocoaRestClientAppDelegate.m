@@ -476,7 +476,7 @@ static CRCContentType requestContentType;
 	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
 		for(NSURL* url in [picker URLs]) {
 			NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-			[row setObject:@"" forKey:@"key"];
+			[row setObject:@"file" forKey:@"key"];
 			[row setObject:[url relativePath] forKey:@"value"];
 			[row setObject:url  forKey:@"url"];
 			
@@ -587,6 +587,9 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[headersTable replaceObjectAtIndex:rowIndex withObject:row];
+        if ([headersTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
+            [self plusHeaderRow:nil];
+        }
 	}
 	
 	if(aTableView == filesTableView){
@@ -596,6 +599,9 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[filesTable replaceObjectAtIndex:rowIndex withObject:row];
+        if ([filesTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
+            [self plusFileRow:nil];
+        }
 	}
 	
 	if(aTableView == paramsTableView){
@@ -605,6 +611,9 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[paramsTable replaceObjectAtIndex:rowIndex withObject:row];
+        if ([paramsTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
+            [self plusParamsRow:nil];
+        }
 	}
 }
 
@@ -620,6 +629,8 @@ static CRCContentType requestContentType;
 
 - (IBAction) plusHeaderRow:(id)sender {
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+    [row setObject:@"Key" forKey:@"key"];
+	[row setObject:@"Value" forKey:@"value"];
 	[headersTable addObject:row];
 	[headersTableView reloadData];
 	[headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([headersTable count] - 1)] byExtendingSelection:NO];
@@ -979,6 +990,17 @@ static CRCContentType requestContentType;
 		[self loadSavedCRCRequest:(CRCRequest *)lastRequest];
 		[self runSubmit: self];
 	}
+}
+
+- (IBAction)deleteRow:(id)sender {
+    NSLog(@"Calling delete row");
+    if ([headersTableView selectedRow] > -1) {
+        [self minusHeaderRow:sender];
+    } else if ([paramsTableView selectedRow] > -1) {
+        [self minusParamsRow:sender];
+    } else if ([filesTableView selectedRow] > -1) {
+        [self minusFileRow:sender];
+    }
 }
 
 @end

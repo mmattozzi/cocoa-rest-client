@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ExportRequestsController.h"
 #import "CRCDrawerView.h"
+#import "TabbingTableView.h"
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -24,9 +25,9 @@
 	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
 	NSPopUpButton *methodButton;
-	NSTableView *headersTableView;
-	NSTableView *filesTableView;
-	NSTableView *paramsTableView;
+	TabbingTableView *headersTableView;
+	TabbingTableView *filesTableView;
+	TabbingTableView *paramsTableView;
 	
 	NSTextField *username;
 	NSTextField *password;
@@ -84,9 +85,9 @@
 @property (assign) IBOutlet NSTextView *responseTextHeaders;
 @property (assign) IBOutlet NSPopUpButton *methodButton;
 @property (assign) IBOutlet NSTextView *requestText;
-@property (assign) IBOutlet NSTableView *headersTableView;
-@property (assign) IBOutlet NSTableView *filesTableView;
-@property (assign) IBOutlet NSTableView *paramsTableView;
+@property (assign) IBOutlet TabbingTableView *headersTableView;
+@property (assign) IBOutlet TabbingTableView *filesTableView;
+@property (assign) IBOutlet TabbingTableView *paramsTableView;
 @property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextField *password;
 @property (assign) IBOutlet NSOutlineView *savedOutlineView;
@@ -141,6 +142,7 @@
 - (IBAction) exportRequests:(id)sender;
 - (void) importRequestsFromArray:(NSArray *)requests;
 - (void) invalidFileAlert;
+- (IBAction)deleteRow:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

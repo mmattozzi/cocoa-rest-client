@@ -19,6 +19,7 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
+		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
 		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
 		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
 		AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */; };
@@ -77,6 +78,8 @@
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbingTableView.h; sourceTree = "<group>"; };
+		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbingTableView.m; sourceTree = "<group>"; };
 		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
 		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
 		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
+				AFBB7D4614F9587A00424C12 /* TabbingTableView.m */,
 				AFBB7D4314F939D300424C12 /* JSON */,
 				256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */,
@@ -326,6 +331,7 @@
 				AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */,
 				AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */,
 				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
+				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
