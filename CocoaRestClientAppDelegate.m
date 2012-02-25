@@ -992,11 +992,12 @@ static CRCContentType requestContentType;
 
 - (IBAction)deleteRow:(id)sender {
     NSLog(@"Calling delete row");
-    if ([headersTableView selectedRow] > -1) {
+    NSString *currentTabLabel = [[tabView selectedTabViewItem] label];
+    if ([currentTabLabel isEqualToString:@"Request Headers"] && [headersTableView selectedRow] > -1) {
         [self minusHeaderRow:sender];
-    } else if ([paramsTableView selectedRow] > -1) {
+    } else if ([currentTabLabel isEqualToString:@"Request Body"] && [paramsTableView selectedRow] > -1 && ! self.rawRequestInput) {
         [self minusParamsRow:sender];
-    } else if ([filesTableView selectedRow] > -1) {
+    } else if ([currentTabLabel isEqualToString:@"Files"] && [filesTableView selectedRow] > -1) {
         [self minusFileRow:sender];
     }
 }
