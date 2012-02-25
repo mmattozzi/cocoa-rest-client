@@ -67,6 +67,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     NSProgressIndicator *progressIndicator;
     
     CRCDrawerView *drawerView;
+    PreferencesController *preferencesController;
     
     @private 
     CRCRequest *lastRequest;
