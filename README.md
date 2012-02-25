@@ -31,15 +31,15 @@ Features
 Screenshots
 =================
 
-![Screenshot 1](http://cocoa-rest-client.googlecode.com/svn/trunk/screenshots/cocoa-rest-client-1.jpg)
+![Screenshot 1](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-1.jpg)
 
 *Pretty print XML content. Quick save of request URLs, body, and headers in one convenient drawer.*
 
-![Screenshot 2](http://cocoa-rest-client.googlecode.com/svn/trunk/screenshots/cocoa-rest-client-2.jpg)
+![Screenshot 2](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-2.jpg)
 
 *Pretty print JSON content. Set and save HTTP headers.*
 
-![Screenshot 3](http://cocoa-rest-client.googlecode.com/svn/trunk/screenshots/cocoa-rest-client-3.jpg)
+![Screenshot 3](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-3.jpg)
 
 *Set HTTP Basic or Digest Auth. Displays HTTP response headers.*
 
