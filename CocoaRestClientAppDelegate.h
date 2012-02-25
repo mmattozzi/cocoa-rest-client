@@ -107,6 +107,7 @@
 @property (assign) IBOutlet CRCDrawerView *drawerView;
 
 - (IBAction) runSubmit:(id)sender;
+- (IBAction) doubleClickedHeaderRow:(id)sender;
 - (IBAction) plusHeaderRow:(id)sender;
 - (IBAction) minusHeaderRow:(id)sender;
 - (IBAction) clearAuth:(id)sender;
@@ -122,8 +123,10 @@
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (IBAction) openTimeoutDialog:(id) sender;
 - (IBAction) closeTimoutDialog:(id) sender;
+- (IBAction) doubleClickedFileRow:(id)sender;
 - (IBAction) plusFileRow:(id)sender;
 - (IBAction) minusFileRow:(id)sender;
+- (IBAction) doubleClickedParamsRow:(id)sender;
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
 - (IBAction) contentTypeMenuItemSelected:(id)sender;

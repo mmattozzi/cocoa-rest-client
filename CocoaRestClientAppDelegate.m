@@ -130,6 +130,10 @@ static CRCContentType requestContentType;
     
     drawerView.cocoaRestClientAppDelegate = self;
     [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
+    
+    [headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
+    [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
+    [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
 }
 
 - (void) determineRequestContentType{
@@ -419,6 +423,16 @@ static CRCContentType requestContentType;
 #pragma mark -
 #pragma mark Params
 
+- (IBAction) doubleClickedParamsRow:(id)sender {
+    NSInteger row = [paramsTableView clickedRow];
+    NSInteger col = [paramsTableView clickedColumn];
+    if (row == -1 && col == -1) {
+        [self plusParamsRow:sender];
+    } else {
+        [paramsTableView editColumn:col row:row withEvent:nil select:YES];
+    }
+}
+
 - (IBAction) plusParamsRow:(id)sender {
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
 	[row setObject:@"Key" forKey:@"key"];
@@ -440,6 +454,17 @@ static CRCContentType requestContentType;
 
 #pragma mark -
 #pragma mark Files
+
+- (IBAction) doubleClickedFileRow:(id)sender {
+    NSInteger row = [filesTableView clickedRow];
+    NSInteger col = [filesTableView clickedColumn];
+    if (row == -1 && col == -1) {
+        [self plusFileRow:sender];
+    } else {
+        [filesTableView editColumn:col row:row withEvent:nil select:YES];
+    }
+}
+
 - (IBAction) plusFileRow:(id)sender {
 	
 	NSOpenPanel* picker = [NSOpenPanel openPanel];
@@ -519,7 +544,6 @@ static CRCContentType requestContentType;
 
 #pragma mark Table view methods
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) tableView {
-	NSLog(@"Calling number rows");
 	NSInteger count;
 	
 	if(tableView == headersTableView)
@@ -538,8 +562,6 @@ static CRCContentType requestContentType;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 	
 	id object;
-	
-	NSLog(@"Calling objectValueForTableColumn %d %@", row, [tableColumn identifier]);
 	
 	if(tableView == headersTableView)
 		object = [[headersTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
@@ -586,6 +608,15 @@ static CRCContentType requestContentType;
 	}
 }
 
+- (IBAction) doubleClickedHeaderRow:(id)sender {
+    NSInteger row = [headersTableView clickedRow];
+    NSInteger col = [headersTableView clickedColumn];
+    if (row == -1 && col == -1) {
+        [self plusHeaderRow:sender];
+    } else {
+        [headersTableView editColumn:col row:row withEvent:nil select:YES];
+    }
+}
 
 - (IBAction) plusHeaderRow:(id)sender {
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
