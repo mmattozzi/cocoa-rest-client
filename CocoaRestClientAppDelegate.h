@@ -3,7 +3,7 @@
 //  CocoaRestClient
 //
 //  Created by mmattozzi on 1/5/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Michael Mattozzi. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

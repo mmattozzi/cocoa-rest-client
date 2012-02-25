@@ -78,34 +78,11 @@ static CRCContentType requestContentType;
 	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
 	
 	[row setObject:@"Content-Type" forKey:@"key"];
-	//[row setObject:@"multipart/form-data" forKey:@"value"];
 	[row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
 	[headersTable addObject:row];
 	[row release];
 	
-	/*row = [[NSMutableDictionary alloc] init];
-	[row setObject:@"X-HTTP-Method-Override" forKey:@"key"];
-	[row setObject:@"PUT" forKey:@"value"];
-	[headersTable addObject:row];
-	[row release];
-	
-	row = [[NSMutableDictionary alloc] init];
-	[row setObject:@"nano" forKey:@"key"];
-	[row setObject:@"bot" forKey:@"value"];
-	[paramsTable addObject:row];
-	[row release];
-	 */
-	
-	
-	/*
-	savedRequestsArray = [[NSMutableArray alloc] init];
-	NSMutableDictionary *req1 = [[NSMutableDictionary alloc] init];
-	[req1 setObject:@"github feed" forKey:@"name"];
-	[req1 setObject:@"http://github.com/mmattozzi.atom" forKey:@"url"];
-	[req1 setObject:@"GET" forKey:@"method"];
-	[savedRequestsArray addObject:req1];
-	*/
-	[self loadDataFromDisk];
+    [self loadDataFromDisk];
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = savedRequestsArray;
@@ -133,8 +110,6 @@ static CRCContentType requestContentType;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	// Insert code here to initialize your application 
-	
 	[methodButton removeAllItems];
 	[methodButton addItemWithTitle:@"GET"];
 	[methodButton addItemWithTitle:@"POST"];
@@ -203,11 +178,6 @@ static CRCContentType requestContentType;
     [progressIndicator setHidden:NO];
     [progressIndicator startAnimation:self];
 	
-	// NSAlert *alert = [NSAlert new];
-	// [alert setMessageText:@"Clicked submit"];
-	// [alert setInformativeText: [urlBox stringValue]];
-	// [alert runModal];
-	
 	// Append http if it's not there
 	NSString *urlStr = [urlBox stringValue];
 	if (! [urlStr hasPrefix:@"http"] && ! [urlStr hasPrefix:@"https"]) {
@@ -228,8 +198,8 @@ static CRCContentType requestContentType;
 	contentType = NULL;
 	
 	NSString *urlEscaped = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL *url                    = [NSURL URLWithString:urlEscaped];
-	NSString *method              = [NSString stringWithString:[methodButton titleOfSelectedItem]];
+	NSURL *url = [NSURL URLWithString:urlEscaped];
+	NSString *method = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSMutableURLRequest * request = nil;
 	
 	// initialize request
@@ -237,28 +207,21 @@ static CRCContentType requestContentType;
 	[request setHTTPMethod:method];
 	[request setTimeoutInterval:timeout];
 	
-	NSLog(@"Building req");
-    
-    BOOL contentTypeSet = NO;
+	BOOL contentTypeSet = NO;
 	
-	if(self.rawRequestInput)
-	{
+	if(self.rawRequestInput) {
 		if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
-			if([filesTable count] > 0 && [[requestText string] isEqualToString:@""])
-			{
+			if([filesTable count] > 0 && [[requestText string] isEqualToString:@""]) {
 				[CRCFileRequest createRequest:request];
 			}
-			else 
-			{
+			else  {
 				[CRCRawRequest createRequest:request];
 			}
 		}		
 	}
-	else 
-	{
+	else {
 		if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
-			switch(requestContentType)
-			{
+			switch(requestContentType) {
 				case CRCContentTypeFormEncoded:
 					[CRCFormEncodedRequest createRequest:request];
                     contentTypeSet = YES;
@@ -275,8 +238,7 @@ static CRCContentType requestContentType;
     // Set headers
 	NSMutableDictionary *headersDictionary = [[NSMutableDictionary alloc] init];
 	
-	for(NSDictionary * row in headersTable)
-	{
+	for(NSDictionary * row in headersTable) {
         if (! [[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"] || ! contentTypeSet) {
             [headersDictionary setObject:[row objectForKey:@"value"] 
                                   forKey:[row objectForKey:@"key"]];
@@ -512,12 +474,9 @@ static CRCContentType requestContentType;
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
 	BOOL inserted = FALSE;
-	if([headersTable count] > 0)
-	{
-		for(NSMutableDictionary * row in headersTable)
-		{
-			if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"])
-			{
+	if([headersTable count] > 0) {
+		for(NSMutableDictionary * row in headersTable) {
+			if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"]) {
 				[row setObject:[sender title] forKey:@"value"];
 				[headersTableView reloadData];
 				inserted = TRUE;
@@ -694,12 +653,6 @@ static CRCContentType requestContentType;
 
 // Respond to click on a row of the saved requests outline view
 - (IBAction) outlineClick:(id)sender {
-	/*
-	NSAlert *alert = [NSAlert new];
-	[alert setMessageText:[NSString stringWithFormat:@"Selected %@", [savedOutlineView itemAtRow:[savedOutlineView selectedRow]]]];
-	[alert runModal];
-	 */
-	
 	[self loadSavedRequest:[savedOutlineView itemAtRow:[savedOutlineView selectedRow]]];
 }
 
@@ -777,12 +730,10 @@ static CRCContentType requestContentType;
 
 - (void)loadSavedRequest:(id)request {
 	
-	if([request isKindOfClass:[NSDictionary class]])
-	{
+	if([request isKindOfClass:[NSDictionary class]]) {
 		[self loadSavedDictionary:(NSDictionary *)request];
 	}
-	else if([request isKindOfClass:[CRCRequest class]])
-	{
+	else if([request isKindOfClass:[CRCRequest class]]) {
 		[self loadSavedCRCRequest:(CRCRequest *)request];
 	}
 	
@@ -798,12 +749,10 @@ static CRCContentType requestContentType;
 	
 	self.rawRequestInput = YES;
 	
-	if ([request objectForKey:@"body"]) 
-	{
+	if ([request objectForKey:@"body"]) {
 		[requestText setString:[request objectForKey:@"body"]];
 	} 
-	else 
-	{
+	else {
 		[requestText setString:@""];
 	}
 	
@@ -975,8 +924,7 @@ static CRCContentType requestContentType;
 {
 	//check to see if the Main Menu NSMenuItem is
 	//being validcated
-	if([item tag] == MAIN_WINDOW_MENU_TAG)
-	{
+	if([item tag] == MAIN_WINDOW_MENU_TAG) {
 		return ![window isVisible];
 	}
 	
