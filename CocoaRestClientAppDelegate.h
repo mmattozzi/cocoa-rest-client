@@ -71,6 +71,9 @@ extern NSString* const RESPONSE_TIMEOUT;
     
     @private 
     CRCRequest *lastRequest;
+    
+    @private
+    NSSet *requestMethodsWithBody;
 	
 }
 

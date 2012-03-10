@@ -126,6 +126,8 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithTitle:@"HEAD"];
 	[methodButton addItemWithTitle:@"PATCH"];
 	[methodButton addItemWithTitle:@"SEARCH"];
+    
+	requestMethodsWithBody = [NSSet setWithObjects:@"POST", @"PUT", @"PATCH", @"SEARCH", nil];
 	
 	[responseText setFont:[NSFont fontWithName:@"Courier New" size:12]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:12]];
@@ -224,7 +226,7 @@ static CRCContentType requestContentType;
 	BOOL contentTypeSet = NO;
 	
 	if(self.rawRequestInput) {
-		if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
+		if ([requestMethodsWithBody containsObject:method]) {
 			if([filesTable count] > 0 && [[requestText string] isEqualToString:@""]) {
 				[CRCFileRequest createRequest:request];
 			}
@@ -234,7 +236,7 @@ static CRCContentType requestContentType;
 		}		
 	}
 	else {
-		if ([method isEqualToString:@"PUT"] || [method isEqualToString:@"POST"]) {
+		if ([requestMethodsWithBody containsObject:method]) {
 			switch(requestContentType) {
 				case CRCContentTypeFormEncoded:
 					[CRCFormEncodedRequest createRequest:request];
