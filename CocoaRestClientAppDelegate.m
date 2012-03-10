@@ -124,6 +124,8 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithTitle:@"PUT"];
 	[methodButton addItemWithTitle:@"DELETE"];
 	[methodButton addItemWithTitle:@"HEAD"];
+	[methodButton addItemWithTitle:@"PATCH"];
+	[methodButton addItemWithTitle:@"SEARCH"];
 	
 	[responseText setFont:[NSFont fontWithName:@"Courier New" size:12]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:12]];
