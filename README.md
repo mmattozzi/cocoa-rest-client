@@ -40,6 +40,14 @@ Screenshots
 
 *Set HTTP Basic or Digest Auth. Displays HTTP response headers.*
 
+![Screenshot 4](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-4.jpg)
+
+*Set HTTP request body content to a raw text blob or a list of parameters.*
+
+![Screenshot 5](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-5.jpg)
+
+*Upload files using HTTP multipart requests. HTTP form encoding also supported.*
+
 Source and Contributions
 =================
 * Source code is now hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
