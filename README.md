@@ -20,7 +20,7 @@ Features
 * Enter POST/PUT input as raw input or key/value pairs
 * Reports response latency
 * Command-R reloads last request
-* Lightweight: Real memory usage hovers around 40MB
+* Lightweight: Low real memory usage
 * SSL Support (including untrusted certificates)
 * Optionally follows HTTP redirects
 * Import and export requests
@@ -53,12 +53,12 @@ Source and Contributions
 * Source code is now hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
 * If you would like to contribute, please fork and create a pull request on Github 
 * Downloads and issues will still be kept up to date on Google Code. I will probably keep source up to date with each release.
-* I don't plan on switching from Garbage Collection to ARC until I drop 10.6 support, as there seems to be some [limitations with ARC on 10.6](http://stackoverflow.com/questions/7696201/how-to-deploy-to-snow-leopard-with-arc-enabled)
+* I don't plan on switching from Garbage Collection to ARC until I drop 10.6 support, as there seems to be some [limitations with ARC on 10.6](http://stackoverflow.com/questions/7696201/how-to-deploy-to-snow-leopard-with-arc-enabled). I will most likely switch to ARC when OS X 10.8 is released. 
 * I am not turning on AutoLayout constraints in my xib files until I drop 10.6 support.
 
 Credits
 =================
 * Contains json-framework/SBJSON library (http://code.google.com/p/json-framework/) embedded in it, source and all
-* Mucho guidance from Open Kosmaczewski blog (http://kosmaczewski.net/2008/03/26/playing-with-http-libraries/)
+* Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
 * Multipart features contributed by Adam Venturella
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
