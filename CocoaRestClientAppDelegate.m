@@ -124,6 +124,7 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithTitle:@"PUT"];
 	[methodButton addItemWithTitle:@"DELETE"];
 	[methodButton addItemWithTitle:@"HEAD"];
+	[methodButton addItemWithTitle:@"OPTIONS"];
 	[methodButton addItemWithTitle:@"PATCH"];
 	[methodButton addItemWithTitle:@"SEARCH"];
     
