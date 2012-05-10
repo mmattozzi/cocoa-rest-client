@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE69155B533200C55656 /* libicucore.dylib */; };
+		5704EE6C155B540900C55656 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE6B155B540900C55656 /* MGSFragaria.framework */; };
+		5704EE6D155B563E00C55656 /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5704EE6B155B540900C55656 /* MGSFragaria.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -47,6 +50,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */,
+				5704EE6D155B563E00C55656 /* MGSFragaria.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +67,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		5704EE69155B533200C55656 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		5704EE6B155B540900C55656 /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MGSFragaria.framework; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF074F4B10F595AF00EE44D8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
@@ -115,8 +121,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */,
+				5704EE6C155B540900C55656 /* MGSFragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +178,7 @@
 		29B97314FDCFA39411CA2CEA /* CocoaRestClient */ = {
 			isa = PBXGroup;
 			children = (
+				5704EE69155B533200C55656 /* libicucore.dylib */,
 				AF2D9EFF145F908100B8220F /* Security.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -208,6 +217,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5704EE6B155B540900C55656 /* MGSFragaria.framework */,
 				AFCE79521419B47900E22468 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,

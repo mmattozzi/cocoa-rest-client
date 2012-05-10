@@ -11,7 +11,7 @@
 #import "CRCDrawerView.h"
 #import "TabbingTableView.h"
 #import "PreferencesController.h"
-
+#import <MGSFragaria/MGSFragaria.h>
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
 
@@ -75,6 +75,8 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private
     NSSet *requestMethodsWithBody;
 	
+    @private
+    MGSFragaria * fragaria;
 }
 
 
@@ -87,6 +89,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSComboBox *urlBox;
 @property (assign) IBOutlet NSButton *submitButton;
 @property (assign) IBOutlet NSTextView *responseText;
+
+@property (assign) IBOutlet NSView *responseView;
 @property (assign) IBOutlet NSTextView *responseTextHeaders;
 @property (assign) IBOutlet NSPopUpButton *methodButton;
 @property (assign) IBOutlet NSTextView *requestText;

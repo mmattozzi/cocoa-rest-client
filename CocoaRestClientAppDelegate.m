@@ -14,6 +14,8 @@
 #import <Foundation/Foundation.h>
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
+#import <MGSFragaria/MGSFragaria.h>
+
 
 #define MAIN_WINDOW_MENU_TAG 150
 
@@ -47,6 +49,7 @@ static CRCContentType requestContentType;
 @synthesize responseText;
 @synthesize responseTextHeaders;
 @synthesize requestText;
+@synthesize responseView;
 @synthesize methodButton;
 @synthesize headersTable, filesTable, paramsTable;
 @synthesize headersTableView, filesTableView, paramsTableView;
@@ -147,6 +150,40 @@ static CRCContentType requestContentType;
     [headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
+    
+    [self initFragaria];
+}
+
+- (void) initFragaria {
+    
+    // create an instance
+    fragaria = [[MGSFragaria alloc] init];
+    
+    //
+    // assign user defaults.
+    // a number of properties are derived from the user defaults system rather than the doc spec.
+    //
+    // see MGSFragariaPreferences.h for details
+    //
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:MGSPrefsAutocompleteSuggestAutomatically];	
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:MGSPrefsLineWrapNewDocuments];	
+    
+    // define initial object configuration
+    //
+    // see MGSFragaria.h for details
+    //
+    [fragaria setObject:[NSNumber numberWithBool:YES] forKey:MGSFOIsSyntaxColoured];
+    [fragaria setObject:[NSNumber numberWithBool:YES] forKey:MGSFOShowLineNumberGutter];
+    [fragaria setObject:self forKey:MGSFODelegate];
+    [fragaria setObject:@"JavaScript" forKey:MGSFOSyntaxDefinitionName];
+    // embed editor in editView
+    [fragaria embedInView:self.responseView];
+    
+    
+    
+    // access the NSTextView
+    responseText = [fragaria objectForKey:ro_MGSFOTextView];
+    
 }
 
 - (void) determineRequestContentType{
