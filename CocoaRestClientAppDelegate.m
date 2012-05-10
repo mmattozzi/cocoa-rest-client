@@ -46,6 +46,7 @@ static CRCContentType requestContentType;
 @synthesize submitButton;
 @synthesize urlBox;
 @synthesize responseText;
+@synthesize responseWebView;
 @synthesize responseTextHeaders;
 @synthesize requestText;
 @synthesize requestView;
@@ -224,6 +225,7 @@ static CRCContentType requestContentType;
 	NSURL *url = [NSURL URLWithString:urlEscaped];
 	NSString *method = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSMutableURLRequest * request = nil;
+    
 	
 	// initialize request
 	request = [NSMutableURLRequest requestWithURL:url];
@@ -279,6 +281,9 @@ static CRCContentType requestContentType;
 		[startDate release];
 	}
 	startDate = [NSDate date];
+    
+    currentRequest = [request copy];
+    
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 	if (! connection) {
 		NSLog(@"Could not open connection to resource");
@@ -326,6 +331,7 @@ static CRCContentType requestContentType;
 			NSString *contentTypeLine = [headerDict objectForKey:key];
 			NSArray *parts = [contentTypeLine componentsSeparatedByString:@";"];
 			contentType = [[NSString alloc] initWithString:[parts objectAtIndex:0]];
+            charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
 			NSLog(@"Got content type = %@", contentType);
 		}
 	}
@@ -404,6 +410,7 @@ static CRCContentType requestContentType;
 	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
+        [[responseWebView mainFrame] loadData:receivedData MIMEType:contentType textEncodingName:charset baseURL:currentRequest.URL]; 
 		if ([contentType isEqualToString:@"application/atom+xml"] || 
 			[contentType isEqualToString:@"application/rss+xml"] || 
 			[contentType isEqualToString:@"application/xml"]) {
