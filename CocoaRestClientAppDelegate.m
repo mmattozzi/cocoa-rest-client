@@ -293,6 +293,7 @@ static CRCContentType requestContentType;
 
 -(void) initHighlightedViews {
     self.responseText = self.responseView.textView;
+    [self.responseText setEditable:NO];
     self.requestText = self.requestView.textView;
 }
 
