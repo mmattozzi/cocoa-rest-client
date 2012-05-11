@@ -11,11 +11,16 @@
 
 @implementation HighlightedTextView {
     MGSFragaria * fragaria;
+    NSDictionary * syntaxForMIME;
 }
 @synthesize textView;
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if (self=[super initWithCoder:aDecoder]) {
         fragaria = [[MGSFragaria alloc] init];
+        syntaxForMIME = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"JavaScript", @"application/json", 
+                         @"XML", @"application/xml", 
+                         nil];
         
         //
         // assign user defaults.
@@ -38,9 +43,28 @@
         [fragaria embedInView:self];
         
         self.textView = [fragaria objectForKey:ro_MGSFOTextView];
+        
 
     }
     return self; 
+}
+
+-(NSString*) syntaxMIME {
+    __block NSString * result;
+    [syntaxForMIME enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSString* obj, BOOL *stop) {
+        if([obj isEqualToString: [fragaria objectForKey:MGSFOSyntaxDefinitionName]]) {
+            result = key;
+        }
+    }];
+    return result;
+}
+
+-(void) setSyntaxMIME:(NSString *)syntaxMIME {
+    NSString* newSyntaxName =[syntaxForMIME objectForKey:syntaxMIME];
+    NSLog(@"%@", newSyntaxName);
+
+    [fragaria setObject:newSyntaxName forKey:MGSFOSyntaxDefinitionName];
+
 }
 
 @end

@@ -10,4 +10,5 @@
 
 @interface HighlightedTextView : NSView
 @property (assign) NSTextView * textView;
+@property (copy) NSString * syntaxMIME;
 @end
