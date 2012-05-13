@@ -15,6 +15,7 @@
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
 
+
 #define MAIN_WINDOW_MENU_TAG 150
 
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
@@ -45,8 +46,11 @@ static CRCContentType requestContentType;
 @synthesize submitButton;
 @synthesize urlBox;
 @synthesize responseText;
+@synthesize responseWebView;
 @synthesize responseTextHeaders;
 @synthesize requestText;
+@synthesize requestView;
+@synthesize responseView;
 @synthesize methodButton;
 @synthesize headersTable, filesTable, paramsTable;
 @synthesize headersTableView, filesTableView, paramsTableView;
@@ -103,13 +107,13 @@ static CRCContentType requestContentType;
 	rawRequestInput = value;
 	
 	if(value){
-		[[requestText enclosingScrollView] setHidden:NO];
+		[requestView setHidden:NO];
 		[[paramsTableView enclosingScrollView] setHidden:YES];
 		[plusParam setHidden:YES];
 		[minusParam setHidden:YES];
 	}
 	else {
-		[[requestText enclosingScrollView] setHidden:YES];
+		[requestView setHidden:YES];
 		[[paramsTableView enclosingScrollView] setHidden:NO];
 		[plusParam setHidden:NO];
 		[minusParam setHidden:NO];
@@ -147,7 +151,10 @@ static CRCContentType requestContentType;
     [headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
+    
+    [self initHighlightedViews];
 }
+
 
 - (void) determineRequestContentType{
 	for(NSDictionary * row in headersTable)
@@ -218,6 +225,7 @@ static CRCContentType requestContentType;
 	NSURL *url = [NSURL URLWithString:urlEscaped];
 	NSString *method = [NSString stringWithString:[methodButton titleOfSelectedItem]];
 	NSMutableURLRequest * request = nil;
+    
 	
 	// initialize request
 	request = [NSMutableURLRequest requestWithURL:url];
@@ -273,12 +281,31 @@ static CRCContentType requestContentType;
 		[startDate release];
 	}
 	startDate = [NSDate date];
+    
+    currentRequest = [request copy];
+    
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 	if (! connection) {
 		NSLog(@"Could not open connection to resource");
 	}
 
 }
+
+
+
+#pragma mark -
+#pragma mark Highlighted Text Views
+
+-(void) initHighlightedViews {
+    self.responseText = self.responseView.textView;
+    [self.responseText setEditable:NO];
+    self.requestText = self.requestView.textView;
+}
+- (void) setHighlightSyntaxForMIME:(NSString*) mimeType {
+    self.responseView.syntaxMIME = mimeType;
+    self.requestView.syntaxMIME = mimeType;
+}
+
 
 #pragma mark -
 #pragma mark Url Connection Delegate methods
@@ -308,6 +335,7 @@ static CRCContentType requestContentType;
 			NSString *contentTypeLine = [headerDict objectForKey:key];
 			NSArray *parts = [contentTypeLine componentsSeparatedByString:@";"];
 			contentType = [[NSString alloc] initWithString:[parts objectAtIndex:0]];
+            charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
 			NSLog(@"Got content type = %@", contentType);
 		}
 	}
@@ -386,6 +414,7 @@ static CRCContentType requestContentType;
 	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
+        [[responseWebView mainFrame] loadData:receivedData MIMEType:contentType textEncodingName:charset baseURL:currentRequest.URL]; 
 		if ([contentType isEqualToString:@"application/atom+xml"] || 
 			[contentType isEqualToString:@"application/rss+xml"] || 
 			[contentType isEqualToString:@"application/xml"]) {
@@ -511,6 +540,7 @@ static CRCContentType requestContentType;
 #pragma mark Menu methods
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
+    [self setHighlightSyntaxForMIME:[sender title]];
 	BOOL inserted = FALSE;
 	if([headersTable count] > 0) {
 		for(NSMutableDictionary * row in headersTable) {
@@ -532,7 +562,7 @@ static CRCContentType requestContentType;
 		[row release];
 	}
 
-	[tabView selectTabViewItem:reqHeadersTab];
+//	[tabView selectTabViewItem:reqHeadersTab];
 }
 
 - (IBAction) allowSelfSignedCerts:(id)sender {

@@ -7,11 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 #import "ExportRequestsController.h"
 #import "CRCDrawerView.h"
 #import "TabbingTableView.h"
 #import "PreferencesController.h"
-
+#import "HighlightedTextView.h"
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
 
@@ -25,6 +26,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 	NSButton *submitButton;
 	NSTextView *requestText;
 	NSTextView *responseText;
+    WebView *responseWebView;
     NSTextView *requestHeadersSentText;
 	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
@@ -38,6 +40,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 	
 	NSMutableData *receivedData;
 	NSString *contentType;
+    NSString *charset;
 	
 	NSMutableArray *headersTable;
 	NSMutableArray *filesTable;
@@ -56,6 +59,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 	ExportRequestsController *exportRequestsController;
     
     BOOL allowSelfSignedCerts;
+    NSURLRequest *currentRequest;
     
 	NSButton *plusParam;
 	NSButton *minusParam;
@@ -87,6 +91,10 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSComboBox *urlBox;
 @property (assign) IBOutlet NSButton *submitButton;
 @property (assign) IBOutlet NSTextView *responseText;
+
+@property (assign) IBOutlet WebView *responseWebView;
+@property (assign) IBOutlet HighlightedTextView *responseView;
+@property (assign) IBOutlet HighlightedTextView *requestView;
 @property (assign) IBOutlet NSTextView *responseTextHeaders;
 @property (assign) IBOutlet NSPopUpButton *methodButton;
 @property (assign) IBOutlet NSTextView *requestText;
