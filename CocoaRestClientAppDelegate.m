@@ -15,7 +15,6 @@
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
 
-
 #define MAIN_WINDOW_MENU_TAG 150
 
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
@@ -414,8 +413,7 @@ static CRCContentType requestContentType;
 	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
-        [[responseWebView mainFrame] loadData:receivedData MIMEType:contentType textEncodingName:charset baseURL:currentRequest.URL]; 
-		if ([contentType isEqualToString:@"application/atom+xml"] || 
+        if ([contentType isEqualToString:@"application/atom+xml"] || 
 			[contentType isEqualToString:@"application/rss+xml"] || 
 			[contentType isEqualToString:@"application/xml"]) {
 			NSLog(@"Formatting XML");

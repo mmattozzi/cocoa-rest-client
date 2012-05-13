@@ -11,4 +11,7 @@
 @interface HighlightedTextView : NSView
 @property (assign) NSTextView * textView;
 @property (copy) NSString * syntaxMIME;
+
+- (void) initHighlightedFrame;
+
 @end

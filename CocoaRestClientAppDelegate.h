@@ -160,4 +160,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 
 - (void)setRawRequestInput:(BOOL)value;
 
+- (void) initHighlightedViews;
+- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+
 @end
