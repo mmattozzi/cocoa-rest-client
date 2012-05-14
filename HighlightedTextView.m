@@ -9,10 +9,8 @@
 #import "HighlightedTextView.h"
 #import <MGSFragaria/MGSFragaria.h>
 
-@implementation HighlightedTextView {
-    MGSFragaria * fragaria;
-    NSDictionary * syntaxForMIME;
-}
+
+@implementation HighlightedTextView 
 @synthesize textView;
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if (self=[super initWithCoder:aDecoder]) {

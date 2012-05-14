@@ -27,6 +27,9 @@ extern NSString* const RESPONSE_TIMEOUT;
 	NSTextView *requestText;
 	NSTextView *responseText;
     WebView *responseWebView;
+    HighlightedTextView *responseView;
+    HighlightedTextView *requestView;
+
     NSTextView *requestHeadersSentText;
 	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
