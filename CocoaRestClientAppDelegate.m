@@ -120,6 +120,15 @@ static CRCContentType requestContentType;
 
 }
 
++ (void) addBorderToView:(NSView *)view {
+    CGColorRef borderColor = (CGColorRef) CGColorCreateGenericRGB(0.745f, 0.745f, 0.745f, 1.0f);
+    CALayer *layer = [CALayer layer];
+    layer.borderColor = borderColor;
+    [view setWantsLayer:YES];
+    view.layer = layer;
+    view.layer.borderWidth = 1.0f;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[methodButton removeAllItems];
 	[methodButton addItemWithTitle:@"GET"];
@@ -151,6 +160,8 @@ static CRCContentType requestContentType;
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
+    [CocoaRestClientAppDelegate addBorderToView:self.responseView];
+    [CocoaRestClientAppDelegate addBorderToView:self.requestView];
     [self initHighlightedViews];
 }
 

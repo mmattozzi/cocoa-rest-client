@@ -24,6 +24,7 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
+		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
 		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
 		AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBB7D4914F98B4000424C12 /* Preferences.xib */; };
 		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
@@ -91,6 +92,7 @@
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
 		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
 		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */,
 				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
 				5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -186,6 +189,7 @@
 		29B97314FDCFA39411CA2CEA /* CocoaRestClient */ = {
 			isa = PBXGroup;
 			children = (
+				AF895874156088610079B379 /* QuartzCore.framework */,
 				5704EECF155C7BF400C55656 /* WebKit.framework */,
 				5704EE69155B533200C55656 /* libicucore.dylib */,
 				AF2D9EFF145F908100B8220F /* Security.framework */,
