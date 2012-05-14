@@ -9,10 +9,7 @@
 #import "HighlightedTextView.h"
 #import <MGSFragaria/MGSFragaria.h>
 
-@implementation HighlightedTextView {
-    MGSFragaria * fragaria;
-    NSDictionary * syntaxForMIME;
-}
+@implementation HighlightedTextView
 @synthesize textView;
 
 -(void) initHighlightedFrame {

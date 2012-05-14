@@ -34,6 +34,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 	TabbingTableView *headersTableView;
 	TabbingTableView *filesTableView;
 	TabbingTableView *paramsTableView;
+    HighlightedTextView *responseView;
+    HighlightedTextView *requestView;
 	
 	NSTextField *username;
 	NSTextField *password;
