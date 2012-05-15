@@ -9,6 +9,7 @@
 #import "ExportRequestsController.h"
 #import "CRCRequest.h"
 #import "CheckableRequestWrapper.h"
+#import "Exporter.h"
 
 @implementation ExportRequestsController
 
@@ -65,6 +66,10 @@
     }
     
     NSSavePanel* picker = [NSSavePanel savePanel];
+    
+    
+    picker.allowedFileTypes = [NSArray arrayWithObjects:@"restClient", @"md", nil];
+    [picker setAllowsOtherFileTypes:NO];
 	
     if ( [picker runModal] == NSOKButton ) {
 		NSString* path = [picker filename];
@@ -79,7 +84,8 @@
         }
         
         if ([requestsToExport count] > 0) {
-            [NSKeyedArchiver archiveRootObject:requestsToExport toFile:path];
+            [Exporter exportRequests:requestsToExport toFile:path];
+            
         }
     }
     

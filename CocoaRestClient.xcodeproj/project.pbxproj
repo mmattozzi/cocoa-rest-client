@@ -13,6 +13,8 @@
 		5704EE6D155B563E00C55656 /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5704EE6B155B540900C55656 /* MGSFragaria.framework */; };
 		5704EE85155B9C4200C55656 /* HighlightedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5704EE84155B9C4200C55656 /* HighlightedTextView.m */; };
 		5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EECF155C7BF400C55656 /* WebKit.framework */; };
+		57FA2E8C156296C000EFF999 /* ArchiveExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FA2E89156296C000EFF999 /* ArchiveExporter.m */; };
+		57FA2E8D156296C000EFF999 /* Exporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FA2E8B156296C000EFF999 /* Exporter.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -74,6 +76,10 @@
 		5704EE83155B9C4200C55656 /* HighlightedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightedTextView.h; sourceTree = "<group>"; };
 		5704EE84155B9C4200C55656 /* HighlightedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightedTextView.m; sourceTree = "<group>"; };
 		5704EECF155C7BF400C55656 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		57FA2E88156296C000EFF999 /* ArchiveExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveExporter.h; sourceTree = "<group>"; };
+		57FA2E89156296C000EFF999 /* ArchiveExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveExporter.m; sourceTree = "<group>"; };
+		57FA2E8A156296C000EFF999 /* Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exporter.h; sourceTree = "<group>"; };
+		57FA2E8B156296C000EFF999 /* Exporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exporter.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF074F4B10F595AF00EE44D8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
@@ -140,6 +146,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				57FA2E88156296C000EFF999 /* ArchiveExporter.h */,
+				57FA2E89156296C000EFF999 /* ArchiveExporter.m */,
+				57FA2E8A156296C000EFF999 /* Exporter.h */,
+				57FA2E8B156296C000EFF999 /* Exporter.m */,
 				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
 				AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */,
 				AFBB7D4814F985AB00424C12 /* view */,
@@ -371,6 +381,8 @@
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 				5704EE85155B9C4200C55656 /* HighlightedTextView.m in Sources */,
+				57FA2E8C156296C000EFF999 /* ArchiveExporter.m in Sources */,
+				57FA2E8D156296C000EFF999 /* Exporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +437,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -446,6 +459,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};

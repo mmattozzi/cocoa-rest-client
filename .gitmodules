@@ -1,3 +1,6 @@
 [submodule "Fragaria"]
 	path = Fragaria
 	url = git@github.com:darvin/Fragaria.git
+[submodule "GRMustache"]
+	path = GRMustache
+	url = https://github.com/groue/GRMustache.git
