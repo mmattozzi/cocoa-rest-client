@@ -6,7 +6,7 @@
 {{#requests}}
 
 
-## [{{name}}]({{#isBrowsable}}{{{url}}}{{/isBrowsable}})
+## {{#isBrowsable}}[{{/isBrowsable}}{{name}}{{#isBrowsable}}]({{{url}}}){{/isBrowsable}}
 
     {{method}} {{{urlPath}}}
 

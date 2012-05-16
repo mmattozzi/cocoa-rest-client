@@ -74,7 +74,7 @@ On requests export, choose `.md` or `.markdown` file extension and requests will
 
 
 
-## [User Create]()
+## User Create
 
     POST /api/v1/auth/user
 
@@ -156,6 +156,9 @@ Content-Type: application/json
 	"password":"new password"
 }
 ```
+
+
+
 
 
 
