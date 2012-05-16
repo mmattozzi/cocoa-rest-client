@@ -8,18 +8,17 @@
 
 #import "Exporter.h"
 #import "ArchiveExporter.h"
-//#import "MarkdownExporter.h"
+#import "MarkdownExporter.h"
 
 @implementation Exporter
 + (void) exportRequests:(NSArray*) requests toFile: (NSString*) path {
     NSString* extension = [path pathExtension];
     if ([extension isEqualToString:@"restClient"]) {
         [ArchiveExporter exportRequests:requests toFile:path];
-//    } else if ([extension isEqualToString:@"md"]) {
-//        [MarkdownExporter exportRequests:requests toFile:path];
-    } 
-    
-    else {
+    } else if ([extension isEqualToString:@"md"]||
+               [extension isEqualToString:@"markdown"]) {
+        [MarkdownExporter exportRequests:requests toFile:path];
+    } else {
         @throw [NSException exceptionWithName:@"NotImplementedError" reason:@"Format not known" userInfo:nil];
     
     }

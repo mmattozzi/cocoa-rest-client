@@ -62,3 +62,106 @@ Credits
 * Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
 * Multipart features contributed by Adam Venturella
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
+
+
+Pretty formatting
+=================
+
+On requests export, choose `.md` or `.markdown` file extension and requests will be exported as:
+
+
+
+
+
+
+## [User Create]()
+
+    POST /api/v1/auth/user
+
+### Input
+
+
+
+```
+Content-Type: application/json
+```
+
+
+
+
+
+```
+{
+	"username":"userna3dme 1",
+	"password":"some password"
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+## [User Info](http://127.0.0.1:8000/api/v1/auth/user/1)
+
+    GET /api/v1/auth/user/1
+
+### Input
+
+
+
+```
+Content-Type: application/json
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## [User Update](http://127.0.0.1:8000/api/v1/auth/user/1/)
+
+    GET /api/v1/auth/user/1
+
+### Input
+
+
+
+```
+Content-Type: application/json
+```
+
+
+
+
+
+```
+{
+	"username":"New username",
+	"password":"new password"
+}
+```
+
+
+
+
+
+
+
+
+

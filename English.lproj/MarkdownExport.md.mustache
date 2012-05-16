@@ -1,4 +1,47 @@
-#Requests
+
+# Requests
+
+
+
 {{#requests}}
-- {{index}}:{{url}} {{method}} {{name}}
+
+
+## [{{name}}]({{#isBrowsable}}{{{url}}}{{/isBrowsable}})
+
+    {{method}} {{{urlPath}}}
+
+### Input
+
+
+{{#requestHeadersFormatted}}
+```
+{{{requestHeadersFormatted}}}
+```
+{{/requestHeadersFormatted}}
+
+
+
+{{#requestDataFormatted}}
+```
+{{{requestDataFormatted}}}
+```
+{{/requestDataFormatted}}
+
+
+
+{{#responseDataFormatted}}
+### Response
+
+```
+{{{responseHeadersFormatted}}}
+```
+
+
+```
+{{{responseDataFormatted}}}
+```
+{{/responseDataFormatted}}
+
+
+
 {{/requests}}

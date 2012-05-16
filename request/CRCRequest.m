@@ -86,4 +86,33 @@
 	
 	[super dealloc];
 }
+
+
+-(NSString*) urlPath {
+    return [[NSURL URLWithString:url] path];
+}
+-(NSString*) requestHeadersFormatted {
+    NSMutableString* result = [NSMutableString string];
+    for (NSDictionary *header  in headers) {
+        [result appendFormat:@"%@: %@", [header objectForKey:@"key"], [header objectForKey:@"value"]];
+        if (header!=[headers lastObject]) {
+            [result appendString:@"\n"];
+        }
+    }
+    return [NSString stringWithString:result];
+}
+-(NSString*) requestDataFormatted {
+    return requestText;
+}
+-(NSString*) responseDataFormatted; {
+    return @"";
+}
+-(NSString*) responseHeadersFormatted {
+    return @"";
+}
+
+- (BOOL) isBrowsable {
+    return [method isEqualToString:@"GET"];
+}
+
 @end

@@ -33,5 +33,14 @@
 @property(nonatomic, copy) NSArray * files;
 @property(nonatomic, copy) NSArray * params;
 
+//readonly properties
+@property(readonly) NSString* urlPath;
+@property(readonly) NSString* requestHeadersFormatted;
+@property(readonly) NSString* requestDataFormatted;
+@property(readonly) NSString* responseDataFormatted;
+@property(readonly) NSString* responseHeadersFormatted;
+@property(readonly) BOOL isBrowsable;
+
+
 + (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application;
 @end
