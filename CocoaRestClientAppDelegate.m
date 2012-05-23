@@ -345,7 +345,9 @@ static CRCContentType requestContentType;
 			NSString *contentTypeLine = [headerDict objectForKey:key];
 			NSArray *parts = [contentTypeLine componentsSeparatedByString:@";"];
 			contentType = [[NSString alloc] initWithString:[parts objectAtIndex:0]];
-            charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
+            if ([parts count] > 1) {
+                charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
+            }
 			NSLog(@"Got content type = %@", contentType);
 		}
 	}
