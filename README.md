@@ -60,5 +60,7 @@ Credits
 =================
 * Contains json-framework/SBJSON library (http://code.google.com/p/json-framework/) embedded in it, source and all
 * Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
-* Multipart features contributed by Adam Venturella
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
+* Fragaria syntax highlighting framework (https://github.com/mugginsoft/Fragaria)
+* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro
+
