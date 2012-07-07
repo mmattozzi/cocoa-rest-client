@@ -28,9 +28,10 @@
 			if([body length] > 0) 
 				[body appendData:[@"&" dataUsingEncoding:NSUTF8StringEncoding]];
 			
+      value = (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge_retained CFStringRef)value, NULL, CFSTR("!#$%&'()*+,/:;=?@[]"), kCFStringEncodingUTF8);
 			[body appendData:[[NSString stringWithFormat:@"%@=%@",
 							   [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
-							   [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] 
+							   value] 
 							  dataUsingEncoding:NSUTF8StringEncoding]];
 		}
 	}
