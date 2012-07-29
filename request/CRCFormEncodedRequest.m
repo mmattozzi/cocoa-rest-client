@@ -28,9 +28,11 @@
 			if([body length] > 0) 
 				[body appendData:[@"&" dataUsingEncoding:NSUTF8StringEncoding]];
 			
+            		value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+ 			value = [value stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
 			[body appendData:[[NSString stringWithFormat:@"%@=%@",
 							   [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
-							   [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] 
+							   value] 
 							  dataUsingEncoding:NSUTF8StringEncoding]];
 		}
 	}
