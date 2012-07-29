@@ -18,6 +18,7 @@
 #define MAIN_WINDOW_MENU_TAG 150
 
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
+NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 
 enum {
@@ -71,6 +72,11 @@ static CRCContentType requestContentType;
 @synthesize progressIndicator;
 @synthesize drawerView;
 @synthesize preferencesController;
+@synthesize responseTextPlain;
+@synthesize requestTextPlain;
+@synthesize responseTextPlainView;
+@synthesize requestTextPlainView;
+@synthesize syntaxHighlightingMenuItem;
 
 - (id) init {
 	self = [super init];
@@ -78,6 +84,7 @@ static CRCContentType requestContentType;
     NSDictionary *defaults = [[NSMutableDictionary alloc] init];
     [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -104,15 +111,25 @@ static CRCContentType requestContentType;
 - (void) setRawRequestInput:(BOOL)value{
 	
 	rawRequestInput = value;
+    
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
 	
-	if(value){
-		[requestView setHidden:NO];
+	if(rawRequestInput){
+        if (syntaxHighlighting) {
+            [requestView setHidden:NO];
+        } else {
+            [requestTextPlainView setHidden:NO];
+        }
 		[[paramsTableView enclosingScrollView] setHidden:YES];
 		[plusParam setHidden:YES];
 		[minusParam setHidden:YES];
 	}
 	else {
-		[requestView setHidden:YES];
+        if (syntaxHighlighting) {
+            [requestView setHidden:YES];
+        } else {
+            [requestTextPlainView setHidden:YES];
+        }
 		[[paramsTableView enclosingScrollView] setHidden:NO];
 		[plusParam setHidden:NO];
 		[minusParam setHidden:NO];
@@ -160,11 +177,52 @@ static CRCContentType requestContentType;
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
+    [responseTextPlain setEditable:NO];
+    
     [CocoaRestClientAppDelegate addBorderToView:self.responseView];
     [CocoaRestClientAppDelegate addBorderToView:self.requestView];
     [self initHighlightedViews];
+    
+    [self syntaxHighlightingPreferenceChanged];
 }
 
+- (IBAction)toggleSyntaxHighlighting:(id)sender {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    [[NSUserDefaults standardUserDefaults] setBool:(!syntaxHighlighting) forKey:SYNTAX_HIGHLIGHT];
+    [self syntaxHighlightingPreferenceChanged];
+}
+
+- (void) syntaxHighlightingPreferenceChanged {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    syntaxHighlightingMenuItem.state = syntaxHighlighting;
+    NSLog(@"Syntax Highlighting = %i", syntaxHighlighting);
+    if (! syntaxHighlighting) {
+        self.responseView.hidden = true;
+        self.responseTextPlainView.hidden = false;
+        [self.responseText setString:@""];
+        self.responseText = self.responseTextPlain;
+        
+        
+        self.requestView.hidden = true;
+        if (self.rawRequestInput) {
+            self.requestTextPlainView.hidden = false;
+        }
+        [self.requestTextPlain setString:[self.requestText string]];
+        self.requestText = self.requestTextPlain;
+    } else {
+        self.responseView.hidden = false;
+        self.responseTextPlainView.hidden = true;
+        [self.responseText setString:@""];
+        self.responseText = self.responseView.textView;
+        
+        if (self.rawRequestInput) {
+            self.requestView.hidden = false;
+        }
+        self.requestTextPlainView.hidden = true;
+        self.requestText = self.requestView.textView;
+        [self.requestText setString:[self.requestTextPlain string]];
+    }
+}
 
 - (void) determineRequestContentType{
 	for(NSDictionary * row in headersTable)

@@ -37,6 +37,11 @@ extern NSString* const RESPONSE_TIMEOUT;
     HighlightedTextView *responseView;
     HighlightedTextView *requestView;
 	
+    NSTextView *requestTextPlain;
+    NSTextView *responseTextPlain;
+    NSScrollView *responseTextPlainView;
+    NSScrollView *requestTextPlainView;
+    
 	NSTextField *username;
 	NSTextField *password;
 	
@@ -74,6 +79,8 @@ extern NSString* const RESPONSE_TIMEOUT;
     
     CRCDrawerView *drawerView;
     PreferencesController *preferencesController;
+    
+    NSMenuItem *syntaxHighlightingMenuItem;
     
     @private 
     CRCRequest *lastRequest;
@@ -122,6 +129,11 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 @property (assign) IBOutlet CRCDrawerView *drawerView;
 @property (retain) PreferencesController *preferencesController;
+@property (assign) IBOutlet NSTextView *requestTextPlain;
+@property (assign) IBOutlet NSTextView *responseTextPlain;
+@property (assign) IBOutlet NSScrollView *responseTextPlainView;
+@property (assign) IBOutlet NSScrollView *requestTextPlainView;
+@property (assign) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) doubleClickedHeaderRow:(id)sender;
@@ -159,6 +171,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (void) invalidFileAlert;
 - (IBAction)deleteRow:(id)sender;
 - (IBAction)showPreferences:(id)sender;
+- (void)syntaxHighlightingPreferenceChanged;
+- (IBAction) toggleSyntaxHighlighting:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 
