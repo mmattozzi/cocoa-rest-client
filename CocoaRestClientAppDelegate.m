@@ -20,6 +20,7 @@
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
+NSInteger const DEFAULT_FONT_SIZE = 12;
 
 enum {
 	CRCContentTypeMultipart,
@@ -114,7 +115,7 @@ static CRCContentType requestContentType;
     
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
 	
-	if(rawRequestInput){
+    if(rawRequestInput){
         if (syntaxHighlighting) {
             [requestView setHidden:NO];
         } else {
@@ -159,11 +160,10 @@ static CRCContentType requestContentType;
     
 	requestMethodsWithBody = [NSSet setWithObjects:@"POST", @"PUT", @"PATCH", @"SEARCH", nil];
 	
-	[responseText setFont:[NSFont fontWithName:@"Courier New" size:12]]; 
-	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:12]];
-	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:12]];
-    
-	[requestText setFont:[NSFont fontWithName:@"Courier New" size:12]];
+	[responseText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]]; 
+	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
+	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];    
+	[requestText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
 	
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
@@ -201,7 +201,6 @@ static CRCContentType requestContentType;
         self.responseTextPlainView.hidden = false;
         [self.responseText setString:@""];
         self.responseText = self.responseTextPlain;
-        
         
         self.requestView.hidden = true;
         if (self.rawRequestInput) {
@@ -1115,6 +1114,27 @@ static CRCContentType requestContentType;
         self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
     
     [self.preferencesController showWindow:self];
+}
+
+- (IBAction)zoomIn:(id)sender {
+    NSFont *existingFont = [self.responseText font];
+    if (existingFont) {
+        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize + 2]];
+    }
+}
+
+- (IBAction)zoomOut:(id)sender{
+    NSFont *existingFont = [self.responseText font];
+    if (existingFont) {
+        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize - 2]];
+    } 
+}
+
+- (IBAction) zoomDefault:(id)sender {
+    NSFont *existingFont = [self.responseText font];
+    if (existingFont) {
+        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:DEFAULT_FONT_SIZE]];
+    }
 }
 
 @end

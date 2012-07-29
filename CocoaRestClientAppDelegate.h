@@ -173,6 +173,9 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction)showPreferences:(id)sender;
 - (void)syntaxHighlightingPreferenceChanged;
 - (IBAction) toggleSyntaxHighlighting:(id)sender;
+- (IBAction) zoomIn:(id)sender;
+- (IBAction) zoomOut:(id)sender;
+- (IBAction) zoomDefault:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 
