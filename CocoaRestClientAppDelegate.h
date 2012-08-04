@@ -81,6 +81,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     PreferencesController *preferencesController;
     
     NSMenuItem *syntaxHighlightingMenuItem;
+    NSMenuItem *reGetResponseMenuItem;
     
     @private 
     CRCRequest *lastRequest;
@@ -134,6 +135,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSScrollView *responseTextPlainView;
 @property (assign) IBOutlet NSScrollView *requestTextPlainView;
 @property (assign) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
+@property (assign) IBOutlet NSMenuItem *reGetResponseMenuItem;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) doubleClickedHeaderRow:(id)sender;
@@ -176,6 +178,9 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) zoomIn:(id)sender;
 - (IBAction) zoomOut:(id)sender;
 - (IBAction) zoomDefault:(id)sender;
+- (IBAction) exportResponse:(id)sender;
+- (IBAction) viewResponseInBrowser:(id)sender;
+- (IBAction) reGetResponseInBrowser:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

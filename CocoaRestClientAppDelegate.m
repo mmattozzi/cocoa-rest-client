@@ -78,6 +78,7 @@ static CRCContentType requestContentType;
 @synthesize responseTextPlainView;
 @synthesize requestTextPlainView;
 @synthesize syntaxHighlightingMenuItem;
+@synthesize reGetResponseMenuItem;
 
 - (id) init {
 	self = [super init];
@@ -1134,6 +1135,18 @@ static CRCContentType requestContentType;
     if (existingFont) {
         [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:DEFAULT_FONT_SIZE]];
     }
+}
+
+- (IBAction) exportResponse:(id)sender {
+    
+}
+
+- (IBAction) viewResponseInBrowser:(id)sender {
+    
+}
+
+- (IBAction) reGetResponseInBrowser:(id)sender {
+    
 }
 
 @end

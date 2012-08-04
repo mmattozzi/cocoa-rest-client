@@ -293,6 +293,40 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="628389386">
+									<reference key="NSMenu" ref="365660756"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="981687038">
+									<reference key="NSMenu" ref="365660756"/>
+									<string key="NSTitle">Export Response...</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="851889150">
+									<reference key="NSMenu" ref="365660756"/>
+									<string key="NSTitle">View Response in Browser</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="856384542">
+									<reference key="NSMenu" ref="365660756"/>
+									<string key="NSTitle">Re-GET Response in Browser</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 							</object>
 						</object>
 					</object>
@@ -1158,7 +1192,7 @@
 																		<string>public.url</string>
 																	</object>
 																</object>
-																<string key="NSFrameSize">{1058, 86}</string>
+																<string key="NSFrameSize">{1073, 86}</string>
 																<reference key="NSSuperview" ref="653699080"/>
 																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="773545669"/>
@@ -1179,7 +1213,7 @@
 																		<nil key="NSDelegate"/>
 																	</object>
 																	<reference key="NSTextView" ref="276339845"/>
-																	<double key="NSWidth">1058</double>
+																	<double key="NSWidth">1073</double>
 																	<int key="NSTCFlags">1</int>
 																</object>
 																<object class="NSTextViewSharedData" key="NSSharedData">
@@ -1242,7 +1276,7 @@
 																<nil key="NSDelegate"/>
 															</object>
 														</object>
-														<string key="NSFrame">{{1, 1}, {1058, 166}}</string>
+														<string key="NSFrame">{{1, 1}, {1073, 166}}</string>
 														<reference key="NSSuperview" ref="61566937"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="276339845"/>
@@ -1406,7 +1440,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 																	<bool key="EncodedWithXMLCoder">YES</bool>
 																	<object class="NSTableColumn" id="600659076">
 																		<string key="NSIdentifier">key</string>
-																		<double key="NSWidth">541</double>
+																		<double key="NSWidth">542</double>
 																		<double key="NSMinWidth">40</double>
 																		<double key="NSMaxWidth">1000</double>
 																		<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1446,7 +1480,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 																	</object>
 																	<object class="NSTableColumn" id="718401187">
 																		<string key="NSIdentifier">value</string>
-																		<double key="NSWidth">526</double>
+																		<double key="NSWidth">525</double>
 																		<double key="NSMinWidth">40</double>
 																		<double key="NSMaxWidth">1000</double>
 																		<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1561,7 +1595,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<string key="NSFrame">{{21, 2}, {85, 18}}</string>
 												<reference key="NSSuperview" ref="1036526789"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="613092658"/>
+												<reference key="NSNextKeyView" ref="260036480"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="492917717">
 													<int key="NSCellFlags">67239424</int>
@@ -1768,7 +1802,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<int key="NSvFlags">265</int>
 												<string key="NSFrame">{{1094, 134}, {39, 32}}</string>
 												<reference key="NSSuperview" ref="699264002"/>
-												<reference key="NSNextKeyView" ref="613092658"/>
+												<reference key="NSNextKeyView" ref="260036480"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="672875404">
 													<int key="NSCellFlags">-2080244224</int>
@@ -1906,7 +1940,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{11, 84}, {96, 32}}</string>
 												<reference key="NSSuperview" ref="556453163"/>
-												<reference key="NSNextKeyView" ref="613092658"/>
+												<reference key="NSNextKeyView" ref="260036480"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="929377763">
 													<int key="NSCellFlags">67239424</int>
@@ -2123,7 +2157,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<int key="NSvFlags">265</int>
 												<string key="NSFrame">{{1094, 134}, {39, 32}}</string>
 												<reference key="NSSuperview" ref="235729788"/>
-												<reference key="NSNextKeyView" ref="613092658"/>
+												<reference key="NSNextKeyView" ref="260036480"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="991543313">
 													<int key="NSCellFlags">-2080244224</int>
@@ -2377,7 +2411,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<string key="NSFrame">{{17, 17}, {1110, 310}}</string>
 												<reference key="NSSuperview" ref="300630538"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="260036480"/>
+												<reference key="NSNextKeyView" ref="359162765"/>
 												<string key="NSReuseIdentifierKey">_NS:1192</string>
 												<string key="NSClassName">HighlightedTextView</string>
 											</object>
@@ -2512,7 +2546,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 														<int key="NSvFlags">256</int>
 														<string key="NSFrame">{{1094, 1}, {15, 308}}</string>
 														<reference key="NSSuperview" ref="184985393"/>
-														<reference key="NSNextKeyView" ref="260036480"/>
+														<reference key="NSNextKeyView" ref="359162765"/>
 														<reference key="NSTarget" ref="184985393"/>
 														<string key="NSAction">_doScroller:</string>
 														<double key="NSCurValue">1</double>
@@ -2669,7 +2703,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 														<int key="NSvFlags">256</int>
 														<string key="NSFrame">{{1094, 1}, {15, 308}}</string>
 														<reference key="NSSuperview" ref="1011641133"/>
-														<reference key="NSNextKeyView" ref="260036480"/>
+														<reference key="NSNextKeyView" ref="359162765"/>
 														<string key="NSReuseIdentifierKey">_NS:1494</string>
 														<reference key="NSTarget" ref="1011641133"/>
 														<string key="NSAction">_doScroller:</string>
@@ -2743,6 +2777,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="NSFrame">{{1076, 16}, {96, 20}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:2352</string>
 							<int key="NSpiFlags">16394</int>
 							<double key="NSMaxValue">100</double>
@@ -3822,6 +3857,38 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<int key="connectionID">1009</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">exportResponse:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="981687038"/>
+					</object>
+					<int key="connectionID">1014</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">viewResponseInBrowser:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="851889150"/>
+					</object>
+					<int key="connectionID">1015</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">reGetResponseInBrowser:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="856384542"/>
+					</object>
+					<int key="connectionID">1016</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">reGetResponseMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="981687038"/>
+					</object>
+					<int key="connectionID">1017</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="887227541"/>
@@ -4552,6 +4619,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<reference ref="323964656"/>
 							<reference ref="861240038"/>
 							<reference ref="427340056"/>
+							<reference ref="628389386"/>
+							<reference ref="981687038"/>
+							<reference ref="851889150"/>
+							<reference ref="856384542"/>
 						</object>
 						<reference key="parent" ref="699702702"/>
 					</object>
@@ -5634,6 +5705,26 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="object" ref="181058152"/>
 						<reference key="parent" ref="236010157"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1010</int>
+						<reference key="object" ref="628389386"/>
+						<reference key="parent" ref="365660756"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1011</int>
+						<reference key="object" ref="981687038"/>
+						<reference key="parent" ref="365660756"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1012</int>
+						<reference key="object" ref="851889150"/>
+						<reference key="parent" ref="365660756"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1013</int>
+						<reference key="object" ref="856384542"/>
+						<reference key="parent" ref="365660756"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -5647,6 +5738,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string>1004.IBPluginDependency</string>
 					<string>1005.IBPluginDependency</string>
 					<string>1006.IBPluginDependency</string>
+					<string>1010.IBPluginDependency</string>
+					<string>1011.IBPluginDependency</string>
+					<string>1012.IBPluginDependency</string>
+					<string>1013.IBPluginDependency</string>
 					<string>129.IBPluginDependency</string>
 					<string>130.IBPluginDependency</string>
 					<string>131.IBPluginDependency</string>
@@ -5902,6 +5997,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{253, 261}, {1004, 650}}</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -6135,7 +6234,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1009</int>
+			<int key="maxID">1017</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6174,6 +6273,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>doubleClickedHeaderRow:</string>
 							<string>doubleClickedParamsRow:</string>
 							<string>exportRequests:</string>
+							<string>exportResponse:</string>
 							<string>handleOpenWindow:</string>
 							<string>helpInfo:</string>
 							<string>importRequests:</string>
@@ -6187,17 +6287,22 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>plusFileRow:</string>
 							<string>plusHeaderRow:</string>
 							<string>plusParamsRow:</string>
+							<string>reGetResponseInBrowser:</string>
 							<string>reloadLastRequest:</string>
 							<string>runSubmit:</string>
 							<string>saveRequest:</string>
 							<string>showPreferences:</string>
 							<string>toggleSyntaxHighlighting:</string>
+							<string>viewResponseInBrowser:</string>
 							<string>zoomDefault:</string>
 							<string>zoomIn:</string>
 							<string>zoomOut:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -6247,6 +6352,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>doubleClickedHeaderRow:</string>
 							<string>doubleClickedParamsRow:</string>
 							<string>exportRequests:</string>
+							<string>exportResponse:</string>
 							<string>handleOpenWindow:</string>
 							<string>helpInfo:</string>
 							<string>importRequests:</string>
@@ -6260,11 +6366,13 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>plusFileRow:</string>
 							<string>plusHeaderRow:</string>
 							<string>plusParamsRow:</string>
+							<string>reGetResponseInBrowser:</string>
 							<string>reloadLastRequest:</string>
 							<string>runSubmit:</string>
 							<string>saveRequest:</string>
 							<string>showPreferences:</string>
 							<string>toggleSyntaxHighlighting:</string>
+							<string>viewResponseInBrowser:</string>
 							<string>zoomDefault:</string>
 							<string>zoomIn:</string>
 							<string>zoomOut:</string>
@@ -6313,6 +6421,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">exportRequests:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">exportResponse:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -6368,6 +6480,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">reGetResponseInBrowser:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">reloadLastRequest:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -6385,6 +6501,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">toggleSyntaxHighlighting:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">viewResponseInBrowser:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -6415,6 +6535,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>password</string>
 							<string>plusParam</string>
 							<string>progressIndicator</string>
+							<string>reGetResponseMenuItem</string>
 							<string>reqHeadersTab</string>
 							<string>requestHeadersSentText</string>
 							<string>requestText</string>
@@ -6453,6 +6574,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>NSTextField</string>
 							<string>NSButton</string>
 							<string>NSProgressIndicator</string>
+							<string>NSMenuItem</string>
 							<string>NSTabViewItem</string>
 							<string>NSTextView</string>
 							<string>NSTextView</string>
@@ -6494,6 +6616,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string>password</string>
 							<string>plusParam</string>
 							<string>progressIndicator</string>
+							<string>reGetResponseMenuItem</string>
 							<string>reqHeadersTab</string>
 							<string>requestHeadersSentText</string>
 							<string>requestText</string>
@@ -6561,6 +6684,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">progressIndicator</string>
 								<string key="candidateClassName">NSProgressIndicator</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">reGetResponseMenuItem</string>
+								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">reqHeadersTab</string>
