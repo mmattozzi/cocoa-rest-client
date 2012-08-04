@@ -195,7 +195,6 @@ static CRCContentType requestContentType;
 - (void) syntaxHighlightingPreferenceChanged {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    NSLog(@"Syntax Highlighting = %i", syntaxHighlighting);
     if (! syntaxHighlighting) {
         self.responseView.hidden = true;
         self.responseTextPlainView.hidden = false;
