@@ -25,6 +25,9 @@
 		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
+		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
+		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
+		AFA11ACD15CF036300831738 /* motd.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFA11ACC15CF036300831738 /* motd.txt */; };
 		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
 		AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBB7D4914F98B4000424C12 /* Preferences.xib */; };
 		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
@@ -93,6 +96,10 @@
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
+		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
+		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
+		AFA11ACC15CF036300831738 /* motd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = motd.txt; sourceTree = "<group>"; };
 		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
 		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
 		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
@@ -156,6 +163,8 @@
 				AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */,
 				5704EE83155B9C4200C55656 /* HighlightedTextView.h */,
 				5704EE84155B9C4200C55656 /* HighlightedTextView.m */,
+				AFA11AB615CEDAE300831738 /* WelcomeController.h */,
+				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -223,6 +232,8 @@
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */,
 				AFBB7D4914F98B4000424C12 /* Preferences.xib */,
+				AFA11AB315CEDA3600831738 /* Welcome.xib */,
+				AFA11ACC15CF036300831738 /* motd.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -345,6 +356,8 @@
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
 				AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */,
+				AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */,
+				AFA11ACD15CF036300831738 /* motd.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +388,7 @@
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 				5704EE85155B9C4200C55656 /* HighlightedTextView.m in Sources */,
+				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +409,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AFA11AB315CEDA3600831738 /* Welcome.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFA11AB415CEDA3600831738 /* English */,
+			);
+			name = Welcome.xib;
 			sourceTree = "<group>";
 		};
 		AFBB7D4914F98B4000424C12 /* Preferences.xib */ = {

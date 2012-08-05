@@ -21,6 +21,7 @@
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
+NSString* const WELCOME_MESSAGE = @"welcomeMessage-1.3.3";
 NSInteger const DEFAULT_FONT_SIZE = 12;
 
 enum {
@@ -80,6 +81,7 @@ static CRCContentType requestContentType;
 @synthesize requestTextPlainView;
 @synthesize syntaxHighlightingMenuItem;
 @synthesize reGetResponseMenuItem;
+@synthesize welcomeController;
 
 - (id) init {
 	self = [super init];
@@ -88,6 +90,7 @@ static CRCContentType requestContentType;
     [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:WELCOME_MESSAGE];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -107,6 +110,8 @@ static CRCContentType requestContentType;
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = savedRequestsArray;
+    
+    self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
      
 	return self;
 }
@@ -187,6 +192,10 @@ static CRCContentType requestContentType;
     [self initHighlightedViews];
     
     [self syntaxHighlightingPreferenceChanged];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_MESSAGE]) {
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showWelcome) userInfo:nil repeats:NO];        
+    }
 }
 
 - (IBAction)toggleSyntaxHighlighting:(id)sender {
@@ -265,7 +274,6 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) runSubmit:(id)sender {
-	
 	[self determineRequestContentType];
 	NSLog(@"Got submit press");
     [progressIndicator setHidden:NO];
@@ -1123,6 +1131,15 @@ static CRCContentType requestContentType;
         self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
     
     [self.preferencesController showWindow:self];
+}
+
+- (void) showWelcome {
+    [self.welcomeController showWindow:self];
+    [[self.welcomeController window] makeKeyAndOrderFront:self];
+    [[self.welcomeController window] setOrderedIndex:0];
+    [[self.welcomeController window] center];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:WELCOME_MESSAGE];
 }
 
 - (IBAction)zoomIn:(id)sender {

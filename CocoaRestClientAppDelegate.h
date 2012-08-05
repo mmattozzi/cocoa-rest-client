@@ -13,6 +13,8 @@
 #import "TabbingTableView.h"
 #import "PreferencesController.h"
 #import "HighlightedTextView.h"
+#import "WelcomeController.h"
+
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
 
@@ -79,6 +81,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     
     CRCDrawerView *drawerView;
     PreferencesController *preferencesController;
+    WelcomeController *welcomeController;
     
     NSMenuItem *syntaxHighlightingMenuItem;
     NSMenuItem *reGetResponseMenuItem;
@@ -136,6 +139,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSScrollView *requestTextPlainView;
 @property (assign) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (assign) IBOutlet NSMenuItem *reGetResponseMenuItem;
+@property (retain) WelcomeController *welcomeController;
 
 - (IBAction) runSubmit:(id)sender;
 - (IBAction) doubleClickedHeaderRow:(id)sender;
@@ -183,6 +187,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
+- (void) showWelcome;
 
 - (void)setRawRequestInput:(BOOL)value;
 

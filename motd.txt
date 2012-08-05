@@ -1,0 +1,3 @@
+Syntax highlighting is new in CocoaRestClient! However, it can cause slowness or beachballing when loading very large or complex files; for example, the minified jquery source. If you experience problems, it can be disabled via the menu at View | Syntax Highlighting.
+
+You won't see this message again. Thanks!
