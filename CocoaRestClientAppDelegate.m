@@ -163,9 +163,10 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithTitle:@"HEAD"];
 	[methodButton addItemWithTitle:@"OPTIONS"];
 	[methodButton addItemWithTitle:@"PATCH"];
+	[methodButton addItemWithTitle:@"COPY"];
 	[methodButton addItemWithTitle:@"SEARCH"];
     
-	requestMethodsWithBody = [NSSet setWithObjects:@"POST", @"PUT", @"PATCH", @"SEARCH", nil];
+	requestMethodsWithBody = [NSSet setWithObjects:@"POST", @"PUT", @"PATCH", @"COPY", @"SEARCH", nil];
 	
 	[responseText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
