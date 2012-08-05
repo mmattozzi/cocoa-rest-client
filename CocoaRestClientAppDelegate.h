@@ -178,9 +178,11 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) zoomIn:(id)sender;
 - (IBAction) zoomOut:(id)sender;
 - (IBAction) zoomDefault:(id)sender;
+- (NSString *) saveResponseToTempFile;
 - (IBAction) exportResponse:(id)sender;
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
+- (IBAction) viewResponseInDefaultApplication:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

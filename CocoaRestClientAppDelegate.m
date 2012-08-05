@@ -16,6 +16,7 @@
 #import <Sparkle/SUUpdater.h>
 
 #define MAIN_WINDOW_MENU_TAG 150
+#define REGET_MENU_TAG 151
 
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
@@ -179,6 +180,7 @@ static CRCContentType requestContentType;
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
     [responseTextPlain setEditable:NO];
+    [reGetResponseMenuItem setEnabled:NO];
     
     [CocoaRestClientAppDelegate addBorderToView:self.responseView];
     [CocoaRestClientAppDelegate addBorderToView:self.requestView];
@@ -343,7 +345,12 @@ static CRCContentType requestContentType;
 		[lastRequest release];
 	}
 	lastRequest = [CRCRequest requestWithApplication:self];
-	
+	if ([method isEqualToString:@"GET"]) {
+        reGetResponseMenuItem.enabled = YES; 
+    } else {
+        reGetResponseMenuItem.enabled = NO;
+    }
+    
 	if (startDate != nil) {
 		[startDate release];
 	}
@@ -1069,7 +1076,9 @@ static CRCContentType requestContentType;
 	//being validcated
 	if([item tag] == MAIN_WINDOW_MENU_TAG) {
 		return ![window isVisible];
-	}
+	} else if ([item tag] == REGET_MENU_TAG) {
+        return (lastRequest != nil && [lastRequest.method isEqualToString:@"GET"]);
+    }
 	
 	return TRUE;
 }
@@ -1138,15 +1147,87 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) exportResponse:(id)sender {
+    NSSavePanel* picker = [NSSavePanel savePanel];
+	
+    if ( [picker runModal] == NSOKButton ) {
+		NSString* path = [picker filename];
+        NSLog(@"Saving requests to %@", path);
+        
+        NSError *error;
+        BOOL savedOK = [[responseText string] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        if (! savedOK) {
+            NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Unable to save response"];
+            [alert setInformativeText:[error localizedFailureReason]];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert runModal];
+        }
+    }
+}
+
+- (NSString *) saveResponseToTempFile {
+    NSString *tempDir = NSTemporaryDirectory();
     
+    static int sequenceNumber = 0;
+    NSString *path;
+    do {
+        sequenceNumber++;
+        path = [NSString stringWithFormat:@"%d-%d-%d", [[NSProcessInfo processInfo] processIdentifier], 
+                (int)[NSDate timeIntervalSinceReferenceDate], sequenceNumber];
+        path = [tempDir stringByAppendingPathComponent:path];
+    } while ([[NSFileManager defaultManager] fileExistsAtPath:path]);
+    
+    NSLog(@"Saving to %@", path);
+    NSError *error;
+    BOOL savedOK = [[responseText string] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    if (! savedOK) {
+        NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"Unable to save response as temp file"];
+        [alert setInformativeText:[error localizedFailureReason]];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert runModal];
+        return nil;
+    } else {
+        return path;
+    }
 }
 
 - (IBAction) viewResponseInBrowser:(id)sender {
-    
+    NSString *path = [self saveResponseToTempFile];
+    if (path) {
+        NSURL *outAppURL;
+        OSStatus osStatus = LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator, CFSTR("html"), kLSRolesViewer, (FSRef *) nil, (CFURLRef *) &outAppURL);
+        NSLog(@"Browser app = %@", outAppURL);
+        
+        if (outAppURL != nil) {
+            [[NSWorkspace sharedWorkspace] openFile:path withApplication:[outAppURL relativePath]];
+        } else {
+            NSLog(@"Error discovering default web browser");
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Unable to discover default web browser"];
+            [alert setInformativeText:[NSString stringWithFormat:@"Status code = %d", osStatus]];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert runModal];
+        }
+    }
 }
 
 - (IBAction) reGetResponseInBrowser:(id)sender {
-    
+    if (lastRequest != nil && [lastRequest.method isEqualToString:@"GET"]) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:lastRequest.url]];
+    }
+}
+
+- (IBAction) viewResponseInDefaultApplication:(id)sender {
+    NSString *path = [self saveResponseToTempFile];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", path]]];
 }
 
 @end
