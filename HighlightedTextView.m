@@ -17,6 +17,9 @@
     syntaxForMIME = [NSDictionary dictionaryWithObjectsAndKeys:
                      @"JavaScript", @"application/json", 
                      @"XML", @"application/xml", 
+                     @"HTML", @"text/html",
+                     @"XML", @"application/atom+xml",
+                     @"Javascript", @"application/x-javascript",
                      nil];
     
     //
@@ -67,11 +70,12 @@
 }
 
 -(void) setSyntaxMIME:(NSString *)syntaxMIME {
-    NSString* newSyntaxName =[syntaxForMIME objectForKey:syntaxMIME];
-    NSLog(@"%@", newSyntaxName);
-
+    NSString* newSyntaxName = nil;
+    if (syntaxMIME) {
+        newSyntaxName =[syntaxForMIME objectForKey:syntaxMIME];
+    }
+    NSLog(@"Setting syntax to %@", newSyntaxName);
     [fragaria setObject:newSyntaxName forKey:MGSFOSyntaxDefinitionName];
-
 }
 
 @end

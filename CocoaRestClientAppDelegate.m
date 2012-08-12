@@ -384,11 +384,6 @@ static CRCContentType requestContentType;
     [self.responseText setEditable:NO];
     self.requestText = self.requestView.textView;
 }
-- (void) setHighlightSyntaxForMIME:(NSString*) mimeType {
-    self.responseView.syntaxMIME = mimeType;
-    self.requestView.syntaxMIME = mimeType;
-}
-
 
 #pragma mark -
 #pragma mark Url Connection Delegate methods
@@ -412,6 +407,7 @@ static CRCContentType requestContentType;
 	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%d)", [httpResponse statusCode]]];
 	
 	NSDictionary *headerDict = [httpResponse allHeaderFields];
+    contentType = nil;
 	for (NSString *key in headerDict) {
 		[headers appendFormat:@"%@: %@\n", key, [headerDict objectForKey:key]];
 		if ([key isEqualToString:@"Content-Type"]) {
@@ -421,11 +417,12 @@ static CRCContentType requestContentType;
             if ([parts count] > 1) {
                 charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
             }
-			NSLog(@"Got content type = %@", contentType);
+			NSLog(@"Got content type = %@", contentType);            
 		}
 	}
 	
-	[responseTextHeaders setString:headers];
+    self.responseView.syntaxMIME = contentType;
+    [responseTextHeaders setString:headers];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -624,7 +621,7 @@ static CRCContentType requestContentType;
 #pragma mark Menu methods
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
-    [self setHighlightSyntaxForMIME:[sender title]];
+    self.requestView.syntaxMIME = [sender title];
 	BOOL inserted = FALSE;
 	if([headersTable count] > 0) {
 		for(NSMutableDictionary * row in headersTable) {
