@@ -454,6 +454,7 @@ static CRCContentType requestContentType;
         } else {
             NSMutableURLRequest *r = [[inRequest mutableCopy] autorelease]; // original request
             [r setURL: [inRequest URL]];
+            [r setHTTPMethod:[currentRequest HTTPMethod]]; // Method isn't copied to inRequest automatically
             return r;
         }
     } else {
