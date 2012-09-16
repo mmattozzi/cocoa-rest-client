@@ -1076,6 +1076,10 @@ static CRCContentType requestContentType;
 	[window makeKeyAndOrderFront:self];
 }
 
+- (IBAction) handleCloseWindow:(id)sender {
+    [window close];
+}
+
 // Including this to disable Open Window menu item when window is already open
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {

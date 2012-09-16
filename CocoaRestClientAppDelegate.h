@@ -166,6 +166,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) minusParamsRow:(id)sender;
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
 - (IBAction) handleOpenWindow:(id)sender;
+- (IBAction) handleCloseWindow:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 - (IBAction) helpInfo:(id)sender;
 - (IBAction) licenseInfo:(id)sender;
