@@ -19,7 +19,16 @@
                      @"XML", @"application/xml", 
                      @"HTML", @"text/html",
                      @"XML", @"application/atom+xml",
-                     @"Javascript", @"application/x-javascript",
+                     @"JavaScript", @"application/x-javascript",
+                     @"CSS", @"text/css",
+                     @"JavaScript", @"text/javascript",
+                     @"PDF", @"application/pdf",
+                     @"XML", @"application/rss+xml",
+                     @"XML", @"text/xml",
+                     @"PostScript", @"application/postscript",
+                     @"XML", @"application/soap+xml",
+                     @"HTML", @"application/xhtml+xml",
+                     @"XML", @"application/xml-dtd",
                      nil];
     
     //

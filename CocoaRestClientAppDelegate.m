@@ -106,6 +106,11 @@ static CRCContentType requestContentType;
 	[headersTable addObject:row];
 	[row release];
 	
+    xmlContentTypes = [NSArray arrayWithObjects:@"application/xml", @"application/atom+xml", @"application/rss+xml",
+                       @"text/xml", @"application/soap+xml", @"application/xml-dtd", nil];
+    
+    jsonContentTypes = [NSArray arrayWithObjects:@"application/json", nil];
+    
     [self loadDataFromDisk];
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
@@ -497,9 +502,7 @@ static CRCContentType requestContentType;
 	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
-        if ([contentType isEqualToString:@"application/atom+xml"] || 
-			[contentType isEqualToString:@"application/rss+xml"] || 
-			[contentType isEqualToString:@"application/xml"]) {
+        if ([xmlContentTypes containsObject:contentType]) {
 			NSLog(@"Formatting XML");
 			NSError *error;
 			NSXMLDocument *responseXML = [[NSXMLDocument alloc] initWithData:receivedData options:NSXMLDocumentTidyXML error:&error];
@@ -508,7 +511,7 @@ static CRCContentType requestContentType;
 			}
 			[responseText setString:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
 			needToPrintPlain = NO;
-		} else if ([contentType isEqualToString:@"application/json"]) {
+		} else if ([jsonContentTypes containsObject:contentType]) {
 			NSLog(@"Formatting JSON");
 			SBJSON *parser = [[SBJSON alloc] init];
 			[parser setHumanReadable:YES];

@@ -86,11 +86,12 @@ extern NSString* const RESPONSE_TIMEOUT;
     NSMenuItem *syntaxHighlightingMenuItem;
     NSMenuItem *reGetResponseMenuItem;
     
-    @private 
-    CRCRequest *lastRequest;
+    @private CRCRequest *lastRequest;
     
-    @private
-    NSSet *requestMethodsWithBody;
+    @private NSSet *requestMethodsWithBody;
+    
+    @private NSArray *xmlContentTypes;    
+    @private NSArray *jsonContentTypes;
 	
 }
 
