@@ -517,10 +517,12 @@ static CRCContentType requestContentType;
 			[parser setHumanReadable:YES];
             NSString *jsonStringFromData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 			id jsonObj = [parser objectWithString:jsonStringFromData];
-			NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]; 
-			[responseText setString:jsonFormattedString];
-			needToPrintPlain = NO;
-			[parser release];
+            if (jsonObj) {
+                NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]; 
+                [responseText setString:jsonFormattedString];
+                needToPrintPlain = NO;
+            }
+            [parser release];
             [jsonStringFromData release];
             [jsonObj release];
 		}
