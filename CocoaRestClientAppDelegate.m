@@ -109,7 +109,7 @@ static CRCContentType requestContentType;
     xmlContentTypes = [NSArray arrayWithObjects:@"application/xml", @"application/atom+xml", @"application/rss+xml",
                        @"text/xml", @"application/soap+xml", @"application/xml-dtd", nil];
     
-    jsonContentTypes = [NSArray arrayWithObjects:@"application/json", nil];
+    jsonContentTypes = [NSArray arrayWithObjects:@"application/json", @"text/json", nil];
     
     [self loadDataFromDisk];
     
