@@ -19,6 +19,7 @@
 #define REGET_MENU_TAG 151
 
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
+NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 NSString* const WELCOME_MESSAGE = @"welcomeMessage-1.3.3";
@@ -459,7 +460,16 @@ static CRCContentType requestContentType;
         } else {
             NSMutableURLRequest *r = [[inRequest mutableCopy] autorelease]; // original request
             [r setURL: [inRequest URL]];
-            [r setHTTPMethod:[currentRequest HTTPMethod]]; // Method isn't copied to inRequest automatically
+            
+            // For HTTP 301, 302, & 303s, there is w3c guidance about when the POST should be 
+            // propogated rather than converted into a GET on the target of the redirect. See:
+            // http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+            // Some users were not expecting this and (for better or worse) will be able to override
+            // the built-in rules and propogate the HTTP method to the target of the redirect no
+            // matter what the guidelines are.
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:APPLY_HTTP_METHOD_ON_REDIRECT]) {
+                [r setHTTPMethod:[currentRequest HTTPMethod]];
+            }
             return r;
         }
     } else {
