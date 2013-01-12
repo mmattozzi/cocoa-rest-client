@@ -1,3 +1,5 @@
 New in 1.3.5:
+* Add text/json to list of known JSON content types
+* For JSON content types that fail to parse, output plaintext instead of hanging
 * Apply Same Method on HTTP Redirects menu option. For HTTP 301, 302, & 303s, there is w3c guidance about when the POST should be propogated rather than converted into a GET on the target of the redirect. Some users were not expecting this and (for better or worse) will be able to override the built-in rules and propogate the HTTP method to the target of the redirect no matter what the guidelines are. In the previous version, this erroneously was made the default behavior -- but it is now configurable. (ISSUE-26)
 
