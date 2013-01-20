@@ -22,9 +22,10 @@
 		AF074F5B10F595AF00EE44D8 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5310F595AF00EE44D8 /* SBJsonBase.m */; };
 		AF074F5C10F595AF00EE44D8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5510F595AF00EE44D8 /* SBJsonParser.m */; };
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
-		AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */; };
+		AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
+		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
 		AFA11ACD15CF036300831738 /* motd.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFA11ACC15CF036300831738 /* motd.txt */; };
@@ -33,7 +34,6 @@
 		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
 		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
 		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
-		AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */; };
 		AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */; };
 		AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
 		AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
@@ -67,16 +67,16 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaRestClient_Prefix.pch; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckableRequestWrapper.h; path = core/CheckableRequestWrapper.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckableRequestWrapper.m; path = core/CheckableRequestWrapper.m; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClient_Prefix.pch; path = core/CocoaRestClient_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = core/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		5704EE69155B533200C55656 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5704EE6B155B540900C55656 /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MGSFragaria.framework; sourceTree = "<group>"; };
-		5704EE83155B9C4200C55656 /* HighlightedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightedTextView.h; sourceTree = "<group>"; };
-		5704EE84155B9C4200C55656 /* HighlightedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightedTextView.m; sourceTree = "<group>"; };
+		5704EE83155B9C4200C55656 /* HighlightedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightedTextView.h; path = view/HighlightedTextView.h; sourceTree = "<group>"; };
+		5704EE84155B9C4200C55656 /* HighlightedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightedTextView.m; path = view/HighlightedTextView.m; sourceTree = "<group>"; };
 		5704EECF155C7BF400C55656 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,26 +94,26 @@
 		AF074F5610F595AF00EE44D8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = JSON/SBJsonWriter.h; sourceTree = "<group>"; };
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF2D9EFF145F908100B8220F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cocoaRestClient.icns; sourceTree = "<group>"; };
+		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClientAppDelegate.h; path = core/CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
+		AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaRestClientAppDelegate.m; path = core/CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
-		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
-		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
-		AFA11ACC15CF036300831738 /* motd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = motd.txt; sourceTree = "<group>"; };
+		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
+		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeController.m; path = core/WelcomeController.m; sourceTree = "<group>"; };
+		AFA11ACC15CF036300831738 /* motd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = motd.txt; path = English.lproj/motd.txt; sourceTree = "<group>"; };
 		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
 		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
 		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
-		AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
-		AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = core/PreferencesController.h; sourceTree = "<group>"; };
+		AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = core/PreferencesController.m; sourceTree = "<group>"; };
 		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
-		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportRequestsController.h; sourceTree = "<group>"; };
-		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportRequestsController.m; sourceTree = "<group>"; };
-		AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckableRequestWrapper.h; sourceTree = "<group>"; };
-		AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckableRequestWrapper.m; sourceTree = "<group>"; };
+		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportRequestsController.h; path = core/ExportRequestsController.h; sourceTree = "<group>"; };
+		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportRequestsController.m; path = core/ExportRequestsController.m; sourceTree = "<group>"; };
 		AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCDrawerView.h; path = view/CRCDrawerView.h; sourceTree = "<group>"; };
 		AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCDrawerView.m; path = view/CRCDrawerView.m; sourceTree = "<group>"; };
 		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = English.lproj/dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCFormEncodedRequest.h; path = request/CRCFormEncodedRequest.h; sourceTree = "<group>"; };
 		D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCFormEncodedRequest.m; path = request/CRCFormEncodedRequest.m; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCMultipartRequest.m; path = request/CRCMultipartRequest.m; sourceTree = "<group>"; };
 		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCTopView.h; path = view/CRCTopView.h; sourceTree = "<group>"; };
 		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCTopView.m; path = view/CRCTopView.m; sourceTree = "<group>"; };
-		D7D998B511EAA2B2005B8811 /* background-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-header.png"; sourceTree = "<group>"; };
+		D7D998B511EAA2B2005B8811 /* background-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-header.png"; path = "English.lproj/background-header.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,21 +150,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
-				AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */,
+				AF1A1B9816A1DF1E00915644 /* core */,
 				AFBB7D4814F985AB00424C12 /* view */,
 				AFBB7D4314F939D300424C12 /* JSON */,
-				256AC3D80F4B6AC300CF3369 /* CocoaRestClientAppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* CocoaRestClientAppDelegate.m */,
 				AFBB7D4414F93DE400424C12 /* request */,
-				AFBF08C314C32D30000E7411 /* ExportRequestsController.h */,
-				AFBF08C414C32D30000E7411 /* ExportRequestsController.m */,
-				AFBF08CB14C37D3E000E7411 /* CheckableRequestWrapper.h */,
-				AFBF08CC14C37D3E000E7411 /* CheckableRequestWrapper.m */,
-				5704EE83155B9C4200C55656 /* HighlightedTextView.h */,
-				5704EE84155B9C4200C55656 /* HighlightedTextView.m */,
-				AFA11AB615CEDAE300831738 /* WelcomeController.h */,
-				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -249,6 +238,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AF1A1B9816A1DF1E00915644 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */,
+				AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */,
+				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
+				AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */,
+				256AC3D80F4B6AC300CF3369 /* CheckableRequestWrapper.h */,
+				256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */,
+				AFBF08C314C32D30000E7411 /* ExportRequestsController.h */,
+				AFBF08C414C32D30000E7411 /* ExportRequestsController.m */,
+				AFA11AB615CEDAE300831738 /* WelcomeController.h */,
+				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
 		AFBB7D4314F939D300424C12 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +295,8 @@
 		AFBB7D4814F985AB00424C12 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5704EE83155B9C4200C55656 /* HighlightedTextView.h */,
+				5704EE84155B9C4200C55656 /* HighlightedTextView.m */,
 				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
 				AFBB7D4614F9587A00424C12 /* TabbingTableView.m */,
 				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
@@ -369,7 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				AF1FC48410F435BD00ED5A57 /* CocoaRestClientAppDelegate.m in Sources */,
+				AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */,
 				AF074F5810F595AF00EE44D8 /* NSObject+SBJSON.m in Sources */,
 				AF074F5910F595AF00EE44D8 /* NSString+SBJSON.m in Sources */,
 				AF074F5A10F595AF00EE44D8 /* SBJSON.m in Sources */,
@@ -383,12 +391,12 @@
 				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
 				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
 				AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */,
-				AFBF08CD14C37D3E000E7411 /* CheckableRequestWrapper.m in Sources */,
 				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 				5704EE85155B9C4200C55656 /* HighlightedTextView.m in Sources */,
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
+				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,8 +453,9 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CocoaRestClient_Prefix.pch;
+				GCC_PREFIX_HEADER = core/CocoaRestClient_Prefix.pch;
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = core;
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
@@ -466,8 +475,9 @@
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CocoaRestClient_Prefix.pch;
+				GCC_PREFIX_HEADER = core/CocoaRestClient_Prefix.pch;
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = core;
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
