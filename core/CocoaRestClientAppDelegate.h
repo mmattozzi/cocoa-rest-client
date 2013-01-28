@@ -21,7 +21,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @class CRCRequest;
 @class CRCDrawerView;
 
-@interface CocoaRestClientAppDelegate : NSObject {
+@interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
 	
 	NSComboBox *urlBox;
