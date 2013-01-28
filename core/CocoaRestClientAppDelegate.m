@@ -208,6 +208,10 @@ static CRCContentType requestContentType;
     }
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
+    return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
+}
+
 - (IBAction)toggleSyntaxHighlighting:(id)sender {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     [[NSUserDefaults standardUserDefaults] setBool:(!syntaxHighlighting) forKey:SYNTAX_HIGHLIGHT];
