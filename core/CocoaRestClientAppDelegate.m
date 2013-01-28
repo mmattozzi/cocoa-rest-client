@@ -18,6 +18,9 @@
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
 
+#define APPLICATION_NAME @"CocoaRestClient"
+#define DATAFILE_NAME @"CocoaRestClient.savedRequests"
+
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
@@ -1009,17 +1012,24 @@ static CRCContentType requestContentType;
 }
 
 - (NSString *) pathForDataFile {
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-	NSString *folder = @"~/Library/Application Support/CocoaRestClient/";
-	folder = [folder stringByExpandingTildeInPath];
-	
-	if ([fileManager fileExistsAtPath: folder] == NO) {
-		[fileManager createDirectoryAtPath:folder attributes:nil];
-	}
-    
-	NSString *fileName = @"CocoaRestClient.savedRequests";
-	return [folder stringByAppendingPathComponent:fileName];    
+    if (!appDataFilePath) {
+        NSArray *allPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+        NSString *dir = [[allPaths objectAtIndex: 0] stringByAppendingPathComponent: APPLICATION_NAME];
+        if (!dir) {
+            NSLog(@"Can not locate the Application Support directory. Weird.");
+            return nil;
+        }
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error = nil;
+        BOOL success = [fileManager createDirectoryAtPath: dir withIntermediateDirectories: YES
+                                               attributes: nil error: &error];
+        if (!success) {
+            NSLog(@"Can not create a support directory.\n%@", [error localizedDescription]);
+            return nil;
+        }
+        appDataFilePath = [[dir stringByAppendingPathComponent: DATAFILE_NAME] retain];
+    }
+    return appDataFilePath;  
 }
 
 - (void) saveDataToDisk {
