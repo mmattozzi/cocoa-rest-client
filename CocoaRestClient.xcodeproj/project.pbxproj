@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C954AF916B9799D00C8D54B /* NSData+gzip.m */; };
+		2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C954AFC16B97A3200C8D54B /* libz.dylib */; };
 		5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE69155B533200C55656 /* libicucore.dylib */; };
 		5704EE6C155B540900C55656 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE6B155B540900C55656 /* MGSFragaria.framework */; };
 		5704EE6D155B563E00C55656 /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5704EE6B155B540900C55656 /* MGSFragaria.framework */; };
@@ -73,6 +75,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = core/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C954AF816B9799D00C8D54B /* NSData+gzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+gzip.h"; path = "request/NSData+gzip.h"; sourceTree = "<group>"; };
+		2C954AF916B9799D00C8D54B /* NSData+gzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+gzip.m"; path = "request/NSData+gzip.m"; sourceTree = "<group>"; };
+		2C954AFC16B97A3200C8D54B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		5704EE69155B533200C55656 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5704EE6B155B540900C55656 /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MGSFragaria.framework; sourceTree = "<group>"; };
 		5704EE83155B9C4200C55656 /* HighlightedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightedTextView.h; path = view/HighlightedTextView.h; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */,
 				AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */,
 				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
 				5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */,
@@ -230,6 +236,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C954AFC16B97A3200C8D54B /* libz.dylib */,
 				5704EE6B155B540900C55656 /* MGSFragaria.framework */,
 				AFCE79521419B47900E22468 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
@@ -288,6 +295,8 @@
 				D714A03011E8F61D00F5A80B /* CRCFileRequest.m */,
 				D714A0A011E901FB00F5A80B /* CRCRequest.h */,
 				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
+				2C954AF816B9799D00C8D54B /* NSData+gzip.h */,
+				2C954AF916B9799D00C8D54B /* NSData+gzip.m */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -397,6 +406,7 @@
 				5704EE85155B9C4200C55656 /* HighlightedTextView.m in Sources */,
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
 				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
+				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

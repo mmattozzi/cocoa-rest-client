@@ -8,6 +8,7 @@
 
 #import "CRCMultipartRequest.h"
 #import "CocoaRestClientAppDelegate.h"
+#import "NSData+gzip.h"
 
 @implementation CRCMultipartRequest
 +(void)createRequest:(NSMutableURLRequest *)request
@@ -47,26 +48,27 @@
 				{
 					mimeType = @"application/octet-stream";
 				}
-				else 
-				{
-					if ((mimeType = (NSString *)UTTypeCopyPreferredTagWithClass((CFStringRef)uti, kUTTagClassMIMEType)))
-						mimeType = NSMakeCollectable(mimeType);
-				}
-							
+				else if ((mimeType = (NSString *)UTTypeCopyPreferredTagWithClass((CFStringRef)uti, kUTTagClassMIMEType)))
+                {
+                    mimeType = NSMakeCollectable(mimeType);
+                }
 			
 				[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", formBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
 				[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [row objectForKey:@"key"],[[path relativePath] lastPathComponent]]   dataUsingEncoding:NSUTF8StringEncoding]];
 				
-
-				// there is most certainly a smarter way to handle this
-				// for now, though, it's just a simple rule.
-				NSRange result = [mimeType rangeOfString:@"image"];
-				if(result.length > 0)
-					[body appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                if ([[row objectForKey: @"gzip"] boolValue])
+                {
+                    [body appendData: [@"Content-Type: application/x-gzip\r\n" dataUsingEncoding: NSUTF8StringEncoding]];
+                    [body appendData: [[NSData dataWithContentsOfFile: [path relativePath]] gzipped]];
+                }
+                /* A «smarter» way, perhaps */
+                else if ( ! [[NSWorkspace sharedWorkspace] type: uti conformsToType: (NSString *)kUTTypeText])
+                    {
+                        [body appendData: [@"Content-Transfer-Encoding: binary\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                        [body appendData: [[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
+                        [body appendData: [NSData dataWithContentsOfFile: [path relativePath]]];
+                    }		
 				
-				
-				[body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];	
-				[body appendData:[NSData dataWithContentsOfFile:[path relativePath]]];
 			}
 		}
 
