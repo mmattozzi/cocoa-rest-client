@@ -593,8 +593,10 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) minusParamsRow:(id)sender {
-	[paramsTable removeObjectAtIndex:[paramsTableView selectedRow]];
-	[paramsTableView reloadData];
+    if ([paramsTable count] > [paramsTableView selectedRow]) {
+        [paramsTable removeObjectAtIndex:[paramsTableView selectedRow]];
+        [paramsTableView reloadData];
+    }
 }
 
 
@@ -637,8 +639,10 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) minusFileRow:(id)sender {
-	[filesTable removeObjectAtIndex:[filesTableView selectedRow]];
-	[filesTableView reloadData];
+    if ([filesTable count] > [filesTableView selectedRow]) {
+        [filesTable removeObjectAtIndex:[filesTableView selectedRow]];
+        [filesTableView reloadData];
+    }
 }
 
 #pragma mark Menu methods
@@ -777,8 +781,10 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) minusHeaderRow:(id)sender {
-	[headersTable removeObjectAtIndex:[headersTableView selectedRow]];
-	[headersTableView reloadData];
+    if ([headersTable count] > [headersTableView selectedRow]) {
+        [headersTable removeObjectAtIndex:[headersTableView selectedRow]];
+        [headersTableView reloadData];
+    }
 }
 
 - (IBAction) clearAuth:(id)sender {
