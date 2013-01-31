@@ -61,14 +61,16 @@
                     [body appendData: [@"Content-Type: application/x-gzip\r\n\r\n" dataUsingEncoding: NSUTF8StringEncoding]];
                     [body appendData: [[NSData dataWithContentsOfFile: [path relativePath]] gzipped]];
                 }
-                /* A «smarter» way, perhaps */
-                else if ( ! [[NSWorkspace sharedWorkspace] type: uti conformsToType: (NSString *)kUTTypeText])
+                else
+                {
+                    /* A «smarter» way, perhaps */
+                    if ( ! [[NSWorkspace sharedWorkspace] type: uti conformsToType: (NSString *)kUTTypeText])
                     {
-                        [body appendData: [@"Content-Transfer-Encoding: binary\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-                        [body appendData: [[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
-                        [body appendData: [NSData dataWithContentsOfFile: [path relativePath]]];
-                    }		
-				
+                        [body appendData: [@"Content-Transfer-Encoding: binary\r\n" dataUsingEncoding:NSUTF8StringEncoding]];                        
+                    }
+                    [body appendData: [[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
+                    [body appendData: [NSData dataWithContentsOfFile: [path relativePath]]];
+                }
 			}
 		}
 
