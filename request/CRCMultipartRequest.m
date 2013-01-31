@@ -58,7 +58,7 @@
 				
                 if ([[row objectForKey: @"gzip"] boolValue])
                 {
-                    [body appendData: [@"Content-Type: application/x-gzip\r\n" dataUsingEncoding: NSUTF8StringEncoding]];
+                    [body appendData: [@"Content-Type: application/x-gzip\r\n\r\n" dataUsingEncoding: NSUTF8StringEncoding]];
                     [body appendData: [[NSData dataWithContentsOfFile: [path relativePath]] gzipped]];
                 }
                 /* A «smarter» way, perhaps */
