@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
+#import <MGSFragaria/MGSSyntaxController.h>
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -58,6 +59,7 @@ static CRCContentType requestContentType;
 @synthesize requestText;
 @synthesize requestView;
 @synthesize responseView;
+@synthesize responseSyntaxBox;
 @synthesize methodButton;
 @synthesize headersTable, filesTable, paramsTable;
 @synthesize headersTableView, filesTableView, paramsTableView;
@@ -201,6 +203,10 @@ static CRCContentType requestContentType;
     [responseTextPlain setEditable:NO];
     [reGetResponseMenuItem setEnabled:NO];
     
+    MGSSyntaxController *syn = [[[MGSSyntaxController alloc] init] autorelease];
+    [responseSyntaxBox addItemsWithObjectValues: [syn syntaxDefinitionNames]];
+    [responseSyntaxBox selectItemWithObjectValue: @"JavaScript"];
+    
     [CocoaRestClientAppDelegate addBorderToView:self.responseView];
     [CocoaRestClientAppDelegate addBorderToView:self.requestView];
     [self initHighlightedViews];
@@ -214,6 +220,11 @@ static CRCContentType requestContentType;
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
     return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
+}
+
+- (IBAction) updateResponseSyntaxHighlight:(id)sender {
+    NSComboBox *box = sender;
+    [responseView setSyntaxMode: [box itemObjectValueAtIndex: [box indexOfSelectedItem]]];
 }
 
 - (IBAction)toggleSyntaxHighlighting:(id)sender {
