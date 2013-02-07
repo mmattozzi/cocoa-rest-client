@@ -46,5 +46,39 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>Default HTTP headers</key>
+	<array>
+		<string>Accept</string>
+		<string>Accept-Charset</string>
+		<string>Accept-Encoding</string>
+		<string>Accept-Language</string>
+		<string>Accept-Datetime</string>
+		<string>Authorization</string>
+		<string>Cache-Control</string>
+		<string>Connection</string>
+		<string>Cookie</string>
+		<string>Content-Length</string>
+		<string>Content-MD5</string>
+		<string>Content-Type</string>
+		<string>Date</string>
+		<string>Expect</string>
+		<string>From</string>
+		<string>Host</string>
+		<string>If-Match</string>
+		<string>If-Modified-Since</string>
+		<string>If-None-Match</string>
+		<string>If-Range</string>
+		<string>If-Unmodified-Since</string>
+		<string>Max-Forwards</string>
+		<string>Pragma</string>
+		<string>Proxy-Authorization</string>
+		<string>Range</string>
+		<string>Referer</string>
+		<string>TE</string>
+		<string>Upgrade</string>
+		<string>User-Agent</string>
+		<string>Via</string>
+		<string>Warning</string>
+	</array>
 </dict>
 </plist>

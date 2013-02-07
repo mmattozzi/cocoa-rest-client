@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		2C28E09A16BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C28E09916BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.m */; };
 		2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C954AF916B9799D00C8D54B /* NSData+gzip.m */; };
 		2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C954AFC16B97A3200C8D54B /* libz.dylib */; };
 		5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE69155B533200C55656 /* libicucore.dylib */; };
@@ -75,6 +76,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = core/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C28E09816BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCHTTPHeadersComboBoxCell.h; path = view/CRCHTTPHeadersComboBoxCell.h; sourceTree = "<group>"; };
+		2C28E09916BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCHTTPHeadersComboBoxCell.m; path = view/CRCHTTPHeadersComboBoxCell.m; sourceTree = "<group>"; };
 		2C954AF816B9799D00C8D54B /* NSData+gzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+gzip.h"; path = "request/NSData+gzip.h"; sourceTree = "<group>"; };
 		2C954AF916B9799D00C8D54B /* NSData+gzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+gzip.m"; path = "request/NSData+gzip.m"; sourceTree = "<group>"; };
 		2C954AFC16B97A3200C8D54B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
@@ -245,6 +248,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C28E09616BD07D2000C8E50 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2C28E09816BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.h */,
+				2C28E09916BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		AF1A1B9816A1DF1E00915644 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +316,7 @@
 		AFBB7D4814F985AB00424C12 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				2C28E09616BD07D2000C8E50 /* Custom Cells */,
 				5704EE83155B9C4200C55656 /* HighlightedTextView.h */,
 				5704EE84155B9C4200C55656 /* HighlightedTextView.m */,
 				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
@@ -407,6 +420,7 @@
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
 				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
 				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
+				2C28E09A16BD080D000C8E50 /* CRCHTTPHeadersComboBoxCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
