@@ -21,7 +21,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @class CRCRequest;
 @class CRCDrawerView;
 
-@interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate> {
+@interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
     NSWindow *window;
 	
 	NSComboBox *urlBox;
@@ -38,7 +38,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 	TabbingTableView *paramsTableView;
     HighlightedTextView *responseView;
     HighlightedTextView *requestView;
-	
+	NSComboBox *responseSyntaxBox;
+    
     NSTextView *requestTextPlain;
     NSTextView *responseTextPlain;
     NSScrollView *responseTextPlainView;
@@ -110,6 +111,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 
 @property (assign) IBOutlet WebView *responseWebView;
 @property (assign) IBOutlet HighlightedTextView *responseView;
+@property (assign) IBOutlet NSComboBox *responseSyntaxBox;
 @property (assign) IBOutlet HighlightedTextView *requestView;
 @property (assign) IBOutlet NSTextView *responseTextHeaders;
 @property (assign) IBOutlet NSPopUpButton *methodButton;
@@ -191,6 +193,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
+- (IBAction) updateResponseSyntaxHighlight:(id)sender;
 - (void) showWelcome;
 
 - (void)setRawRequestInput:(BOOL)value;

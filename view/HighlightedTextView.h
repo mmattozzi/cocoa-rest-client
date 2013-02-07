@@ -20,5 +20,6 @@
 @property (copy) NSString * syntaxMIME;
 
 - (void) initHighlightedFrame;
+- (void) setSyntaxMode: (NSString *)language;
 
 @end

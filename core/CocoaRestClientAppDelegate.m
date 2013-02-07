@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
+#import <MGSFragaria/MGSSyntaxController.h>
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -58,6 +59,7 @@ static CRCContentType requestContentType;
 @synthesize requestText;
 @synthesize requestView;
 @synthesize responseView;
+@synthesize responseSyntaxBox;
 @synthesize methodButton;
 @synthesize headersTable, filesTable, paramsTable;
 @synthesize headersTableView, filesTableView, paramsTableView;
@@ -194,8 +196,16 @@ static CRCContentType requestContentType;
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
+    [filesTableView registerForDraggedTypes: @[NSFilenamesPboardType]];
+    [filesTableView setDelegate: self];
+    [filesTableView setDataSource: self];
+    
     [responseTextPlain setEditable:NO];
     [reGetResponseMenuItem setEnabled:NO];
+    
+    MGSSyntaxController *syn = [[[MGSSyntaxController alloc] init] autorelease];
+    [responseSyntaxBox addItemsWithObjectValues: [syn syntaxDefinitionNames]];
+    [responseSyntaxBox selectItemWithObjectValue: @"JavaScript"];
     
     [CocoaRestClientAppDelegate addBorderToView:self.responseView];
     [CocoaRestClientAppDelegate addBorderToView:self.requestView];
@@ -210,6 +220,11 @@ static CRCContentType requestContentType;
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
     return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
+}
+
+- (IBAction) updateResponseSyntaxHighlight:(id)sender {
+    NSComboBox *box = sender;
+    [responseView setSyntaxMode: [box itemObjectValueAtIndex: [box indexOfSelectedItem]]];
 }
 
 - (IBAction)toggleSyntaxHighlighting:(id)sender {
@@ -643,6 +658,34 @@ static CRCContentType requestContentType;
         [filesTable removeObjectAtIndex:[filesTableView selectedRow]];
         [filesTableView reloadData];
     }
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
+    
+    return NSDragOperationCopy;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+    
+    if (tableView != filesTableView) {
+        return NO;
+    }
+
+    NSPasteboard *pboard = [info draggingPasteboard];
+    if ([[pboard types] containsObject: NSFilenamesPboardType]) {
+        NSArray *new_files = [pboard propertyListForType: NSFilenamesPboardType];
+        if (new_files.count > 0) {
+            [new_files enumerateObjectsUsingBlock:^(NSString* path, NSUInteger idx, BOOL *stop) {
+                NSDictionary *dic = @{@"key" : [path lastPathComponent], @"value" : path, @"url" : [NSURL URLWithString: path]};
+                [filesTable addObject: dic];
+            }];
+            [filesTableView reloadData];
+            
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark Menu methods

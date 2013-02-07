@@ -87,4 +87,8 @@
     [fragaria setObject:newSyntaxName forKey:MGSFOSyntaxDefinitionName];
 }
 
+- (void) setSyntaxMode: (NSString *)language {
+    [fragaria setObject: language forKey: MGSFOSyntaxDefinitionName];
+}
+
 @end
