@@ -21,5 +21,6 @@
 
 - (void) initHighlightedFrame;
 - (void) setSyntaxMode: (NSString *)language;
+- (NSString *) syntaxMode;
 
 @end

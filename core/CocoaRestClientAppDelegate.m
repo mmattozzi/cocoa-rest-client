@@ -577,6 +577,7 @@ static CRCContentType requestContentType;
         }
 	}
     
+    [responseSyntaxBox selectItemWithObjectValue:[responseView syntaxMode]];
     [progressIndicator stopAnimation:self];
     [progressIndicator setHidden:YES];
 }
