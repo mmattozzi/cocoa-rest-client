@@ -196,7 +196,7 @@ static CRCContentType requestContentType;
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
-    [filesTableView registerForDraggedTypes: @[NSFilenamesPboardType]];
+    [filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
     [filesTableView setDelegate: self];
     [filesTableView setDataSource: self];
     
@@ -628,6 +628,19 @@ static CRCContentType requestContentType;
     }
 }
 
+- (void) addFileToFilesTable: (NSURL*) fileUrl {
+    NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+    [row setObject:[fileUrl lastPathComponent] forKey:@"key"];
+    [row setObject:[fileUrl relativePath] forKey:@"value"];
+    [row setObject:fileUrl  forKey:@"url"];
+    
+    [filesTable addObject:row];
+    [filesTableView reloadData];
+    [filesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([filesTable count] - 1)] byExtendingSelection:NO];
+    [filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
+    [row release];
+}
+
 - (IBAction) plusFileRow:(id)sender {
 	
 	NSOpenPanel* picker = [NSOpenPanel openPanel];
@@ -638,16 +651,7 @@ static CRCContentType requestContentType;
 	
 	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
 		for(NSURL* url in [picker URLs]) {
-			NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-			[row setObject:@"file" forKey:@"key"];
-			[row setObject:[url relativePath] forKey:@"value"];
-			[row setObject:url  forKey:@"url"];
-			
-			[filesTable addObject:row];
-			[filesTableView reloadData];
-			[filesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([filesTable count] - 1)] byExtendingSelection:NO];
-			[filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
-			[row release];
+			[self addFileToFilesTable:url];
 		}
 	}
 
@@ -676,8 +680,7 @@ static CRCContentType requestContentType;
         NSArray *new_files = [pboard propertyListForType: NSFilenamesPboardType];
         if (new_files.count > 0) {
             [new_files enumerateObjectsUsingBlock:^(NSString* path, NSUInteger idx, BOOL *stop) {
-                NSDictionary *dic = @{@"key" : [path lastPathComponent], @"value" : path, @"url" : [NSURL URLWithString: path]};
-                [filesTable addObject: dic];
+                [self addFileToFilesTable:[NSURL fileURLWithPath:path]];
             }];
             [filesTableView reloadData];
             

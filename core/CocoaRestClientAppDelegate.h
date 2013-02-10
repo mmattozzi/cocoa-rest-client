@@ -166,6 +166,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) doubleClickedFileRow:(id)sender;
 - (IBAction) plusFileRow:(id)sender;
 - (IBAction) minusFileRow:(id)sender;
+- (void) addFileToFilesTable: (NSURL*) fileUrl;
 - (IBAction) doubleClickedParamsRow:(id)sender;
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
