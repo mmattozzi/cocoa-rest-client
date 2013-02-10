@@ -7,6 +7,11 @@ I love curl, but sometimes I need my output XML or JSON pretty printed. I want t
 The goal of this project is to build a lightweight native Cocoa app for testing and debugging HTTP Restful services.
 This project was greatly inspired by the Java rest-client (http://code.google.com/p/rest-client/). 
 
+Download
+=================
+If you're not looking to compile from source and only want to use this tool, latest releases are here:
+[Download List](http://code.google.com/p/cocoa-rest-client/downloads/list)
+
 Features
 =================
 * Make GET, PUT, POST, DELETE, HEAD calls
@@ -62,5 +67,5 @@ Credits
 * Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
 * Fragaria syntax highlighting framework (https://github.com/mugginsoft/Fragaria)
-* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro
+* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska
 
