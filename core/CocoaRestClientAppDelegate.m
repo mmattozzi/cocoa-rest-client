@@ -430,9 +430,9 @@ static CRCContentType requestContentType;
 	[status setStringValue:@"Receiving Data..."];
 	NSMutableString *headers = [[NSMutableString alloc] init];
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-	[headers appendFormat:@"HTTP %d %@\n\n", [httpResponse statusCode], [[NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] capitalizedString]];
+	[headers appendFormat:@"HTTP %ld %@\n\n", [httpResponse statusCode], [[NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] capitalizedString]];
 	
-	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%d)", [httpResponse statusCode]]];
+	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%ld)", [httpResponse statusCode]]];
 	
 	NSDictionary *headerDict = [httpResponse allHeaderFields];
     contentType = nil;
@@ -889,9 +889,11 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) deleteSavedRequest:(id) sender {
-	int row = [savedOutlineView selectedRow];
-	[savedRequestsArray removeObjectAtIndex:row];
-	[savedOutlineView reloadItem:nil reloadChildren:YES];
+    NSInteger row = [savedOutlineView selectedRow];
+    if (savedRequestsArray.count > row) {
+        [savedRequestsArray removeObjectAtIndex:row];
+        [savedOutlineView reloadItem:nil reloadChildren:YES];
+    }
 }
 
 // Save an HTTP request into the request drawer
