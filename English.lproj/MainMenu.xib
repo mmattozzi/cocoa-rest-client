@@ -1717,6 +1717,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 																			<reference key="NSTextColor" ref="256081461"/>
 																			<int key="NSVisibleItemCount">5</int>
 																			<bool key="NSHasVerticalScroller">YES</bool>
+																			<bool key="NSCompletes">YES</bool>
 																			<object class="NSComboTableView" key="NSTableView" id="133990831">
 																				<reference key="NSNextResponder"/>
 																				<int key="NSvFlags">274</int>
