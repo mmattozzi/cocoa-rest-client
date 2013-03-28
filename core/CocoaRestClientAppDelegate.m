@@ -563,14 +563,14 @@ static CRCContentType requestContentType;
             [jsonObj release];
 		} else if ([msgPackContentTypes containsObject:contentType]) {
             NSLog(@"Formatting MsgPack");
-            NSString *parsedObjectFromMsgPack = [[receivedData messagePackParse]JSONRepresentation];
+            NSString *parsedObjectFromMsgPack = [[[receivedData messagePackParse]JSONRepresentation]autorelease];
             // In order to get pretty formatting for free (for now), we convert
             // the parsed MsgPack object back to JSON for pretty printing.
             SBJSON *parser = [[SBJSON alloc] init];
             [parser setHumanReadable:YES];
             id jsonObj = [parser objectWithString:parsedObjectFromMsgPack];
             if (jsonObj) {
-                NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]];
+                NSString *jsonFormattedString = [[[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]autorelease];
                 [responseText setString:jsonFormattedString];
                 needToPrintPlain = NO;
             }
