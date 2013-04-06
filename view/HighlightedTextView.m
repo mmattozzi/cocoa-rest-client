@@ -15,7 +15,9 @@
 -(void) initHighlightedFrame {
     fragaria = [[MGSFragaria alloc] init];
     syntaxForMIME = [NSDictionary dictionaryWithObjectsAndKeys:
-                     @"JavaScript", @"application/json", 
+                     @"JavaScript", @"application/json",
+                     @"MsgPack", @"application/x-msgpack",
+                     @"MsgPack", @"application/x-messagepack",
                      @"XML", @"application/xml", 
                      @"HTML", @"text/html",
                      @"XML", @"application/atom+xml",
