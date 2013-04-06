@@ -15,6 +15,7 @@
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
 #import <MGSFragaria/MGSSyntaxController.h>
+#import "MessagePack.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -117,6 +118,8 @@ static CRCContentType requestContentType;
     
     jsonContentTypes = [NSArray arrayWithObjects:@"application/json", @"text/json", nil];
     
+    msgPackContentTypes = [NSArray arrayWithObjects:@"application/x-msgpack", @"application/x-messagepack", nil];
+    
     [self loadDataFromDisk];
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
@@ -205,6 +208,7 @@ static CRCContentType requestContentType;
     
     MGSSyntaxController *syn = [[[MGSSyntaxController alloc] init] autorelease];
     [responseSyntaxBox addItemsWithObjectValues: [syn syntaxDefinitionNames]];
+    [responseSyntaxBox addItemWithObjectValue:@"MsgPack"];
     [responseSyntaxBox selectItemWithObjectValue: @"JavaScript"];
     
     [CocoaRestClientAppDelegate addBorderToView:self.responseView];
@@ -557,7 +561,23 @@ static CRCContentType requestContentType;
             [parser release];
             [jsonStringFromData release];
             [jsonObj release];
-		}
+		} else if ([msgPackContentTypes containsObject:contentType]) {
+            NSLog(@"Formatting MsgPack");
+            NSString *parsedObjectFromMsgPack = [[[receivedData messagePackParse]JSONRepresentation]autorelease];
+            // In order to get pretty formatting for free (for now), we convert
+            // the parsed MsgPack object back to JSON for pretty printing.
+            SBJSON *parser = [[SBJSON alloc] init];
+            [parser setHumanReadable:YES];
+            id jsonObj = [parser objectWithString:parsedObjectFromMsgPack];
+            if (jsonObj) {
+                NSString *jsonFormattedString = [[[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]autorelease];
+                [responseText setString:jsonFormattedString];
+                needToPrintPlain = NO;
+            }
+            [parser release];
+            [jsonObj release];
+            
+        }
 	} 
 	
 	// Bail out, just print the text

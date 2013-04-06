@@ -94,6 +94,8 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private NSArray *xmlContentTypes;    
     @private NSArray *jsonContentTypes;
     
+    @private NSArray *msgPackContentTypes;
+    
     @private NSString *appDataFilePath;
 	
 }
