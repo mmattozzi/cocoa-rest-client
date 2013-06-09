@@ -47,6 +47,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     
 	NSTextField *username;
 	NSTextField *password;
+    BOOL preemptiveBasicAuth;
 	
 	NSMutableData *receivedData;
 	NSString *contentType;
@@ -123,6 +124,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet TabbingTableView *paramsTableView;
 @property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextField *password;
+@property (assign) BOOL preemptiveBasicAuth;
 @property (assign) IBOutlet NSOutlineView *savedOutlineView;
 @property (assign) IBOutlet NSPanel *saveRequestSheet;
 @property (assign) IBOutlet NSTextField *saveRequestTextField;

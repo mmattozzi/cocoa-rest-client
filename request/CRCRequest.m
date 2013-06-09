@@ -10,7 +10,7 @@
 
 
 @implementation CRCRequest
-@synthesize name, url, method, rawRequestInput, requestText, username, password, headers, files, params;
+@synthesize name, url, method, rawRequestInput, requestText, username, password, headers, files, params, preemptiveBasicAuth;
 
 + (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application
 {
@@ -23,6 +23,7 @@
 	request.username        = [application.username stringValue];
 	request.password        = [application.password stringValue];
 	request.rawRequestInput = application.rawRequestInput;
+    request.preemptiveBasicAuth = application.preemptiveBasicAuth;
 	
 	if(request.rawRequestInput)
 		request.requestText = [application.requestText string];
@@ -51,6 +52,7 @@
     [coder encodeObject: self.headers forKey: @"headers"];
     [coder encodeObject: self.files forKey: @"files"];
     [coder encodeObject: self.params forKey: @"params"];
+    [coder encodeBool: self.preemptiveBasicAuth forKey:@"preemptiveBasicAuth"];
 }
 
 - (id) initWithCoder: (NSCoder *)coder 
@@ -67,6 +69,11 @@
         headers = [coder decodeObjectForKey: @"headers"];
         files = [coder decodeObjectForKey: @"files"];
         params = [coder decodeObjectForKey: @"params"];
+        if ([coder containsValueForKey:@"preemptiveBasicAuth"]) {
+            preemptiveBasicAuth = [coder decodeBoolForKey:@"preemptiveBasicAuth"];
+        } else {
+            preemptiveBasicAuth = NO;
+        }
     }
     
 	return self;

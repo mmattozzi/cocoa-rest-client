@@ -20,6 +20,7 @@
 	NSArray * headers;
 	NSArray * files;
 	NSArray * params;
+    BOOL preemptiveBasicAuth;
 }
 
 @property BOOL rawRequestInput;
@@ -32,6 +33,7 @@
 @property(nonatomic, copy) NSArray * headers;
 @property(nonatomic, copy) NSArray * files;
 @property(nonatomic, copy) NSArray * params;
+@property BOOL preemptiveBasicAuth;
 
 + (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application;
 @end

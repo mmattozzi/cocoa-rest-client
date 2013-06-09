@@ -16,6 +16,7 @@
 #import <Sparkle/SUUpdater.h>
 #import <MGSFragaria/MGSSyntaxController.h>
 #import "MessagePack.h"
+#import "NSData+Base64.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -66,6 +67,7 @@ static CRCContentType requestContentType;
 @synthesize headersTableView, filesTableView, paramsTableView;
 @synthesize username;
 @synthesize password;
+@synthesize preemptiveBasicAuth;
 @synthesize savedOutlineView;
 @synthesize saveRequestSheet;
 @synthesize saveRequestTextField;
@@ -101,6 +103,7 @@ static CRCContentType requestContentType;
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
+    preemptiveBasicAuth = NO;
     
 	headersTable = [[NSMutableArray alloc] init];
 	filesTable   = [[NSMutableArray alloc] init];
@@ -379,6 +382,13 @@ static CRCContentType requestContentType;
                                   forKey:[row objectForKey:@"key"]];
         }
 	}
+    
+    // Pre-emptive HTTP Basic Auth
+    if (preemptiveBasicAuth && [username stringValue] && [password stringValue]) {
+        NSData *plainTextUserPass = [ [NSString stringWithFormat:@"%@:%@", [username stringValue], [password stringValue]] dataUsingEncoding:NSUTF8StringEncoding];
+        [headersDictionary setObject:[NSString stringWithFormat:@"Basic %@", [plainTextUserPass base64EncodedString]] 
+                              forKey:@"Authorization"];
+    }
     
     [request setAllHTTPHeaderFields:headersDictionary];
     
@@ -1002,6 +1012,7 @@ static CRCContentType requestContentType;
 	[password setStringValue:[request objectForKey:@"password"]];
 	
 	self.rawRequestInput = YES;
+    self.preemptiveBasicAuth = NO;
 	
 	if ([request objectForKey:@"body"]) {
 		[requestText setString:[request objectForKey:@"body"]];
@@ -1044,6 +1055,7 @@ static CRCContentType requestContentType;
 	[password setStringValue:request.password];
 	
 	self.rawRequestInput = request.rawRequestInput;
+    self.preemptiveBasicAuth = request.preemptiveBasicAuth;
 	
 	if(request.rawRequestInput)
 	{
