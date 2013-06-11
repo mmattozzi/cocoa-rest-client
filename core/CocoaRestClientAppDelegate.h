@@ -14,6 +14,7 @@
 #import "PreferencesController.h"
 #import "HighlightedTextView.h"
 #import "WelcomeController.h"
+#import "TableRowAndColumn.h"
 
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
@@ -200,6 +201,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
 - (IBAction) updateResponseSyntaxHighlight:(id)sender;
 - (void) showWelcome;
+- (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
+- (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
 
 - (void)setRawRequestInput:(BOOL)value;
 

@@ -14,8 +14,10 @@
 
 @interface TabbingTableView : NSTableView {
     int lastTextMovement;
+    SEL textDidEndEditingAction;
 }
 
 - (int) getLastTextMovement;
+- (void) setTextDidEndEditingAction: (SEL)action;
 
 @end

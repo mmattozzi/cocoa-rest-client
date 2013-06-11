@@ -17,6 +17,7 @@
 #import <MGSFragaria/MGSSyntaxController.h>
 #import "MessagePack.h"
 #import "NSData+Base64.h"
+#import "TableRowAndColumn.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -199,7 +200,9 @@ static CRCContentType requestContentType;
     [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
     
     [headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
+    [headersTableView setTextDidEndEditingAction:@selector(doneEditingHeaderRow:)];
     [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
+    [paramsTableView setTextDidEndEditingAction:@selector(doneEditingParamsRow:)];
     [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
     [filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
@@ -645,6 +648,19 @@ static CRCContentType requestContentType;
     }
 }
 
+- (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn {
+    int lastTextMovement = [paramsTableView getLastTextMovement];
+    if (lastTextMovement == NSTabTextMovement && [[tableRowAndColumn.column identifier] isEqualToString:@"value"]) {
+        if (tableRowAndColumn.row == [[paramsTableView dataSource] numberOfRowsInTableView:paramsTableView] - 1) {
+            [self plusParamsRow:nil];
+        } else {
+            [paramsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:(tableRowAndColumn.row + 1)] byExtendingSelection:NO];
+            [paramsTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
+        }        
+    }
+    [tableRowAndColumn release];
+}
+
 
 #pragma mark -
 #pragma mark Files
@@ -805,9 +821,6 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[headersTable replaceObjectAtIndex:rowIndex withObject:row];
-        if ([headersTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
-            [self plusHeaderRow:nil];
-        }
 	}
 	
 	if(aTableView == filesTableView){
@@ -817,9 +830,6 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[filesTable replaceObjectAtIndex:rowIndex withObject:row];
-        if ([filesTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
-            [self plusFileRow:nil];
-        }
 	}
 	
 	if(aTableView == paramsTableView){
@@ -829,9 +839,6 @@ static CRCContentType requestContentType;
 		}
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[paramsTable replaceObjectAtIndex:rowIndex withObject:row];
-        if ([paramsTableView getLastTextMovement] == NSTabTextMovement && [[aTableColumn identifier] isEqualToString:@"value"]) {
-            [self plusParamsRow:nil];
-        }
 	}
 }
 
@@ -843,6 +850,19 @@ static CRCContentType requestContentType;
     } else {
         [headersTableView editColumn:col row:row withEvent:nil select:YES];
     }
+}
+
+- (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn {
+    int lastTextMovement = [headersTableView getLastTextMovement];
+    if (lastTextMovement == NSTabTextMovement && [[tableRowAndColumn.column identifier] isEqualToString:@"value"]) {
+        if (tableRowAndColumn.row == [[headersTableView dataSource] numberOfRowsInTableView:headersTableView] - 1) {
+            [self plusHeaderRow:nil];
+        } else {
+            [headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:(tableRowAndColumn.row + 1)] byExtendingSelection:NO];
+            [headersTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
+        }        
+    }
+    [tableRowAndColumn release];
 }
 
 - (IBAction) plusHeaderRow:(id)sender {
