@@ -554,12 +554,14 @@ static CRCContentType requestContentType;
         if ([xmlContentTypes containsObject:contentType]) {
 			NSLog(@"Formatting XML");
 			NSError *error;
-			NSXMLDocument *responseXML = [[NSXMLDocument alloc] initWithData:receivedData options:NSXMLDocumentTidyXML error:&error];
+			NSXMLDocument *responseXML = [[NSXMLDocument alloc] initWithData:receivedData options:NSXMLNodePreserveAll error:&error];
 			if (!responseXML) {
 				NSLog(@"Error reading response: %@", error);
-			}
-			[responseText setString:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
-			needToPrintPlain = NO;
+                needToPrintPlain = YES;
+			} else {
+                [responseText setString:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+                needToPrintPlain = NO;
+            }
 		} else if ([jsonContentTypes containsObject:contentType]) {
 			NSLog(@"Formatting JSON");
 			SBJSON *parser = [[SBJSON alloc] init];
