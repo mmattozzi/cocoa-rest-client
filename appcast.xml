@@ -6,6 +6,48 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
 		<item>
+			<title>Version 1.3.6</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.6.html</sparkle:releaseNotesLink>
+			<pubDate>Sat, 29 Jun 2013 16:22:00 -0400</pubDate>
+			<sparkle:minimumSystemVersion>10.7.5</sparkle:minimumSystemVersion>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.3.6.dmg" 
+				sparkle:version="11" length="1399435" 
+				sparkle:shortVersionString="1.3.6" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MCwCFDrBu4MIRq/nr5lt+dI5qHLK6zwWAhQRlfh3jLV9+ljaxgS7ajAbBSW6Tg==" />
+		</item>
+		<item>
+			<title>Version 1.3.5</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.5.html</sparkle:releaseNotesLink>
+			<pubDate>Sun, 24 Feb 2013 12:47:00 -0500</pubDate>
+			<sparkle:minimumSystemVersion>10.7.5</sparkle:minimumSystemVersion>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.3.5.dmg" 
+				sparkle:version="10" length="1358438" 
+				sparkle:shortVersionString="1.3.5" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MC4CFQCN1F85K6dtHx37tIvSx0SJLafwNAIVAJzgsSbU1KC5rmZ/BXGo+I23Pk/A" />
+		</item>
+		<item>
+			<title>Version 1.3.4</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.4.html</sparkle:releaseNotesLink>
+			<pubDate>Sun, 16 Sep 2012 12:21:00 -0400</pubDate>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.3.4.dmg" 
+				sparkle:version="9" length="1362602" 
+				sparkle:shortVersionString="1.3.4" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MC0CFG0JkGllT9jhZVEYPt3q6Aw7keLYAhUAuHJEEXAtYcAVyume203VbNYusu8=" />
+		</item>
+		<item>
+			<title>Version 1.3.3</title>
+			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.3.html</sparkle:releaseNotesLink>
+			<pubDate>Sun, 5 Aug 2012 19:53:00 -0400</pubDate>
+			<enclosure url="http://cocoa-rest-client.googlecode.com/files/CocoaRestClient-1.3.3.dmg" 
+				sparkle:version="8" length="3026821" 
+				sparkle:shortVersionString="1.3.3" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MCwCFEeDEOWE7KWtqb5pZM1sh44MxeL0AhQ/MhUjV1Kgf8cYnkZC5FyoFIenmQ==" />
+		</item>
+		<item>
 			<title>Version 1.3.2</title>
 			<sparkle:releaseNotesLink>http://cocoa-rest-client.googlecode.com/svn/trunk/ReleaseNotes/1.3.2.html</sparkle:releaseNotesLink>
 			<pubDate>Sat, 25 Feb 2012 19:16:00 -0400</pubDate>
