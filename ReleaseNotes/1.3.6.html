@@ -1,0 +1,11 @@
+Fixes/Features in 1.3.6:
+
+* Fixed encoding of the + character for parameters provided for form urlencoded content.
+
+* Turned off XML tidying-- this was resulting in elements being added where they truly did not exist in the response. Now, if XML is invalid it will default to plaintext in the response window. 
+
+* Changed tabbing behavior in request parameter and header value cells to be more natural. 
+
+* Added pre-emptive HTTP Basic Auth. This can be enabled with a checkbox and hopefully will solve the auth problems that some people have been having. 
+
+* Added MessagePack output formatting (contributed by github.com/DiegoMax)
