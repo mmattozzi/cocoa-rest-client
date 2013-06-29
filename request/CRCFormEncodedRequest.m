@@ -25,15 +25,24 @@
 			NSString * key   = [row objectForKey:@"key"];
 			NSString * value = [row objectForKey:@"value"];
 			
-			if([body length] > 0) 
+			if([body length] > 0) {
 				[body appendData:[@"&" dataUsingEncoding:NSUTF8StringEncoding]];
+            }
 			
-            		value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            // URL form encode the key for the parameter
+            key = [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            // For some reason, & and + are not escaped by stringByAddingPercentEscapesUsingEncoding
+            key = [key stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
+            key = [key stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+            
+            // URL form encode the value of the parameter
+            value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            // For some reason, & and + are not escaped by stringByAddingPercentEscapesUsingEncoding
  			value = [value stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
-			[body appendData:[[NSString stringWithFormat:@"%@=%@",
-							   [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
-							   value] 
-							  dataUsingEncoding:NSUTF8StringEncoding]];
+            value = [value stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+            
+			[body appendData:[[NSString stringWithFormat:@"%@=%@", key, value] 
+                              dataUsingEncoding:NSUTF8StringEncoding]];
 		}
 	}
 	
