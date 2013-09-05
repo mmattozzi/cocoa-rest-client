@@ -19,7 +19,7 @@
 	
 	request.name            = [application.saveRequestTextField stringValue];
 	request.url             = [application.urlBox stringValue];
-	request.method          = [application.methodButton titleOfSelectedItem];
+    request.method          = [application.methodButton stringValue];
 	request.username        = [application.username stringValue];
 	request.password        = [application.password stringValue];
 	request.rawRequestInput = application.rawRequestInput;

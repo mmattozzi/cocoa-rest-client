@@ -33,7 +33,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     NSTextView *requestHeadersSentText;
 	NSTabViewItem *headersTab;
 	NSTextView *responseTextHeaders;
-	NSPopUpButton *methodButton;
+    NSComboBox *methodButton;
 	TabbingTableView *headersTableView;
 	TabbingTableView *filesTableView;
 	TabbingTableView *paramsTableView;
@@ -91,7 +91,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     
     @private CRCRequest *lastRequest;
     
-    @private NSSet *requestMethodsWithBody;
+    @private NSSet *requestMethodsWithoutBody;
     
     @private NSArray *xmlContentTypes;    
     @private NSArray *jsonContentTypes;
@@ -118,7 +118,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (assign) IBOutlet NSComboBox *responseSyntaxBox;
 @property (assign) IBOutlet HighlightedTextView *requestView;
 @property (assign) IBOutlet NSTextView *responseTextHeaders;
-@property (assign) IBOutlet NSPopUpButton *methodButton;
+@property (assign) IBOutlet NSComboBox *methodButton;
 @property (assign) IBOutlet NSTextView *requestText;
 @property (assign) IBOutlet TabbingTableView *headersTableView;
 @property (assign) IBOutlet TabbingTableView *filesTableView;
