@@ -173,18 +173,18 @@ static CRCContentType requestContentType;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	[methodButton removeAllItems];
-	[methodButton addItemWithTitle:@"GET"];
-	[methodButton addItemWithTitle:@"POST"];
-	[methodButton addItemWithTitle:@"PUT"];
-	[methodButton addItemWithTitle:@"DELETE"];
-	[methodButton addItemWithTitle:@"HEAD"];
-	[methodButton addItemWithTitle:@"OPTIONS"];
-	[methodButton addItemWithTitle:@"PATCH"];
-	[methodButton addItemWithTitle:@"COPY"];
-	[methodButton addItemWithTitle:@"SEARCH"];
+    [methodButton removeAllItems];
+	[methodButton addItemWithObjectValue:@"GET"];
+	[methodButton addItemWithObjectValue:@"POST"];
+	[methodButton addItemWithObjectValue:@"PUT"];
+	[methodButton addItemWithObjectValue:@"DELETE"];
+	[methodButton addItemWithObjectValue:@"HEAD"];
+	[methodButton addItemWithObjectValue:@"OPTIONS"];
+	[methodButton addItemWithObjectValue:@"PATCH"];
+	[methodButton addItemWithObjectValue:@"COPY"];
+	[methodButton addItemWithObjectValue:@"SEARCH"];
     
-	requestMethodsWithBody = [NSSet setWithObjects:@"POST", @"PUT", @"PATCH", @"COPY", @"SEARCH", nil];
+	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"DELETE", @"HEAD", @"OPTIONS", nil];
 	
 	[responseText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
@@ -339,7 +339,7 @@ static CRCContentType requestContentType;
 	
 	NSString *urlEscaped = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSURL *url = [NSURL URLWithString:urlEscaped];
-	NSString *method = [NSString stringWithString:[methodButton titleOfSelectedItem]];
+    NSString *method = [methodButton stringValue];
 	NSMutableURLRequest * request = nil;
     
 	
@@ -351,7 +351,7 @@ static CRCContentType requestContentType;
 	BOOL contentTypeSet = NO;
 	
 	if(self.rawRequestInput) {
-		if ([requestMethodsWithBody containsObject:method]) {
+		if (![requestMethodsWithoutBody containsObject:method]) {
 			if([filesTable count] > 0 && [[requestText string] isEqualToString:@""]) {
 				[CRCFileRequest createRequest:request];
 			}
@@ -361,7 +361,7 @@ static CRCContentType requestContentType;
 		}		
 	}
 	else {
-		if ([requestMethodsWithBody containsObject:method]) {
+		if (![requestMethodsWithoutBody containsObject:method]) {
 			switch(requestContentType) {
 				case CRCContentTypeFormEncoded:
 					[CRCFormEncodedRequest createRequest:request];
@@ -1029,7 +1029,7 @@ static CRCContentType requestContentType;
 - (void)loadSavedDictionary:(NSDictionary *)request
 {
 	[urlBox setStringValue:[request objectForKey:@"url"]];
-	[methodButton selectItemWithTitle:[request objectForKey:@"method"]];
+    [methodButton setStringValue:[request objectForKey:@"method"]];
 	[username setStringValue:[request objectForKey:@"username"]];
 	[password setStringValue:[request objectForKey:@"password"]];
 	
@@ -1072,7 +1072,7 @@ static CRCContentType requestContentType;
 - (void)loadSavedCRCRequest:(CRCRequest *)request
 {
 	[urlBox setStringValue:request.url];
-	[methodButton selectItemWithTitle:request.method];
+    [methodButton setStringValue:request.method];
 	[username setStringValue:request.username];
 	[password setStringValue:request.password];
 	
