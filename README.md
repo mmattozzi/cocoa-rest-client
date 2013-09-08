@@ -55,11 +55,12 @@ Screenshots
 
 Source and Contributions
 =================
-* Source code is now hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
+* Source code is hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
 * If you would like to contribute, please fork and create a pull request on Github 
 * Downloads and issues will still be kept up to date on Google Code. I will probably keep source up to date with each release.
 * I don't plan on switching from Garbage Collection to ARC until I drop 10.6 support, as there seems to be some [limitations with ARC on 10.6](http://stackoverflow.com/questions/7696201/how-to-deploy-to-snow-leopard-with-arc-enabled). I will most likely switch to ARC when OS X 10.8 is released. 
 * I am not turning on AutoLayout constraints in my xib files until I drop 10.6 support.
+* The main xib file is a minefield. An xcode update a year or two ago left it in a state such that it messes up the layout of the application's components every time it opens. If anybody knows how to fix this, that would be amazing. Otherwise, be wary of small changes to the UI... they require sizing all the components back to their original locations. 
 
 Credits
 =================
@@ -68,5 +69,5 @@ Credits
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
 * Fragaria syntax highlighting framework (https://github.com/mugginsoft/Fragaria)
 * Base64 encoding uses Matt Gallagher's NSData+Base64 code (http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html)
-* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska
+* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson
 
