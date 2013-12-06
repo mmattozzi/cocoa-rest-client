@@ -10,7 +10,8 @@ This project was greatly inspired by the Java rest-client (http://code.google.co
 Download
 =================
 If you're not looking to compile from source and only want to use this tool, latest releases are here:
-[Download List](http://code.google.com/p/cocoa-rest-client/downloads/list)
+
+[Download List](https://github.com/mmattozzi/cocoa-rest-client/releases)
 
 Features
 =================
