@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Cocoa Rest Client by mmattozzi</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Cocoa Rest Client</h1>
+        <h2>A native OS X cocoa application for testing HTTP endpoints</h2>
+        <a href="https://github.com/mmattozzi/cocoa-rest-client" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
+
+<p>CocoaRestClient is a Mac OS X app for testing HTTP/Restful endpoints. </p>
+
+<p>I love curl, but sometimes I need my output XML or JSON pretty printed. I want to be able to save frequent PUT and POST bodies for later and copy and paste from responses easily. Think of this as curl with a light UI. </p>
+
+<p>The goal of this project is to build a lightweight native Cocoa app for testing and debugging HTTP Restful services.
+This project was greatly inspired by the Java rest-client (<a href="http://code.google.com/p/rest-client/">http://code.google.com/p/rest-client/</a>). </p>
+
+<h1>
+<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h1>
+
+<p>If you're not looking to compile from source and only want to use this tool, latest releases are here:</p>
+
+<p><a href="https://github.com/mmattozzi/cocoa-rest-client/releases">Download List</a></p>
+
+<h1>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
+
+<ul>
+<li>Make GET, PUT, POST, DELETE, HEAD calls</li>
+<li>Set request body to arbitrary content</li>
+<li>Set request headers</li>
+<li>Set HTTP basic &amp; digest auth</li>
+<li>Auto-format (pretty print) XML and JSON responses</li>
+<li>Display response headers</li>
+<li>Quick save requests in a handy drawer</li>
+<li>Upload files and form data via multipart/form-data</li>
+<li>Enter POST/PUT input as raw input or key/value pairs</li>
+<li>Reports response latency</li>
+<li>Command-R reloads last request</li>
+<li>Lightweight: Low real memory usage</li>
+<li>SSL Support (including untrusted certificates)</li>
+<li>Optionally follows HTTP redirects</li>
+<li>Import and export requests</li>
+</ul><h1>
+<a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h1>
+
+<p><img src="https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-1.jpg" alt="Screenshot 1"></p>
+
+<p><em>Pretty print XML content. Quick save of request URLs, body, and headers in one convenient drawer.</em></p>
+
+<p><img src="https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-2.jpg" alt="Screenshot 2"></p>
+
+<p><em>Pretty print JSON content. Set and save HTTP headers.</em></p>
+
+<p><img src="https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-3.jpg" alt="Screenshot 3"></p>
+
+<p><em>Set HTTP Basic or Digest Auth. Displays HTTP response headers.</em></p>
+
+<p><img src="https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-4.jpg" alt="Screenshot 4"></p>
+
+<p><em>Set HTTP request body content to a raw text blob or a list of parameters.</em></p>
+
+<p><img src="https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-5.jpg" alt="Screenshot 5"></p>
+
+<p><em>Upload files using HTTP multipart requests. HTTP form encoding also supported.</em></p>
+
+<h1>
+<a name="source-and-contributions" class="anchor" href="#source-and-contributions"><span class="octicon octicon-link"></span></a>Source and Contributions</h1>
+
+<ul>
+<li>Source code is hosted on Github: <a href="http://github.com/mmattozzi/cocoa-rest-client">http://github.com/mmattozzi/cocoa-rest-client</a>
+</li>
+<li>If you would like to contribute, please fork and create a pull request on Github </li>
+<li>Downloads and issues will still be kept up to date on Google Code. I will probably keep source up to date with each release.</li>
+<li>I don't plan on switching from Garbage Collection to ARC until I drop 10.6 support, as there seems to be some <a href="http://stackoverflow.com/questions/7696201/how-to-deploy-to-snow-leopard-with-arc-enabled">limitations with ARC on 10.6</a>. I will most likely switch to ARC when OS X 10.8 is released. </li>
+<li>I am not turning on AutoLayout constraints in my xib files until I drop 10.6 support.</li>
+<li>The main xib file is a minefield. An xcode update a year or two ago left it in a state such that it messes up the layout of the application's components every time it opens. If anybody knows how to fix this, that would be amazing. Otherwise, be wary of small changes to the UI... they require sizing all the components back to their original locations. </li>
+</ul><h1>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<ul>
+<li>Contains json-framework/SBJSON library (<a href="http://code.google.com/p/json-framework/">http://code.google.com/p/json-framework/</a>) embedded in it, source and all</li>
+<li>Much guidance from Adrian Kosmaczewski blog (<a href="http://kosmaczewski.net/playing-with-http-libraries/">http://kosmaczewski.net/playing-with-http-libraries/</a>)</li>
+<li>Sparkle automatic update framework (<a href="https://github.com/andymatuschak/Sparkle">https://github.com/andymatuschak/Sparkle</a>)</li>
+<li>Fragaria syntax highlighting framework (<a href="https://github.com/mugginsoft/Fragaria">https://github.com/mugginsoft/Fragaria</a>)</li>
+<li>Base64 encoding uses Matt Gallagher's NSData+Base64 code (<a href="http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html">http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html</a>)</li>
+<li>Code &amp; testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/mmattozzi/cocoa-rest-client/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/mmattozzi/cocoa-rest-client/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/mmattozzi/cocoa-rest-client"></a> is maintained by <a href="https://github.com/mmattozzi">mmattozzi</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
