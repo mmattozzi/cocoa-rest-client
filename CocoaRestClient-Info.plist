@@ -33,7 +33,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://cocoa-rest-client.googlecode.com/svn/trunk/appcast.xml</string>
+	<string>http://restlesscode.org/cocoa-rest-client/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>kCRCHeadersUserDefaultsKey</key>
@@ -70,5 +70,7 @@
 		<string>Via</string>
 		<string>Warning</string>
 	</array>
+	<key>SUEnableSystemProfiling</key>
+	<true/>
 </dict>
 </plist>
