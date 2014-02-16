@@ -1237,11 +1237,11 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) helpInfo:(id)sender {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://code.google.com/p/cocoa-rest-client/"]]; 
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://mmattozzi.github.io/cocoa-rest-client/"]]; 
 }
 
 - (IBAction) licenseInfo:(id)sender {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://cocoa-rest-client.googlecode.com/svn/trunk/LICENSE.txt"]]; 
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://raw2.github.com/mmattozzi/cocoa-rest-client/master/LICENSE.txt"]]; 
 }
 
 - (IBAction) reloadLastRequest:(id)sender {
