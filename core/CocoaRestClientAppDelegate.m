@@ -18,6 +18,7 @@
 #import "MessagePack.h"
 #import "NSData+Base64.h"
 #import "TableRowAndColumn.h"
+#import "CRCSavedRequestFolder.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -842,6 +843,7 @@ static CRCContentType requestContentType;
 		[row setObject:anObject forKey:[aTableColumn identifier]];
 		[paramsTable replaceObjectAtIndex:rowIndex withObject:row];
 	}
+
 }
 
 - (IBAction) doubleClickedHeaderRow:(id)sender {
@@ -895,27 +897,22 @@ static CRCContentType requestContentType;
 - (NSInteger) outlineView: (NSOutlineView *)outlineView numberOfChildrenOfItem: (id)item {
 	if (item == nil) {
 		return [savedRequestsArray count];
-	}
-	if (item == savedRequestsArray) {
+	} else {
 		return [item count];
 	}
-	return 0;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return NO;
+    if (item == nil) return NO;
+    return [item isKindOfClass:[CRCSavedRequestFolder class]];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if (item == nil) {
-        item = savedRequestsArray;
-    }
-    
-    if (item == savedRequestsArray) {
+        return [savedRequestsArray objectAtIndex:index];
+    } else {
         return [item objectAtIndex:index];
     }
-    
-    return nil;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
@@ -924,9 +921,9 @@ static CRCContentType requestContentType;
 		CRCRequest * req = (CRCRequest *)item;
 		return req.name;
 	}
-	else if([item isKindOfClass:[NSDictionary class]] )
+	else if ([item isKindOfClass:[CRCSavedRequestFolder class]])
 	{
-		return [item objectForKey:@"name"];
+		return ((CRCSavedRequestFolder *)item).name;
 	}
 	else if (item == savedRequestsArray) {
 		return savedRequestsArray;
@@ -935,17 +932,50 @@ static CRCContentType requestContentType;
     return nil;
 }
 
+- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+    if ([item isKindOfClass:[CRCRequest class]]) {
+		CRCRequest * req = (CRCRequest *)item;
+		req.name = object;
+	}
+	else if ([item isKindOfClass:[CRCSavedRequestFolder class]]) {
+		((CRCSavedRequestFolder *)item).name = object;
+	}
+}
+
+- (IBAction) createNewSavedFolder:(id)sender {
+    CRCSavedRequestFolder *folder = [[CRCSavedRequestFolder alloc] init];
+    folder.name = @"New folder";
+    // [savedRequestsArray addObject:folder];
+    
+    id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
+    if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+        [selectedSavedOutlineViewItem addObject:folder];
+    } else {
+        [savedRequestsArray addObject:folder];
+    }
+    
+    [savedOutlineView reloadItem:nil reloadChildren:YES];
+    [savedOutlineView expandItem:folder expandChildren:YES];
+    [savedOutlineView editColumn:0 row:[savedOutlineView rowForItem:folder] withEvent:nil select:YES];
+}
+
 // Respond to click on a row of the saved requests outline view
 - (IBAction) outlineClick:(id)sender {
 	[self loadSavedRequest:[savedOutlineView itemAtRow:[savedOutlineView selectedRow]]];
 }
 
 - (IBAction) deleteSavedRequest:(id) sender {
-    NSInteger row = [savedOutlineView selectedRow];
-    if (savedRequestsArray.count > row) {
-        [savedRequestsArray removeObjectAtIndex:row];
-        [savedOutlineView reloadItem:nil reloadChildren:YES];
+    id object = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
+    if ([savedRequestsArray containsObject:object]) {
+        [savedRequestsArray removeObject:object];
+    } else {
+        for (id entry in savedRequestsArray) {
+            if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
+                [entry removeObject:object];
+            }
+        }
     }
+    [savedOutlineView reloadItem:nil reloadChildren:YES];
 }
 
 // Save an HTTP request into the request drawer
@@ -959,7 +989,12 @@ static CRCContentType requestContentType;
 	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
 		CRCRequest * request = [CRCRequest requestWithApplication:self];
 		
-		[savedRequestsArray addObject:request];
+        id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
+        if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+            [selectedSavedOutlineViewItem addObject:request];
+        } else {
+            [savedRequestsArray addObject:request];
+        }
 		[savedOutlineView reloadItem:nil reloadChildren:YES];
 	}
 	[saveRequestSheet orderOut:nil];
