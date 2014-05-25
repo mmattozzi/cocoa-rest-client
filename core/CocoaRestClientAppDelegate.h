@@ -99,7 +99,8 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private NSArray *msgPackContentTypes;
     
     @private NSString *appDataFilePath;
-	
+    
+    id eventMonitor;	
 }
 
 

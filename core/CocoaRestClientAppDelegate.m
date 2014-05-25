@@ -131,7 +131,21 @@ static CRCContentType requestContentType;
     exportRequestsController.savedRequestsArray = savedRequestsArray;
     
     self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
-     
+    
+    // Register a key listener
+    NSEvent * (^monitorHandler)(NSEvent *);
+    monitorHandler = ^NSEvent * (NSEvent * theEvent) {
+        
+        if (([theEvent modifierFlags] & NSCommandKeyMask) && [[theEvent characters] isEqualToString:@"l"]) {
+            [urlBox selectText:nil];
+            return nil;
+        } else {
+            return theEvent;
+        }
+    };
+    
+    eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:monitorHandler];
+    
 	return self;
 }
 
@@ -1269,6 +1283,7 @@ static CRCContentType requestContentType;
 
 - (void) applicationWillTerminate: (NSNotification *)note {
 	[self saveDataToDisk];
+    [NSEvent removeMonitor:eventMonitor];
 }
 
 - (IBAction) helpInfo:(id)sender {
