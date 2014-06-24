@@ -15,6 +15,15 @@ If you're not looking to compile from source and only want to use this tool, lat
 
 [Download List](https://github.com/mmattozzi/cocoa-rest-client/releases)
 
+You can also install it through [homebrew](http://brew.sh/) as a [cask](http://caskroom.io/):
+
+```sh
+# install cask if necessary
+brew install caskroom/cask/brew-cask
+# install CocoaRestClient
+brew cask install cocoarestclient
+```
+
 Features
 =================
 * Make GET, PUT, POST, DELETE, HEAD calls
