@@ -208,7 +208,7 @@ static CRCContentType requestContentType;
 	
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
-	[savedRequestsDrawer open];
+    [savedRequestsDrawer open];
     exportRequestsController.savedOutlineView = savedOutlineView;
     
     drawerView.cocoaRestClientAppDelegate = self;
@@ -238,9 +238,12 @@ static CRCContentType requestContentType;
     
     [self syntaxHighlightingPreferenceChanged];
     
+    // Enable Drag and Drop for outline view of saved requests
+    [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_MESSAGE]) {
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showWelcome) userInfo:nil repeats:NO];        
-    }
+    }    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
@@ -955,6 +958,97 @@ static CRCContentType requestContentType;
 		((CRCSavedRequestFolder *)item).name = object;
 	}
 }
+
+#pragma mark OutlineView drag and drop methods
+- (id <NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView pasteboardWriterForItem:(id)item{
+    // No dragging if <some condition isn't met>
+    BOOL dragAllowed = YES;
+    if (!dragAllowed)  {
+        return nil;
+    }
+    
+    NSPasteboardItem *pboardItem = [[NSPasteboardItem alloc] init];
+    NSString *idStr = [NSString stringWithFormat:@"%p", (long) item];
+    [pboardItem setString:idStr forType: @"public.text"];
+    NSLog(@"%@", idStr);
+    
+    return pboardItem;
+}
+
+
+- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)targetItem proposedChildIndex:(NSInteger)index{
+    
+    if (index >= 0) {
+        return NSDragOperationMove;
+    } else {
+        return NSDragOperationNone;
+    }
+}
+
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)targetItem childIndex:(NSInteger)targetIndex{
+    
+    NSPasteboard *p = [info draggingPasteboard];
+    NSString *objId = [p stringForType:@"public.text"];
+    NSLog(@"Pasteboad item = %@", objId);
+    
+    id sourceItem = nil;
+    CRCSavedRequestFolder *sourceParentFolder = nil;
+    int sourceIndex = -1;
+    
+    for (id entry in savedRequestsArray) {
+        if ([[NSString stringWithFormat:@"%p", (long) entry] isEqualToString:objId]) {
+            sourceItem = entry;
+            sourceIndex = [savedRequestsArray indexOfObject:sourceItem];
+        } else if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
+            id recursiveParent = [((CRCSavedRequestFolder *)entry) findParentOfObjectWith:objId];
+            if (recursiveParent) {
+                sourceParentFolder = recursiveParent;
+                sourceItem = [((CRCSavedRequestFolder *)sourceParentFolder) findObjectWith:objId];
+                sourceIndex = [((CRCSavedRequestFolder *)sourceParentFolder) findIndexOfObject:sourceItem];
+            }
+        }
+    }
+    
+    // Unclear how this would happen, but we don't know what we are moving
+    if (! sourceItem) {
+        NSLog(@"Unable to find source item dropped into list");
+        return NO;
+    }
+    
+    if (sourceIndex == -1) {
+        NSLog(@"Unable to find index of moving item");
+        return NO;
+    }
+        
+    if (sourceParentFolder) {
+        [((CRCSavedRequestFolder *) sourceParentFolder) removeObject:sourceItem];
+    } else {
+        [savedRequestsArray removeObject:sourceItem];
+    }    
+    
+    NSLog(@"Found source item of drop: %@ with parent %@", sourceItem, sourceParentFolder);
+    
+    if (! targetItem) {
+        // Saving into the top level array
+        if (sourceParentFolder == nil && (targetIndex > sourceIndex)) {
+            targetIndex--;
+        }
+        [savedRequestsArray insertObject:sourceItem atIndex:targetIndex];
+        [savedOutlineView reloadItem:nil reloadChildren:YES];
+        return YES;
+    } else {
+        // Saving into a sub-folder
+        NSLog(@"TargetIndex = %ld and sourceIndex = %d", targetIndex, sourceIndex);
+        if (sourceParentFolder == targetItem && (targetIndex > sourceIndex)) {
+            targetIndex--;
+        }
+        [((CRCSavedRequestFolder *) targetItem) insertObject:sourceItem atIndex:targetIndex];
+        [savedOutlineView reloadItem:nil reloadChildren:YES];
+        return YES;
+    }
+}
+
 
 - (IBAction) createNewSavedFolder:(id)sender {
     CRCSavedRequestFolder *folder = [[CRCSavedRequestFolder alloc] init];

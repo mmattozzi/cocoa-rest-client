@@ -19,8 +19,12 @@
 - (id) init;
 - (NSUInteger)count;
 - (void) addObject:(id) object;
+- (void) insertObject:(id) object atIndex:(NSUInteger)index;
 - (id) objectAtIndex:(NSUInteger)index;
 - (void) removeObject:(id) object;
+- (id) findObjectWith:(NSString *) objId;
+- (id) findParentOfObjectWith:(NSString *) objId;
+- (int) findIndexOfObject:(id) obj;
 
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (id)initWithCoder:(NSCoder *)coder;
