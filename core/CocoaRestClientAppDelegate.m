@@ -26,11 +26,14 @@
 #define APPLICATION_NAME @"CocoaRestClient"
 #define DATAFILE_NAME @"CocoaRestClient.savedRequests"
 
+#pragma mark -
+#pragma mark User default setting keys
 NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 NSString* const WELCOME_MESSAGE = @"welcomeMessage-1.3.3";
+NSString* const SAVED_DRAWER_SIZE = @"savedDrawerSize";
 NSInteger const DEFAULT_FONT_SIZE = 12;
 
 enum {
@@ -208,7 +211,16 @@ static CRCContentType requestContentType;
 	
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
+    
+    NSSize drawerSize;
+    drawerSize.width = 200;
+    drawerSize.height = 0;    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:SAVED_DRAWER_SIZE]) {
+        drawerSize.width = [[NSUserDefaults standardUserDefaults] integerForKey:SAVED_DRAWER_SIZE];
+    }
+    [savedRequestsDrawer setContentSize:drawerSize];
     [savedRequestsDrawer open];
+    
     exportRequestsController.savedOutlineView = savedOutlineView;
     
     drawerView.cocoaRestClientAppDelegate = self;
@@ -1377,6 +1389,7 @@ static CRCContentType requestContentType;
 
 - (void) applicationWillTerminate: (NSNotification *)note {
 	[self saveDataToDisk];
+    [[NSUserDefaults standardUserDefaults] setInteger:[savedRequestsDrawer contentSize].width forKey:SAVED_DRAWER_SIZE];
     [NSEvent removeMonitor:eventMonitor];
 }
 
