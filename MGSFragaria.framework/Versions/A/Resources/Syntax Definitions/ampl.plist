@@ -1,68 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>beginCommand</key>
-	<string>`</string>
-	<key>endCommand</key>
-	<string>'</string>
-	<key>beginInstruction</key>
-	<string></string>
-	<key>endInstruction</key>
-	<string></string>
-	<key>beginVariable</key>
-	<string></string>
-	<key>endVariable</key>
-	<string></string>
-	<key>firstString</key>
-	<string>"</string>
-	<key>secondString</key>
-	<string></string>
-	<key>firstSingleLineComment</key>
-	<string>#</string>
-	<key>secondSingleLineComment</key>
-	<string></string>
-	<key>beginFirstMultiLineComment</key>
-	<string></string>
-	<key>endFirstMultiLineComment</key>
-	<string></string>
-	<key>beginSecondMultiLineComment</key>
-	<string></string>
-	<key>endSecondMultiLineComment</key>
-	<string></string>
-	<key>functionDefinition</key>
-	<string></string>
-	<key>removeFromFunction</key>
-	<string></string>
-	<key>keywordsCaseSensitive</key>
-	<true/>
-	<key>recolourKeywordIfAlreadyColoured</key>
-	<true/>
-	<key>keywords</key>
-	<array>
-		<string>and</string>
-		<string>or</string>
-		<string>if</string>
-		<string>then</string>
-		<string>else</string>
-		<string>exists</string>
-		<string>forall</string>
-		<string>in</string>
-		<string>not</string>
-		<string>purge</string>		<string>union</string>		<string>diff</string>
-		<string>symbol</string>
-		<string>symdif</string>
-		<string>inter</string>		<string>cross</string>		<string>setof</string>		<string>by</string>
-		<string>less</string>
-		<string>sum</string>
-		<string>prod</string>
-		<string>min</string>
-		<string>max</string>
-		<string>abs</string>
-		<string>acos</string>			<string>acosh</string>			<string>alias</string>			<string>asin</string>			<string>asinsh</string>			<string>atan</string>			<string>atan2</string>			<string>atanh</string>			<string>ceil</string>			<string>cos</string>			<string>exp</string>			<string>floor</string>			<string>log</string>			<string>log10</string>			<string>precision</string>			<string>round</string>			<string>sin</string>			<string>sinh</string>			<string>sqrt</string>			<string>tan</string>			<string>tanh</string>			<string>trunc</string>			<string>Beta</string>		<string>Cauchy</string>		<string>Exponential</string>		<string>Gamma</string>		<string>Irand224</string>		<string>Normal</string>		<string>Normal01</string>		<string>Poisson</string>		<string>Uniform</string>		<string>set</string>		<string>setof</string>		<string>param</string>		<string>var</string>		<string>arc</string>		<string>minimize</string>		<string>maximize</string>		<string>subject</string>		<string>let</string>		<string>to</string>		<string>node</string>		<string>binary</string>		<string>integer</string>		<string>check</string>		<string>card</string>		<string>next</string>		<string>nextw</string>		<string>prev</string>		<string>prevw</string>		<string>first</string>		<string>last</string>		<string>member</string>		<string>match</string>		<string>within</string>		<string>ord	</string>		<string>ord0</string>		<string>circular</string>		<string>ordered	</string>		<string>reversed</string>		<string>init</string>		<string>init0</string>		<string>lb</string>		<string>lb0</string>		<string>lb1</string>		<string>lb2</string>		<string>lrc</string>		<string>lslack</string>		<string>rc</string>		<string>slack</string>		<string>ub</string>		<string>ub0</string>		<string>ub1</string>		<string>ub2</string>		<string>urc</string>		<string>uslack</string>		<string>val</string>		<string>body</string>		<string>dinit</string>		<string>dinit0</string>		<string>dual</string>		<string>lb</string>		<string>lbs</string>		<string>ldual</string>		<string>lslack</string>		<string>slack</string>		<string>ub</string>		<string>ubs</string>		<string>udual</string>		<string>uslack</string>
-	</array>
-	<key>autocompleteWords</key>
-	<array>
-	</array>
-</dict>
-</plist>

@@ -15,6 +15,6 @@
     CocoaRestClientAppDelegate *cocoaRestClientAppDelegate;
 }
 
-@property (assign, atomic) CocoaRestClientAppDelegate *cocoaRestClientAppDelegate;
+@property (strong, atomic) CocoaRestClientAppDelegate *cocoaRestClientAppDelegate;
 
 @end

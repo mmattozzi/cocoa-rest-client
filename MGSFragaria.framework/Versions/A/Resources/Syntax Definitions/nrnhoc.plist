@@ -1,51 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>autocompleteWords</key>
-	<array/>
-	<key>beginCommand</key>
-	<string></string>
-	<key>beginFirstMultiLineComment</key>
-	<string>/*</string>
-	<key>beginInstruction</key>
-	<string></string>
-	<key>beginSecondMultiLineComment</key>
-	<string></string>
-	<key>beginVariable</key>
-	<string></string>
-	<key>endCommand</key>
-	<string></string>
-	<key>endFirstMultiLineComment</key>
-	<string>*/</string>
-	<key>endInstruction</key>
-	<string></string>
-	<key>endSecondMultiLineComment</key>
-	<string></string>
-	<key>endVariable</key>
-	<string></string>
-	<key>firstSingleLineComment</key>
-	<string>//</string>
-	<key>firstString</key>
-	<string>"</string>
-	<key>functionDefinition</key>
-	<string>^\s*(proc|func).*\(.*\)\n?\s*\{</string>
-	<key>keywords</key>
-	<array>
-		<string>abs</string>		<string>access</string>		<string>allobjects</string>		<string>allobjectvars</string>		<string>allobjexts</string>		<string>AlphaSynapse</string>		<string>APCount</string>		<string>arc3d</string>		<string>area</string>		<string>atan</string>		<string>attr_praxis</string>		<string>axis</string>		<string>batch_run</string>		<string>batch_save</string>		<string>begintemplate</string>		<string>boolean_dialog</string>		<string>break</string>		<string>celsius</string>		<string>chdir</string>		<string>checkpoint</string>		<string>clamp_resist</string>		<string>connect</string>		<string>continue</string>		<string>continue_dialog</string>		<string>coredump_on_error</string>		<string>cos</string>		<string>create</string>		<string>CVode</string>		<string>debug</string>		<string>Deck</string>		<string>define_shape</string>		<string>DEG</string>		<string>delete</string>		<string>delete_section</string>		<string>depvar</string>		<string>dialogs</string>		<string>diam</string>		<string>diam_changed</string>		<string>diam3d</string>		<string>disconnect</string>		<string>distance</string>		<string>doEvents</string>		<string>doNotify</string>		<string>double</string>		<string>dt</string>		<string>E</string>		<string>else</string>		<string>em</string>		<string>endtemplate</string>		<string>eqinit</string>		<string>eqn</string>		<string>erf</string>		<string>erfc</string>		<string>execute</string>		<string>execute1</string>		<string>exp</string>		<string>external</string>		<string>fadvance</string>		<string>FARADAY</string>		<string>fclamp</string>		<string>fclampi</string>		<string>fclampv</string>		<string>fcurrent</string>		<string>File</string>		<string>finitialize</string>		<string>FInitializeHandler</string>		<string>fit_praxis</string>		<string>float_epsilon</string>		<string>fmatrix</string>		<string>fmenu</string>		<string>for</string>		<string>forall</string>		<string>forsec</string>		<string>fprint</string>		<string>fscan</string>		<string>fstim</string>		<string>fstimi</string>		<string>func</string>		<string>GAMMA</string>
-		<string>g_pas</string>		<string>getcwd</string>		<string>getSpineArea</string>		<string>getstr</string>		<string>ghk</string>		<string>Glyph</string>		<string>graph</string>		<string>Graph</string>		<string>graphmode</string>		<string>GUIMath</string>		<string>HBox</string>		<string>help</string>		<string>hh</string>		<string>hoc_ac_</string>		<string>hoc_cross_x_</string>		<string>hoc_cross_y_</string>		<string>hoc_obj_</string>		<string>hoc_pointer_</string>		<string>hoc_stdio</string>		<string>hocmech</string>		<string>IClamp</string>		<string>if</string>		<string>ifsec</string>		<string>Impedance</string>		<string>init</string>		<string>initnrn</string>		<string>insert</string>		<string>int</string>		<string>ion_style</string>		<string>ismembrane</string>		<string>issection</string>		<string>iterator</string>		<string>iterator_statement</string>		<string>ivoc_style</string>		<string>KSChan</string>		<string>KSGate</string>		<string>KSState</string>		<string>KSTrans</string>		<string>L</string>		<string>LinearMechanism</string>		<string>List</string>		<string>load_file</string>		<string>load_func</string>		<string>load_proc</string>		<string>load_template</string>		<string>local</string>		<string>localobj</string>		<string>log</string>		<string>log10</string>		<string>lw</string>		<string>machine_name</string>		<string>math</string>		<string>Matrix</string>		<string>MechanismStandard</string>		<string>MechanismType</string>		<string>myproc</string>		<string>n3d</string>		<string>name_declared</string>		<string>nernst</string>		<string>NetCon</string>		<string>neuronhome</string>		<string>new</string>		<string>node_data</string>		<string>nrnglobalmechmenu</string>		<string>nrnmechmenu</string>		<string>nrnpointmenu</string>		<string>nrnsecmenu</string>		<string>nseg</string>		<string>numarg</string>		<string>numprocs</string>		<string>obfunc</string>		<string>object_id</string>		<string>object_pop</string>		<string>object_push</string>		<string>objectvar</string>		<string>objectvar objref (synonyms)</string>		<string>objref</string>		<string>obsolete</string>		<string>p3dconst</string>		<string>parallel</string>		<string>ParallelContext</string>		<string>ParallelNetManager</string>		<string>parent_connection</string>		<string>parent_node</string>		<string>parent_section</string>		<string>pas</string>		<string>PHI</string>		<string>PI</string>		<string>plot</string>		<string>PlotShape</string>		<string>plotx</string>		<string>ploty</string>		<string>plt</string>		<string>Pointer</string>		<string>pop_section</string>		<string>print</string>		<string>print_session</string>		<string>printf</string>		<string>prmat</string>		<string>proc</string>		<string>prstim</string>		<string>psection</string>		<string>psync</string>		<string>pt3dadd</string>		<string>pt3dchange</string>		<string>pt3dclear</string>		<string>pt3dconst</string>		<string>pt3dinsert</string>		<string>pt3dremove</string>		<string>public</string>		<string>push_section</string>		<string>pval_praxis</string>		<string>pwman_place</string>		<string>PWManager</string>		<string>quit</string>		<string>R</string>		<string>Ra</string>		<string>Random</string>		<string>RangeVarPlot</string>		<string>read</string>		<string>regraph</string>		<string>retrieveaudit</string>		<string>return</string>		<string>ri</string>		<string>ropen</string>
-		<string>run</string>		<string>save_session</string>		<string>saveaudit</string>		<string>SaveState</string>		<string>secname</string>		<string>secondorder</string>		<string>section_orientation</string>		<string>SectionBrowser</string>		<string>SectionList</string>		<string>sectionname</string>		<string>SectionRef</string>		<string>setcolor</string>		<string>setpointer</string>		<string>setSpineArea</string>		<string>settext</string>		<string>Shape</string>		<string>show_errmess_always</string>		<string>sin</string>		<string>solve</string>		<string>spine3d</string>		<string>sprint</string>		<string>sqrt</string>		<string>sred</string>		<string>sscanf</string>		<string>startsw</string>		<string>stop</string>		<string>stop_praxis</string>		<string>stopsw</string>		<string>stopwatch</string>		<string>strcmp</string>		<string>strdef</string>		<string>string_dialog</string>		<string>StringFunctions</string>		<string>SVClamp</string>		<string>symbols</string>		<string>SymChooser</string>		<string>system</string>		<string>t</string>		<string>tanh</string>		<string>TextEditor</string>		<string>this_node</string>		<string>this_section</string>		<string>Timer</string>		<string>topology</string>
-		<string>tstop</string>		<string>uninsert</string>		<string>units</string>		<string>unref</string>		<string>ValueFieldEditor</string>		<string>variable_domain</string>		<string>VBox</string>		<string>VClamp</string>		<string>Vector</string>		<string>while</string>		<string>wopen</string>		<string>wqinit</string>		<string>x3d</string>		<string>xbutton</string>		<string>xcheckbox</string>		<string>xfixedvalue</string>		<string>xlabel</string>		<string>xmenu</string>		<string>xopen</string>		<string>xpanel</string>		<string>xpvalue</string>		<string>xradiobutton</string>		<string>xred</string>		<string>xslider</string>		<string>xstatebutton</string>		<string>xvalue</string>		<string>xvarlabel</string>		<string>y3d</string>		<string>z3d</string>
-	</array>
-	<key>keywordsCaseSensitive</key>
-	<true/>
-	<key>recolourKeywordIfAlreadyColoured</key>
-	<true/>
-	<key>removeFromFunction</key>
-	<string></string>
-	<key>secondSingleLineComment</key>
-	<string></string>
-	<key>secondString</key>
-	<string>'</string>
-</dict>
-</plist>

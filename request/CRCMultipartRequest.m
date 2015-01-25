@@ -48,9 +48,9 @@
 				{
 					mimeType = @"application/octet-stream";
 				}
-				else if ((mimeType = (NSString *)UTTypeCopyPreferredTagWithClass((CFStringRef)uti, kUTTagClassMIMEType)))
+				else if ((mimeType = (__bridge NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)uti, kUTTagClassMIMEType)))
                 {
-                    mimeType = NSMakeCollectable(mimeType);
+                    // TODO ???
                 }
 			
 				[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", formBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -84,9 +84,8 @@
 {
 	CFUUIDRef uuidRef     = CFUUIDCreate(kCFAllocatorDefault);
 	CFStringRef stringRef = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
-	NSString *uuid        = [NSString stringWithString:(NSString*)stringRef];
+	NSString *uuid        = [NSString stringWithString:(NSString*)CFBridgingRelease(stringRef)];
 	
-	CFRelease(stringRef);
 	CFRelease(uuidRef);
 	
 	return uuid;

@@ -21,14 +21,14 @@
     BOOL isExportsWindow;
 }
 
-@property (assign, atomic) NSMutableArray *savedRequestsArray;
-@property (assign, atomic) NSOutlineView *savedOutlineView;
+@property (strong, atomic) NSMutableArray *savedRequestsArray;
+@property (strong, atomic) NSOutlineView *savedOutlineView;
 
-@property (assign) IBOutlet NSTableView *tableView;
-@property (assign) IBOutlet NSButton *importButton;
-@property (assign) IBOutlet NSButton *exportButton;
-@property (assign) IBOutlet NSButton *allButton;
-@property (assign) IBOutlet NSTextField *label;
+@property (strong) IBOutlet NSTableView *tableView;
+@property (strong) IBOutlet NSButton *importButton;
+@property (strong) IBOutlet NSButton *exportButton;
+@property (strong) IBOutlet NSButton *allButton;
+@property (strong) IBOutlet NSTextField *label;
 
 - (void) prepareToDisplayExports;
 - (void) prepareToDisplayImports:(NSArray *)importRequests;

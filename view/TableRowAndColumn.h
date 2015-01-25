@@ -13,7 +13,7 @@
     int row;
 }
 
-@property (nonatomic, retain) NSTableColumn *column;
+@property (nonatomic, strong) NSTableColumn *column;
 @property (nonatomic, assign) int row;
 
 @end

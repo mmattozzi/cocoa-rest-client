@@ -14,7 +14,6 @@
 #import <Foundation/Foundation.h>
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
-#import <MGSFragaria/MGSSyntaxController.h>
 #import "MessagePack.h"
 #import "NSData+Base64.h"
 #import "TableRowAndColumn.h"
@@ -60,13 +59,10 @@ static CRCContentType requestContentType;
 @synthesize window;
 @synthesize submitButton;
 @synthesize urlBox;
-@synthesize responseText;
 @synthesize responseWebView;
 @synthesize responseTextHeaders;
-@synthesize requestText;
 @synthesize requestView;
 @synthesize responseView;
-@synthesize responseSyntaxBox;
 @synthesize methodButton;
 @synthesize headersTable, filesTable, paramsTable;
 @synthesize headersTableView, filesTableView, paramsTableView;
@@ -119,7 +115,6 @@ static CRCContentType requestContentType;
 	[row setObject:@"Content-Type" forKey:@"key"];
 	[row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
 	[headersTable addObject:row];
-	[row release];
 	
     xmlContentTypes = [NSArray arrayWithObjects:@"application/xml", @"application/atom+xml", @"application/rss+xml",
                        @"text/xml", @"application/soap+xml", @"application/xml-dtd", nil];
@@ -178,7 +173,6 @@ static CRCContentType requestContentType;
 		[plusParam setHidden:NO];
 		[minusParam setHidden:NO];
 	}
-
 }
 
 + (void) addBorderToView:(NSView *)view {
@@ -204,10 +198,8 @@ static CRCContentType requestContentType;
     
 	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"DELETE", @"HEAD", @"OPTIONS", nil];
 	
-	[responseText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]]; 
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
 	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];    
-	[requestText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
 	
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
@@ -239,13 +231,6 @@ static CRCContentType requestContentType;
     [responseTextPlain setEditable:NO];
     [reGetResponseMenuItem setEnabled:NO];
     
-    MGSSyntaxController *syn = [[[MGSSyntaxController alloc] init] autorelease];
-    [responseSyntaxBox addItemsWithObjectValues: [syn syntaxDefinitionNames]];
-    [responseSyntaxBox addItemWithObjectValue:@"MsgPack"];
-    [responseSyntaxBox selectItemWithObjectValue: @"JavaScript"];
-    
-    [CocoaRestClientAppDelegate addBorderToView:self.responseView];
-    [CocoaRestClientAppDelegate addBorderToView:self.requestView];
     [self initHighlightedViews];
     
     [self syntaxHighlightingPreferenceChanged];
@@ -262,11 +247,6 @@ static CRCContentType requestContentType;
     return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
 }
 
-- (IBAction) updateResponseSyntaxHighlight:(id)sender {
-    NSComboBox *box = sender;
-    [responseView setSyntaxMode: [box itemObjectValueAtIndex: [box indexOfSelectedItem]]];
-}
-
 - (IBAction)toggleSyntaxHighlighting:(id)sender {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     [[NSUserDefaults standardUserDefaults] setBool:(!syntaxHighlighting) forKey:SYNTAX_HIGHLIGHT];
@@ -277,29 +257,33 @@ static CRCContentType requestContentType;
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
     if (! syntaxHighlighting) {
+        // Switch response from syntax highlighting to plain
+        [self.responseTextPlain setString:[self.responseView string]];
         self.responseView.hidden = true;
         self.responseTextPlainView.hidden = false;
-        [self.responseText setString:@""];
-        self.responseText = self.responseTextPlain;
+        [self.responseView setString:@""];
         
+        // Switch request from syntax highlighting to plain
+        [self.requestTextPlain setString:[self.requestView string]];
         self.requestView.hidden = true;
         if (self.rawRequestInput) {
             self.requestTextPlainView.hidden = false;
         }
-        [self.requestTextPlain setString:[self.requestText string]];
-        self.requestText = self.requestTextPlain;
+        [self.requestView setString:@""];
     } else {
+        // Switch response from plain to syntax highlighting
+        [self.responseView setString:[self.responseTextPlain string]];
         self.responseView.hidden = false;
         self.responseTextPlainView.hidden = true;
-        [self.responseText setString:@""];
-        self.responseText = self.responseView.textView;
+        [self.responseTextPlain setString:@""];
         
+        // Switch request from plain to syntax highlighting
+        [self.requestView setString:[self.requestTextPlain string]];
         if (self.rawRequestInput) {
             self.requestView.hidden = false;
         }
         self.requestTextPlainView.hidden = true;
-        self.requestText = self.requestView.textView;
-        [self.requestText setString:[self.requestTextPlain string]];
+        [self.requestTextPlain setString:@""];
     }
 }
 
@@ -342,6 +326,46 @@ static CRCContentType requestContentType;
 	}
 }
 
+- (void) setResponseText:(NSString *)response {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    syntaxHighlightingMenuItem.state = syntaxHighlighting;
+    if (! syntaxHighlighting) {
+        [responseTextPlain setString:response];
+    } else {
+        [responseView setString:response];
+    }
+}
+
+- (NSString *) getResponseText {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    syntaxHighlightingMenuItem.state = syntaxHighlighting;
+    if (! syntaxHighlighting) {
+        return responseTextPlain.string;
+    } else {
+        return self.responseView.string;
+    }
+}
+
+- (void) setRequestText:(NSString *)request {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    syntaxHighlightingMenuItem.state = syntaxHighlighting;
+    if (! syntaxHighlighting) {
+        [self.requestTextPlain setString:request];
+    } else {
+        [self.requestView setString:request];
+    }
+}
+
+- (NSString *) getRequestText {
+    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
+    syntaxHighlightingMenuItem.state = syntaxHighlighting;
+    if (! syntaxHighlighting) {
+        return [self.requestTextPlain string];
+    } else {
+        return [self.requestView string];
+    }
+}
+
 - (IBAction) runSubmit:(id)sender {
 	[self determineRequestContentType];
 	NSLog(@"Got submit press");
@@ -355,7 +379,7 @@ static CRCContentType requestContentType;
 		[urlBox setStringValue:urlStr];
 	}
 	
-	[responseText setString:[NSString stringWithFormat:@"Loading %@", urlStr]];
+	[self setResponseText:[NSString stringWithFormat:@"Loading %@", urlStr]];
 	[status setStringValue:@"Opening URL..."];
 	[responseTextHeaders setString:@""];
 	[headersTab setLabel:@"Response Headers"];
@@ -382,7 +406,7 @@ static CRCContentType requestContentType;
 	
 	if(self.rawRequestInput) {
 		if (![requestMethodsWithoutBody containsObject:method]) {
-			if([filesTable count] > 0 && [[requestText string] isEqualToString:@""]) {
+			if([filesTable count] > 0 && [[self getRequestText] isEqualToString:@""]) {
 				[CRCFileRequest createRequest:request];
 			}
 			else  {
@@ -425,9 +449,6 @@ static CRCContentType requestContentType;
     
     [request setAllHTTPHeaderFields:headersDictionary];
     
-	if (lastRequest != nil) {
-		[lastRequest release];
-	}
 	lastRequest = [CRCRequest requestWithApplication:self];
 	if ([method isEqualToString:@"GET"]) {
         reGetResponseMenuItem.enabled = YES; 
@@ -435,9 +456,6 @@ static CRCContentType requestContentType;
         reGetResponseMenuItem.enabled = NO;
     }
     
-	if (startDate != nil) {
-		[startDate release];
-	}
 	startDate = [NSDate date];
     
     currentRequest = [request copy];
@@ -455,9 +473,15 @@ static CRCContentType requestContentType;
 #pragma mark Highlighted Text Views
 
 -(void) initHighlightedViews {
-    self.responseText = self.responseView.textView;
-    [self.responseText setEditable:NO];
-    self.requestText = self.requestView.textView;
+    [responseView setDelegate:nil];
+    [responseView setMode:ACEModeJSON];
+    [responseView setTheme:ACEThemeGithub];
+    [responseView setShowInvisibles:NO];
+    
+    [requestView setDelegate:nil];
+    [requestView setMode:ACEModeJSON];
+    [requestView setTheme:ACEThemeGithub];
+    [requestView setShowInvisibles:NO];
 }
 
 #pragma mark -
@@ -496,15 +520,15 @@ static CRCContentType requestContentType;
 		}
 	}
 	
-    self.responseView.syntaxMIME = contentType;
+    // TODO self.responseView.syntaxMIME = contentType;
     [responseTextHeaders setString:headers];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"Did fail");
 	[headersTab setLabel:@"Response Headers (Failed)"];
-	[responseText setString:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
-	[status setStringValue:@"Failed"];
+	[self setResponseText:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
+    [status setStringValue:@"Failed"];
     [progressIndicator stopAnimation:self];
     [progressIndicator setHidden:YES];
 }
@@ -527,7 +551,7 @@ static CRCContentType requestContentType;
         if (! [[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]) {
             return nil;
         } else {
-            NSMutableURLRequest *r = [[inRequest mutableCopy] autorelease]; // original request
+            NSMutableURLRequest *r = [inRequest mutableCopy]; // original request
             [r setURL: [inRequest URL]];
             
             // For HTTP 301, 302, & 303s, there is w3c guidance about when the POST should be 
@@ -570,7 +594,7 @@ static CRCContentType requestContentType;
             [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         } else {
             [[challenge sender] cancelAuthenticationChallenge:challenge];
-            [responseText setString:@"Authentication Failed"];
+            [self setResponseText:@"Authentication Failed"];
         }
     }
 }
@@ -589,7 +613,7 @@ static CRCContentType requestContentType;
 				NSLog(@"Error reading response: %@", error);
                 needToPrintPlain = YES;
 			} else {
-                [responseText setString:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
+                [self setResponseText:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
                 needToPrintPlain = NO;
             }
 		} else if ([jsonContentTypes containsObject:contentType]) {
@@ -600,28 +624,22 @@ static CRCContentType requestContentType;
 			id jsonObj = [parser objectWithString:jsonStringFromData];
             if (jsonObj) {
                 NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]; 
-                [responseText setString:jsonFormattedString];
+                [self setResponseText:jsonFormattedString];
                 needToPrintPlain = NO;
             }
-            [parser release];
-            [jsonStringFromData release];
-            [jsonObj release];
 		} else if ([msgPackContentTypes containsObject:contentType]) {
             NSLog(@"Formatting MsgPack");
-            NSString *parsedObjectFromMsgPack = [[[receivedData messagePackParse]JSONRepresentation]autorelease];
+            NSString *parsedObjectFromMsgPack = [[receivedData messagePackParse]JSONRepresentation];
             // In order to get pretty formatting for free (for now), we convert
             // the parsed MsgPack object back to JSON for pretty printing.
             SBJSON *parser = [[SBJSON alloc] init];
             [parser setHumanReadable:YES];
             id jsonObj = [parser objectWithString:parsedObjectFromMsgPack];
             if (jsonObj) {
-                NSString *jsonFormattedString = [[[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]autorelease];
-                [responseText setString:jsonFormattedString];
+                NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]];
+                [self setResponseText:jsonFormattedString];
                 needToPrintPlain = NO;
             }
-            [parser release];
-            [jsonObj release];
-            
         }
 	} 
 	
@@ -636,13 +654,13 @@ static CRCContentType requestContentType;
         }
         // Successfully decoded the response string
         if (plainString) {
-            [responseText setString:plainString];
+            [self setResponseText:plainString];
         } else {
-            [responseText setString:@"Unable to decode charset of response to printable string."];
+            [self setResponseText:@"Unable to decode charset of response to printable string."];
         }
 	}
     
-    [responseSyntaxBox selectItemWithObjectValue:[responseView syntaxMode]];
+    // TODO [responseSyntaxBox selectItemWithObjectValue:[responseView syntaxMode]];
     [progressIndicator stopAnimation:self];
     [progressIndicator setHidden:YES];
 }
@@ -669,8 +687,6 @@ static CRCContentType requestContentType;
 	[paramsTableView reloadData];
 	[paramsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([paramsTable count] - 1)] byExtendingSelection:NO];
 	[paramsTableView editColumn:0 row:([paramsTable count] - 1) withEvent:nil select:YES];
-	
-	[row release];
 }
 
 - (IBAction) minusParamsRow:(id)sender {
@@ -690,7 +706,6 @@ static CRCContentType requestContentType;
             [paramsTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
         }        
     }
-    [tableRowAndColumn release];
 }
 
 
@@ -717,7 +732,6 @@ static CRCContentType requestContentType;
     [filesTableView reloadData];
     [filesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([filesTable count] - 1)] byExtendingSelection:NO];
     [filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
-    [row release];
 }
 
 - (IBAction) plusFileRow:(id)sender {
@@ -773,7 +787,7 @@ static CRCContentType requestContentType;
 #pragma mark Menu methods
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
-    self.requestView.syntaxMIME = [sender title];
+    // TODO self.requestView.syntaxMIME = [sender title];
 	BOOL inserted = FALSE;
 	if([headersTable count] > 0) {
 		for(NSMutableDictionary * row in headersTable) {
@@ -791,8 +805,7 @@ static CRCContentType requestContentType;
 		[row setObject:@"Content-Type" forKey:@"key"];
 		[row setObject:[sender title] forKey:@"value"];
 		[headersTable addObject:row];
-		[headersTableView reloadData];		
-		[row release];
+		[headersTableView reloadData];
 	}
 
 //	[tabView selectTabViewItem:reqHeadersTab];
@@ -810,7 +823,7 @@ static CRCContentType requestContentType;
 
 #pragma mark Table view methods
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) tableView {
-	NSInteger count;
+	NSInteger count= nil;
 	
 	if(tableView == headersTableView)
 		count = [headersTable count];
@@ -895,7 +908,6 @@ static CRCContentType requestContentType;
             [headersTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
         }        
     }
-    [tableRowAndColumn release];
 }
 
 - (IBAction) plusHeaderRow:(id)sender {
@@ -906,8 +918,6 @@ static CRCContentType requestContentType;
 	[headersTableView reloadData];
 	[headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([headersTable count] - 1)] byExtendingSelection:NO];
 	[headersTableView editColumn:0 row:([headersTable count] - 1) withEvent:nil select:YES];
-	
-	[row release];
 }
 
 - (IBAction) minusHeaderRow:(id)sender {
@@ -1192,10 +1202,10 @@ static CRCContentType requestContentType;
     self.preemptiveBasicAuth = NO;
 	
 	if ([request objectForKey:@"body"]) {
-		[requestText setString:[request objectForKey:@"body"]];
+		[self setRequestText:[request objectForKey:@"body"]];
 	} 
 	else {
-		[requestText setString:@""];
+        [self setRequestText:@""];
 	}
 	
 	NSArray *headers = [request objectForKey:@"headers"];
@@ -1236,11 +1246,11 @@ static CRCContentType requestContentType;
 	
 	if(request.rawRequestInput)
 	{
-		[requestText setString:request.requestText];
+        [self setRequestText:request.requestText];
 	}
 	else 
 	{
-		[requestText setString:@""];
+		[self setRequestText:@""];
 	}
 	
 	NSArray *headers = [[NSArray alloc] initWithArray:request.headers copyItems:YES];
@@ -1295,7 +1305,7 @@ static CRCContentType requestContentType;
             NSLog(@"Can not create a support directory.\n%@", [error localizedDescription]);
             return nil;
         }
-        appDataFilePath = [[dir stringByAppendingPathComponent: DATAFILE_NAME] retain];
+        appDataFilePath = [dir stringByAppendingPathComponent: DATAFILE_NAME];
     }
     return appDataFilePath;  
 }
@@ -1320,7 +1330,7 @@ static CRCContentType requestContentType;
 }
 
 - (void) invalidFileAlert {
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"OK"];
     [alert setMessageText:@"Invalid file"];
     [alert setInformativeText:@"Unable to read stored requests from file."];
@@ -1441,24 +1451,24 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction)zoomIn:(id)sender {
-    NSFont *existingFont = [self.responseText font];
-    if (existingFont) {
-        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize + 2]];
-    }
+//    NSFont *existingFont = [self.responseText font];
+//    if (existingFont) {
+//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize + 2]];
+//    }
 }
 
 - (IBAction)zoomOut:(id)sender{
-    NSFont *existingFont = [self.responseText font];
-    if (existingFont) {
-        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize - 2]];
-    } 
+//    NSFont *existingFont = [self.responseText font];
+//    if (existingFont) {
+//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize - 2]];
+//    } 
 }
 
 - (IBAction) zoomDefault:(id)sender {
-    NSFont *existingFont = [self.responseText font];
-    if (existingFont) {
-        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:DEFAULT_FONT_SIZE]];
-    }
+//    NSFont *existingFont = [self.responseText font];
+//    if (existingFont) {
+//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:DEFAULT_FONT_SIZE]];
+//    }
 }
 
 - (IBAction) exportResponse:(id)sender {
@@ -1469,7 +1479,7 @@ static CRCContentType requestContentType;
         NSLog(@"Saving requests to %@", path);
         
         NSError *error;
-        BOOL savedOK = [[responseText string] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        BOOL savedOK = [[self getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         if (! savedOK) {
             NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
@@ -1497,7 +1507,7 @@ static CRCContentType requestContentType;
     
     NSLog(@"Saving to %@", path);
     NSError *error;
-    BOOL savedOK = [[responseText string] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    BOOL savedOK = [[self getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     if (! savedOK) {
         NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
@@ -1517,7 +1527,8 @@ static CRCContentType requestContentType;
     NSString *path = [self saveResponseToTempFile];
     if (path) {
         NSURL *outAppURL;
-        OSStatus osStatus = LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator, CFSTR("html"), kLSRolesViewer, (FSRef *) nil, (CFURLRef *) &outAppURL);
+        OSStatus osStatus = nil;
+        //OSStatus osStatus = LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator, CFSTR("html"), kLSRolesViewer, (FSRef *) nil, (CFURLRef *) &outAppURL);
         NSLog(@"Browser app = %@", outAppURL);
         
         if (outAppURL != nil) {

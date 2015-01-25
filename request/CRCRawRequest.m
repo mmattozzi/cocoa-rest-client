@@ -14,7 +14,7 @@
 {
 	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMutableData * body    = [NSMutableData data];
-	[body appendData:[[delegate.requestText string] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[[delegate getRequestText] dataUsingEncoding:NSUTF8StringEncoding]];
 	[request setHTTPBody: body];
 }
 @end

@@ -30,9 +30,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void) setupWindow {
     if (isExportsWindow) {

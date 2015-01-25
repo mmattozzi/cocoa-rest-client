@@ -12,6 +12,6 @@
     NSTextView *messageText;
 }
 
-@property (assign) IBOutlet NSTextView *messageText;
+@property (strong) IBOutlet NSTextView *messageText;
 
 @end

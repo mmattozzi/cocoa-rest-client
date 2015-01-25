@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0771223B-C4FF-43BD-9172-5F03C6854A68</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CocoaRestClient</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8D5FDD88-B647-430C-B722-1EA8AD4F081C</key>
+		<string>ssh://github.com/mmattozzi/cocoa-rest-client.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CocoaRestClient.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8D5FDD88-B647-430C-B722-1EA8AD4F081C</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/mmattozzi/cocoa-rest-client.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8D5FDD88-B647-430C-B722-1EA8AD4F081C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8D5FDD88-B647-430C-B722-1EA8AD4F081C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocoa-rest-client</string>
+		</dict>
+	</array>
+</dict>
+</plist>
