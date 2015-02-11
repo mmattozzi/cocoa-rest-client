@@ -43,6 +43,7 @@
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
 		AFA11ACD15CF036300831738 /* motd.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFA11ACC15CF036300831738 /* motd.txt */; };
+		AFB3AA3D1A87E43400012E04 /* HighlightingTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */; };
 		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
 		AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBB7D4914F98B4000424C12 /* Preferences.xib */; };
 		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
@@ -156,6 +157,8 @@
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
 		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeController.m; path = core/WelcomeController.m; sourceTree = "<group>"; };
 		AFA11ACC15CF036300831738 /* motd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = motd.txt; path = English.lproj/motd.txt; sourceTree = "<group>"; };
+		AFB3AA3B1A87E43400012E04 /* HighlightingTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightingTypeManager.h; path = view/HighlightingTypeManager.h; sourceTree = "<group>"; };
+		AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightingTypeManager.m; path = view/HighlightingTypeManager.m; sourceTree = "<group>"; };
 		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
 		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
 		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
@@ -445,6 +448,8 @@
 				2C03E34D16CA2E0F00C7608A /* CRCHTTPHeaderCell.h */,
 				AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */,
 				AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */,
+				AFB3AA3B1A87E43400012E04 /* HighlightingTypeManager.h */,
+				AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -479,7 +484,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CocoaRestClient" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -558,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				AFB3AA3D1A87E43400012E04 /* HighlightingTypeManager.m in Sources */,
 				AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */,
 				AF074F5810F595AF00EE44D8 /* NSObject+SBJSON.m in Sources */,
 				AF074F5910F595AF00EE44D8 /* NSString+SBJSON.m in Sources */,
@@ -657,7 +663,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -682,7 +688,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = CocoaRestClient;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

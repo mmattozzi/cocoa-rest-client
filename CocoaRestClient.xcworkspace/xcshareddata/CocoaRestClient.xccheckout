@@ -10,29 +10,53 @@
 	<string>CocoaRestClient</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8D5FDD88-B647-430C-B722-1EA8AD4F081C</key>
+		<key>1E2D1B7A28CCAD432519863A54B954C933696C3B</key>
 		<string>ssh://github.com/mmattozzi/cocoa-rest-client.git</string>
+		<key>378B54B5205DE31B3B2EBDA14687C757C53E503B</key>
+		<string>https://github.com/mmattozzi/ACEView.git</string>
+		<key>6AA9B563339F4175433F6583E018B0E6CF800437</key>
+		<string>https://github.com/ajaxorg/ace-builds.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CocoaRestClient.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8D5FDD88-B647-430C-B722-1EA8AD4F081C</key>
+		<key>1E2D1B7A28CCAD432519863A54B954C933696C3B</key>
 		<string>..</string>
+		<key>378B54B5205DE31B3B2EBDA14687C757C53E503B</key>
+		<string>../../ACEView</string>
+		<key>6AA9B563339F4175433F6583E018B0E6CF800437</key>
+		<string>../../ACEView/ACEView/Dependencies/ace</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/mmattozzi/cocoa-rest-client.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8D5FDD88-B647-430C-B722-1EA8AD4F081C</string>
+	<string>1E2D1B7A28CCAD432519863A54B954C933696C3B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8D5FDD88-B647-430C-B722-1EA8AD4F081C</string>
+			<string>6AA9B563339F4175433F6583E018B0E6CF800437</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ace</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>378B54B5205DE31B3B2EBDA14687C757C53E503B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ACEView</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1E2D1B7A28CCAD432519863A54B954C933696C3B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocoa-rest-client</string>
 		</dict>

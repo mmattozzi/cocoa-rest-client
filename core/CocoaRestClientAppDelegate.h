@@ -15,6 +15,7 @@
 #import "WelcomeController.h"
 #import "TableRowAndColumn.h"
 #import "ACEView/ACEView.h"
+#import "HighlightingTypeManager.h"
 
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
@@ -52,6 +53,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private NSArray *xmlContentTypes;
     @private NSArray *jsonContentTypes;
     @private NSArray *msgPackContentTypes;
+    @private HighlightingTypeManager *responseTypeManager;
     
     @private NSString *appDataFilePath;
     

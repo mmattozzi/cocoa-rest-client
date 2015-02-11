@@ -475,12 +475,14 @@ static CRCContentType requestContentType;
 -(void) initHighlightedViews {
     [responseView setDelegate:nil];
     [responseView setMode:ACEModeJSON];
-    [responseView setTheme:ACEThemeGithub];
+    [responseView setTheme:ACEThemeChrome];
     [responseView setShowInvisibles:NO];
+    [responseView setReadOnly:YES];
+    responseTypeManager = [[HighlightingTypeManager alloc] initWithView:responseView];
     
     [requestView setDelegate:nil];
     [requestView setMode:ACEModeJSON];
-    [requestView setTheme:ACEThemeGithub];
+    [requestView setTheme:ACEThemeChrome];
     [requestView setShowInvisibles:NO];
 }
 
@@ -521,6 +523,7 @@ static CRCContentType requestContentType;
 	}
 	
     // TODO self.responseView.syntaxMIME = contentType;
+    [responseTypeManager setModeForMimeType:contentType];
     [responseTextHeaders setString:headers];
 }
 
