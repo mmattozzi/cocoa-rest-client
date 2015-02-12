@@ -481,9 +481,10 @@ static CRCContentType requestContentType;
     responseTypeManager = [[HighlightingTypeManager alloc] initWithView:responseView];
     
     [requestView setDelegate:nil];
-    [requestView setMode:ACEModeJSON];
+    [requestView setMode:ACEModeText];
     [requestView setTheme:ACEThemeChrome];
     [requestView setShowInvisibles:NO];
+    requestTypeManager = [[HighlightingTypeManager alloc] initWithView:requestView];
 }
 
 #pragma mark -
@@ -790,7 +791,8 @@ static CRCContentType requestContentType;
 #pragma mark Menu methods
 - (IBAction) contentTypeMenuItemSelected:(id)sender
 {
-    // TODO self.requestView.syntaxMIME = [sender title];
+    [requestTypeManager setModeForMimeType:[sender title]];
+    
 	BOOL inserted = FALSE;
 	if([headersTable count] > 0) {
 		for(NSMutableDictionary * row in headersTable) {
@@ -811,7 +813,7 @@ static CRCContentType requestContentType;
 		[headersTableView reloadData];
 	}
 
-//	[tabView selectTabViewItem:reqHeadersTab];
+	[tabView selectTabViewItem:reqHeadersTab];
 }
 
 - (IBAction) allowSelfSignedCerts:(id)sender {

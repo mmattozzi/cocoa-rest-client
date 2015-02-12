@@ -54,6 +54,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private NSArray *jsonContentTypes;
     @private NSArray *msgPackContentTypes;
     @private HighlightingTypeManager *responseTypeManager;
+    @private HighlightingTypeManager *requestTypeManager;
     
     @private NSString *appDataFilePath;
     

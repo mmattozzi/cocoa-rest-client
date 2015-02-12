@@ -22,7 +22,12 @@
         @"text/html": [NSNumber numberWithInteger:ACEModeHTML],
         @"application/atom+xml": [NSNumber numberWithInteger:ACEModeXML],
         @"application/rss+xml": [NSNumber numberWithInteger:ACEModeXML],
-        @"text/css": [NSNumber numberWithInteger:ACEModeCSS]
+        @"text/css": [NSNumber numberWithInteger:ACEModeCSS],
+        @"application/soap+xml": [NSNumber numberWithInteger:ACEModeXML],
+        @"application/xml-dtd": [NSNumber numberWithInteger:ACEModeXML],
+        @"text/yaml": [NSNumber numberWithInteger:ACEModeYAML],
+        @"application/x-yaml": [NSNumber numberWithInteger:ACEModeYAML],
+        @"application/yaml": [NSNumber numberWithInteger:ACEModeYAML]
     };
     
     return self;
