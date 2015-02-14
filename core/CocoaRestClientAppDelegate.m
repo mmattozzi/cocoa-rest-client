@@ -31,7 +31,6 @@ NSString* const FOLLOW_REDIRECTS = @"followRedirects";
 NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
-NSString* const WELCOME_MESSAGE = @"welcomeMessage-1.3.3";
 NSString* const SAVED_DRAWER_SIZE = @"savedDrawerSize";
 NSInteger const DEFAULT_FONT_SIZE = 12;
 
@@ -100,7 +99,6 @@ static CRCContentType requestContentType;
     [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
-    [defaults setValue:[NSNumber numberWithBool:YES] forKey:WELCOME_MESSAGE];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -238,9 +236,6 @@ static CRCContentType requestContentType;
     // Enable Drag and Drop for outline view of saved requests
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_MESSAGE]) {
-        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showWelcome) userInfo:nil repeats:NO];        
-    }    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
@@ -1444,15 +1439,6 @@ static CRCContentType requestContentType;
         self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
     
     [self.preferencesController showWindow:self];
-}
-
-- (void) showWelcome {
-    [self.welcomeController showWindow:self];
-    [[self.welcomeController window] makeKeyAndOrderFront:self];
-    [[self.welcomeController window] setOrderedIndex:0];
-    [[self.welcomeController window] center];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:WELCOME_MESSAGE];
 }
 
 - (IBAction)zoomIn:(id)sender {

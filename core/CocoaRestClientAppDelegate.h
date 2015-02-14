@@ -160,7 +160,6 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
-- (void) showWelcome;
 - (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
 
