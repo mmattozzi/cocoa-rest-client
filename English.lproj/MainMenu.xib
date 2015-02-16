@@ -330,6 +330,176 @@ CA
                                     <action selector="zoomOut:" target="494" id="1009"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="mc9-XW-kOE"/>
+                            <menuItem title="Theme" id="kVo-uI-8oy">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Theme" id="fXd-Nr-6M9">
+                                    <items>
+                                        <menuItem title="Ambience" id="7ul-Cj-GHu">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="3sK-a7-G4j"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Chrome" tag="1" id="cCD-Il-KvG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="CCO-Fd-KsS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Clouds" tag="2" id="nAp-i5-2tJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="zOz-Ab-Iv3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Clouds Midnight" tag="3" id="Ghv-wS-36F">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="K3s-IM-Aic"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Cobalt" tag="4" id="98m-FX-4eV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="RaX-jJ-6UN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Crimson" tag="5" id="Vr4-em-NIU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="YXA-7F-PdS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Dawn" tag="6" id="YnY-aH-j00">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="zxB-GE-ahp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Dreamweaver" tag="7" id="TTy-RD-YIc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="C72-8T-uyq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Eclipse" tag="8" id="o1E-br-NOf">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="YVB-jC-Tnx"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Github" tag="9" id="v40-9p-3g1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="M2o-87-jB9"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Idle Fingers" tag="10" id="0jM-8L-imV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="crS-vj-mA1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Merbivore" tag="11" id="9RZ-1v-4kn">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="4oe-QX-0Sa"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Merbivore Soft" tag="12" id="20w-NG-zKz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="iKw-AY-qqb"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Mono Industrial" tag="13" id="Ir9-gt-geS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="TJ3-8a-Wch"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Monokai" tag="14" id="C5Q-xy-uZB">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="P9K-9e-xSr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Pastel On Dark" tag="15" id="2WL-4o-eH9">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="2bm-gU-IEk"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Solarized Dark" tag="16" id="NZx-Li-Fsx">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="kYH-Zl-8Hx"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Solarized Light" tag="17" id="n8X-Yw-jTW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="Hd3-UC-bLv"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Textmate" tag="18" id="t94-6P-LPL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="Y6Y-A7-guB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tomorrow" tag="19" id="TEc-Iw-URA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="2EF-KU-qa1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tomorrow Night" tag="20" id="Lga-Wi-pvy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="Ttq-xZ-3Z6"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tomorrow Night Blue" tag="21" id="TLr-d5-3K6">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="T9w-qp-JmR"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tomorrow Night Bright" tag="22" id="YrM-dK-8gS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="JqM-9e-sOM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tomorrow Night Eighties" tag="23" id="9XS-LS-kmT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="S1X-rD-t2c"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Twilight" tag="24" id="spD-LU-0gz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="AHg-Sd-1Rt"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Vibrant Ink" tag="25" id="YD2-ha-a5I">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="KGD-Y2-qzC"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Xcode" tag="26" id="I8k-cj-3Rj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="themeMenuItemSelected:" target="494" id="xzg-9H-Zzd"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -1093,6 +1263,7 @@ CA
                 <outlet property="submitButton" destination="550" id="562"/>
                 <outlet property="syntaxHighlightingMenuItem" destination="977" id="988"/>
                 <outlet property="tabView" destination="633" id="894"/>
+                <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
                 <outlet property="timeoutField" destination="760" id="782"/>
                 <outlet property="timeoutSheet" destination="758" id="771"/>
                 <outlet property="urlBox" destination="533" id="561"/>

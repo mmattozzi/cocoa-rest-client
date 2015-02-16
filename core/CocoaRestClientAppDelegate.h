@@ -106,6 +106,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (weak) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
 @property (strong) WelcomeController *welcomeController;
+@property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
 - (IBAction) runSubmit:(id)sender;
 - (void) setResponseText:(NSString *)response;
@@ -137,6 +138,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
+- (IBAction) themeMenuItemSelected:(id)sender;
 - (IBAction) handleOpenWindow:(id)sender;
 - (IBAction) handleCloseWindow:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;

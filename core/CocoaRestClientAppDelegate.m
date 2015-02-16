@@ -32,6 +32,7 @@ NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
 NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
 NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 NSString* const SAVED_DRAWER_SIZE = @"savedDrawerSize";
+NSString* const THEME = @"theme";
 NSInteger const DEFAULT_FONT_SIZE = 12;
 
 enum {
@@ -91,6 +92,7 @@ static CRCContentType requestContentType;
 @synthesize syntaxHighlightingMenuItem;
 @synthesize reGetResponseMenuItem;
 @synthesize welcomeController;
+@synthesize themeMenuItem;
 
 - (id) init {
 	self = [super init];
@@ -99,6 +101,7 @@ static CRCContentType requestContentType;
     [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
+    [defaults setValue:[NSNumber numberWithInteger:ACEThemeChrome] forKey:THEME];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -468,16 +471,19 @@ static CRCContentType requestContentType;
 #pragma mark Highlighted Text Views
 
 -(void) initHighlightedViews {
+    ACETheme aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
+    [[[themeMenuItem submenu] itemWithTag:aceTheme] setState:NSOnState];
+    
     [responseView setDelegate:nil];
     [responseView setMode:ACEModeJSON];
-    [responseView setTheme:ACEThemeChrome];
+    [responseView setTheme:aceTheme];
     [responseView setShowInvisibles:NO];
     [responseView setReadOnly:YES];
     responseTypeManager = [[HighlightingTypeManager alloc] initWithView:responseView];
     
     [requestView setDelegate:nil];
     [requestView setMode:ACEModeText];
-    [requestView setTheme:ACEThemeChrome];
+    [requestView setTheme:aceTheme];
     [requestView setShowInvisibles:NO];
     requestTypeManager = [[HighlightingTypeManager alloc] initWithView:requestView];
 }
@@ -809,6 +815,14 @@ static CRCContentType requestContentType;
 	}
 
 	[tabView selectTabViewItem:reqHeadersTab];
+}
+
+- (IBAction) themeMenuItemSelected:(id)sender {
+    [responseView setTheme:[sender tag]];
+    [requestView setTheme:[sender tag]];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
+    [((NSMenuItem *) sender) setState:NSOnState];
 }
 
 - (IBAction) allowSelfSignedCerts:(id)sender {
