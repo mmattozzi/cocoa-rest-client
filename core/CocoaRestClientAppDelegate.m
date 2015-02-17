@@ -15,7 +15,7 @@
 #import "JSON.h"
 #import <Sparkle/SUUpdater.h>
 #import "MessagePack.h"
-#import "NSData+Base64.h"
+#import "MF_Base64Additions.h"
 #import "TableRowAndColumn.h"
 #import "CRCSavedRequestFolder.h"
 
@@ -441,7 +441,7 @@ static CRCContentType requestContentType;
     // Pre-emptive HTTP Basic Auth
     if (preemptiveBasicAuth && [username stringValue] && [password stringValue]) {
         NSData *plainTextUserPass = [ [NSString stringWithFormat:@"%@:%@", [username stringValue], [password stringValue]] dataUsingEncoding:NSUTF8StringEncoding];
-        [headersDictionary setObject:[NSString stringWithFormat:@"Basic %@", [plainTextUserPass base64EncodedString]] 
+        [headersDictionary setObject:[NSString stringWithFormat:@"Basic %@", [plainTextUserPass base64String]]
                               forKey:@"Authorization"];
     }
     

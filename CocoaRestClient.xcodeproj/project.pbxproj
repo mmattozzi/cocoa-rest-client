@@ -36,7 +36,6 @@
 		AF074F5D10F595AF00EE44D8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */; };
 		AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
-		AF7CE5A617618BF80080363B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5A517618BF80080363B /* NSData+Base64.m */; };
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
 		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
@@ -147,8 +146,6 @@
 		AF074F5610F595AF00EE44D8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = JSON/SBJsonWriter.h; sourceTree = "<group>"; };
 		AF074F5710F595AF00EE44D8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
-		AF7CE5A417618BF80080363B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		AF7CE5A517618BF80080363B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableRowAndColumn.h; path = view/TableRowAndColumn.h; sourceTree = "<group>"; };
 		AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableRowAndColumn.m; path = view/TableRowAndColumn.m; sourceTree = "<group>"; };
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -214,7 +211,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AF7CE5A317618BF80080363B /* Base64 */,
 				510FDE2F17036FDC0024972E /* MsgPack */,
 				AF1A1B9816A1DF1E00915644 /* core */,
 				AFBB7D4814F985AB00424C12 /* view */,
@@ -386,15 +382,6 @@
 				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
 			);
 			name = core;
-			sourceTree = "<group>";
-		};
-		AF7CE5A317618BF80080363B /* Base64 */ = {
-			isa = PBXGroup;
-			children = (
-				AF7CE5A417618BF80080363B /* NSData+Base64.h */,
-				AF7CE5A517618BF80080363B /* NSData+Base64.m */,
-			);
-			path = Base64;
 			sourceTree = "<group>";
 		};
 		AFBB7D4314F939D300424C12 /* JSON */ = {
@@ -600,7 +587,6 @@
 				510FDE5B17036FDC0024972E /* NSArray+MessagePack.m in Sources */,
 				510FDE5C17036FDC0024972E /* NSData+MessagePack.m in Sources */,
 				510FDE5D17036FDC0024972E /* NSDictionary+MessagePack.m in Sources */,
-				AF7CE5A617618BF80080363B /* NSData+Base64.m in Sources */,
 				AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */,
 				AFBBA03E18D4AB93002E7036 /* CRCSavedRequestFolder.m in Sources */,
 			);
