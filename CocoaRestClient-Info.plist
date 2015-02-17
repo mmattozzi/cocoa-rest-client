@@ -8,8 +8,6 @@
 	<string>Cocoa Rest Client</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>cocoaRestClient.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.restlesscode.cocoarestclient</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -32,6 +30,8 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUEnableSystemProfiling</key>
+	<true/>
 	<key>SUFeedURL</key>
 	<string>http://restlesscode.org/cocoa-rest-client/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
@@ -70,7 +70,5 @@
 		<string>Via</string>
 		<string>Warning</string>
 	</array>
-	<key>SUEnableSystemProfiling</key>
-	<true/>
 </dict>
 </plist>
