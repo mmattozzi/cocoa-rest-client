@@ -1201,7 +1201,6 @@ static CRCContentType requestContentType;
 	else if([request isKindOfClass:[CRCRequest class]]) {
 		[self loadSavedCRCRequest:(CRCRequest *)request];
 	}
-	
 }
 
 // if it's a dictionary it's the old format, files, params, rawRequestInput will not be present
@@ -1281,6 +1280,9 @@ static CRCContentType requestContentType;
 		for(NSDictionary *header in headers) {
 			NSMutableDictionary *headerTranslated = [[NSMutableDictionary alloc] initWithDictionary:header];
 			[headersTable addObject:headerTranslated];
+            if ([((NSString *)[header objectForKey:@"key"]) isEqualToString:@"Content-Type"]) {
+                [requestTypeManager setModeForMimeType:[header objectForKey:@"value"]];
+            }
 		}
 	}
 	
