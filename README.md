@@ -69,12 +69,12 @@ Source and Contributions
 =================
 * Source code is hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
 * If you would like to contribute, please fork and create a pull request on Github 
-* Downloads and issues will still be kept up to date on Google Code. I will probably keep source up to date with each release.
-* Source uses [Cocoapods](http://cocoapods.org/) for dependencies, to get started, install CocoaPods and in the main project directory run:
+* Source uses [Cocoapods](http://cocoapods.org/) for dependencies, to get started, [install CocoaPods](http://guides.cocoapods.org/using/getting-started.html) and in the main project directory run:
     
     ```
       pod install
     ```
+  * Note that you must have a github account and a public key registered with github so that CocoaPods can pull down a github-hosted dependency. 
 
 Credits
 =================
@@ -83,5 +83,5 @@ Credits
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
 * ACEView syntax highlighting (https://github.com/faceleg/ACEView)
 * Base64 encoding uses Matt Gallagher's NSData+Base64 code (http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html)
-* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson
+* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson, Diego Massanti
 
