@@ -12,7 +12,7 @@
 #import "CRCFileRequest.h"
 #import "CRCRequest.h"
 #import <Foundation/Foundation.h>
-#import "JSON.h"
+#import <SBJson4.h>
 #import <Sparkle/SUUpdater.h>
 #import "MessagePack.h"
 #import "MF_Base64Additions.h"
@@ -93,6 +93,7 @@ static CRCContentType requestContentType;
 @synthesize reGetResponseMenuItem;
 @synthesize welcomeController;
 @synthesize themeMenuItem;
+@synthesize jsonWriter;
 
 - (id) init {
 	self = [super init];
@@ -186,6 +187,10 @@ static CRCContentType requestContentType;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.jsonWriter = [[SBJson4Writer alloc] init];
+    self.jsonWriter.humanReadable = YES;
+    self.jsonWriter.sortKeys = NO;
+    
     [methodButton removeAllItems];
 	[methodButton addItemWithObjectValue:@"GET"];
 	[methodButton addItemWithObjectValue:@"POST"];
@@ -604,6 +609,49 @@ static CRCContentType requestContentType;
     }
 }
 
+- (void)prettyPrintJsonResponseFromObject:(id)obj {
+    id data = [self.jsonWriter dataWithObject:obj];
+    NSString *responseFormattedString =
+    [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [self setResponseText:responseFormattedString];
+}
+
+- (void)prettyPrintJsonResponseFromString:(NSData*)jsonData {
+    NSLog(@"Attempting to pretty print JSON");
+    
+    id block = ^(id obj, BOOL *ignored) {
+        [self prettyPrintJsonResponseFromObject:obj];
+    };
+    
+    id eh = ^(NSError *err) {
+        NSLog(@"JSON parse error %@", err.description);
+        [self printResponsePlain];
+    };
+    
+    id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
+    SBJson4ParserStatus status = [parser parse:jsonData];
+    if (status == SBJson4ParserWaitingForData) {
+        NSLog(@"Unexpected end of JSON content");
+        [self printResponsePlain];
+    }
+}
+
+- (void)printResponsePlain {
+    // TODO: Use charset to select decoding
+    // Attempt to decode the text as UTF8
+    NSString *plainString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    if (! plainString) {
+        // If not UTF8 try ISO-8859-1
+        plainString = [[NSString alloc] initWithData:receivedData encoding:NSISOLatin1StringEncoding];
+    }
+    // Successfully decoded the response string
+    if (plainString) {
+        [self setResponseText:plainString];
+    } else {
+        [self setResponseText:@"Unable to decode charset of response to printable string."];
+    }
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSTimeInterval elapsed = [startDate timeIntervalSinceNow];
 	[status setStringValue:[NSString stringWithFormat:@"Finished in %f seconds", -1*elapsed]];
@@ -622,50 +670,20 @@ static CRCContentType requestContentType;
                 needToPrintPlain = NO;
             }
 		} else if ([jsonContentTypes containsObject:contentType]) {
-			NSLog(@"Formatting JSON");
-			SBJSON *parser = [[SBJSON alloc] init];
-			[parser setHumanReadable:YES];
-            NSString *jsonStringFromData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-			id jsonObj = [parser objectWithString:jsonStringFromData];
-            if (jsonObj) {
-                NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]]; 
-                [self setResponseText:jsonFormattedString];
-                needToPrintPlain = NO;
-            }
+            [self prettyPrintJsonResponseFromString:receivedData];
+            needToPrintPlain = NO;
 		} else if ([msgPackContentTypes containsObject:contentType]) {
-            NSLog(@"Formatting MsgPack");
-            NSString *parsedObjectFromMsgPack = [[receivedData messagePackParse]JSONRepresentation];
-            // In order to get pretty formatting for free (for now), we convert
-            // the parsed MsgPack object back to JSON for pretty printing.
-            SBJSON *parser = [[SBJSON alloc] init];
-            [parser setHumanReadable:YES];
-            id jsonObj = [parser objectWithString:parsedObjectFromMsgPack];
-            if (jsonObj) {
-                NSString *jsonFormattedString = [[NSString alloc] initWithString:[parser stringWithObject:jsonObj]];
-                [self setResponseText:jsonFormattedString];
-                needToPrintPlain = NO;
-            }
+            NSLog(@"Attempting to format MsgPack as JSON");
+            [self prettyPrintJsonResponseFromObject:[receivedData messagePackParse]];
+            needToPrintPlain = NO;
         }
 	} 
 	
 	// Bail out, just print the text
 	if (needToPrintPlain) {
-        // TODO: Use charset to select decoding
-        // Attempt to decode the text as UTF8
-        NSString *plainString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-        if (! plainString) {
-            // If not UTF8 try ISO-8859-1
-            plainString = [[NSString alloc] initWithData:receivedData encoding:NSISOLatin1StringEncoding];
-        }
-        // Successfully decoded the response string
-        if (plainString) {
-            [self setResponseText:plainString];
-        } else {
-            [self setResponseText:@"Unable to decode charset of response to printable string."];
-        }
+        [self printResponsePlain];
 	}
     
-    // TODO [responseSyntaxBox selectItemWithObjectValue:[responseView syntaxMode]];
     [progressIndicator stopAnimation:self];
     [progressIndicator setHidden:YES];
 }
@@ -826,12 +844,13 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) allowSelfSignedCerts:(id)sender {
-    if ([sender state] == NSOnState) {
+    NSMenuItem* menuItemSender = (NSMenuItem *) sender;
+    if ([menuItemSender state] == NSOnState) {
         allowSelfSignedCerts = NO;
-        [sender setState:NSOffState];
+        [menuItemSender setState:NSOffState];
     } else {
         allowSelfSignedCerts = YES;
-        [sender setState:NSOnState];
+        [menuItemSender setState:NSOnState];
     }
 }
 

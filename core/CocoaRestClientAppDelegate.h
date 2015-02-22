@@ -16,6 +16,7 @@
 #import "TableRowAndColumn.h"
 #import "ACEView/ACEView.h"
 #import "HighlightingTypeManager.h"
+#import <SBJson4.h>
 
 extern NSString* const FOLLOW_REDIRECTS;
 extern NSString* const RESPONSE_TIMEOUT;
@@ -61,7 +62,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     id eventMonitor;	
 }
 
-
+@property (strong) SBJson4Writer *jsonWriter;
 
 @property (nonatomic, readonly) NSMutableArray *headersTable;
 @property (nonatomic, readonly) NSMutableArray *filesTable;
