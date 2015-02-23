@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import <SBJson4.h>
 #import <Sparkle/SUUpdater.h>
-#import "MessagePack.h"
+#import "MsgPackSerialization.h"
 #import "MF_Base64Additions.h"
 #import "TableRowAndColumn.h"
 #import "CRCSavedRequestFolder.h"
@@ -674,7 +674,7 @@ static CRCContentType requestContentType;
             needToPrintPlain = NO;
 		} else if ([msgPackContentTypes containsObject:contentType]) {
             NSLog(@"Attempting to format MsgPack as JSON");
-            [self prettyPrintJsonResponseFromObject:[receivedData messagePackParse]];
+            [self prettyPrintJsonResponseFromObject:[MsgPackSerialization MsgPackObjectWithData:receivedData options:0 error:nil]];
             needToPrintPlain = NO;
         }
 	} 
