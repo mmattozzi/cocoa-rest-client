@@ -58,6 +58,7 @@ extern NSString* const RESPONSE_TIMEOUT;
     @private HighlightingTypeManager *requestTypeManager;
     
     @private NSString *appDataFilePath;
+    @private NSUInteger aceViewFontSize;
     
     id eventMonitor;	
 }

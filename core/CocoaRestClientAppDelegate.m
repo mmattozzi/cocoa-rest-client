@@ -479,17 +479,21 @@ static CRCContentType requestContentType;
     ACETheme aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
     [[[themeMenuItem submenu] itemWithTag:aceTheme] setState:NSOnState];
     
+    aceViewFontSize = 12;
+    
     [responseView setDelegate:nil];
     [responseView setMode:ACEModeJSON];
     [responseView setTheme:aceTheme];
     [responseView setShowInvisibles:NO];
     [responseView setReadOnly:YES];
+    [responseView setFontSize:aceViewFontSize];
     responseTypeManager = [[HighlightingTypeManager alloc] initWithView:responseView];
     
     [requestView setDelegate:nil];
     [requestView setMode:ACEModeText];
     [requestView setTheme:aceTheme];
     [requestView setShowInvisibles:NO];
+    [requestView setFontSize:aceViewFontSize];
     requestTypeManager = [[HighlightingTypeManager alloc] initWithView:requestView];
 }
 
@@ -1477,24 +1481,20 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction)zoomIn:(id)sender {
-//    NSFont *existingFont = [self.responseText font];
-//    if (existingFont) {
-//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize + 2]];
-//    }
+    aceViewFontSize += 2;
+    [responseView setFontSize:aceViewFontSize];
+    [requestView setFontSize:aceViewFontSize];
 }
 
 - (IBAction)zoomOut:(id)sender{
-//    NSFont *existingFont = [self.responseText font];
-//    if (existingFont) {
-//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:existingFont.pointSize - 2]];
-//    } 
+    aceViewFontSize -= 2;
+    [responseView setFontSize:aceViewFontSize];
+    [requestView setFontSize:aceViewFontSize];
 }
 
 - (IBAction) zoomDefault:(id)sender {
-//    NSFont *existingFont = [self.responseText font];
-//    if (existingFont) {
-//        [self.responseText setFont:[[NSFontManager sharedFontManager] convertFont:existingFont toSize:DEFAULT_FONT_SIZE]];
-//    }
+    [responseView setFontSize:DEFAULT_FONT_SIZE];
+    [requestView setFontSize:DEFAULT_FONT_SIZE];
 }
 
 - (IBAction) exportResponse:(id)sender {
