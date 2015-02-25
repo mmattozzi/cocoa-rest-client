@@ -24,6 +24,7 @@
 
 #define APPLICATION_NAME @"CocoaRestClient"
 #define DATAFILE_NAME @"CocoaRestClient.savedRequests"
+#define BACKUP_DATAFILE_1_3_8 @"CocoaRestClient.savedRequests.backup-1.3.8"
 
 #pragma mark -
 #pragma mark User default setting keys
@@ -1345,6 +1346,19 @@ static CRCContentType requestContentType;
             return nil;
         }
         appDataFilePath = [dir stringByAppendingPathComponent: DATAFILE_NAME];
+        
+        // On first time startup of version 1.3.8 of the app, backup the data file since the format
+        // will make it backwards incompatible.
+        NSString *backupDataFilePath = [dir stringByAppendingPathComponent:BACKUP_DATAFILE_1_3_8];
+        if (! [fileManager fileExistsAtPath:backupDataFilePath]) {
+            NSError *error = nil;
+            [fileManager copyItemAtPath:appDataFilePath toPath:backupDataFilePath error:&error];
+            if (! error) {
+                NSLog(@"Successfully backed up 1.3.8 datafile as: %@", backupDataFilePath);
+            } else {
+                NSLog(@"Error backing up old data file: %@", [error localizedDescription]);
+            }
+        }
     }
     return appDataFilePath;  
 }
