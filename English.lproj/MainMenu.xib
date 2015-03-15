@@ -219,6 +219,12 @@ CA
                                                 <action selector="findMenuItem:" target="494" id="UTN-Bb-FoZ"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Find and Replace..." keyEquivalent="f" id="1Zl-0E-ehA">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="replaceMenuItem:" target="494" id="wJh-AK-ivQ"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Find Next" tag="2" keyEquivalent="g" id="583">
                                             <connections>
                                                 <action selector="findNextMenuItem:" target="494" id="90V-J1-SKD"/>

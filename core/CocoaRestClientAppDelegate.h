@@ -170,6 +170,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) findMenuItem:(id)sender;
 - (IBAction) findNextMenuItem:(id)sender;
 - (IBAction) findPreviousMenuItem:(id)sender;
+- (IBAction) replaceMenuItem:(id)sender;
 
 - (void)setRawRequestInput:(BOOL)value;
 

@@ -502,15 +502,44 @@ static CRCContentType requestContentType;
 #pragma mark Find Menu items
 
 -(IBAction) findMenuItem:(id)sender {
-    [responseView showFindInterface];
+    NSResponder *responder = [self.window firstResponder];
+    // Assume that in most cases the user wants to search in the response, unless they explicitly
+    // have their focus on the request.
+    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
+        [requestView showFindInterface];
+    } else {
+        [responseView showFindInterface];
+    }
 }
 
 - (IBAction) findNextMenuItem:(id)sender {
-    [responseView findNextMatch];
+    NSResponder *responder = [self.window firstResponder];
+    // Assume that in most cases the user wants to search in the response, unless they explicitly
+    // have their focus on the request.
+    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
+        [requestView findNextMatch];
+    } else {
+        [responseView findNextMatch];
+    }
 }
 
 - (IBAction) findPreviousMenuItem:(id)sender {
-    [responseView findPreviousMatch];
+    NSResponder *responder = [self.window firstResponder];
+    // Assume that in most cases the user wants to search in the response, unless they explicitly
+    // have their focus on the request.
+    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
+        [requestView findPreviousMatch];
+    } else {
+        [responseView findPreviousMatch];
+    }
+}
+
+- (IBAction) replaceMenuItem:(id)sender {
+    NSResponder *responder = [self.window firstResponder];
+    // Replace only makes sense for the requestView
+    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
+        [requestView showReplaceInterface];
+    }
 }
 
 #pragma mark -
