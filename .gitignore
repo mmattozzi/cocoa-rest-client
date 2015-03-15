@@ -1,3 +1,6 @@
 CocoaRestClient.xcodeproj/project.xcworkspace
 CocoaRestClient.xcodeproj/xcuserdata
 .DS_Store
+CocoaRestClient.xcworkspace/xcuserdata/
+Podfile.lock
+Pods
