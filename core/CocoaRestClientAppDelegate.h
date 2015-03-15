@@ -167,6 +167,10 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
 
+- (IBAction) findMenuItem:(id)sender;
+- (IBAction) findNextMenuItem:(id)sender;
+- (IBAction) findPreviousMenuItem:(id)sender;
+
 - (void)setRawRequestInput:(BOOL)value;
 
 - (void) initHighlightedViews;

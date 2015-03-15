@@ -499,6 +499,21 @@ static CRCContentType requestContentType;
 }
 
 #pragma mark -
+#pragma mark Find Menu items
+
+-(IBAction) findMenuItem:(id)sender {
+    [responseView showFindInterface];
+}
+
+- (IBAction) findNextMenuItem:(id)sender {
+    [responseView findNextMatch];
+}
+
+- (IBAction) findPreviousMenuItem:(id)sender {
+    [responseView findPreviousMatch];
+}
+
+#pragma mark -
 #pragma mark Url Connection Delegate methods
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receivedData appendData:data];
