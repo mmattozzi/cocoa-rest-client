@@ -35,6 +35,7 @@ NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
 NSString* const SAVED_DRAWER_SIZE = @"savedDrawerSize";
 NSString* const THEME = @"theme";
 NSInteger const DEFAULT_FONT_SIZE = 12;
+NSString* const SHOW_LINE_NUMBERS = @"showLineNumbers";
 
 enum {
 	CRCContentTypeMultipart,
@@ -95,6 +96,7 @@ static CRCContentType requestContentType;
 @synthesize welcomeController;
 @synthesize themeMenuItem;
 @synthesize jsonWriter;
+@synthesize showLineNumbersMenuItem;
 
 - (id) init {
 	self = [super init];
@@ -104,6 +106,7 @@ static CRCContentType requestContentType;
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:FOLLOW_REDIRECTS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
     [defaults setValue:[NSNumber numberWithInteger:ACEThemeChrome] forKey:THEME];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:SHOW_LINE_NUMBERS];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -496,6 +499,36 @@ static CRCContentType requestContentType;
     [requestView setShowInvisibles:NO];
     [requestView setFontSize:aceViewFontSize];
     requestTypeManager = [[HighlightingTypeManager alloc] initWithView:requestView];
+    
+    BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:SHOW_LINE_NUMBERS];
+    [self applyShowLineNumbers:show];
+    if (show) {
+        [showLineNumbersMenuItem setState:NSOnState];
+    } else {
+        [showLineNumbersMenuItem setState:NSOffState];
+    }
+}
+
+- (void) applyShowLineNumbers:(BOOL)show {
+    [responseView setShowLineNumbers:show];
+    [responseView setShowFoldWidgets:show];
+    [responseView setShowGutter:show];
+    [requestView setShowLineNumbers:show];
+    [requestView setShowFoldWidgets:show];
+    [requestView setShowGutter:show];
+}
+
+- (void) showLineNumbersToggled:(id)sender {
+    NSInteger state = [((NSMenuItem *) sender) state];
+    if (state == NSOnState) {
+        [self applyShowLineNumbers:NO];
+        [((NSMenuItem *) sender) setState:NO];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:SHOW_LINE_NUMBERS];
+    } else if (state == NSOffState) {
+        [self applyShowLineNumbers:YES];
+        [((NSMenuItem *) sender) setState:YES];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SHOW_LINE_NUMBERS];
+    }
 }
 
 #pragma mark -

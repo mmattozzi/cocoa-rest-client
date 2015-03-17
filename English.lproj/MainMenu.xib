@@ -310,6 +310,12 @@ CA
                                     <action selector="toggleSyntaxHighlighting:" target="494" id="987"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Line Numbers" state="on" id="oAI-Y9-WOk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showLineNumbersToggled:" target="494" id="Ufi-cI-nl8"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="1006"/>
                             <menuItem title="Default Zoom" keyEquivalent="0" id="1005">
                                 <connections>
@@ -1236,6 +1242,7 @@ CA
                 <outlet property="saveRequestTextField" destination="734" id="742"/>
                 <outlet property="savedOutlineView" destination="698" id="706"/>
                 <outlet property="savedRequestsDrawer" destination="687" id="747"/>
+                <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
                 <outlet property="status" destination="900" id="902"/>
                 <outlet property="submitButton" destination="550" id="562"/>
                 <outlet property="syntaxHighlightingMenuItem" destination="977" id="988"/>

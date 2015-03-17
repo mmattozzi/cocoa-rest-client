@@ -107,6 +107,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (weak) IBOutlet NSScrollView *requestTextPlainView;
 @property (weak) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
+@property (weak) IBOutlet NSMenuItem *showLineNumbersMenuItem;
 @property (strong) WelcomeController *welcomeController;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
@@ -176,5 +177,6 @@ extern NSString* const RESPONSE_TIMEOUT;
 
 - (void) initHighlightedViews;
 - (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+- (IBAction) showLineNumbersToggled:(id)sender;
 
 @end
