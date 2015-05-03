@@ -1173,6 +1173,7 @@ static CRCContentType requestContentType;
         }
         [savedRequestsArray insertObject:sourceItem atIndex:targetIndex];
         [savedOutlineView reloadItem:nil reloadChildren:YES];
+        [self saveDataToDisk];
         return YES;
     } else {
         // Saving into a sub-folder
@@ -1182,8 +1183,10 @@ static CRCContentType requestContentType;
         }
         [((CRCSavedRequestFolder *) targetItem) insertObject:sourceItem atIndex:targetIndex];
         [savedOutlineView reloadItem:nil reloadChildren:YES];
+        [self saveDataToDisk];
         return YES;
     }
+    
 }
 
 
@@ -1221,6 +1224,7 @@ static CRCContentType requestContentType;
         }
     }
     [savedOutlineView reloadItem:nil reloadChildren:YES];
+    [self saveDataToDisk];
 }
 
 // Save an HTTP request into the request drawer
@@ -1244,6 +1248,7 @@ static CRCContentType requestContentType;
 	}
 	[saveRequestSheet orderOut:nil];
     [NSApp endSheet:saveRequestSheet];
+    [self saveDataToDisk];
 }
 
 //
@@ -1278,6 +1283,7 @@ static CRCContentType requestContentType;
         request.name = name;
         [savedRequestsArray replaceObjectAtIndex:row withObject:request];
         [savedOutlineView reloadItem:nil reloadChildren:YES];
+        [self saveDataToDisk];
     }
 }
 
