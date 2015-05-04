@@ -922,6 +922,15 @@ static CRCContentType requestContentType;
     [requestView setTheme:[sender tag]];
     
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
+    
+    // Unselect all theme MenuItems
+    NSMenuItem *themeMenu = [((NSMenuItem *) sender) parentItem];
+    NSArray *allThemeMenuItems = [themeMenu.submenu itemArray];
+    for (id menuItem in allThemeMenuItems) {
+        [((NSMenuItem *)menuItem) setState:NSOffState];
+    }
+    
+    // Enable the relevant theme MenuItem
     [((NSMenuItem *) sender) setState:NSOnState];
 }
 
