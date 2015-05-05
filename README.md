@@ -30,9 +30,10 @@ Features
 * Set request body to arbitrary content
 * Set request headers
 * Set HTTP basic & digest auth
-* Auto-format (pretty print) XML and JSON responses
+* Auto-format (pretty print) XML, JSON, and MsgPack responses
+* Some cool Ace Editor themes for syntax highlighting
 * Display response headers
-* Quick save requests in a handy drawer
+* Quick save requests in a handy drawer using folder organization
 * Upload files and form data via multipart/form-data
 * Enter POST/PUT input as raw input or key/value pairs
 * Reports response latency
@@ -45,23 +46,23 @@ Features
 Screenshots
 =================
 
-![Screenshot 1](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-1.jpg)
-
-*Pretty print XML content. Quick save of request URLs, body, and headers in one convenient drawer.*
-
-![Screenshot 2](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-2.jpg)
+![Screenshot 2](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-2.png)
 
 *Pretty print JSON content. Set and save HTTP headers.*
 
-![Screenshot 3](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-3.jpg)
+![Screenshot 1](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-1.png)
+
+*Pretty print XML content. Quick save of request URLs, body, and headers in one convenient drawer.*
+
+![Screenshot 3](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-3.png)
 
 *Set HTTP Basic or Digest Auth. Displays HTTP response headers.*
 
-![Screenshot 4](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-4.jpg)
+![Screenshot 4](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-4.png)
 
 *Set HTTP request body content to a raw text blob or a list of parameters.*
 
-![Screenshot 5](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-5.jpg)
+![Screenshot 5](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-5.png)
 
 *Upload files using HTTP multipart requests. HTTP form encoding also supported.*
 
