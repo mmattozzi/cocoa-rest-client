@@ -1561,7 +1561,7 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) licenseInfo:(id)sender {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://raw2.github.com/mmattozzi/cocoa-rest-client/master/LICENSE.txt"]]; 
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/mmattozzi/cocoa-rest-client/master/LICENSE.txt"]];
 }
 
 - (IBAction) reloadLastRequest:(id)sender {
