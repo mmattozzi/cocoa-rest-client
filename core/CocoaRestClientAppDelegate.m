@@ -241,9 +241,13 @@ static CRCContentType requestContentType;
     [responseTextPlain setEditable:NO];
     [reGetResponseMenuItem setEnabled:NO];
     
+    [self.responseTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
+    [self.requestTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
+    
     [self initHighlightedViews];
     
     [self syntaxHighlightingPreferenceChanged];
+    
     
     // Enable Drag and Drop for outline view of saved requests
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
