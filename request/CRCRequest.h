@@ -36,4 +36,5 @@
 @property BOOL preemptiveBasicAuth;
 
 + (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application;
+- (CRCRequest *)overwriteContentsWith:(CRCRequest *)request;
 @end

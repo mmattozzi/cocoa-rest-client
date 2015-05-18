@@ -40,6 +40,21 @@
 	return request;
 }
 
+/** Overwrite all fields except the name with the contents of the input request. */
+- (CRCRequest *)overwriteContentsWith:(CRCRequest *)request {
+    self.url = request.url;
+    self.method = request.method;
+    self.username = request.username;
+    self.password = request.password;
+    self.rawRequestInput = request.rawRequestInput;
+    self.preemptiveBasicAuth = request.preemptiveBasicAuth;
+    self.requestText = request.requestText;
+    self.headers = request.headers;
+    self.params = request.params;
+    self.files = request.files;
+    return self;
+}
+
 - (void) encodeWithCoder: (NSCoder *)coder 
 {
     [coder encodeBool:   self.rawRequestInput forKey: @"rawRequestInput"];

@@ -1288,11 +1288,15 @@ static CRCContentType requestContentType;
     int row = [savedOutlineView selectedRow];
     if (row > -1) {
         CRCRequest * request = [CRCRequest requestWithApplication:self];
-        NSString *name = [CocoaRestClientAppDelegate nameForRequest:[savedRequestsArray objectAtIndex:row]];
-        request.name = name;
-        [savedRequestsArray replaceObjectAtIndex:row withObject:request];
-        [savedOutlineView reloadItem:nil reloadChildren:YES];
-        [self saveDataToDisk];
+        
+        id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
+        if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+            // TODO: doesn't make sense to overwrite a folder
+        } else {
+            [((CRCRequest *) selectedSavedOutlineViewItem) overwriteContentsWith:request];
+            [savedOutlineView reloadItem:nil reloadChildren:YES];
+            [self saveDataToDisk];
+        }
     }
 }
 
