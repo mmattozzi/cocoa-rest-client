@@ -1573,6 +1573,12 @@ static CRCContentType requestContentType;
 
 - (IBAction)deleteRow:(id)sender {
     NSLog(@"Calling delete row");
+    
+    if ([window firstResponder] == savedOutlineView) {
+        [self deleteSavedRequest: sender];
+        return;
+    }
+    
     NSString *currentTabLabel = [[tabView selectedTabViewItem] label];
     if ([currentTabLabel isEqualToString:@"Request Headers"] && [headersTableView selectedRow] > -1) {
         [self minusHeaderRow:sender];
