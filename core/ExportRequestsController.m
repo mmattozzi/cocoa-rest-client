@@ -8,6 +8,7 @@
 
 #import "ExportRequestsController.h"
 #import "CRCRequest.h"
+#import "CRCSavedRequestFolder.h"
 #import "CheckableRequestWrapper.h"
 
 @implementation ExportRequestsController
@@ -29,7 +30,6 @@
     
     return self;
 }
-
 
 - (void) setupWindow {
     if (isExportsWindow) {
@@ -56,41 +56,50 @@
 - (IBAction) confirmExport:(id)sender {
     NSLog(@"Pressed export");
     
-    NSLog(@"Saved request array = %@", savedRequestsArray);
-    for (id object in savedRequestsArray) {
-        NSLog(@"Request = %@", object);
-    }
-    
     NSSavePanel* picker = [NSSavePanel savePanel];
 	
-    if ( [picker runModal] == NSOKButton ) {
-		NSString* path = [picker filename];
-        NSLog(@"Saving requests to %@", path);
-        
-        NSMutableArray *requestsToExport = [[NSMutableArray alloc] init];
-        for (id object in requestsTableModel) {
-            CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
-            if ([req enabled]) {
-                [requestsToExport addObject:[req request]];
-            }
-        }
-        
-        if ([requestsToExport count] > 0) {
-            [NSKeyedArchiver archiveRootObject:requestsToExport toFile:path];
-        }
+    if ([picker runModal] != NSOKButton) return;
+
+    NSString* path = [[picker URL] path];
+    NSLog(@"Saving requests to %@", path);
+    
+    NSMutableArray *requestsToExport = [self selectedRequests];
+    if ([requestsToExport count] > 0) {
+        [NSKeyedArchiver archiveRootObject:requestsToExport toFile:path];
     }
     
     [NSApp endSheet:[self window]];
 }
 
+- (NSMutableArray *) selectedRequests {
+    return [self buildRequestsFromWrappers:requestsTableModel];
+}
+
+- (NSMutableArray *) buildRequestsFromWrappers: (NSMutableArray *)wrappedRequests {
+    NSMutableArray *requests = [[NSMutableArray alloc] init];
+    
+    for (CheckableRequestWrapper* wrappedRequest in wrappedRequests) {
+        if ([wrappedRequest enabled] == NSOffState) continue;
+        
+        if ([[wrappedRequest request] isKindOfClass:[CRCSavedRequestFolder class]]) {
+            // build new folder with only selected requests
+            CRCSavedRequestFolder *request = [[CRCSavedRequestFolder alloc] init];
+            request.name = [wrappedRequest name];
+            request.contents = [self buildRequestsFromWrappers:[wrappedRequest contents]];
+            [requests addObject:request];
+        } else if ([wrappedRequest enabled] == NSOnState) {
+            [requests addObject:[wrappedRequest request]];
+        }
+    }
+    
+    return requests;
+}
+
 - (IBAction) confirmImport:(id)sender {
     NSLog(@"Pressed import");
     
-    for (id object in requestsTableModel) {
-        CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
-        if ([req enabled]) {
-            [savedRequestsArray addObject:[req request]];
-        }
+    for (id request in [self selectedRequests]) {
+        [savedRequestsArray addObject:request];
     }
     
     [savedOutlineView reloadItem:nil reloadChildren:YES];
@@ -113,18 +122,7 @@
     [requestsTableModel removeAllObjects];
     
     for (id object in savedRequestsArray) {
-        // Handle current request model
-        if ([object isKindOfClass:[CRCRequest class]])
-        {
-            CRCRequest *crcRequest = (CRCRequest *) object;
-            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[crcRequest name] enabled:YES request:crcRequest]];
-        }
-        // Handle older version of requests
-        else if([object isKindOfClass:[NSDictionary class]] )
-        {
-            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[object objectForKey:@"name"] enabled:YES request:object]];
-        }
-        
+        [requestsTableModel addObject:[CheckableRequestWrapper checkableRequestWrapperForRequest:object]];
     }
     
     [tableView reloadData];
@@ -137,59 +135,18 @@
     [requestsTableModel removeAllObjects];
     
     for (id object in importRequests) {
-        // Handle current request model
-        if ([object isKindOfClass:[CRCRequest class]])
-        {
-            CRCRequest *crcRequest = (CRCRequest *) object;
-            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[crcRequest name] enabled:YES request:crcRequest]];
-        }
-        // Handle older version of requests
-        else if([object isKindOfClass:[NSDictionary class]] )
-        {
-            [requestsTableModel addObject:[[CheckableRequestWrapper alloc] initWithName:[object objectForKey:@"name"] enabled:YES request:object]];
-        }
-        
+        [requestsTableModel addObject:[CheckableRequestWrapper checkableRequestWrapperForRequest:object]];
     }
     
     [tableView reloadData];
 }
 
-#pragma mark Table view methods
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) tableView {
-	NSLog(@"Calling number rows");
-	
-    return [requestsTableModel count];
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	id object;
-	
-	if ([(NSString *) [tableColumn identifier] isEqualToString:@"CheckboxColumn"]) {
-        BOOL value = [(CheckableRequestWrapper *) [requestsTableModel objectAtIndex:row] enabled];
-        return [NSNumber numberWithInteger:(value ? NSOnState : NSOffState)];
-    }
-	
-	return object;
-}
-
-- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    id object = nil;
-    
-    if ([(NSString *) [tableColumn identifier] isEqualToString:@"CheckboxColumn"]) {
-        return [(CheckableRequestWrapper *) [requestsTableModel objectAtIndex:row] cell];
-    }
-    
-    return object;
-}
-
-- (void)tableView:(NSTableView *)tableView setObjectValue:(id)value forTableColumn:(NSTableColumn *)column row:(NSInteger)row {
-    NSLog(@"Calling setObjectValue with value: %@", value);
-    
-    [(CheckableRequestWrapper *) [requestsTableModel objectAtIndex:row] setEnabled:[value boolValue]];
-}
-
 - (IBAction) clickedAllCheckbox:(id)sender {
-    if ([(NSButton *) sender state] == NSOnState) {
+    if ([allButton state] == NSMixedState) {
+        [allButton setNextState];
+    }
+    
+    if ([allButton state] == NSOnState) {
         for (id object in requestsTableModel) {
             CheckableRequestWrapper *req = (CheckableRequestWrapper *) object;
             [req setEnabled:YES];
@@ -202,6 +159,65 @@
     }
     
     [tableView reloadData];
+}
+
+- (void) updateAllCheckbox {
+    int checkedRequests = 0;
+    for (CheckableRequestWrapper* requestWrapper in requestsTableModel) {
+        if ([requestWrapper enabled] == NSMixedState) {
+            [allButton setState:NSMixedState];
+            return;
+        }
+        
+        if ([requestWrapper enabled] != NSOffState) checkedRequests++;
+    }
+    
+    if (checkedRequests == [requestsTableModel count]) {
+        [allButton setState: NSOnState];
+    } else if (checkedRequests == 0) {
+        [allButton setState: NSOffState];
+    } else {
+        [allButton setState: NSMixedState];
+    }
+}
+
+#pragma mark Outline view methods
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(nullable id)item {
+    if (item != nil) {
+        CheckableRequestWrapper *requestWrapper = (CheckableRequestWrapper*) item;
+        return [requestWrapper count];
+    }
+    
+    return [requestsTableModel count];
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(nullable id)item {
+    if (item != nil) {
+        CheckableRequestWrapper *requestWrapper = (CheckableRequestWrapper*) item;
+        return [[requestWrapper contents] objectAtIndex:index];
+    }
+    
+    return [requestsTableModel objectAtIndex:index];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+    CheckableRequestWrapper *requestWrapper = (CheckableRequestWrapper*) item;
+    return [requestWrapper count] > 0;
+}
+
+- (nullable id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn byItem:(nullable id)item {
+    CheckableRequestWrapper *requestWrapper = (CheckableRequestWrapper*) item;
+    return [NSNumber numberWithInt:[requestWrapper enabled]];
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    [cell setTitle: [item name]];
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+    [item setEnabled: [object boolValue]];
+    [tableView reloadData];
+    [self updateAllCheckbox];
 }
 
 @end
