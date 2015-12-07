@@ -84,5 +84,5 @@ Credits
 * Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
 * ACEView syntax highlighting (https://github.com/faceleg/ACEView)
 * Base64 encoding uses Matt Gallagher's NSData+Base64 code (http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html)
-* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson, Diego Massanti
+* Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson, Diego Massanti, Robert Horvath
 
