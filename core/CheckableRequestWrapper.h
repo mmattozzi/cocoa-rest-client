@@ -7,19 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CRCSavedRequestFolder.h"
 
 @interface CheckableRequestWrapper : NSObject {
-    BOOL enabled;
+    NSCellStateValue _enabled;
     id request;
     NSString *name;
-    NSButtonCell *cell;
+    NSMutableArray *contents;
+    CheckableRequestWrapper *parent;
 }
 
-- (CheckableRequestWrapper *) initWithName:(NSString *)name enabled:(BOOL)enabled request:(id)request; 
-- (BOOL) enabled;
++ (CheckableRequestWrapper *) checkableRequestWrapperForRequest: (id)request;
+- (CheckableRequestWrapper *) initWithName:(NSString *)name enabled:(BOOL)enabled request:(id)request;
 - (NSString *) name;
 - (id) request;
+- (NSCellStateValue) enabled;
 - (void) setEnabled:(BOOL)reqEnabled;
-- (NSButtonCell *) cell;
+- (int) count;
+- (NSMutableArray*) contents;
 
 @end

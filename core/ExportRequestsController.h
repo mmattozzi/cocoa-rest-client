@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ExportRequestsController : NSWindowController {
+@interface ExportRequestsController : NSWindowController <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     NSMutableArray *savedRequestsArray;
     NSMutableArray *requestsTableModel;
     NSTableView *tableView;

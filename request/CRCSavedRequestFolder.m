@@ -41,6 +41,10 @@
     }
 }
 
+- (void)setContents:(NSMutableArray *)array {
+    contents = [array mutableCopy];
+}
+
 /**
  * Recursively search all subfolders and return the object matching the id requested. 
  * Returns self if self matches the given id. 
