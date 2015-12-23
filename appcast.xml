@@ -2,9 +2,20 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>Cocoa Rest Client's Changelog</title>
-		<link>http://cocoa-rest-client.googlecode.com/svn/trunk/appcast.xml</link>
+		<link>http://restlesscode.org/cocoa-rest-client/appcast.xml</link>
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
+		<item>
+			<title>Version 1.3.10</title>
+			<sparkle:releaseNotesLink>https://raw.githubusercontent.com/mmattozzi/cocoa-rest-client/master/ReleaseNotes/1.3.10.html</sparkle:releaseNotesLink>
+			<pubDate>Wed, 23 Dec 2015 07:19:00 -0400</pubDate>
+			<sparkle:minimumSystemVersion>10.10.3</sparkle:minimumSystemVersion>
+			<enclosure url="https://github.com/mmattozzi/cocoa-rest-client/releases/download/1.3.10/CocoaRestClient-1.3.10.dmg" 
+				sparkle:version="15" length="4166831" 
+				sparkle:shortVersionString="1.3.10" 
+				type="application/octet-stream" 
+				sparkle:dsaSignature="MC0CFQCPMjnTmi2YIlmf9wqIF6cxMiu2TAIUF7jNreP2iXHWUwEfhoA+qDO9WzU=" />
+		</item>
 		<item>
 			<title>Version 1.3.9</title>
 			<sparkle:releaseNotesLink>https://raw.githubusercontent.com/mmattozzi/cocoa-rest-client/master/ReleaseNotes/1.3.9.html</sparkle:releaseNotesLink>
