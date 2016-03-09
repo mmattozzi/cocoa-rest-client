@@ -93,7 +93,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (weak) IBOutlet NSTextField *timeoutField;
 @property (weak) IBOutlet NSButton *plusParam;
 @property (weak) IBOutlet NSButton *minusParam;
-@property (assign) BOOL rawRequestInput;
+@property (nonatomic, assign) BOOL rawRequestInput;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSTabViewItem *reqHeadersTab;
 @property (weak) IBOutlet NSTextField *status;
@@ -176,7 +176,7 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (void)setRawRequestInput:(BOOL)value;
 
 - (void) initHighlightedViews;
-- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+//- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;
 
 @end

@@ -715,8 +715,8 @@ static CRCContentType requestContentType;
     };
     
     id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
-    SBJson4ParserStatus status = [parser parse:jsonData];
-    if (status == SBJson4ParserWaitingForData) {
+    SBJson4ParserStatus parseStatus = [parser parse:jsonData];
+    if (parseStatus == SBJson4ParserWaitingForData) {
         NSLog(@"Unexpected end of JSON content");
         [self printResponsePlain];
     }
@@ -1118,7 +1118,7 @@ static CRCContentType requestContentType;
     }
     
     NSPasteboardItem *pboardItem = [[NSPasteboardItem alloc] init];
-    NSString *idStr = [NSString stringWithFormat:@"%p", (long) item];
+    NSString *idStr = [NSString stringWithFormat:@"%ld", (long) item];
     [pboardItem setString:idStr forType: @"public.text"];
     NSLog(@"%@", idStr);
     
@@ -1147,7 +1147,7 @@ static CRCContentType requestContentType;
     int sourceIndex = -1;
     
     for (id entry in savedRequestsArray) {
-        if ([[NSString stringWithFormat:@"%p", (long) entry] isEqualToString:objId]) {
+        if ([[NSString stringWithFormat:@"%ld", (long) entry] isEqualToString:objId]) {
             sourceItem = entry;
             sourceIndex = [savedRequestsArray indexOfObject:sourceItem];
         } else if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
