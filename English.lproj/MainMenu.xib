@@ -307,7 +307,7 @@ CA
                             <menuItem title="Syntax Highlighting" id="977">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="toggleSyntaxHighlighting:" target="494" id="987"/>
+                                    <binding destination="833" name="value" keyPath="values.UIMenuSyntaxHighlight" id="2im-Sp-zt1"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show Line Numbers" state="on" id="oAI-Y9-WOk">
@@ -666,7 +666,7 @@ CA
                                     <rect key="frame" x="10" y="33" width="1176" height="197"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="989">
+                                        <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="989" userLabel="Plain Text SV">
                                             <rect key="frame" x="17" y="26" width="1107" height="168"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="i1A-xW-qfV">
@@ -694,6 +694,21 @@ CA
                                                 <rect key="frame" x="1090" y="1" width="16" height="166"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
+                                            <connections>
+                                                <binding destination="833" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="CRe-pD-amQ" id="tza-id-VeC">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="1"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="833" name="hidden" keyPath="values.UIRawRequestBody" id="CRe-pD-amQ">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" id="844">
                                             <rect key="frame" x="1126" y="134" width="39" height="32"/>
@@ -717,9 +732,25 @@ CA
                                                 <action selector="plusParamsRow:" target="494" id="861"/>
                                             </connections>
                                         </button>
-                                        <customView id="bKF-vV-Mh5" customClass="ACEView">
+                                        <customView id="bKF-vV-Mh5" userLabel="SyntaxHL SV" customClass="ACEView">
                                             <rect key="frame" x="17" y="24" width="1107" height="170"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <connections>
+                                                <binding destination="833" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="7CB-K7-aHj" id="DqI-r4-fTW">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="833" name="hidden" keyPath="values.UIRawRequestBody" id="7CB-K7-aHj">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </customView>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="843">
                                             <rect key="frame" x="17" y="24" width="1107" height="170"/>
@@ -782,6 +813,9 @@ CA
                                                 <rect key="frame" x="0.0" y="0.0" width="1105" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
+                                            <connections>
+                                                <binding destination="833" name="hidden" keyPath="values.UIRawRequestBody" id="spq-GW-1Is"/>
+                                            </connections>
                                         </scrollView>
                                         <button id="807">
                                             <rect key="frame" x="21" y="2" width="85" height="18"/>
@@ -791,11 +825,7 @@ CA
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="494" name="value" keyPath="self.rawRequestInput" id="842">
-                                                    <dictionary key="options">
-                                                        <bool key="NSConditionallySetsEnabled" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
+                                                <binding destination="833" name="value" keyPath="values.UIRawRequestBody" id="4zF-DL-Vdr"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1116,10 +1146,20 @@ CA
                                                 <rect key="frame" x="1125" y="1" width="16" height="310"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
+                                            <connections>
+                                                <binding destination="833" name="hidden" keyPath="values.UIMenuSyntaxHighlight" id="AuY-Cy-RQ4"/>
+                                            </connections>
                                         </scrollView>
                                         <customView id="Fga-5f-aEi" userLabel="ACEView" customClass="ACEView">
                                             <rect key="frame" x="17" y="17" width="1142" height="312"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <connections>
+                                                <binding destination="833" name="hidden" keyPath="values.UIMenuSyntaxHighlight" id="kyJ-wZ-H81">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </customView>
                                     </subviews>
                                 </view>
@@ -1233,8 +1273,7 @@ CA
                 <outlet property="reqHeadersTab" destination="635" id="895"/>
                 <outlet property="requestHeadersSentText" destination="932" id="938"/>
                 <outlet property="requestTextPlain" destination="990" id="994"/>
-                <outlet property="requestTextPlainView" destination="989" id="993"/>
-                <outlet property="requestView" destination="bKF-vV-Mh5" id="TrV-WJ-UKS"/>
+                <outlet property="requestView" destination="bKF-vV-Mh5" id="HjI-jn-AAz"/>
                 <outlet property="responseTextHeaders" destination="631" id="632"/>
                 <outlet property="responseTextPlain" destination="979" id="985"/>
                 <outlet property="responseTextPlainView" destination="978" id="986"/>
@@ -1246,7 +1285,6 @@ CA
                 <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
                 <outlet property="status" destination="900" id="902"/>
                 <outlet property="submitButton" destination="550" id="562"/>
-                <outlet property="syntaxHighlightingMenuItem" destination="977" id="988"/>
                 <outlet property="tabView" destination="633" id="894"/>
                 <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
                 <outlet property="timeoutField" destination="760" id="782"/>

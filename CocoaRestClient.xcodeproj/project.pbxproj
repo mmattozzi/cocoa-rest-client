@@ -15,6 +15,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985608C01C8FF3E700A3EB6E /* defaults.plist */; };
+		985608C71C90031300A3EB6E /* CRCconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 985608C61C90031300A3EB6E /* CRCconstants.m */; };
 		AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
@@ -79,6 +81,9 @@
 		8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocoaRestClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		985608C01C8FF3E700A3EB6E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		985608C51C90031300A3EB6E /* CRCconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCconstants.h; sourceTree = "<group>"; };
+		985608C61C90031300A3EB6E /* CRCconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCconstants.m; sourceTree = "<group>"; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
 		AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableRowAndColumn.h; path = view/TableRowAndColumn.h; sourceTree = "<group>"; };
 		AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableRowAndColumn.m; path = view/TableRowAndColumn.m; sourceTree = "<group>"; };
@@ -216,6 +221,7 @@
 				AFBB7D4914F98B4000424C12 /* Preferences.xib */,
 				AFA11AB315CEDA3600831738 /* Welcome.xib */,
 				AFA11ACC15CF036300831738 /* motd.txt */,
+				985608C01C8FF3E700A3EB6E /* defaults.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -247,6 +253,8 @@
 		AF1A1B9816A1DF1E00915644 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				985608C51C90031300A3EB6E /* CRCconstants.h */,
+				985608C61C90031300A3EB6E /* CRCconstants.m */,
 				AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */,
 				AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */,
 				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
@@ -362,6 +370,7 @@
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
+				985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */,
 				AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */,
 				AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */,
 				AFB3AA3F1A94051700012E04 /* Images.xcassets in Resources */,
@@ -438,6 +447,7 @@
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
+				985608C71C90031300A3EB6E /* CRCconstants.m in Sources */,
 				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
 				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
 				2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */,
