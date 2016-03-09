@@ -26,16 +26,6 @@
 #define DATAFILE_NAME @"CocoaRestClient.savedRequests"
 #define BACKUP_DATAFILE_1_3_8 @"CocoaRestClient.savedRequests.backup-1.3.8"
 
-#pragma mark -
-#pragma mark User default setting keys
-NSString* const FOLLOW_REDIRECTS = @"followRedirects";
-NSString* const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
-NSString* const SYNTAX_HIGHLIGHT = @"syntaxHighlighting";
-NSString* const RESPONSE_TIMEOUT = @"responseTimeout";
-NSString* const SAVED_DRAWER_SIZE = @"savedDrawerSize";
-NSString* const THEME = @"theme";
-NSInteger const DEFAULT_FONT_SIZE = 12;
-NSString* const SHOW_LINE_NUMBERS = @"showLineNumbers";
 
 enum {
 	CRCContentTypeMultipart,
@@ -79,7 +69,6 @@ static CRCContentType requestContentType;
 @synthesize timeoutSheet;
 @synthesize timeoutField;
 @synthesize plusParam, minusParam;
-@synthesize rawRequestInput;
 @synthesize tabView;
 @synthesize reqHeadersTab;
 @synthesize status;
@@ -153,32 +142,17 @@ static CRCContentType requestContentType;
 	return self;
 }
 
-- (void) setRawRequestInput:(BOOL)value{
-	
-	rawRequestInput = value;
-    
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-	
-    if(rawRequestInput){
-        if (syntaxHighlighting) {
-            [requestView setHidden:NO];
-        } else {
-            [requestTextPlainView setHidden:NO];
-        }
-		[[paramsTableView enclosingScrollView] setHidden:YES];
-		[plusParam setHidden:YES];
-		[minusParam setHidden:YES];
-	}
-	else {
-        if (syntaxHighlighting) {
-            [requestView setHidden:YES];
-        } else {
-            [requestTextPlainView setHidden:YES];
-        }
-		[[paramsTableView enclosingScrollView] setHidden:NO];
-		[plusParam setHidden:NO];
-		[minusParam setHidden:NO];
-	}
+- (void)setupObservers {
+    [[NSUserDefaults standardUserDefaults]addObserver:self
+                                           forKeyPath:SYNTAX_HIGHLIGHT
+                                              options:NSKeyValueObservingOptionNew
+                                              context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
+        [self syntaxHighlightingPreferenceChanged];
+    }
 }
 
 + (void) addBorderToView:(NSView *)view {
@@ -194,6 +168,9 @@ static CRCContentType requestContentType;
     self.jsonWriter = [[SBJson4Writer alloc] init];
     self.jsonWriter.humanReadable = YES;
     self.jsonWriter.sortKeys = NO;
+    
+    // Sync default params from defaults.plist
+    [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
     [methodButton removeAllItems];
 	[methodButton addItemWithObjectValue:@"GET"];
@@ -246,11 +223,13 @@ static CRCContentType requestContentType;
     
     [self initHighlightedViews];
     
-    [self syntaxHighlightingPreferenceChanged];
+    //[self syntaxHighlightingPreferenceChanged];
     
     
     // Enable Drag and Drop for outline view of saved requests
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    
+    [self setupObservers];
     
 }
 
@@ -258,42 +237,24 @@ static CRCContentType requestContentType;
     return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
 }
 
-- (IBAction)toggleSyntaxHighlighting:(id)sender {
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-    [[NSUserDefaults standardUserDefaults] setBool:(!syntaxHighlighting) forKey:SYNTAX_HIGHLIGHT];
-    [self syntaxHighlightingPreferenceChanged];
-}
 
-- (void) syntaxHighlightingPreferenceChanged {
+- (void)syntaxHighlightingPreferenceChanged {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
     if (! syntaxHighlighting) {
         // Switch response from syntax highlighting to plain
         [self.responseTextPlain setString:[self.responseView string]];
-        self.responseView.hidden = true;
-        self.responseTextPlainView.hidden = false;
         [self.responseView setString:@""];
-        
         // Switch request from syntax highlighting to plain
         [self.requestTextPlain setString:[self.requestView string]];
-        self.requestView.hidden = true;
-        if (self.rawRequestInput) {
-            self.requestTextPlainView.hidden = false;
-        }
         [self.requestView setString:@""];
     } else {
         // Switch response from plain to syntax highlighting
         [self.responseView setString:[self.responseTextPlain string]];
-        self.responseView.hidden = false;
-        self.responseTextPlainView.hidden = true;
         [self.responseTextPlain setString:@""];
         
         // Switch request from plain to syntax highlighting
         [self.requestView setString:[self.requestTextPlain string]];
-        if (self.rawRequestInput) {
-            self.requestView.hidden = false;
-        }
-        self.requestTextPlainView.hidden = true;
         [self.requestTextPlain setString:@""];
     }
 }
@@ -414,8 +375,8 @@ static CRCContentType requestContentType;
 	[request setTimeoutInterval:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
 	
 	BOOL contentTypeSet = NO;
-	
-	if(self.rawRequestInput) {
+    BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
+	if(rawRequestBody) {
 		if (![requestMethodsWithoutBody containsObject:method]) {
 			if([filesTable count] > 0 && [[self getRequestText] isEqualToString:@""]) {
 				[CRCFileRequest createRequest:request];
@@ -715,8 +676,8 @@ static CRCContentType requestContentType;
     };
     
     id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
-    SBJson4ParserStatus status = [parser parse:jsonData];
-    if (status == SBJson4ParserWaitingForData) {
+    SBJson4ParserStatus parseStatus = [parser parse:jsonData];
+    if (parseStatus == SBJson4ParserWaitingForData) {
         NSLog(@"Unexpected end of JSON content");
         [self printResponsePlain];
     }
@@ -1118,7 +1079,7 @@ static CRCContentType requestContentType;
     }
     
     NSPasteboardItem *pboardItem = [[NSPasteboardItem alloc] init];
-    NSString *idStr = [NSString stringWithFormat:@"%p", (long) item];
+    NSString *idStr = [NSString stringWithFormat:@"%ld", (long) item];
     [pboardItem setString:idStr forType: @"public.text"];
     NSLog(@"%@", idStr);
     
@@ -1147,7 +1108,7 @@ static CRCContentType requestContentType;
     int sourceIndex = -1;
     
     for (id entry in savedRequestsArray) {
-        if ([[NSString stringWithFormat:@"%p", (long) entry] isEqualToString:objId]) {
+        if ([[NSString stringWithFormat:@"%ld", (long) entry] isEqualToString:objId]) {
             sourceItem = entry;
             sourceIndex = [savedRequestsArray indexOfObject:sourceItem];
         } else if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
@@ -1335,7 +1296,7 @@ static CRCContentType requestContentType;
 	[username setStringValue:[request objectForKey:@"username"]];
 	[password setStringValue:[request objectForKey:@"password"]];
 	
-	self.rawRequestInput = YES;
+	//self.rawRequestInput = YES;
     self.preemptiveBasicAuth = NO;
 	
 	if ([request objectForKey:@"body"]) {
@@ -1378,10 +1339,11 @@ static CRCContentType requestContentType;
 	[username setStringValue:request.username];
 	[password setStringValue:request.password];
 	
-	self.rawRequestInput = request.rawRequestInput;
+	[[NSUserDefaults standardUserDefaults]setBool:request.rawRequestInput
+                                            forKey:RAW_REQUEST_BODY];
     self.preemptiveBasicAuth = request.preemptiveBasicAuth;
 	
-	if(request.rawRequestInput)
+	if([[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY])
 	{
         [self setRequestText:request.requestText];
 	}
@@ -1578,11 +1540,12 @@ static CRCContentType requestContentType;
         [self deleteSavedRequest: sender];
         return;
     }
+    BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
     
     NSString *currentTabLabel = [[tabView selectedTabViewItem] label];
     if ([currentTabLabel isEqualToString:@"Request Headers"] && [headersTableView selectedRow] > -1) {
         [self minusHeaderRow:sender];
-    } else if ([currentTabLabel isEqualToString:@"Request Body"] && [paramsTableView selectedRow] > -1 && ! self.rawRequestInput) {
+    } else if ([currentTabLabel isEqualToString:@"Request Body"] && [paramsTableView selectedRow] > -1 && ! rawRequestBody) {
         [self minusParamsRow:sender];
     } else if ([currentTabLabel isEqualToString:@"Files"] && [filesTableView selectedRow] > -1) {
         [self minusFileRow:sender];

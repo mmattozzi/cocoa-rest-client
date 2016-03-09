@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CocoaRestClientAppDelegate.h"
+#import "CRCConstants.h"
 
 @interface CRCRequest : NSObject <NSCoding> {
 	BOOL rawRequestInput;

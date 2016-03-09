@@ -22,7 +22,7 @@
     request.method          = [application.methodButton stringValue];
 	request.username        = [application.username stringValue];
 	request.password        = [application.password stringValue];
-	request.rawRequestInput = application.rawRequestInput;
+    request.rawRequestInput = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
     request.preemptiveBasicAuth = application.preemptiveBasicAuth;
 	
 	if(request.rawRequestInput)

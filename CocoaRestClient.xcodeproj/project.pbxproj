@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,11 +11,12 @@
 		2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03E34E16CA2E0F00C7608A /* CRCHTTPHeaderCell.m */; };
 		2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C954AF916B9799D00C8D54B /* NSData+gzip.m */; };
 		2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C954AFC16B97A3200C8D54B /* libz.dylib */; };
-		5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EE69155B533200C55656 /* libicucore.dylib */; };
 		5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EECF155C7BF400C55656 /* WebKit.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985608C01C8FF3E700A3EB6E /* defaults.plist */; };
+		985608C71C90031300A3EB6E /* CRCconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 985608C61C90031300A3EB6E /* CRCconstants.m */; };
 		AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
@@ -43,8 +44,7 @@
 		D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A0A111E901FB00F5A80B /* CRCRequest.m */; };
 		D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */; };
 		D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D998B311EAA29B005B8811 /* CRCTopView.m */; };
-		D7D998B611EAA2B2005B8811 /* background-header.png in Resources */ = {isa = PBXBuildFile; fileRef = D7D998B511EAA2B2005B8811 /* background-header.png */; };
-		E1441B15FE6DCD97798E45D3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C15A15CB9C1B4386B81228 /* libPods.a */; };
+		F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,10 +77,13 @@
 		2C954AF816B9799D00C8D54B /* NSData+gzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+gzip.h"; path = "request/NSData+gzip.h"; sourceTree = "<group>"; };
 		2C954AF916B9799D00C8D54B /* NSData+gzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+gzip.m"; path = "request/NSData+gzip.m"; sourceTree = "<group>"; };
 		2C954AFC16B97A3200C8D54B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
-		5704EE69155B533200C55656 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5704EECF155C7BF400C55656 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocoaRestClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		985608C01C8FF3E700A3EB6E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		985608C51C90031300A3EB6E /* CRCconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCconstants.h; sourceTree = "<group>"; };
+		985608C61C90031300A3EB6E /* CRCconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCconstants.m; sourceTree = "<group>"; };
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
 		AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableRowAndColumn.h; path = view/TableRowAndColumn.h; sourceTree = "<group>"; };
 		AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableRowAndColumn.m; path = view/TableRowAndColumn.m; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = English.lproj/dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaRestClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.debug.xcconfig"; sourceTree = "<group>"; };
 		D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCFormEncodedRequest.h; path = request/CRCFormEncodedRequest.h; sourceTree = "<group>"; };
 		D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCFormEncodedRequest.m; path = request/CRCFormEncodedRequest.m; sourceTree = "<group>"; };
 		D714A01E11E8C0F400F5A80B /* CRCRawRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCRawRequest.h; path = request/CRCRawRequest.h; sourceTree = "<group>"; };
@@ -121,9 +125,9 @@
 		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCMultipartRequest.m; path = request/CRCMultipartRequest.m; sourceTree = "<group>"; };
 		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCTopView.h; path = view/CRCTopView.h; sourceTree = "<group>"; };
 		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCTopView.m; path = view/CRCTopView.m; sourceTree = "<group>"; };
-		D7D998B511EAA2B2005B8811 /* background-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-header.png"; path = "English.lproj/background-header.png"; sourceTree = "<group>"; };
 		D7EAC25B3F30972DE7FE9764 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DECFE55E2726D0B061E38482 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaRestClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,10 +138,9 @@
 				2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */,
 				AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */,
 				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
-				5704EE6A155B533200C55656 /* libicucore.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */,
-				E1441B15FE6DCD97798E45D3 /* libPods.a in Frameworks */,
+				F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +188,6 @@
 			children = (
 				AF895874156088610079B379 /* QuartzCore.framework */,
 				5704EECF155C7BF400C55656 /* WebKit.framework */,
-				5704EE69155B533200C55656 /* libicucore.dylib */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -211,7 +213,6 @@
 				AFB3AA3E1A94051700012E04 /* Images.xcassets */,
 				AFCE79561419B54600E22468 /* dsa_pub.pem */,
 				AFE1837612E394E5001B1B29 /* LICENSE.txt */,
-				D7D998B511EAA2B2005B8811 /* background-header.png */,
 				AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */,
 				8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -220,6 +221,7 @@
 				AFBB7D4914F98B4000424C12 /* Preferences.xib */,
 				AFA11AB315CEDA3600831738 /* Welcome.xib */,
 				AFA11ACC15CF036300831738 /* motd.txt */,
+				985608C01C8FF3E700A3EB6E /* defaults.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -232,6 +234,7 @@
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				14C15A15CB9C1B4386B81228 /* libPods.a */,
+				8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -241,6 +244,8 @@
 			children = (
 				D7EAC25B3F30972DE7FE9764 /* Pods.debug.xcconfig */,
 				DECFE55E2726D0B061E38482 /* Pods.release.xcconfig */,
+				CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */,
+				F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -248,6 +253,8 @@
 		AF1A1B9816A1DF1E00915644 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				985608C51C90031300A3EB6E /* CRCconstants.h */,
+				985608C61C90031300A3EB6E /* CRCconstants.m */,
 				AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */,
 				AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */,
 				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
@@ -309,12 +316,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CocoaRestClient" */;
 			buildPhases = (
-				FCAEBE35430B94C6C1587894 /* Check Pods Manifest.lock */,
+				FCAEBE35430B94C6C1587894 /* 📦 Check Pods Manifest.lock */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				AFCE79541419B49700E22468 /* CopyFiles */,
-				0B3CF23179E00579F355A6A8 /* Copy Pods Resources */,
+				0B3CF23179E00579F355A6A8 /* 📦 Copy Pods Resources */,
+				6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -332,10 +340,10 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CocoaRestClient" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -359,10 +367,10 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
-				D7D998B611EAA2B2005B8811 /* background-header.png in Resources */,
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
+				985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */,
 				AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */,
 				AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */,
 				AFB3AA3F1A94051700012E04 /* Images.xcassets in Resources */,
@@ -373,29 +381,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B3CF23179E00579F355A6A8 /* Copy Pods Resources */ = {
+		0B3CF23179E00579F355A6A8 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FCAEBE35430B94C6C1587894 /* Check Pods Manifest.lock */ = {
+		6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCAEBE35430B94C6C1587894 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +447,7 @@
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
+				985608C71C90031300A3EB6E /* CRCconstants.m in Sources */,
 				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
 				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
 				2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */,
@@ -472,10 +496,10 @@
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7EAC25B3F30972DE7FE9764 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -493,17 +517,18 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = CocoaRestClient;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DECFE55E2726D0B061E38482 /* Pods.release.xcconfig */;
+			baseConfigurationReference = F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -519,8 +544,9 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = CocoaRestClient;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -534,6 +560,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DDEBUG";
 				SDKROOT = macosx;
@@ -549,6 +576,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};

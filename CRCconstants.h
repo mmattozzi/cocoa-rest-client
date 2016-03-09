@@ -1,0 +1,23 @@
+//
+//  CRCconstants.h
+//  
+//
+//  Created by Diego Massanti on 3/9/16.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+FOUNDATION_EXPORT NSString * const FOLLOW_REDIRECTS;
+FOUNDATION_EXPORT NSString * const APPLY_HTTP_METHOD_ON_REDIRECT;
+FOUNDATION_EXPORT NSString * const SYNTAX_HIGHLIGHT;
+FOUNDATION_EXPORT NSString * const RAW_REQUEST_BODY;
+FOUNDATION_EXPORT NSString * const RESPONSE_TIMEOUT;
+FOUNDATION_EXPORT NSString * const SAVED_DRAWER_SIZE;
+FOUNDATION_EXPORT NSString * const THEME;
+FOUNDATION_EXPORT NSUInteger const DEFAULT_FONT_SIZE;
+FOUNDATION_EXPORT NSString * const SHOW_LINE_NUMBERS;
+
+@interface CRCconstants : NSObject
+
+@end

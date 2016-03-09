@@ -17,9 +17,7 @@
 #import "ACEView/ACEView.h"
 #import "HighlightingTypeManager.h"
 #import <SBJson4.h>
-
-extern NSString* const FOLLOW_REDIRECTS;
-extern NSString* const RESPONSE_TIMEOUT;
+#import "CRCConstants.h"
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -45,7 +43,6 @@ extern NSString* const RESPONSE_TIMEOUT;
     BOOL allowSelfSignedCerts;
     NSURLRequest *currentRequest;
     
-	BOOL rawRequestInput;
 	NSDate *startDate;
 	
     @private CRCRequest *lastRequest;
@@ -93,7 +90,6 @@ extern NSString* const RESPONSE_TIMEOUT;
 @property (weak) IBOutlet NSTextField *timeoutField;
 @property (weak) IBOutlet NSButton *plusParam;
 @property (weak) IBOutlet NSButton *minusParam;
-@property (assign) BOOL rawRequestInput;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSTabViewItem *reqHeadersTab;
 @property (weak) IBOutlet NSTextField *status;
@@ -156,7 +152,6 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction)deleteRow:(id)sender;
 - (IBAction)showPreferences:(id)sender;
 - (void)syntaxHighlightingPreferenceChanged;
-- (IBAction) toggleSyntaxHighlighting:(id)sender;
 - (IBAction) zoomIn:(id)sender;
 - (IBAction) zoomOut:(id)sender;
 - (IBAction) zoomDefault:(id)sender;
@@ -173,10 +168,8 @@ extern NSString* const RESPONSE_TIMEOUT;
 - (IBAction) findPreviousMenuItem:(id)sender;
 - (IBAction) replaceMenuItem:(id)sender;
 
-- (void)setRawRequestInput:(BOOL)value;
-
 - (void) initHighlightedViews;
-- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+//- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;
 
 @end
