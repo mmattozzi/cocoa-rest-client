@@ -18,6 +18,6 @@ FOUNDATION_EXPORT NSString * const THEME;
 FOUNDATION_EXPORT NSUInteger const DEFAULT_FONT_SIZE;
 FOUNDATION_EXPORT NSString * const SHOW_LINE_NUMBERS;
 
-@interface CRCconstants : NSObject
+@interface CRCConstants : NSObject
 
 @end

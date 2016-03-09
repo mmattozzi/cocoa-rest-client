@@ -6,9 +6,9 @@
 //
 //
 
-#import "CRCconstants.h"
+#import "CRCConstants.h"
 
-@implementation CRCconstants
+@implementation CRCConstants
 
 NSString * const FOLLOW_REDIRECTS = @"followRedirects";
 NSString * const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
