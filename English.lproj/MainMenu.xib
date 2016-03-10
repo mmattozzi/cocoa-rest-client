@@ -597,7 +597,7 @@ CA
             <rect key="contentRect" x="63" y="114" width="1222" height="734"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="600" height="500"/>
-            <view key="contentView" id="372">
+            <view key="contentView" wantsLayer="YES" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="1222" height="734"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                 <subviews>
@@ -688,7 +688,7 @@ CA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <splitView translatesAutoresizingMaskIntoConstraints="NO" id="fb2-4Q-KZt">
+                    <splitView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-4Q-KZt">
                         <rect key="frame" x="20" y="45" width="1182" height="618"/>
                         <subviews>
                             <customView id="LRc-Jv-Vul">
