@@ -135,7 +135,7 @@
     itemToShow.xPosConstraint.constant = sender.selectedSegment > self.selectedTabIndex ? self.frame.size.width : -(self.frame.size.width);
     itemToShow.hidden = NO;
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        context.duration = 0.1;
+        context.duration = [[NSUserDefaults standardUserDefaults]boolForKey:DISABLE_ANIMATIONS] ? 0.0f : 0.15f;
         context.allowsImplicitAnimation = YES;
         context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         itemToHide.xPosConstraint.animator.constant = direction;

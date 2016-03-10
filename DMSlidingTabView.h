@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "DMSlidingTabViewItemProtocol.h"
 #import "DMSlidingTabItemView.h"
+#import "CRCconstants.h"
 
 IB_DESIGNABLE
 @interface DMSlidingTabView : NSView {

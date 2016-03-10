@@ -333,6 +333,12 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="mc9-XW-kOE"/>
+                            <menuItem title="Disable Animations" id="p5k-OV-7vb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="833" name="value" keyPath="values.UIDisableAnimations" id="0iG-g6-RfD"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Theme" id="kVo-uI-8oy">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Theme" id="fXd-Nr-6M9">
