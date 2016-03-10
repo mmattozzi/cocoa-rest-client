@@ -150,12 +150,10 @@
     
 }
 
-- (void)layout {
+- (void)awakeFromNib {
     controlTitle.stringValue = self.title;
     [self setupConstraints];
-    [super layout];
 }
-
 
 - (void)setupConstraints {
     NSArray *constraints =
