@@ -1632,7 +1632,7 @@ static CRCContentType requestContentType;
     NSString *path;
     do {
         sequenceNumber++;
-        path = [NSString stringWithFormat:@"%d-%d-%d", [[NSProcessInfo processInfo] processIdentifier], 
+        path = [NSString stringWithFormat:@"%d-%d-%d.txt", [[NSProcessInfo processInfo] processIdentifier],
                 (int)[NSDate timeIntervalSinceReferenceDate], sequenceNumber];
         path = [tempDir stringByAppendingPathComponent:path];
     } while ([[NSFileManager defaultManager] fileExistsAtPath:path]);
@@ -1658,22 +1658,10 @@ static CRCContentType requestContentType;
 - (IBAction) viewResponseInBrowser:(id)sender {
     NSString *path = [self saveResponseToTempFile];
     if (path) {
-        NSURL *outAppURL;
-        OSStatus osStatus = nil;
-        //OSStatus osStatus = LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator, CFSTR("html"), kLSRolesViewer, (FSRef *) nil, (CFURLRef *) &outAppURL);
-        NSLog(@"Browser app = %@", outAppURL);
-        
-        if (outAppURL != nil) {
-            [[NSWorkspace sharedWorkspace] openFile:path withApplication:[outAppURL relativePath]];
-        } else {
-            NSLog(@"Error discovering default web browser");
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"Unable to discover default web browser"];
-            [alert setInformativeText:[NSString stringWithFormat:@"Status code = %d", osStatus]];
-            [alert setAlertStyle:NSWarningAlertStyle];
-            [alert runModal];
-        }
+        NSURL *defaultBrowserURL =
+        [[NSWorkspace sharedWorkspace]URLForApplicationToOpenURL:[NSURL URLWithString:@"http://google.com"]];
+        [[NSWorkspace sharedWorkspace]openFile:path.stringByStandardizingPath
+                               withApplication:defaultBrowserURL.absoluteString.lastPathComponent];
     }
 }
 
