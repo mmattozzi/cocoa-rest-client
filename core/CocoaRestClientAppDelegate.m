@@ -149,6 +149,11 @@ static CRCContentType requestContentType;
                                               context:nil];
 }
 
+- (void)awakeFromNib {
+    self.requestTabView.title = @"Request";
+    self.responseTabView.title = @"Response";
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
         [self syntaxHighlightingPreferenceChanged];
@@ -169,6 +174,15 @@ static CRCContentType requestContentType;
     self.jsonWriter.humanReadable = YES;
     self.jsonWriter.sortKeys = NO;
     
+    [self.requestTabView addItems:@[self.requestBodyItemView,
+                                    self.requestHeadersItemView,
+                                    self.requestAuthItemView,
+                                    self.requestFilesItemView]];
+    
+    [self.responseTabView addItems:@[self.responseBodyItemView,
+                                     self.responseHeadersItemView,
+                                     self.responseHeadersSentItemView]];
+    
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
@@ -182,6 +196,8 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithObjectValue:@"PATCH"];
 	[methodButton addItemWithObjectValue:@"COPY"];
 	[methodButton addItemWithObjectValue:@"SEARCH"];
+    
+    
     
 	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"DELETE", @"HEAD", @"OPTIONS", nil];
 	
@@ -760,10 +776,10 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) minusParamsRow:(id)sender {
-    if ([paramsTable count] > [paramsTableView selectedRow]) {
+    if (paramsTable.lastObject) {
         [paramsTable removeObjectAtIndex:[paramsTableView selectedRow]];
-        [paramsTableView reloadData];
     }
+    [paramsTableView reloadData];
 }
 
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn {

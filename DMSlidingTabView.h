@@ -13,12 +13,14 @@
 IB_DESIGNABLE
 @interface DMSlidingTabView : NSView {
     NSSegmentedControl              *tabSelector;
+    NSTextField                     *controlTitle;
     NSMutableArray                  *tabViewItems;
     NSUInteger                      selectedTabIdx;
     NSArray                         *xConstraints;
 }
 
-@property NSInteger                selectedTabIndex;
+@property NSInteger                             selectedTabIndex;
+@property IBInspectable (nonatomic) NSString    *title;
 
 - (void)addItem:(id<DMSlidingTabViewItem>)item;
 - (void)addItems:(NSArray*)items;

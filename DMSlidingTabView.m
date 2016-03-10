@@ -10,23 +10,49 @@
 #import <Quartz/Quartz.h>
 @implementation DMSlidingTabView
 
+- (instancetype)initWithFrame:(NSRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initializeLayout];
+    }
+    return self;
+}
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
-        tabSelector = [[NSSegmentedControl alloc]init];
-        tabViewItems = [NSMutableArray array];
-        xConstraints = [NSArray array];
-        [self addSubview:tabSelector];
-        tabSelector.segmentCount = 3;
-        [tabSelector setSegmentStyle:NSSegmentStyleTexturedRounded];
-        tabSelector.selectedSegment = 0;
-        self.selectedTabIndex = -1;
-        tabSelector.translatesAutoresizingMaskIntoConstraints = NO;
-        [tabSelector setTarget:self];
-        [tabSelector setAction:@selector(selectedTabDidChange:)];
+        [self initializeLayout];
     }
     return self;
+}
+
+- (void)initializeLayout {
+    controlTitle = [[NSTextField alloc]init];
+    controlTitle.editable = NO;
+    controlTitle.font = [NSFont systemFontOfSize:18];
+    controlTitle.textColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    controlTitle.bezeled = NO;
+    controlTitle.drawsBackground = NO;
+    controlTitle.selectable = NO;
+    tabSelector = [[NSSegmentedControl alloc]init];
+    tabViewItems = [NSMutableArray array];
+    xConstraints = [NSArray array];
+    [self addSubview:tabSelector];
+    [self addSubview:controlTitle];
+    tabSelector.segmentCount = 0;
+    [tabSelector setSegmentStyle:NSSegmentStyleTexturedRounded];
+    tabSelector.selectedSegment = 0;
+    self.selectedTabIndex = -1;
+    tabSelector.translatesAutoresizingMaskIntoConstraints = NO;
+    controlTitle.translatesAutoresizingMaskIntoConstraints = NO;
+    [tabSelector setTarget:self];
+    [tabSelector setAction:@selector(selectedTabDidChange:)];
+}
+
+- (NSString*)title {
+    if (!_title) return @"Title";
+    return _title.uppercaseString;
 }
 
 #pragma mark -- Items
@@ -50,12 +76,6 @@
         [tabSelector setLabel:item.tabTitle forSegment:idx];
         item.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:item];
-        NSArray *itemConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[item]-0-|"
-                                    options:NSLayoutFormatAlignAllLeft
-                                                metrics:nil
-                                                  views:@{@"item": item}];
-       // [NSLayoutConstraint activateConstraints:itemConstraints];
         NSLayoutConstraint *topSpace = [NSLayoutConstraint constraintWithItem:item
                                                                     attribute:NSLayoutAttributeTop
                                                                     relatedBy:NSLayoutRelationEqual
@@ -131,6 +151,7 @@
 }
 
 - (void)layout {
+    controlTitle.stringValue = self.title;
     [self setupConstraints];
     [super layout];
 }
@@ -138,10 +159,10 @@
 
 - (void)setupConstraints {
     NSArray *constraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[tabSelector]-0-|"
-                                                options:NSLayoutFormatAlignAllLeft
+        [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[tabSelector]->=10-[controlTitle(<=120)]-0-|"
+                                                options:NSLayoutFormatAlignAllCenterY
                                                 metrics:nil
-                                                  views:@{@"tabSelector": tabSelector}
+                                                  views:@{@"tabSelector": tabSelector, @"controlTitle": controlTitle}
                             
                             
                             ];
@@ -153,16 +174,17 @@
                                                attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     [NSLayoutConstraint activateConstraints:constraints];
     [self addConstraint:c2];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     [[NSGraphicsContext currentContext] saveGraphicsState];
-    [[NSColor lightGrayColor]set];
+    [[NSColor colorWithRed:0 green:0 blue:0 alpha:0.1]set];
 
     NSBezierPath * dividerLine = [[NSBezierPath alloc]init];
-    [dividerLine moveToPoint:NSMakePoint(0, self.bounds.size.height -25)];
-    [dividerLine lineToPoint:NSMakePoint(self.bounds.size.width, self.bounds.size.height -25)];
+    [dividerLine moveToPoint:NSMakePoint(0, self.bounds.size.height -27)];
+    [dividerLine lineToPoint:NSMakePoint(self.bounds.size.width, self.bounds.size.height -27)];
     [dividerLine setLineWidth:0.5];
     [dividerLine stroke];
     [[NSGraphicsContext currentContext] restoreGraphicsState];

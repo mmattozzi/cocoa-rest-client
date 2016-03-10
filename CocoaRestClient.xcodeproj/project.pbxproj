@@ -261,9 +261,9 @@
 		982641EE1C91007D00FEA5E9 /* DMSlidingTabView */ = {
 			isa = PBXGroup;
 			children = (
+				982641F11C91009800FEA5E9 /* DMSlidingTabViewItemProtocol.h */,
 				982641EF1C91009800FEA5E9 /* DMSlidingTabView.h */,
 				982641F01C91009800FEA5E9 /* DMSlidingTabView.m */,
-				982641F11C91009800FEA5E9 /* DMSlidingTabViewItemProtocol.h */,
 				982641F21C91009800FEA5E9 /* DMSlidingTabItemView.h */,
 				982641F31C91009800FEA5E9 /* DMSlidingTabItemView.m */,
 			);
