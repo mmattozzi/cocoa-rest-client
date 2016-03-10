@@ -825,12 +825,15 @@ static CRCContentType requestContentType;
 	[picker setCanChooseFiles:YES];
 	[picker setCanChooseDirectories:NO];
 	[picker setAllowsMultipleSelection:NO];
-	
-	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
-		for(NSURL* url in [picker URLs]) {
-			[self addFileToFilesTable:url];
-		}
-	}
+  
+	[picker beginSheetModalForWindow:self.window
+     completionHandler:^(NSModalResponse returnCode) {
+         if (returnCode == NSModalResponseOK) {
+             for(NSURL* url in [picker URLs]) {
+                 [self addFileToFilesTable:url];
+             }
+         }
+     }];
 
 }
 
@@ -1476,19 +1479,21 @@ static CRCContentType requestContentType;
 	[picker setAllowsMultipleSelection:NO];
     
     NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
-    
-    if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
-        @try {
-            for(NSURL* url in [picker URLs]) {
-                NSString *path = [url path];
-                NSLog(@"Loading requests from %@", path);
-                [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
-            }
-        }
-        @catch (NSException *exception) {
-            [self invalidFileAlert];
-        }
-	}
+    [picker beginSheetModalForWindow:self.window
+                   completionHandler:^(NSInteger result) {
+                       if (result == NSFileHandlingPanelOKButton) {
+                           @try {
+                               for(NSURL* url in [picker URLs]) {
+                                   NSString *path = [url path];
+                                   NSLog(@"Loading requests from %@", path);
+                                   [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+                               }
+                           }
+                           @catch (NSException *exception) {
+                               [self invalidFileAlert];
+                           }
+                       }
+                   }];
     
     if ([loadedRequests count] > 0) {
         [self importRequestsFromArray:loadedRequests];
@@ -1598,14 +1603,14 @@ static CRCContentType requestContentType;
     NSSavePanel* picker = [NSSavePanel savePanel];
 	
     if ( [picker runModal] == NSOKButton ) {
-		NSString* path = [picker filename];
-        NSLog(@"Saving requests to %@", path);
+		NSURL* path = [picker URL];
+        NSLog(@"Saving requests to %@", path.absoluteString);
         
         NSError *error;
-        BOOL savedOK = [[self getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        BOOL savedOK = [[self getResponseText] writeToFile:path.absoluteString atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         if (! savedOK) {
-            NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
+            NSLog(@"Error writing file at %@\n%@", path.absoluteString, [error localizedFailureReason]);
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"OK"];
             [alert setMessageText:@"Unable to save response"];

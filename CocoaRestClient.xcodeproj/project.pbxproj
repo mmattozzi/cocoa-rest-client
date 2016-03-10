@@ -36,8 +36,6 @@
 		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
 		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
 		AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */; };
-		AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
-		AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFCE79521419B47900E22468 /* Sparkle.framework */; };
 		AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AFCE79561419B54600E22468 /* dsa_pub.pem */; };
 		AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFE1837612E394E5001B1B29 /* LICENSE.txt */; };
 		D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */; };
@@ -56,7 +54,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AFCE79551419B49F00E22468 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +113,6 @@
 		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportRequestsController.m; path = core/ExportRequestsController.m; sourceTree = "<group>"; };
 		AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCDrawerView.h; path = view/CRCDrawerView.h; sourceTree = "<group>"; };
 		AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCDrawerView.m; path = view/CRCDrawerView.m; sourceTree = "<group>"; };
-		AFCE79521419B47900E22468 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = English.lproj/dsa_pub.pem; sourceTree = "<group>"; };
 		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaRestClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +142,6 @@
 				AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */,
 				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				AFCE79531419B47900E22468 /* Sparkle.framework in Frameworks */,
 				F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				2C954AFC16B97A3200C8D54B /* libz.dylib */,
-				AFCE79521419B47900E22468 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				14C15A15CB9C1B4386B81228 /* libPods.a */,
@@ -538,6 +532,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
 			};
 			name = Debug;
@@ -562,6 +557,7 @@
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
 			};
 			name = Release;
@@ -570,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = s;
