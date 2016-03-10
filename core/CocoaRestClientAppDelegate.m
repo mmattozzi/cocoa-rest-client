@@ -153,7 +153,11 @@ static CRCContentType requestContentType;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
-        [self syntaxHighlightingPreferenceChanged];
+        // This might come on a bg thread, good old foundation bug. Thats why the GCD call.
+        // Diego
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self syntaxHighlightingPreferenceChanged];
+        });
     }
 }
 
