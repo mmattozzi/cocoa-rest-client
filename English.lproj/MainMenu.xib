@@ -697,6 +697,9 @@ CA
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="zav-XA-8kl" customClass="DMSlidingTabView">
                                         <rect key="frame" x="0.0" y="10" width="1182" height="288"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="REQUEST"/>
+                                        </userDefinedRuntimeAttributes>
                                     </customView>
                                 </subviews>
                                 <constraints>
@@ -713,6 +716,9 @@ CA
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="8Jm-QE-T6S" customClass="DMSlidingTabView">
                                         <rect key="frame" x="0.0" y="0.0" width="1182" height="311"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="RESPONSE"/>
+                                        </userDefinedRuntimeAttributes>
                                     </customView>
                                 </subviews>
                                 <constraints>

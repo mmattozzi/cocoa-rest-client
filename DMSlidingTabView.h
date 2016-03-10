@@ -20,7 +20,7 @@ IB_DESIGNABLE
 }
 
 @property NSInteger                             selectedTabIndex;
-@property IBInspectable (nonatomic) NSString    *title;
+@property IBInspectable NSString    *title;
 
 - (void)addItem:(id<DMSlidingTabViewItem>)item;
 - (void)addItems:(NSArray*)items;

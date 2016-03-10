@@ -149,10 +149,7 @@ static CRCContentType requestContentType;
                                               context:nil];
 }
 
-- (void)awakeFromNib {
-    self.requestTabView.title = @"Request";
-    self.responseTabView.title = @"Response";
-}
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
@@ -182,6 +179,7 @@ static CRCContentType requestContentType;
     [self.responseTabView addItems:@[self.responseBodyItemView,
                                      self.responseHeadersItemView,
                                      self.responseHeadersSentItemView]];
+  
     
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];

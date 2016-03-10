@@ -9,7 +9,7 @@
 #import "DMSlidingTabView.h"
 #import <Quartz/Quartz.h>
 @implementation DMSlidingTabView
-
+@synthesize title;
 - (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -40,7 +40,17 @@
     xConstraints = [NSArray array];
     [self addSubview:tabSelector];
     [self addSubview:controlTitle];
+#if TARGET_INTERFACE_BUILDER
+    tabSelector.segmentCount = 3;
+    for (int i = 0; i < tabSelector.segmentCount; i++) {
+        [tabSelector setLabel:@"Test Label" forSegment:i];
+        //self.title = @"Test Title";
+    }
+    [self setupConstraints];
+#else
     tabSelector.segmentCount = 0;
+#endif
+   
     [tabSelector setSegmentStyle:NSSegmentStyleTexturedRounded];
     tabSelector.selectedSegment = 0;
     self.selectedTabIndex = -1;
@@ -50,10 +60,7 @@
     [tabSelector setAction:@selector(selectedTabDidChange:)];
 }
 
-- (NSString*)title {
-    if (!_title) return @"Title";
-    return _title.uppercaseString;
-}
+
 
 #pragma mark -- Items
 
@@ -128,7 +135,7 @@
     itemToShow.xPosConstraint.constant = sender.selectedSegment > self.selectedTabIndex ? self.frame.size.width : -(self.frame.size.width);
     itemToShow.hidden = NO;
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        context.duration = 0.25;
+        context.duration = 0.1;
         context.allowsImplicitAnimation = YES;
         context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         itemToHide.xPosConstraint.animator.constant = direction;
@@ -147,7 +154,14 @@
         }
         item.hidden = [tabViewItems indexOfObject:item] == sender.selectedSegment ? NO : YES;
     }];*/
-    
+}
+- (void)setTitle:(NSString *)t {
+    title = t;
+    controlTitle.stringValue = title.uppercaseString;
+}
+
+- (NSString*)title {
+    return title;
 }
 
 - (void)awakeFromNib {
