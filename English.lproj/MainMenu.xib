@@ -1658,6 +1658,22 @@ Gw
         </window>
         <userDefaultsController representsSharedInstance="YES" id="833"/>
         <customObject id="914" customClass="SUUpdater"/>
+        <customView id="FAq-zJ-LT3" userLabel="Request Body View" customClass="DMSlidingTabItemView">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView id="uSQ-08-aoL" userLabel="Request Headers View" customClass="DMSlidingTabItemView">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView id="7tj-Vy-yel" userLabel="Auth View" customClass="DMSlidingTabItemView">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView id="Kxb-QD-Li0" userLabel="Files View" customClass="DMSlidingTabItemView">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
