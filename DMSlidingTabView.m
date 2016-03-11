@@ -52,7 +52,7 @@
 #endif
    
     [tabSelector setSegmentStyle:NSSegmentStyleTexturedRounded];
-    tabSelector.selectedSegment = 0;
+    //tabSelector.selectedSegment = 0;
     self.selectedTabIndex = -1;
     tabSelector.translatesAutoresizingMaskIntoConstraints = NO;
     controlTitle.translatesAutoresizingMaskIntoConstraints = NO;
@@ -83,6 +83,7 @@
         [tabSelector setLabel:item.tabTitle forSegment:idx];
         item.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:item];
+
         NSLayoutConstraint *topSpace = [NSLayoutConstraint constraintWithItem:item
                                                                     attribute:NSLayoutAttributeTop
                                                                     relatedBy:NSLayoutRelationEqual
@@ -100,15 +101,18 @@
                                                                          toItem:self
                                                                       attribute:NSLayoutAttributeWidth
                                                                      multiplier:1 constant:0];
+        CGFloat leftSpaceConstant = 0;
+        if (idx > 0) leftSpaceConstant = 4000;
+        
         NSLayoutConstraint *leftSpace = [NSLayoutConstraint constraintWithItem:item
                                                                      attribute:NSLayoutAttributeLeft
                                                                      relatedBy:NSLayoutRelationEqual
                                                                         toItem:self
                                                                      attribute:NSLayoutAttributeLeft
-                                                                    multiplier:1 constant:4000];
+                                                                    multiplier:1 constant:leftSpaceConstant];
         [xPosCons addObject:leftSpace];
         item.xPosConstraint = leftSpace;
-        item.hidden = YES;
+        item.hidden = idx > 0 ? YES : NO;
 
         [self addConstraint:topSpace];
         [self addConstraint:bottomSpace];
@@ -116,6 +120,8 @@
         [self addConstraint:leftSpace];
 
     }];
+    [self setNeedsDisplay:YES];
+    [self setNeedsLayout:YES];
     xConstraints = [NSArray arrayWithArray:xPosCons];
     tabSelector.selectedSegment = 0;
     [self selectedTabDidChange:tabSelector];
@@ -184,7 +190,8 @@
                                                relatedBy:NSLayoutRelationEqual
                                                   toItem:self
                                                attribute:NSLayoutAttributeTop multiplier:1 constant:0];
-    [NSLayoutConstraint activateConstraints:constraints];
+    //[NSLayoutConstraint activateConstraints:constraints]; // NOT AVAILABLE IN 10.9
+    [self addConstraints:constraints];
     [self addConstraint:c2];
     [self invalidateIntrinsicContentSize];
 }
