@@ -18,6 +18,8 @@
 #import "HighlightingTypeManager.h"
 #import <SBJson4.h>
 #import "CRCConstants.h"
+#import "DMSlidingTabView.h"
+#import "DMSlidingTabItemView.h"
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -65,6 +67,20 @@
 @property (nonatomic, readonly) NSMutableArray *headersTable;
 @property (nonatomic, readonly) NSMutableArray *filesTable;
 @property (nonatomic, readonly) NSMutableArray *paramsTable;
+
+// Request Outlets
+@property IBOutlet DMSlidingTabView             *requestTabView;
+@property IBOutlet DMSlidingTabItemView         *requestBodyItemView;
+@property IBOutlet DMSlidingTabItemView         *requestAuthItemView;
+@property IBOutlet DMSlidingTabItemView         *requestFilesItemView;
+@property IBOutlet DMSlidingTabItemView         *requestHeadersItemView;
+
+// Response Outlets
+@property IBOutlet DMSlidingTabView             *responseTabView;
+@property IBOutlet DMSlidingTabItemView         *responseBodyItemView;
+@property IBOutlet DMSlidingTabItemView         *responseHeadersItemView;
+@property IBOutlet DMSlidingTabItemView         *responseHeadersSentItemView;
+
 
 @property (weak) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSComboBox *urlBox;

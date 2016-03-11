@@ -149,9 +149,15 @@ static CRCContentType requestContentType;
                                               context:nil];
 }
 
+
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
-        [self syntaxHighlightingPreferenceChanged];
+        // This might come on a bg thread, good old foundation bug. Thats why the GCD call.
+        // Diego
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self syntaxHighlightingPreferenceChanged];
+        });
     }
 }
 
@@ -169,6 +175,16 @@ static CRCContentType requestContentType;
     self.jsonWriter.humanReadable = YES;
     self.jsonWriter.sortKeys = NO;
     
+    [self.requestTabView addItems:@[self.requestBodyItemView,
+                                    self.requestHeadersItemView,
+                                    self.requestAuthItemView,
+                                    self.requestFilesItemView]];
+    
+    [self.responseTabView addItems:@[self.responseBodyItemView,
+                                     self.responseHeadersItemView,
+                                     self.responseHeadersSentItemView]];
+  
+    
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
@@ -182,6 +198,8 @@ static CRCContentType requestContentType;
 	[methodButton addItemWithObjectValue:@"PATCH"];
 	[methodButton addItemWithObjectValue:@"COPY"];
 	[methodButton addItemWithObjectValue:@"SEARCH"];
+    
+    
     
 	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"DELETE", @"HEAD", @"OPTIONS", nil];
 	
@@ -760,10 +778,10 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) minusParamsRow:(id)sender {
-    if ([paramsTable count] > [paramsTableView selectedRow]) {
+    if (paramsTable.lastObject) {
         [paramsTable removeObjectAtIndex:[paramsTableView selectedRow]];
-        [paramsTableView reloadData];
     }
+    [paramsTableView reloadData];
 }
 
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn {
@@ -811,12 +829,15 @@ static CRCContentType requestContentType;
 	[picker setCanChooseFiles:YES];
 	[picker setCanChooseDirectories:NO];
 	[picker setAllowsMultipleSelection:NO];
-	
-	if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
-		for(NSURL* url in [picker URLs]) {
-			[self addFileToFilesTable:url];
-		}
-	}
+  
+	[picker beginSheetModalForWindow:self.window
+     completionHandler:^(NSModalResponse returnCode) {
+         if (returnCode == NSModalResponseOK) {
+             for(NSURL* url in [picker URLs]) {
+                 [self addFileToFilesTable:url];
+             }
+         }
+     }];
 
 }
 
@@ -1462,19 +1483,21 @@ static CRCContentType requestContentType;
 	[picker setAllowsMultipleSelection:NO];
     
     NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
-    
-    if ( [picker runModalForDirectory:nil file:nil] == NSOKButton ) {
-        @try {
-            for(NSURL* url in [picker URLs]) {
-                NSString *path = [url path];
-                NSLog(@"Loading requests from %@", path);
-                [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];            
-            }
-        }
-        @catch (NSException *exception) {
-            [self invalidFileAlert];
-        }
-	}
+    [picker beginSheetModalForWindow:self.window
+                   completionHandler:^(NSInteger result) {
+                       if (result == NSFileHandlingPanelOKButton) {
+                           @try {
+                               for(NSURL* url in [picker URLs]) {
+                                   NSString *path = [url path];
+                                   NSLog(@"Loading requests from %@", path);
+                                   [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+                               }
+                           }
+                           @catch (NSException *exception) {
+                               [self invalidFileAlert];
+                           }
+                       }
+                   }];
     
     if ([loadedRequests count] > 0) {
         [self importRequestsFromArray:loadedRequests];
@@ -1584,14 +1607,14 @@ static CRCContentType requestContentType;
     NSSavePanel* picker = [NSSavePanel savePanel];
 	
     if ( [picker runModal] == NSOKButton ) {
-		NSString* path = [picker filename];
-        NSLog(@"Saving requests to %@", path);
+		NSURL* path = [picker URL];
+        NSLog(@"Saving requests to %@", path.absoluteString);
         
         NSError *error;
-        BOOL savedOK = [[self getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        BOOL savedOK = [[self getResponseText] writeToFile:path.absoluteString atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         if (! savedOK) {
-            NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
+            NSLog(@"Error writing file at %@\n%@", path.absoluteString, [error localizedFailureReason]);
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"OK"];
             [alert setMessageText:@"Unable to save response"];
@@ -1609,7 +1632,7 @@ static CRCContentType requestContentType;
     NSString *path;
     do {
         sequenceNumber++;
-        path = [NSString stringWithFormat:@"%d-%d-%d", [[NSProcessInfo processInfo] processIdentifier], 
+        path = [NSString stringWithFormat:@"%d-%d-%d.txt", [[NSProcessInfo processInfo] processIdentifier],
                 (int)[NSDate timeIntervalSinceReferenceDate], sequenceNumber];
         path = [tempDir stringByAppendingPathComponent:path];
     } while ([[NSFileManager defaultManager] fileExistsAtPath:path]);
@@ -1635,22 +1658,10 @@ static CRCContentType requestContentType;
 - (IBAction) viewResponseInBrowser:(id)sender {
     NSString *path = [self saveResponseToTempFile];
     if (path) {
-        NSURL *outAppURL;
-        OSStatus osStatus = nil;
-        //OSStatus osStatus = LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator, CFSTR("html"), kLSRolesViewer, (FSRef *) nil, (CFURLRef *) &outAppURL);
-        NSLog(@"Browser app = %@", outAppURL);
-        
-        if (outAppURL != nil) {
-            [[NSWorkspace sharedWorkspace] openFile:path withApplication:[outAppURL relativePath]];
-        } else {
-            NSLog(@"Error discovering default web browser");
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"Unable to discover default web browser"];
-            [alert setInformativeText:[NSString stringWithFormat:@"Status code = %d", osStatus]];
-            [alert setAlertStyle:NSWarningAlertStyle];
-            [alert runModal];
-        }
+        NSURL *defaultBrowserURL =
+        [[NSWorkspace sharedWorkspace]URLForApplicationToOpenURL:[NSURL URLWithString:@"http://google.com"]];
+        [[NSWorkspace sharedWorkspace]openFile:path.stringByStandardizingPath
+                               withApplication:defaultBrowserURL.absoluteString.lastPathComponent];
     }
 }
 

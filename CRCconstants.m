@@ -6,9 +6,9 @@
 //
 //
 
-#import "CRCconstants.h"
+#import "CRCConstants.h"
 
-@implementation CRCconstants
+@implementation CRCConstants
 
 NSString * const FOLLOW_REDIRECTS = @"followRedirects";
 NSString * const APPLY_HTTP_METHOD_ON_REDIRECT = @"applyHttpMethodOnRedirect";
@@ -19,6 +19,7 @@ NSString * const SAVED_DRAWER_SIZE = @"savedDrawerSize";
 NSString * const THEME = @"theme";
 NSUInteger const DEFAULT_FONT_SIZE = 12;
 NSString * const SHOW_LINE_NUMBERS = @"showLineNumbers";
+NSString * const DISABLE_ANIMATIONS = @"UIDisableAnimations";
 
 
 @end
