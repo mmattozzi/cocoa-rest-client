@@ -10,9 +10,9 @@
 
 @implementation DMSlidingTabItemView
 
-- (BOOL)wantsLayer {
+/*- (BOOL)wantsLayer {
     return YES;
-}
+}*/
 
 @synthesize tabTitle;
 
