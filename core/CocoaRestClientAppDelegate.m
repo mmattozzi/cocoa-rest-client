@@ -171,6 +171,11 @@ static CRCContentType requestContentType;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+    [window setFrameUsingName:@"CRCMainWindow"];
+    [[window windowController] setShouldCascadeWindows:NO];
+    [window setFrameAutosaveName:@"CRCMainWindow"];
+    
     self.jsonWriter = [[SBJson4Writer alloc] init];
     self.jsonWriter.humanReadable = YES;
     self.jsonWriter.sortKeys = NO;
