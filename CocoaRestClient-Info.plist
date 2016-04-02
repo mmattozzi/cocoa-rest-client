@@ -38,7 +38,7 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://restlesscode.org/cocoa-rest-client/appcast.xml</string>
+	<string>https://mmattozzi.github.io/cocoa-rest-client/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>kCRCHeadersUserDefaultsKey</key>
