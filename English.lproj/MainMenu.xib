@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E61b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -601,7 +601,7 @@ CA
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="63" y="114" width="1222" height="734"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="600" height="500"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="1222" height="734"/>
@@ -905,7 +905,7 @@ CA
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="173" y="440" width="580" height="62"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="726">
                 <rect key="frame" x="0.0" y="0.0" width="580" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -966,7 +966,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="173" y="440" width="580" height="62"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="759">
                 <rect key="frame" x="0.0" y="0.0" width="580" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -1055,10 +1055,10 @@ Gw
                                         <rect key="frame" x="0.0" y="0.0" width="554" height="184"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="554" height="184"/>
+                                        <size key="minSize" width="539" height="184"/>
                                         <size key="maxSize" width="2299" height="10000000"/>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="minSize" width="554" height="184"/>
+                                        <size key="minSize" width="539" height="184"/>
                                         <size key="maxSize" width="2299" height="10000000"/>
                                     </textView>
                                 </subviews>
@@ -1069,7 +1069,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="hcX-Ws-jfa">
-                                <rect key="frame" x="539" y="1" width="16" height="184"/>
+                                <rect key="frame" x="540" y="1" width="15" height="184"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <connections>
@@ -1389,6 +1389,9 @@ Gw
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="1A7-d3-jxB" id="DgD-UB-EEp"/>
+                            </connections>
                         </textField>
                         <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1A7-d3-jxB">
                             <rect key="frame" x="97" y="204" width="206" height="22"/>
@@ -1400,6 +1403,9 @@ Gw
                                     <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                 </allowedInputSourceLocales>
                             </secureTextFieldCell>
+                            <connections>
+                                <outlet property="nextKeyView" destination="nkg-T2-mYR" id="yEf-vF-eNx"/>
+                            </connections>
                         </secureTextField>
                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xpl-qh-sOT">
                             <rect key="frame" x="-2" y="263" width="365" height="17"/>
@@ -1455,6 +1461,9 @@ Gw
                         <constraint firstItem="xpl-qh-sOT" firstAttribute="top" secondItem="QId-yc-Y4j" secondAttribute="top" constant="1" id="v1t-iO-CYc"/>
                         <constraint firstItem="6pe-Ch-We0" firstAttribute="top" secondItem="1A7-d3-jxB" secondAttribute="bottom" constant="8" id="w0l-Xv-n8L"/>
                     </constraints>
+                    <connections>
+                        <outlet property="nextKeyView" destination="nkg-T2-mYR" id="BmC-NR-IIO"/>
+                    </connections>
                 </view>
             </subviews>
             <constraints>
@@ -1482,7 +1491,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="eCC-oM-RmH" id="WGJ-ls-CgW" userLabel="filesTableView" customClass="TabbingTableView">
-                                        <rect key="frame" x="0.0" y="0.0" width="550" height="182"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="551" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>
                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1618,10 +1627,10 @@ Gw
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="241"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="360" height="241"/>
+                                        <size key="minSize" width="345" height="241"/>
                                         <size key="maxSize" width="1205" height="10000000"/>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="minSize" width="360" height="241"/>
+                                        <size key="minSize" width="345" height="241"/>
                                         <size key="maxSize" width="1205" height="10000000"/>
                                     </textView>
                                 </subviews>
@@ -1632,7 +1641,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="0cA-6C-Oa2">
-                                <rect key="frame" x="345" y="1" width="16" height="241"/>
+                                <rect key="frame" x="346" y="1" width="15" height="241"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <connections>
@@ -1690,10 +1699,10 @@ Gw
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="221"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="362" height="221"/>
+                                        <size key="minSize" width="347" height="221"/>
                                         <size key="maxSize" width="2129" height="10000000"/>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="minSize" width="362" height="221"/>
+                                        <size key="minSize" width="347" height="221"/>
                                         <size key="maxSize" width="2129" height="10000000"/>
                                     </textView>
                                 </subviews>
@@ -1704,7 +1713,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="IWw-3A-Egb">
-                                <rect key="frame" x="346" y="0.0" width="16" height="221"/>
+                                <rect key="frame" x="347" y="0.0" width="15" height="221"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
@@ -1745,10 +1754,10 @@ Gw
                                         <rect key="frame" x="0.0" y="0.0" width="357" height="261"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="357" height="261"/>
+                                        <size key="minSize" width="342" height="261"/>
                                         <size key="maxSize" width="1385" height="10000000"/>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <size key="minSize" width="357" height="261"/>
+                                        <size key="minSize" width="342" height="261"/>
                                         <size key="maxSize" width="1385" height="10000000"/>
                                     </textView>
                                 </subviews>
@@ -1759,7 +1768,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="OAV-02-ze3">
-                                <rect key="frame" x="341" y="0.0" width="16" height="261"/>
+                                <rect key="frame" x="342" y="0.0" width="15" height="261"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
