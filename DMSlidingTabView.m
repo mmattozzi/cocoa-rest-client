@@ -81,6 +81,8 @@
     [tabViewItems enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         DMSlidingTabItemView *item = (DMSlidingTabItemView*)obj;
         [tabSelector setLabel:item.tabTitle forSegment:idx];
+        item.indexInTabSelector = idx;
+        item.parentTabSelector = tabSelector;
         item.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:item];
 

@@ -11,6 +11,9 @@
 
 @interface DMSlidingTabItemView : NSView<DMSlidingTabViewItem>
 
-@property IBInspectable NSString                    *tabTitle;
+@property (nonatomic) IBInspectable NSString        *tabTitle;
 @property NSLayoutConstraint                        *xPosConstraint;
+@property NSUInteger                                indexInTabSelector;
+@property NSSegmentedControl                        *parentTabSelector;
+
 @end

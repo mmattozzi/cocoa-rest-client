@@ -12,7 +12,7 @@
 @protocol DMSlidingTabViewItem <NSObject>
 
 @required
-@property NSString *tabTitle;
+@property (nonatomic) NSString *tabTitle;
 
 @end
 #endif /* DMSlidingTabViewItem_h */

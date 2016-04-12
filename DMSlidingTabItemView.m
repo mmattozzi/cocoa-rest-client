@@ -14,7 +14,19 @@
     return YES;
 }*/
 
-@synthesize tabTitle;
+@synthesize tabTitle = _tabTitle;
+@synthesize indexInTabSelector;
+@synthesize parentTabSelector;
 
+- (void) setTabTitle:(NSString *)aTabTitle {
+    if (aTabTitle) {
+        _tabTitle = aTabTitle;
+        [parentTabSelector setLabel:_tabTitle forSegment:indexInTabSelector];
+    }
+}
+
+- (NSString *) getTabTitle {
+    return _tabTitle;
+}
 
 @end

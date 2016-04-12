@@ -583,6 +583,7 @@ static CRCContentType requestContentType;
 	[headers appendFormat:@"HTTP %ld %@\n\n", [httpResponse statusCode], [[NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] capitalizedString]];
 	
 	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%ld)", [httpResponse statusCode]]];
+    _responseHeadersItemView.tabTitle = [NSString stringWithFormat:@"Headers (%ld)", [httpResponse statusCode]];
 	
 	NSDictionary *headerDict = [httpResponse allHeaderFields];
     contentType = nil;
