@@ -1496,6 +1496,10 @@ static CRCContentType requestContentType;
                                    NSString *path = [url path];
                                    NSLog(@"Loading requests from %@", path);
                                    [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+                                   
+                                   if ([loadedRequests count] > 0) {
+                                       [self importRequestsFromArray:loadedRequests];
+                                   }
                                }
                            }
                            @catch (NSException *exception) {
@@ -1504,9 +1508,7 @@ static CRCContentType requestContentType;
                        }
                    }];
     
-    if ([loadedRequests count] > 0) {
-        [self importRequestsFromArray:loadedRequests];
-    }
+    
 }
 
 - (IBAction) exportRequests:(id)sender {
