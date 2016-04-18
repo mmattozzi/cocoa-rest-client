@@ -1669,7 +1669,7 @@ static CRCContentType requestContentType;
         NSURL *defaultBrowserURL =
         [[NSWorkspace sharedWorkspace]URLForApplicationToOpenURL:[NSURL URLWithString:@"http://google.com"]];
         [[NSWorkspace sharedWorkspace]openFile:path.stringByStandardizingPath
-                               withApplication:defaultBrowserURL.absoluteString.lastPathComponent];
+                               withApplication:defaultBrowserURL.absoluteString.lastPathComponent.stringByRemovingPercentEncoding];
     }
 }
 
