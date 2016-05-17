@@ -1112,6 +1112,10 @@
     
     NSLog(@"Found source item of drop: %@ with parent %@", sourceItem, sourceParentFolder);
     
+    if (targetItem == sourceItem) {
+        return NO;
+    }
+    
     if (! targetItem) {
         // Saving into the top level array
         if (sourceParentFolder == nil && (targetIndex > sourceIndex)) {
