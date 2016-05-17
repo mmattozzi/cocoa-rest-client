@@ -198,6 +198,11 @@ CA
                                     <action selector="selectAll:" target="-1" id="605"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Copy Curl Command (beta)" keyEquivalent="k" id="d1z-PZ-ZgI">
+                                <connections>
+                                    <action selector="copyCurlCommand:" target="-1" id="3Qz-wu-K55"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="577">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>

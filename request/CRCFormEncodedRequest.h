@@ -13,4 +13,5 @@
 
 }
 +(void)createRequest:(NSMutableURLRequest *)request;
++(NSData *) createRequestBody:(NSArray *)params;
 @end

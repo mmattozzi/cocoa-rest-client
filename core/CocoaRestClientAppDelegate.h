@@ -188,4 +188,6 @@
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;
 
+- (IBAction) copyCurlCommand:(id)sender;
+
 @end

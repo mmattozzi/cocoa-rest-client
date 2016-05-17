@@ -7,6 +7,7 @@
 //
 
 #import "CRCRequest.h"
+#import "CRCFormEncodedRequest.h"
 
 
 @implementation CRCRequest
@@ -92,6 +93,87 @@
     }
     
 	return self;
+}
+
++ (CRCContentType) determineRequestContentType:(NSArray *) headers {
+    CRCContentType requestContentType = CRCContentTypeUnknown;
+    
+    for(NSDictionary * row in headers)
+    {
+        if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"])
+        {
+            NSString * value = [[row objectForKey:@"value"] lowercaseString];
+            NSRange range;
+            
+            if([value isEqualToString:@"application/x-www-form-urlencoded"]){
+                requestContentType = CRCContentTypeFormEncoded;
+                break;
+            }
+            
+            if([value isEqualToString:@"multipart/form-data"]){
+                requestContentType = CRCContentTypeMultipart;
+                break;
+            }
+            
+            range = [value rangeOfString:@"json"];
+            if(range.length > 0){
+                requestContentType = CRCContentTypeJson;
+                break;
+            }
+            
+            range = [value rangeOfString:@"xml"];
+            if(range.length > 0){
+                requestContentType = CRCContentTypeXml;
+                break;
+            }
+            
+            range = [value rangeOfString:@"image"];
+            if(range.length > 0){
+                requestContentType = CRCContentTypeImage;
+                break;
+            }
+        }
+    }
+    
+    return requestContentType;
+}
+
+- (NSString *) generateCurlCommand:(bool)followRedirects {
+    NSMutableString *command = [NSMutableString stringWithCapacity:500];
+    [command appendString:@"curl -k "];
+    if (followRedirects) {
+        [command appendString:@" -L "];
+    }
+    if (! [method isEqualToString:@"GET"]) {
+        [command appendString:[NSString stringWithFormat:@"-X %@ ", method]];
+    }
+    
+    for (NSDictionary *header in headers) {
+        [command appendString:[NSString stringWithFormat:@"-H '%@: %@' ", [header valueForKey:@"key"], [header valueForKey:@"value"]]];
+    }
+    
+    CRCContentType contentType = [CRCRequest determineRequestContentType:headers];
+    
+    if (contentType != CRCContentTypeFormEncoded) {
+        for (NSDictionary *param in params) {
+            [command appendString:[NSString stringWithFormat:@"-F '%@=%@' ", [param valueForKey:@"key"], [param valueForKey:@"value"]]];
+        }
+    } else if (! rawRequestInput) {
+        [command appendString:[NSString stringWithFormat:@"-d '%@' ",
+           [[NSString alloc] initWithData:[CRCFormEncodedRequest createRequestBody:params] encoding:NSUTF8StringEncoding]]];
+    }
+    
+    if (rawRequestInput && [requestText length] > 0) {
+        [command appendString:[NSString stringWithFormat:@"-d '%@' ", requestText]];
+    }
+    
+    if (username && password && ([username length] > 0 || [password length] > 0)) {
+        [command appendString:[NSString stringWithFormat:@"-u '%@:%@' ", username, password]];
+    }
+    
+    [command appendString:[NSString stringWithFormat:@"'%@'", url]];
+    
+    return command;
 }
 
 @end

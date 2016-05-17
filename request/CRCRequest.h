@@ -10,6 +10,16 @@
 #import "CocoaRestClientAppDelegate.h"
 #import "CRCConstants.h"
 
+enum {
+    CRCContentTypeMultipart,
+    CRCContentTypeFormEncoded,
+    CRCContentTypeJson,
+    CRCContentTypeXml,
+    CRCContentTypeImage,
+    CRCContentTypeUnknown
+};
+typedef NSInteger CRCContentType;
+
 @interface CRCRequest : NSObject <NSCoding> {
 	BOOL rawRequestInput;
 	NSString * name;
@@ -38,4 +48,7 @@
 
 + (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application;
 - (CRCRequest *)overwriteContentsWith:(CRCRequest *)request;
+- (NSString *) generateCurlCommand:(bool)followRedirects;
++ (CRCContentType) determineRequestContentType:(NSArray *)headers;
+
 @end

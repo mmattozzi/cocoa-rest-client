@@ -26,22 +26,7 @@
 #define DATAFILE_NAME @"CocoaRestClient.savedRequests"
 #define BACKUP_DATAFILE_1_3_8 @"CocoaRestClient.savedRequests.backup-1.3.8"
 
-
-enum {
-	CRCContentTypeMultipart,
-	CRCContentTypeFormEncoded,
-	CRCContentTypeJson,
-	CRCContentTypeXml,
-	CRCContentTypeImage,
-	CRCContentTypeUnknown
-};
-typedef NSInteger CRCContentType;
-
-static CRCContentType requestContentType;
-
-
 @interface CocoaRestClientAppDelegate(Private)
-- (void)determineRequestContentType;
 - (void)loadSavedDictionary:(NSDictionary *)request;
 - (void)loadSavedCRCRequest:(CRCRequest *)request;
 @end
@@ -282,45 +267,6 @@ static CRCContentType requestContentType;
     }
 }
 
-- (void) determineRequestContentType{
-	for(NSDictionary * row in headersTable)
-	{
-		if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"])
-		{
-			NSString * value = [[row objectForKey:@"value"] lowercaseString];
-			NSRange range;
-			
-			if([value isEqualToString:@"application/x-www-form-urlencoded"]){
-				requestContentType = CRCContentTypeFormEncoded;
-				break;
-			}
-			
-			if([value isEqualToString:@"multipart/form-data"]){
-				requestContentType = CRCContentTypeMultipart;
-				break;
-			}
-			
-			range = [value rangeOfString:@"json"];
-			if(range.length > 0){
-				requestContentType = CRCContentTypeJson;
-				break;
-			}
-			
-			range = [value rangeOfString:@"xml"];
-			if(range.length > 0){
-				requestContentType = CRCContentTypeXml;
-				break;
-			}
-			
-			range = [value rangeOfString:@"image"];
-			if(range.length > 0){
-				requestContentType = CRCContentTypeImage;
-				break;
-			}
-		}
-	}
-}
-
 - (void) setResponseText:(NSString *)response {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
@@ -362,8 +308,7 @@ static CRCContentType requestContentType;
 }
 
 - (IBAction) runSubmit:(id)sender {
-	[self determineRequestContentType];
-	NSLog(@"Got submit press");
+    NSLog(@"Got submit press");
     [progressIndicator setHidden:NO];
     [progressIndicator startAnimation:self];
 	
@@ -411,7 +356,7 @@ static CRCContentType requestContentType;
 	}
 	else {
 		if (![requestMethodsWithoutBody containsObject:method]) {
-			switch(requestContentType) {
+            switch([CRCRequest determineRequestContentType:headersTable]) {
 				case CRCContentTypeFormEncoded:
 					[CRCFormEncodedRequest createRequest:request];
                     contentTypeSet = YES;
@@ -1682,6 +1627,15 @@ static CRCContentType requestContentType;
 - (IBAction) viewResponseInDefaultApplication:(id)sender {
     NSString *path = [self saveResponseToTempFile];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", path]]];
+}
+
+- (IBAction) copyCurlCommand:(id)sender {
+    CRCRequest * request = [CRCRequest requestWithApplication:self];
+    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+    [pasteBoard declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
+    NSString *curlCommand = [request generateCurlCommand:[[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]];
+    NSLog(@"Generated curl command: %@", curlCommand);
+    [pasteBoard setString:curlCommand forType:NSStringPboardType];
 }
 
 @end
