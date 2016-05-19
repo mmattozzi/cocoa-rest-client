@@ -1103,6 +1103,10 @@
         NSLog(@"Unable to find index of moving item");
         return NO;
     }
+    
+    if (targetItem == sourceItem) {
+        return NO;
+    }
         
     if (sourceParentFolder) {
         [((CRCSavedRequestFolder *) sourceParentFolder) removeObject:sourceItem];
@@ -1111,10 +1115,6 @@
     }    
     
     NSLog(@"Found source item of drop: %@ with parent %@", sourceItem, sourceParentFolder);
-    
-    if (targetItem == sourceItem) {
-        return NO;
-    }
     
     if (! targetItem) {
         // Saving into the top level array
