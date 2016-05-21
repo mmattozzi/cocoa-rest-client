@@ -171,6 +171,16 @@
         [command appendString:[NSString stringWithFormat:@"-u '%@:%@' ", username, password]];
     }
     
+    if (contentType == CRCContentTypeMultipart) {
+        for (NSDictionary *fileParam in files) {
+            NSString *filePath = [[fileParam valueForKey:@"url"] absoluteString];
+            if ([filePath hasPrefix:@"file://"]) {
+                filePath = [filePath substringFromIndex:7];
+            }
+            [command appendString:[NSString stringWithFormat:@"-F '%@=@%@' ", [fileParam valueForKey:@"key"], filePath]];
+        }
+    }
+    
     [command appendString:[NSString stringWithFormat:@"'%@'", url]];
     
     return command;
