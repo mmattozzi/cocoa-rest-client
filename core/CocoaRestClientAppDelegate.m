@@ -192,7 +192,7 @@
     
     
     
-	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"DELETE", @"HEAD", @"OPTIONS", nil];
+	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"HEAD", @"OPTIONS", nil];
 	
 	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
 	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];    
