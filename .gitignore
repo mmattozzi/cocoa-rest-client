@@ -6,3 +6,4 @@ Podfile.lock
 Pods
 Build
 DerivedData
+*.xcscmblueprint
