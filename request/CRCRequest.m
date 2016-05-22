@@ -158,7 +158,7 @@
         for (NSDictionary *param in params) {
             [command appendString:[NSString stringWithFormat:@"-F '%@=%@' ", [param valueForKey:@"key"], [param valueForKey:@"value"]]];
         }
-    } else if (! rawRequestInput) {
+    } else if (! rawRequestInput && [params count] > 0) {
         [command appendString:[NSString stringWithFormat:@"-d '%@' ",
            [[NSString alloc] initWithData:[CRCFormEncodedRequest createRequestBody:params] encoding:NSUTF8StringEncoding]]];
     }
