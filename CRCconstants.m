@@ -20,6 +20,7 @@ NSString * const THEME = @"theme";
 NSUInteger const DEFAULT_FONT_SIZE = 12;
 NSString * const SHOW_LINE_NUMBERS = @"showLineNumbers";
 NSString * const DISABLE_ANIMATIONS = @"UIDisableAnimations";
+NSString * const DISABLE_COOKIES = @"disableCookies";
 
 
 @end

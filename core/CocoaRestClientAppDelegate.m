@@ -81,6 +81,7 @@
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SYNTAX_HIGHLIGHT];
     [defaults setValue:[NSNumber numberWithInteger:ACEThemeChrome] forKey:THEME];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SHOW_LINE_NUMBERS];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:DISABLE_COOKIES];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
@@ -388,6 +389,10 @@
     }
     
     [request setAllHTTPHeaderFields:headersDictionary];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DISABLE_COOKIES]) {
+        [request setHTTPShouldHandleCookies:NO];
+    }
     
 	lastRequest = [CRCRequest requestWithApplication:self];
 	if ([method isEqualToString:@"GET"]) {

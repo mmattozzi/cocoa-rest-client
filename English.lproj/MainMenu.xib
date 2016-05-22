@@ -297,6 +297,12 @@ CA
                                     <binding destination="833" name="value" keyPath="values.applyHttpMethodOnRedirect" id="1025"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Disable Automatic Cookies" id="hno-w8-h7I">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="833" name="value" keyPath="values.disableCookies" id="a3d-5k-v7E"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
