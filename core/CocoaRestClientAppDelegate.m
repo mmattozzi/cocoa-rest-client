@@ -18,6 +18,7 @@
 #import "MF_Base64Additions.h"
 #import "TableRowAndColumn.h"
 #import "CRCSavedRequestFolder.h"
+#import "ContentTypes.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -97,13 +98,6 @@
 	[row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
 	[headersTable addObject:row];
 	
-    xmlContentTypes = [NSArray arrayWithObjects:@"application/xml", @"application/atom+xml", @"application/rss+xml",
-                       @"text/xml", @"application/soap+xml", @"application/xml-dtd", nil];
-    
-    jsonContentTypes = [NSArray arrayWithObjects:@"application/json", @"text/json", nil];
-    
-    msgPackContentTypes = [NSArray arrayWithObjects:@"application/x-msgpack", @"application/x-messagepack", nil];
-    
     [self loadDataFromDisk];
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
@@ -679,7 +673,7 @@
 	
 	BOOL needToPrintPlain = YES;
 	if (contentType != NULL) {
-        if ([xmlContentTypes containsObject:contentType]) {
+        if ([[ContentTypes sharedContentTypes] isXml:contentType]) {
 			NSLog(@"Formatting XML");
 			NSError *error;
 			NSXMLDocument *responseXML = [[NSXMLDocument alloc] initWithData:receivedData options:NSXMLNodePreserveAll error:&error];
@@ -690,10 +684,10 @@
                 [self setResponseText:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
                 needToPrintPlain = NO;
             }
-		} else if ([jsonContentTypes containsObject:contentType]) {
+		} else if ([[ContentTypes sharedContentTypes] isJson:contentType]) {
             [self prettyPrintJsonResponseFromString:receivedData];
             needToPrintPlain = NO;
-		} else if ([msgPackContentTypes containsObject:contentType]) {
+		} else if ([[ContentTypes sharedContentTypes] isMsgPack:contentType]) {
             NSLog(@"Attempting to format MsgPack as JSON");
             [self prettyPrintJsonResponseFromObject:[MsgPackSerialization MsgPackObjectWithData:receivedData options:0 error:nil]];
             needToPrintPlain = NO;

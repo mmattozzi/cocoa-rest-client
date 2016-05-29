@@ -7,6 +7,7 @@
 //
 
 #import "HighlightingTypeManager.h"
+#import "ContentTypes.h"
 
 @implementation HighlightingTypeManager
 
@@ -37,6 +38,10 @@
     NSNumber *mode = [typeMapping valueForKey:mimeType];
     if (mode) {
         [self->view setMode:[mode intValue]];
+    } else if ([[ContentTypes sharedContentTypes] isJson:mimeType]) {
+        [self->view setMode:ACEModeJSON];
+    } else if ([[ContentTypes sharedContentTypes] isXml:mimeType]) {
+        [self->view setMode:ACEModeXML];
     } else {
         [self->view setMode:ACEModeText];
     }

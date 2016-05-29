@@ -50,9 +50,6 @@
     @private CRCRequest *lastRequest;
     @private NSSet *requestMethodsWithoutBody;
     
-    @private NSArray *xmlContentTypes;
-    @private NSArray *jsonContentTypes;
-    @private NSArray *msgPackContentTypes;
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
     
