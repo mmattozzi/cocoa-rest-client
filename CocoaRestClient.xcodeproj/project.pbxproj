@@ -1,620 +1,2106 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 47;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03E34E16CA2E0F00C7608A /* CRCHTTPHeaderCell.m */; };
-		2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C954AF916B9799D00C8D54B /* NSData+gzip.m */; };
-		2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C954AFC16B97A3200C8D54B /* libz.dylib */; };
-		5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5704EECF155C7BF400C55656 /* WebKit.framework */; };
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
-		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985608C01C8FF3E700A3EB6E /* defaults.plist */; };
-		985608C71C90031300A3EB6E /* CRCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 985608C61C90031300A3EB6E /* CRCConstants.m */; };
-		AF0A96BE1CC86E1A001870FC /* DMSlidingTabItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A96B81CC86D57001870FC /* DMSlidingTabItemView.m */; };
-		AF0A96C01CC86E1A001870FC /* DMSlidingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A96BA1CC86D57001870FC /* DMSlidingTabView.m */; };
-		AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */; };
-		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
-		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
-		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
-		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
-		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
-		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
-		AFA11ACD15CF036300831738 /* motd.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFA11ACC15CF036300831738 /* motd.txt */; };
-		AFB3AA3D1A87E43400012E04 /* HighlightingTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */; };
-		AFB3AA3F1A94051700012E04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB3AA3E1A94051700012E04 /* Images.xcassets */; };
-		AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4614F9587A00424C12 /* TabbingTableView.m */; };
-		AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBB7D4914F98B4000424C12 /* Preferences.xib */; };
-		AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */; };
-		AFBBA03E18D4AB93002E7036 /* CRCSavedRequestFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBBA03D18D4AB93002E7036 /* CRCSavedRequestFolder.m */; };
-		AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */; };
-		AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08C414C32D30000E7411 /* ExportRequestsController.m */; };
-		AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */; };
-		AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AFCE79561419B54600E22468 /* dsa_pub.pem */; };
-		AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFE1837612E394E5001B1B29 /* LICENSE.txt */; };
-		D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */; };
-		D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */; };
-		D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A03011E8F61D00F5A80B /* CRCFileRequest.m */; };
-		D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D714A0A111E901FB00F5A80B /* CRCRequest.m */; };
-		D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */; };
-		D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D998B311EAA29B005B8811 /* CRCTopView.m */; };
-		F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AFCE79541419B49700E22468 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		14C15A15CB9C1B4386B81228 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* CheckableRequestWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckableRequestWrapper.h; path = core/CheckableRequestWrapper.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckableRequestWrapper.m; path = core/CheckableRequestWrapper.m; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClient_Prefix.pch; path = core/CocoaRestClient_Prefix.pch; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = core/main.m; sourceTree = "<group>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2C03E34D16CA2E0F00C7608A /* CRCHTTPHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCHTTPHeaderCell.h; path = view/CRCHTTPHeaderCell.h; sourceTree = "<group>"; };
-		2C03E34E16CA2E0F00C7608A /* CRCHTTPHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCHTTPHeaderCell.m; path = view/CRCHTTPHeaderCell.m; sourceTree = "<group>"; };
-		2C954AF816B9799D00C8D54B /* NSData+gzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+gzip.h"; path = "request/NSData+gzip.h"; sourceTree = "<group>"; };
-		2C954AF916B9799D00C8D54B /* NSData+gzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+gzip.m"; path = "request/NSData+gzip.m"; sourceTree = "<group>"; };
-		2C954AFC16B97A3200C8D54B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
-		5704EECF155C7BF400C55656 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocoaRestClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaRestClient-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* CocoaRestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaRestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		985608C01C8FF3E700A3EB6E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
-		985608C51C90031300A3EB6E /* CRCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCConstants.h; sourceTree = "<group>"; };
-		985608C61C90031300A3EB6E /* CRCConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCConstants.m; sourceTree = "<group>"; };
-		AF0A96B61CC86D38001870FC /* DMSlidingTabViewItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMSlidingTabViewItemProtocol.h; path = view/DMSlidingTabViewItemProtocol.h; sourceTree = "<group>"; };
-		AF0A96B71CC86D57001870FC /* DMSlidingTabItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMSlidingTabItemView.h; path = view/DMSlidingTabItemView.h; sourceTree = "<group>"; };
-		AF0A96B81CC86D57001870FC /* DMSlidingTabItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMSlidingTabItemView.m; path = view/DMSlidingTabItemView.m; sourceTree = "<group>"; };
-		AF0A96B91CC86D57001870FC /* DMSlidingTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMSlidingTabView.h; path = view/DMSlidingTabView.h; sourceTree = "<group>"; };
-		AF0A96BA1CC86D57001870FC /* DMSlidingTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMSlidingTabView.m; path = view/DMSlidingTabView.m; sourceTree = "<group>"; };
-		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
-		AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableRowAndColumn.h; path = view/TableRowAndColumn.h; sourceTree = "<group>"; };
-		AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableRowAndColumn.m; path = view/TableRowAndColumn.m; sourceTree = "<group>"; };
-		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClientAppDelegate.h; path = core/CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
-		AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaRestClientAppDelegate.m; path = core/CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
-		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
-		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
-		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeController.m; path = core/WelcomeController.m; sourceTree = "<group>"; };
-		AFA11ACC15CF036300831738 /* motd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = motd.txt; path = English.lproj/motd.txt; sourceTree = "<group>"; };
-		AFB3AA3B1A87E43400012E04 /* HighlightingTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighlightingTypeManager.h; path = view/HighlightingTypeManager.h; sourceTree = "<group>"; };
-		AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighlightingTypeManager.m; path = view/HighlightingTypeManager.m; sourceTree = "<group>"; };
-		AFB3AA3E1A94051700012E04 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CocoaRestClient/Images.xcassets; sourceTree = "<group>"; };
-		AFBB7D4514F9587A00424C12 /* TabbingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbingTableView.h; path = view/TabbingTableView.h; sourceTree = "<group>"; };
-		AFBB7D4614F9587A00424C12 /* TabbingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbingTableView.m; path = view/TabbingTableView.m; sourceTree = "<group>"; };
-		AFBB7D4A14F98B4000424C12 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
-		AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = core/PreferencesController.h; sourceTree = "<group>"; };
-		AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = core/PreferencesController.m; sourceTree = "<group>"; };
-		AFBBA03C18D4AB93002E7036 /* CRCSavedRequestFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCSavedRequestFolder.h; path = request/CRCSavedRequestFolder.h; sourceTree = "<group>"; };
-		AFBBA03D18D4AB93002E7036 /* CRCSavedRequestFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCSavedRequestFolder.m; path = request/CRCSavedRequestFolder.m; sourceTree = "<group>"; };
-		AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportRequests.xib; path = English.lproj/ExportRequests.xib; sourceTree = "<group>"; };
-		AFBF08C314C32D30000E7411 /* ExportRequestsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportRequestsController.h; path = core/ExportRequestsController.h; sourceTree = "<group>"; };
-		AFBF08C414C32D30000E7411 /* ExportRequestsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportRequestsController.m; path = core/ExportRequestsController.m; sourceTree = "<group>"; };
-		AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCDrawerView.h; path = view/CRCDrawerView.h; sourceTree = "<group>"; };
-		AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCDrawerView.m; path = view/CRCDrawerView.m; sourceTree = "<group>"; };
-		AFCE79561419B54600E22468 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = English.lproj/dsa_pub.pem; sourceTree = "<group>"; };
-		AFE1837612E394E5001B1B29 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaRestClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.debug.xcconfig"; sourceTree = "<group>"; };
-		D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCFormEncodedRequest.h; path = request/CRCFormEncodedRequest.h; sourceTree = "<group>"; };
-		D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCFormEncodedRequest.m; path = request/CRCFormEncodedRequest.m; sourceTree = "<group>"; };
-		D714A01E11E8C0F400F5A80B /* CRCRawRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCRawRequest.h; path = request/CRCRawRequest.h; sourceTree = "<group>"; };
-		D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCRawRequest.m; path = request/CRCRawRequest.m; sourceTree = "<group>"; };
-		D714A02F11E8F61D00F5A80B /* CRCFileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCFileRequest.h; path = request/CRCFileRequest.h; sourceTree = "<group>"; };
-		D714A03011E8F61D00F5A80B /* CRCFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCFileRequest.m; path = request/CRCFileRequest.m; sourceTree = "<group>"; };
-		D714A0A011E901FB00F5A80B /* CRCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCRequest.h; path = request/CRCRequest.h; sourceTree = "<group>"; };
-		D714A0A111E901FB00F5A80B /* CRCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCRequest.m; path = request/CRCRequest.m; sourceTree = "<group>"; };
-		D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCMultipartRequest.h; path = request/CRCMultipartRequest.h; sourceTree = "<group>"; };
-		D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCMultipartRequest.m; path = request/CRCMultipartRequest.m; sourceTree = "<group>"; };
-		D7D998B211EAA29B005B8811 /* CRCTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRCTopView.h; path = view/CRCTopView.h; sourceTree = "<group>"; };
-		D7D998B311EAA29B005B8811 /* CRCTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRCTopView.m; path = view/CRCTopView.m; sourceTree = "<group>"; };
-		D7EAC25B3F30972DE7FE9764 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DECFE55E2726D0B061E38482 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaRestClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.release.xcconfig"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		8D11072E0486CEB800E47090 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C954AFD16B97A3200C8D54B /* libz.dylib in Frameworks */,
-				AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */,
-				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				982641EE1C91007D00FEA5E9 /* DMSlidingTabView */,
-				AF1A1B9816A1DF1E00915644 /* core */,
-				AFBB7D4814F985AB00424C12 /* view */,
-				AFBB7D4414F93DE400424C12 /* request */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8D1107320486CEB800E47090 /* CocoaRestClient.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		29B97314FDCFA39411CA2CEA /* CocoaRestClient */ = {
-			isa = PBXGroup;
-			children = (
-				AF895874156088610079B379 /* QuartzCore.framework */,
-				5704EECF155C7BF400C55656 /* WebKit.framework */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
-				2C1E2F4CE5F1D0141F817AAD /* Pods */,
-			);
-			name = CocoaRestClient;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				256AC3F00F4B6AF500CF3369 /* CocoaRestClient_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AFB3AA3E1A94051700012E04 /* Images.xcassets */,
-				AFCE79561419B54600E22468 /* dsa_pub.pem */,
-				AFE1837612E394E5001B1B29 /* LICENSE.txt */,
-				AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */,
-				8D1107310486CEB800E47090 /* CocoaRestClient-Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				AFBF08BC14C1E9BB000E7411 /* ExportRequests.xib */,
-				AFBB7D4914F98B4000424C12 /* Preferences.xib */,
-				AFA11AB315CEDA3600831738 /* Welcome.xib */,
-				AFA11ACC15CF036300831738 /* motd.txt */,
-				985608C01C8FF3E700A3EB6E /* defaults.plist */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C954AFC16B97A3200C8D54B /* libz.dylib */,
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				14C15A15CB9C1B4386B81228 /* libPods.a */,
-				8CCF7DF709BFF6221813746B /* libPods-CocoaRestClient.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2C1E2F4CE5F1D0141F817AAD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D7EAC25B3F30972DE7FE9764 /* Pods.debug.xcconfig */,
-				DECFE55E2726D0B061E38482 /* Pods.release.xcconfig */,
-				CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */,
-				F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		982641EE1C91007D00FEA5E9 /* DMSlidingTabView */ = {
-			isa = PBXGroup;
-			children = (
-				AF0A96B71CC86D57001870FC /* DMSlidingTabItemView.h */,
-				AF0A96B81CC86D57001870FC /* DMSlidingTabItemView.m */,
-				AF0A96B91CC86D57001870FC /* DMSlidingTabView.h */,
-				AF0A96BA1CC86D57001870FC /* DMSlidingTabView.m */,
-				AF0A96B61CC86D38001870FC /* DMSlidingTabViewItemProtocol.h */,
-			);
-			name = DMSlidingTabView;
-			sourceTree = "<group>";
-		};
-		AF1A1B9816A1DF1E00915644 /* core */ = {
-			isa = PBXGroup;
-			children = (
-				985608C51C90031300A3EB6E /* CRCConstants.h */,
-				985608C61C90031300A3EB6E /* CRCConstants.m */,
-				AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */,
-				AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */,
-				AFBB7D4C14F98C1B00424C12 /* PreferencesController.h */,
-				AFBB7D4D14F98C1B00424C12 /* PreferencesController.m */,
-				256AC3D80F4B6AC300CF3369 /* CheckableRequestWrapper.h */,
-				256AC3D90F4B6AC300CF3369 /* CheckableRequestWrapper.m */,
-				AFBF08C314C32D30000E7411 /* ExportRequestsController.h */,
-				AFBF08C414C32D30000E7411 /* ExportRequestsController.m */,
-				AFA11AB615CEDAE300831738 /* WelcomeController.h */,
-				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
-			);
-			name = core;
-			sourceTree = "<group>";
-		};
-		AFBB7D4414F93DE400424C12 /* request */ = {
-			isa = PBXGroup;
-			children = (
-				D7AC588511E60DDA00D67635 /* CRCMultipartRequest.h */,
-				D7AC588611E60DDA00D67635 /* CRCMultipartRequest.m */,
-				D714A01B11E8BF7700F5A80B /* CRCFormEncodedRequest.h */,
-				D714A01C11E8BF7700F5A80B /* CRCFormEncodedRequest.m */,
-				D714A01E11E8C0F400F5A80B /* CRCRawRequest.h */,
-				D714A01F11E8C0F400F5A80B /* CRCRawRequest.m */,
-				D714A02F11E8F61D00F5A80B /* CRCFileRequest.h */,
-				D714A03011E8F61D00F5A80B /* CRCFileRequest.m */,
-				D714A0A011E901FB00F5A80B /* CRCRequest.h */,
-				D714A0A111E901FB00F5A80B /* CRCRequest.m */,
-				2C954AF816B9799D00C8D54B /* NSData+gzip.h */,
-				2C954AF916B9799D00C8D54B /* NSData+gzip.m */,
-				AFBBA03C18D4AB93002E7036 /* CRCSavedRequestFolder.h */,
-				AFBBA03D18D4AB93002E7036 /* CRCSavedRequestFolder.m */,
-			);
-			name = request;
-			sourceTree = "<group>";
-		};
-		AFBB7D4814F985AB00424C12 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				AFBB7D4514F9587A00424C12 /* TabbingTableView.h */,
-				AFBB7D4614F9587A00424C12 /* TabbingTableView.m */,
-				D7D998B211EAA29B005B8811 /* CRCTopView.h */,
-				D7D998B311EAA29B005B8811 /* CRCTopView.m */,
-				AFBF08E014C4D7EE000E7411 /* CRCDrawerView.h */,
-				AFBF08E114C4D7EE000E7411 /* CRCDrawerView.m */,
-				2C03E34E16CA2E0F00C7608A /* CRCHTTPHeaderCell.m */,
-				2C03E34D16CA2E0F00C7608A /* CRCHTTPHeaderCell.h */,
-				AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */,
-				AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */,
-				AFB3AA3B1A87E43400012E04 /* HighlightingTypeManager.h */,
-				AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */,
-			);
-			name = view;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* CocoaRestClient */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CocoaRestClient" */;
-			buildPhases = (
-				FCAEBE35430B94C6C1587894 /* 📦 Check Pods Manifest.lock */,
-				8D1107290486CEB800E47090 /* Resources */,
-				8D11072C0486CEB800E47090 /* Sources */,
-				8D11072E0486CEB800E47090 /* Frameworks */,
-				AFCE79541419B49700E22468 /* CopyFiles */,
-				0B3CF23179E00579F355A6A8 /* 📦 Copy Pods Resources */,
-				6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CocoaRestClient;
-			productInstallPath = "$(HOME)/Applications";
-			productName = CocoaRestClient;
-			productReference = 8D1107320486CEB800E47090 /* CocoaRestClient.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		29B97313FDCFA39411CA2CEA /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0730;
-			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CocoaRestClient" */;
-			compatibilityVersion = "Xcode 6.3";
-			developmentRegion = English;
-			hasScannedForEncodings = 1;
-			knownRegions = (
-				en,
-				English,
-			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaRestClient */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				8D1107260486CEB800E47090 /* CocoaRestClient */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		8D1107290486CEB800E47090 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
-				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
-				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
-				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
-				985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */,
-				AFBB7D4B14F98B4000424C12 /* Preferences.xib in Resources */,
-				AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */,
-				AFB3AA3F1A94051700012E04 /* Images.xcassets in Resources */,
-				AFA11ACD15CF036300831738 /* motd.txt in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0B3CF23179E00579F355A6A8 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCAEBE35430B94C6C1587894 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		8D11072C0486CEB800E47090 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF0A96BE1CC86E1A001870FC /* DMSlidingTabItemView.m in Sources */,
-				AF0A96C01CC86E1A001870FC /* DMSlidingTabView.m in Sources */,
-				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				AFB3AA3D1A87E43400012E04 /* HighlightingTypeManager.m in Sources */,
-				AF1FC48410F435BD00ED5A57 /* CheckableRequestWrapper.m in Sources */,
-				D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */,
-				D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */,
-				D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */,
-				D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */,
-				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
-				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
-				AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */,
-				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
-				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
-				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
-				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
-				985608C71C90031300A3EB6E /* CRCConstants.m in Sources */,
-				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
-				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
-				2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */,
-				AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */,
-				AFBBA03E18D4AB93002E7036 /* CRCSavedRequestFolder.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1DDD58150DA1D0A300B32029 /* English */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		AFA11AB315CEDA3600831738 /* Welcome.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFA11AB415CEDA3600831738 /* English */,
-			);
-			name = Welcome.xib;
-			sourceTree = "<group>";
-		};
-		AFBB7D4914F98B4000424C12 /* Preferences.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFBB7D4A14F98B4000424C12 /* English */,
-			);
-			name = Preferences.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		C01FCF4B08A954540054247B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA38BFABF00E1FC9B3DD37DD /* Pods-CocoaRestClient.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = core/CocoaRestClient_Prefix.pch;
-				GCC_VERSION = "";
-				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
-				PRODUCT_NAME = CocoaRestClient;
-			};
-			name = Debug;
-		};
-		C01FCF4C08A954540054247B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8553EBB0B884CE2A4EB748F /* Pods-CocoaRestClient.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_ENABLE_OBJC_GC = unsupported;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = core/CocoaRestClient_Prefix.pch;
-				GCC_VERSION = "";
-				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
-				PRODUCT_NAME = CocoaRestClient;
-			};
-			name = Release;
-		};
-		C01FCF4F08A954540054247B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_VERSION = "";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-DDEBUG";
-			};
-			name = Debug;
-		};
-		C01FCF5008A954540054247B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_VERSION = "";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				ONLY_ACTIVE_ARCH = NO;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CocoaRestClient" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C01FCF4B08A954540054247B /* Debug */,
-				C01FCF4C08A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CocoaRestClient" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C01FCF4F08A954540054247B /* Debug */,
-				C01FCF5008A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>47</string>
+	<key>objects</key>
+	<dict>
+		<key>080E96DDFE201D6D7F000001</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>982641EE1C91007D00FEA5E9</string>
+				<string>AF1A1B9816A1DF1E00915644</string>
+				<string>AFBB7D4814F985AB00424C12</string>
+				<string>AFBB7D4414F93DE400424C12</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Classes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>089C165CFE840E0CC02AAC07</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>089C165DFE840E0CC02AAC07</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>089C165DFE840E0CC02AAC07</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>English</string>
+			<key>path</key>
+			<string>English.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0B3CF23179E00579F355A6A8</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>1058C7A0FEA54F0111CA2CBB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1058C7A1FEA54F0111CA2CBB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Linked Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1058C7A1FEA54F0111CA2CBB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Cocoa.framework</string>
+			<key>path</key>
+			<string>/System/Library/Frameworks/Cocoa.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;absolute&gt;</string>
+		</dict>
+		<key>1058C7A2FEA54F0111CA2CBB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>29B97324FDCFA39411CA2CEA</string>
+				<string>13E42FB307B3F0F600E4EEF1</string>
+				<string>29B97325FDCFA39411CA2CEA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Other Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>13E42FB307B3F0F600E4EEF1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreData.framework</string>
+			<key>path</key>
+			<string>/System/Library/Frameworks/CoreData.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;absolute&gt;</string>
+		</dict>
+		<key>14C15A15CB9C1B4386B81228</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>19C28FACFE9D520D11CA2CBB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8D1107320486CEB800E47090</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1DDD58140DA1D0A300B32029</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1DDD58150DA1D0A300B32029</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>MainMenu.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1DDD58150DA1D0A300B32029</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>English</string>
+			<key>path</key>
+			<string>English.lproj/MainMenu.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1DDD58160DA1D0A300B32029</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1DDD58140DA1D0A300B32029</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>256AC3D80F4B6AC300CF3369</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CheckableRequestWrapper.h</string>
+			<key>path</key>
+			<string>core/CheckableRequestWrapper.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>256AC3D90F4B6AC300CF3369</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CheckableRequestWrapper.m</string>
+			<key>path</key>
+			<string>core/CheckableRequestWrapper.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>256AC3F00F4B6AF500CF3369</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CocoaRestClient_Prefix.pch</string>
+			<key>path</key>
+			<string>core/CocoaRestClient_Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97313FDCFA39411CA2CEA</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0730</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>C01FCF4E08A954540054247B</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 6.3</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>English</string>
+			</array>
+			<key>mainGroup</key>
+			<string>29B97314FDCFA39411CA2CEA</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>8D1107260486CEB800E47090</string>
+			</array>
+		</dict>
+		<key>29B97314FDCFA39411CA2CEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AF895874156088610079B379</string>
+				<string>5704EECF155C7BF400C55656</string>
+				<string>080E96DDFE201D6D7F000001</string>
+				<string>29B97315FDCFA39411CA2CEA</string>
+				<string>29B97317FDCFA39411CA2CEA</string>
+				<string>29B97323FDCFA39411CA2CEA</string>
+				<string>19C28FACFE9D520D11CA2CBB</string>
+				<string>2C1E2F4CE5F1D0141F817AAD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>CocoaRestClient</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97315FDCFA39411CA2CEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>256AC3F00F4B6AF500CF3369</string>
+				<string>29B97316FDCFA39411CA2CEA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Other Sources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97316FDCFA39411CA2CEA</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>main.m</string>
+			<key>path</key>
+			<string>core/main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97317FDCFA39411CA2CEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AFB3AA3E1A94051700012E04</string>
+				<string>AFCE79561419B54600E22468</string>
+				<string>AFE1837612E394E5001B1B29</string>
+				<string>AF7A149A113B583A00F0D6F5</string>
+				<string>8D1107310486CEB800E47090</string>
+				<string>089C165CFE840E0CC02AAC07</string>
+				<string>1DDD58140DA1D0A300B32029</string>
+				<string>AFBF08BC14C1E9BB000E7411</string>
+				<string>AFBB7D4914F98B4000424C12</string>
+				<string>AFA11AB315CEDA3600831738</string>
+				<string>AFA11ACC15CF036300831738</string>
+				<string>985608C01C8FF3E700A3EB6E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97323FDCFA39411CA2CEA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C954AFC16B97A3200C8D54B</string>
+				<string>1058C7A0FEA54F0111CA2CBB</string>
+				<string>1058C7A2FEA54F0111CA2CBB</string>
+				<string>14C15A15CB9C1B4386B81228</string>
+				<string>8CCF7DF709BFF6221813746B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29B97324FDCFA39411CA2CEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>AppKit.framework</string>
+			<key>path</key>
+			<string>/System/Library/Frameworks/AppKit.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;absolute&gt;</string>
+		</dict>
+		<key>29B97325FDCFA39411CA2CEA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;absolute&gt;</string>
+		</dict>
+		<key>2C03E34D16CA2E0F00C7608A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCHTTPHeaderCell.h</string>
+			<key>path</key>
+			<string>view/CRCHTTPHeaderCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C03E34E16CA2E0F00C7608A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCHTTPHeaderCell.m</string>
+			<key>path</key>
+			<string>view/CRCHTTPHeaderCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C03E34F16CA2E0F00C7608A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C03E34E16CA2E0F00C7608A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1E2F4CE5F1D0141F817AAD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7EAC25B3F30972DE7FE9764</string>
+				<string>DECFE55E2726D0B061E38482</string>
+				<string>CA38BFABF00E1FC9B3DD37DD</string>
+				<string>F8553EBB0B884CE2A4EB748F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C954AF816B9799D00C8D54B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSData+gzip.h</string>
+			<key>path</key>
+			<string>request/NSData+gzip.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C954AF916B9799D00C8D54B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSData+gzip.m</string>
+			<key>path</key>
+			<string>request/NSData+gzip.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C954AFA16B9799D00C8D54B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C954AF916B9799D00C8D54B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C954AFC16B97A3200C8D54B</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>compiled.mach-o.dylib</string>
+			<key>name</key>
+			<string>libz.dylib</string>
+			<key>path</key>
+			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>2C954AFD16B97A3200C8D54B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C954AFC16B97A3200C8D54B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>447589E7CC1305ED0F1EF474</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>5704EECF155C7BF400C55656</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>WebKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/WebKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>5704EED0155C7BF400C55656</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5704EECF155C7BF400C55656</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6250BD2BBA69C29720A4E395</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>6D54EE5330DE6A1B2E789668</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>8CCF7DF709BFF6221813746B</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-CocoaRestClient.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>8D1107260486CEB800E47090</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>C01FCF4A08A954540054247B</string>
+			<key>buildPhases</key>
+			<array>
+				<string>EDD115E02121420F8D3A0921</string>
+				<string>FCAEBE35430B94C6C1587894</string>
+				<string>8D1107290486CEB800E47090</string>
+				<string>8D11072C0486CEB800E47090</string>
+				<string>8D11072E0486CEB800E47090</string>
+				<string>AFCE79541419B49700E22468</string>
+				<string>0B3CF23179E00579F355A6A8</string>
+				<string>6250BD2BBA69C29720A4E395</string>
+				<string>6D54EE5330DE6A1B2E789668</string>
+				<string>447589E7CC1305ED0F1EF474</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>CocoaRestClient</string>
+			<key>productInstallPath</key>
+			<string>$(HOME)/Applications</string>
+			<key>productName</key>
+			<string>CocoaRestClient</string>
+			<key>productReference</key>
+			<string>8D1107320486CEB800E47090</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>8D1107290486CEB800E47090</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8D11072B0486CEB800E47090</string>
+				<string>1DDD58160DA1D0A300B32029</string>
+				<string>AF7A149B113B583A00F0D6F5</string>
+				<string>AFE1837712E394E5001B1B29</string>
+				<string>AFCE79571419B54600E22468</string>
+				<string>AFBF08BD14C1E9BB000E7411</string>
+				<string>985608C11C8FF3E700A3EB6E</string>
+				<string>AFBB7D4B14F98B4000424C12</string>
+				<string>AFA11AB515CEDA3600831738</string>
+				<string>AFB3AA3F1A94051700012E04</string>
+				<string>AFA11ACD15CF036300831738</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8D11072B0486CEB800E47090</key>
+		<dict>
+			<key>fileRef</key>
+			<string>089C165CFE840E0CC02AAC07</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8D11072C0486CEB800E47090</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>AF0A96BE1CC86E1A001870FC</string>
+				<string>AF0A96C01CC86E1A001870FC</string>
+				<string>8D11072D0486CEB800E47090</string>
+				<string>AFB3AA3D1A87E43400012E04</string>
+				<string>AF1FC48410F435BD00ED5A57</string>
+				<string>D7AC588711E60DDA00D67635</string>
+				<string>D714A01D11E8BF7700F5A80B</string>
+				<string>D714A02011E8C0F400F5A80B</string>
+				<string>D714A03111E8F61D00F5A80B</string>
+				<string>D714A0A211E901FB00F5A80B</string>
+				<string>D7D998B411EAA29B005B8811</string>
+				<string>AFBF08C514C32D30000E7411</string>
+				<string>AFBF08E214C4D7EE000E7411</string>
+				<string>AFBB7D4714F9587A00424C12</string>
+				<string>AFBB7D4E14F98C1B00424C12</string>
+				<string>AFA11AB815CEDAE300831738</string>
+				<string>985608C71C90031300A3EB6E</string>
+				<string>AF90070516AC43A80012C758</string>
+				<string>2C954AFA16B9799D00C8D54B</string>
+				<string>2C03E34F16CA2E0F00C7608A</string>
+				<string>AF7CE5C71766CBC10080363B</string>
+				<string>AFBBA03E18D4AB93002E7036</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8D11072D0486CEB800E47090</key>
+		<dict>
+			<key>fileRef</key>
+			<string>29B97316FDCFA39411CA2CEA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>8D11072E0486CEB800E47090</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C954AFD16B97A3200C8D54B</string>
+				<string>AF89587615608E9D0079B379</string>
+				<string>5704EED0155C7BF400C55656</string>
+				<string>8D11072F0486CEB800E47090</string>
+				<string>F84CC2410A93E76AA17BDE2D</string>
+				<string>90655CEF553E08EB04167E1F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8D11072F0486CEB800E47090</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1058C7A1FEA54F0111CA2CBB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8D1107310486CEB800E47090</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>CocoaRestClient-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8D1107320486CEB800E47090</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>CocoaRestClient.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>90655CEF553E08EB04167E1F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>14C15A15CB9C1B4386B81228</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>982641EE1C91007D00FEA5E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AF0A96B71CC86D57001870FC</string>
+				<string>AF0A96B81CC86D57001870FC</string>
+				<string>AF0A96B91CC86D57001870FC</string>
+				<string>AF0A96BA1CC86D57001870FC</string>
+				<string>AF0A96B61CC86D38001870FC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>DMSlidingTabView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>985608C01C8FF3E700A3EB6E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>defaults.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>985608C11C8FF3E700A3EB6E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>985608C01C8FF3E700A3EB6E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>985608C51C90031300A3EB6E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>CRCConstants.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>985608C61C90031300A3EB6E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>CRCConstants.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>985608C71C90031300A3EB6E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>985608C61C90031300A3EB6E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF0A96B61CC86D38001870FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DMSlidingTabViewItemProtocol.h</string>
+			<key>path</key>
+			<string>view/DMSlidingTabViewItemProtocol.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF0A96B71CC86D57001870FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DMSlidingTabItemView.h</string>
+			<key>path</key>
+			<string>view/DMSlidingTabItemView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF0A96B81CC86D57001870FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DMSlidingTabItemView.m</string>
+			<key>path</key>
+			<string>view/DMSlidingTabItemView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF0A96B91CC86D57001870FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DMSlidingTabView.h</string>
+			<key>path</key>
+			<string>view/DMSlidingTabView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF0A96BA1CC86D57001870FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DMSlidingTabView.m</string>
+			<key>path</key>
+			<string>view/DMSlidingTabView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF0A96BE1CC86E1A001870FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF0A96B81CC86D57001870FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF0A96C01CC86E1A001870FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF0A96BA1CC86D57001870FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF1A1B9816A1DF1E00915644</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>985608C51C90031300A3EB6E</string>
+				<string>985608C61C90031300A3EB6E</string>
+				<string>AF90070316AC43A80012C758</string>
+				<string>AF90070416AC43A80012C758</string>
+				<string>AFBB7D4C14F98C1B00424C12</string>
+				<string>AFBB7D4D14F98C1B00424C12</string>
+				<string>256AC3D80F4B6AC300CF3369</string>
+				<string>256AC3D90F4B6AC300CF3369</string>
+				<string>AFBF08C314C32D30000E7411</string>
+				<string>AFBF08C414C32D30000E7411</string>
+				<string>AFA11AB615CEDAE300831738</string>
+				<string>AFA11AB715CEDAE300831738</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF1FC48410F435BD00ED5A57</key>
+		<dict>
+			<key>fileRef</key>
+			<string>256AC3D90F4B6AC300CF3369</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF7A149A113B583A00F0D6F5</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.icns</string>
+			<key>name</key>
+			<string>cocoaRestClient.icns</string>
+			<key>path</key>
+			<string>English.lproj/cocoaRestClient.icns</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF7A149B113B583A00F0D6F5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF7A149A113B583A00F0D6F5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF7CE5C51766CBC10080363B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>TableRowAndColumn.h</string>
+			<key>path</key>
+			<string>view/TableRowAndColumn.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF7CE5C61766CBC10080363B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>TableRowAndColumn.m</string>
+			<key>path</key>
+			<string>view/TableRowAndColumn.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF7CE5C71766CBC10080363B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF7CE5C61766CBC10080363B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF895874156088610079B379</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>QuartzCore.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/QuartzCore.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>AF89587615608E9D0079B379</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF895874156088610079B379</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AF90070316AC43A80012C758</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CocoaRestClientAppDelegate.h</string>
+			<key>path</key>
+			<string>core/CocoaRestClientAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF90070416AC43A80012C758</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CocoaRestClientAppDelegate.m</string>
+			<key>path</key>
+			<string>core/CocoaRestClientAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF90070516AC43A80012C758</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF90070416AC43A80012C758</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFA11AB315CEDA3600831738</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AFA11AB415CEDA3600831738</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Welcome.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFA11AB415CEDA3600831738</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>English</string>
+			<key>path</key>
+			<string>English.lproj/Welcome.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFA11AB515CEDA3600831738</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFA11AB315CEDA3600831738</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFA11AB615CEDAE300831738</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>WelcomeController.h</string>
+			<key>path</key>
+			<string>core/WelcomeController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFA11AB715CEDAE300831738</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>WelcomeController.m</string>
+			<key>path</key>
+			<string>core/WelcomeController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFA11AB815CEDAE300831738</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFA11AB715CEDAE300831738</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFA11ACC15CF036300831738</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>motd.txt</string>
+			<key>path</key>
+			<string>English.lproj/motd.txt</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFA11ACD15CF036300831738</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFA11ACC15CF036300831738</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFB3AA3B1A87E43400012E04</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HighlightingTypeManager.h</string>
+			<key>path</key>
+			<string>view/HighlightingTypeManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFB3AA3C1A87E43400012E04</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HighlightingTypeManager.m</string>
+			<key>path</key>
+			<string>view/HighlightingTypeManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFB3AA3D1A87E43400012E04</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFB3AA3C1A87E43400012E04</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFB3AA3E1A94051700012E04</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>name</key>
+			<string>Images.xcassets</string>
+			<key>path</key>
+			<string>CocoaRestClient/Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFB3AA3F1A94051700012E04</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFB3AA3E1A94051700012E04</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBB7D4414F93DE400424C12</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D7AC588511E60DDA00D67635</string>
+				<string>D7AC588611E60DDA00D67635</string>
+				<string>D714A01B11E8BF7700F5A80B</string>
+				<string>D714A01C11E8BF7700F5A80B</string>
+				<string>D714A01E11E8C0F400F5A80B</string>
+				<string>D714A01F11E8C0F400F5A80B</string>
+				<string>D714A02F11E8F61D00F5A80B</string>
+				<string>D714A03011E8F61D00F5A80B</string>
+				<string>D714A0A011E901FB00F5A80B</string>
+				<string>D714A0A111E901FB00F5A80B</string>
+				<string>2C954AF816B9799D00C8D54B</string>
+				<string>2C954AF916B9799D00C8D54B</string>
+				<string>AFBBA03C18D4AB93002E7036</string>
+				<string>AFBBA03D18D4AB93002E7036</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>request</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4514F9587A00424C12</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>TabbingTableView.h</string>
+			<key>path</key>
+			<string>view/TabbingTableView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4614F9587A00424C12</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>TabbingTableView.m</string>
+			<key>path</key>
+			<string>view/TabbingTableView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4714F9587A00424C12</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBB7D4614F9587A00424C12</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBB7D4814F985AB00424C12</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AFBB7D4514F9587A00424C12</string>
+				<string>AFBB7D4614F9587A00424C12</string>
+				<string>D7D998B211EAA29B005B8811</string>
+				<string>D7D998B311EAA29B005B8811</string>
+				<string>AFBF08E014C4D7EE000E7411</string>
+				<string>AFBF08E114C4D7EE000E7411</string>
+				<string>2C03E34E16CA2E0F00C7608A</string>
+				<string>2C03E34D16CA2E0F00C7608A</string>
+				<string>AF7CE5C51766CBC10080363B</string>
+				<string>AF7CE5C61766CBC10080363B</string>
+				<string>AFB3AA3B1A87E43400012E04</string>
+				<string>AFB3AA3C1A87E43400012E04</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>view</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4914F98B4000424C12</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>AFBB7D4A14F98B4000424C12</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Preferences.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4A14F98B4000424C12</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>English</string>
+			<key>path</key>
+			<string>English.lproj/Preferences.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4B14F98B4000424C12</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBB7D4914F98B4000424C12</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBB7D4C14F98C1B00424C12</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>PreferencesController.h</string>
+			<key>path</key>
+			<string>core/PreferencesController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4D14F98C1B00424C12</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>PreferencesController.m</string>
+			<key>path</key>
+			<string>core/PreferencesController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBB7D4E14F98C1B00424C12</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBB7D4D14F98C1B00424C12</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBBA03C18D4AB93002E7036</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCSavedRequestFolder.h</string>
+			<key>path</key>
+			<string>request/CRCSavedRequestFolder.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBBA03D18D4AB93002E7036</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCSavedRequestFolder.m</string>
+			<key>path</key>
+			<string>request/CRCSavedRequestFolder.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBBA03E18D4AB93002E7036</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBBA03D18D4AB93002E7036</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBF08BC14C1E9BB000E7411</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>ExportRequests.xib</string>
+			<key>path</key>
+			<string>English.lproj/ExportRequests.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBF08BD14C1E9BB000E7411</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBF08BC14C1E9BB000E7411</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBF08C314C32D30000E7411</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>ExportRequestsController.h</string>
+			<key>path</key>
+			<string>core/ExportRequestsController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBF08C414C32D30000E7411</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>ExportRequestsController.m</string>
+			<key>path</key>
+			<string>core/ExportRequestsController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBF08C514C32D30000E7411</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBF08C414C32D30000E7411</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFBF08E014C4D7EE000E7411</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCDrawerView.h</string>
+			<key>path</key>
+			<string>view/CRCDrawerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBF08E114C4D7EE000E7411</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCDrawerView.m</string>
+			<key>path</key>
+			<string>view/CRCDrawerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFBF08E214C4D7EE000E7411</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFBF08E114C4D7EE000E7411</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFCE79541419B49700E22468</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>10</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>AFCE79561419B54600E22468</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>dsa_pub.pem</string>
+			<key>path</key>
+			<string>English.lproj/dsa_pub.pem</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFCE79571419B54600E22468</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFCE79561419B54600E22468</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AFE1837612E394E5001B1B29</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>LICENSE.txt</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AFE1837712E394E5001B1B29</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AFE1837612E394E5001B1B29</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C01FCF4A08A954540054247B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C01FCF4B08A954540054247B</string>
+				<string>C01FCF4C08A954540054247B</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>C01FCF4B08A954540054247B</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>CA38BFABF00E1FC9B3DD37DD</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>"$(SRCROOT)"</string>
+				</array>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_GC</key>
+				<string>unsupported</string>
+				<key>GCC_MODEL_TUNING</key>
+				<string>G5</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>core/CocoaRestClient_Prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string></string>
+				<key>INFOPLIST_FILE</key>
+				<string>CocoaRestClient-Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(HOME)/Applications</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.restlesscode.cocoarestclient</string>
+				<key>PRODUCT_NAME</key>
+				<string>CocoaRestClient</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>C01FCF4C08A954540054247B</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>F8553EBB0B884CE2A4EB748F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>"$(SRCROOT)"</string>
+				</array>
+				<key>GCC_ENABLE_OBJC_GC</key>
+				<string>unsupported</string>
+				<key>GCC_MODEL_TUNING</key>
+				<string>G5</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>core/CocoaRestClient_Prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string></string>
+				<key>INFOPLIST_FILE</key>
+				<string>CocoaRestClient-Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(HOME)/Applications</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.restlesscode.cocoarestclient</string>
+				<key>PRODUCT_NAME</key>
+				<string>CocoaRestClient</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>C01FCF4E08A954540054247B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C01FCF4F08A954540054247B</string>
+				<string>C01FCF5008A954540054247B</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>C01FCF4F08A954540054247B</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_GC</key>
+				<string>supported</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>s</string>
+				<key>GCC_VERSION</key>
+				<string></string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>OTHER_CFLAGS</key>
+				<string>-DDEBUG</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>C01FCF5008A954540054247B</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_GC</key>
+				<string>supported</string>
+				<key>GCC_VERSION</key>
+				<string></string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>NO</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CA38BFABF00E1FC9B3DD37DD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-CocoaRestClient.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A01B11E8BF7700F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCFormEncodedRequest.h</string>
+			<key>path</key>
+			<string>request/CRCFormEncodedRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A01C11E8BF7700F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCFormEncodedRequest.m</string>
+			<key>path</key>
+			<string>request/CRCFormEncodedRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A01D11E8BF7700F5A80B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D714A01C11E8BF7700F5A80B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D714A01E11E8C0F400F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCRawRequest.h</string>
+			<key>path</key>
+			<string>request/CRCRawRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A01F11E8C0F400F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCRawRequest.m</string>
+			<key>path</key>
+			<string>request/CRCRawRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A02011E8C0F400F5A80B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D714A01F11E8C0F400F5A80B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D714A02F11E8F61D00F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCFileRequest.h</string>
+			<key>path</key>
+			<string>request/CRCFileRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A03011E8F61D00F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCFileRequest.m</string>
+			<key>path</key>
+			<string>request/CRCFileRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A03111E8F61D00F5A80B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D714A03011E8F61D00F5A80B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D714A0A011E901FB00F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCRequest.h</string>
+			<key>path</key>
+			<string>request/CRCRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A0A111E901FB00F5A80B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCRequest.m</string>
+			<key>path</key>
+			<string>request/CRCRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D714A0A211E901FB00F5A80B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D714A0A111E901FB00F5A80B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7AC588511E60DDA00D67635</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCMultipartRequest.h</string>
+			<key>path</key>
+			<string>request/CRCMultipartRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7AC588611E60DDA00D67635</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCMultipartRequest.m</string>
+			<key>path</key>
+			<string>request/CRCMultipartRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7AC588711E60DDA00D67635</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7AC588611E60DDA00D67635</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7D998B211EAA29B005B8811</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CRCTopView.h</string>
+			<key>path</key>
+			<string>view/CRCTopView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7D998B311EAA29B005B8811</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>CRCTopView.m</string>
+			<key>path</key>
+			<string>view/CRCTopView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7D998B411EAA29B005B8811</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D7D998B311EAA29B005B8811</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D7EAC25B3F30972DE7FE9764</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DECFE55E2726D0B061E38482</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDD115E02121420F8D3A0921</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>F84CC2410A93E76AA17BDE2D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8CCF7DF709BFF6221813746B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F8553EBB0B884CE2A4EB748F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-CocoaRestClient.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FCAEBE35430B94C6C1587894</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>29B97313FDCFA39411CA2CEA</string>
+</dict>
+</plist>
