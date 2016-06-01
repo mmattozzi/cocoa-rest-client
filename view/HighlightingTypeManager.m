@@ -16,6 +16,7 @@
     
     typeMapping = @{
         @"application/json": [NSNumber numberWithInteger:ACEModeJSON],
+        @"application/vnd.api+json": [NSNumber numberWithInteger:ACEModeJSON],
         @"text/xml": [NSNumber numberWithInteger:ACEModeXML],
         @"application/xml": [NSNumber numberWithInteger:ACEModeXML],
         @"application/javascript": [NSNumber numberWithInteger:ACEModeJavaScript],
