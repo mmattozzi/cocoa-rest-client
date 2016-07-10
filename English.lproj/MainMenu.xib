@@ -773,12 +773,15 @@ CA
         <customObject id="494" customClass="CocoaRestClientAppDelegate">
             <connections>
                 <outlet property="drawerView" destination="686" id="940"/>
+                <outlet property="fieldInputButton" destination="Cpx-Vl-d15" id="E27-hw-LK5"/>
+                <outlet property="fileInputButton" destination="Zmm-4q-6Cb" id="76y-A1-iBC"/>
                 <outlet property="filesTableView" destination="WGJ-ls-CgW" id="Qbk-XY-W8K"/>
                 <outlet property="headersTableView" destination="nDG-11-7EZ" id="aTC-JP-LQX"/>
                 <outlet property="methodButton" destination="1044" id="1048"/>
                 <outlet property="paramsTableView" destination="Aj0-kr-Xma" id="k0J-b2-pIB"/>
                 <outlet property="password" destination="1A7-d3-jxB" id="e8Z-H5-WLd"/>
                 <outlet property="progressIndicator" destination="935" id="939"/>
+                <outlet property="rawInputButton" destination="VYK-Vl-2Os" id="Dke-tx-2G3"/>
                 <outlet property="reGetResponseMenuItem" destination="1011" id="1017"/>
                 <outlet property="requestAuthItemView" destination="7tj-Vy-yel" id="UYz-iI-tkJ"/>
                 <outlet property="requestBodyItemView" destination="FAq-zJ-LT3" id="1Km-e6-7K8"/>
@@ -1059,11 +1062,11 @@ Gw
                         <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kru-yJ-fCQ" userLabel="Plain Text SV">
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <clipView key="contentView" id="8af-fB-haH">
-                                <rect key="frame" x="1" y="1" width="554" height="184"/>
+                                <rect key="frame" x="1" y="1" width="539" height="184"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView focusRingType="none" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="QtJ-z7-GaI">
-                                        <rect key="frame" x="0.0" y="0.0" width="554" height="184"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="539" height="184"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="minSize" width="539" height="184"/>
@@ -1084,6 +1087,14 @@ Gw
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <connections>
+                                <binding destination="833" name="hidden3" keyPath="values.UIFileRequestBody" previousBinding="3Ho-lc-aPk" id="IAM-ps-LMB">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="833" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="hVi-7J-SK3" id="3Ho-lc-aPk">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -1102,6 +1113,14 @@ Gw
                         <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-vD-vBF" userLabel="SyntaxHL SV" customClass="ACEView">
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <connections>
+                                <binding destination="833" name="hidden3" keyPath="values.UIFileRequestBody" previousBinding="slF-0w-Iaz" id="fNy-0U-LxB">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="833" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="Qbz-aq-ciN" id="slF-0w-Iaz">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -1183,14 +1202,14 @@ Gw
                                 <binding destination="833" name="hidden" keyPath="values.UIRawRequestBody" id="LfC-EY-UJV"/>
                             </connections>
                         </scrollView>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="VYK-Vl-2Os">
-                            <rect key="frame" x="-3" y="2" width="74" height="18"/>
-                            <buttonCell key="cell" type="check" title="Raw Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="PPn-4n-mqW">
+                        <button identifier="rawInput" toolTip="The above text will be the HTTP body of the request" misplaced="YES" tag="10001" translatesAutoresizingMaskIntoConstraints="NO" id="VYK-Vl-2Os">
+                            <rect key="frame" x="-2" y="3" width="72" height="16"/>
+                            <buttonCell key="cell" type="radio" title="Raw Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="PPn-4n-mqW">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="833" name="value" keyPath="values.UIRawRequestBody" id="uJT-cV-JZz"/>
+                                <action selector="requestBodyInputMode:" target="494" id="RNJ-k9-BAG"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-cB-Drt">
@@ -1221,6 +1240,26 @@ Gw
                                 <binding destination="833" name="hidden" keyPath="values.UIRawRequestBody" id="aBI-bW-4tU"/>
                             </connections>
                         </button>
+                        <button identifier="fieldInput" toolTip="For simulating form input and multipart file upload" misplaced="YES" tag="10002" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-Vl-d15">
+                            <rect key="frame" x="81" y="1" width="86" height="20"/>
+                            <buttonCell key="cell" type="radio" title="Field Input/Multipart File Upload" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nBe-dG-hdl">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system" size="11"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="requestBodyInputMode:" target="494" id="vcv-9X-wZX"/>
+                            </connections>
+                        </button>
+                        <button identifier="fileInput" toolTip="A file specified in the files table will be the body of the request" misplaced="YES" tag="10003" translatesAutoresizingMaskIntoConstraints="NO" id="Zmm-4q-6Cb">
+                            <rect key="frame" x="172" y="1" width="103" height="20"/>
+                            <buttonCell key="cell" type="radio" title="Raw File Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="U8e-bH-sDC">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system" size="11"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="requestBodyInputMode:" target="494" id="aSW-Kw-iBs"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="d3e-cB-Drt" firstAttribute="top" secondItem="Ofl-0U-UDX" secondAttribute="top" id="1Dj-iS-KoO"/>
@@ -1234,10 +1273,14 @@ Gw
                         <constraint firstItem="6cN-hT-mGZ" firstAttribute="top" secondItem="Ofl-0U-UDX" secondAttribute="top" id="VFG-93-MBk"/>
                         <constraint firstAttribute="trailing" secondItem="Prd-vD-vBF" secondAttribute="trailing" id="W6e-hM-wdX"/>
                         <constraint firstItem="VYK-Vl-2Os" firstAttribute="leading" secondItem="Ofl-0U-UDX" secondAttribute="leading" id="YQX-nu-QAc"/>
+                        <constraint firstAttribute="bottom" secondItem="Zmm-4q-6Cb" secondAttribute="bottom" constant="5" id="aWu-EZ-zba"/>
+                        <constraint firstAttribute="bottom" secondItem="Cpx-Vl-d15" secondAttribute="bottom" constant="5" id="cuO-Fw-XFa"/>
+                        <constraint firstItem="Zmm-4q-6Cb" firstAttribute="leading" secondItem="Cpx-Vl-d15" secondAttribute="trailing" constant="15" id="d62-Pq-mwj"/>
                         <constraint firstItem="Prd-vD-vBF" firstAttribute="top" secondItem="Ofl-0U-UDX" secondAttribute="top" id="gOe-aC-p0I"/>
                         <constraint firstItem="6cN-hT-mGZ" firstAttribute="leading" secondItem="Ofl-0U-UDX" secondAttribute="leading" id="iBv-bc-8H5"/>
                         <constraint firstItem="3MZ-GZ-ib4" firstAttribute="top" secondItem="d3e-cB-Drt" secondAttribute="bottom" constant="7" id="iME-Id-W5d"/>
                         <constraint firstAttribute="trailing" secondItem="6cN-hT-mGZ" secondAttribute="trailing" constant="42" id="plg-Sh-OVp"/>
+                        <constraint firstItem="Cpx-Vl-d15" firstAttribute="leading" secondItem="VYK-Vl-2Os" secondAttribute="trailing" constant="15" id="tPe-do-f8h"/>
                         <constraint firstItem="Kru-yJ-fCQ" firstAttribute="trailing" secondItem="Prd-vD-vBF" secondAttribute="trailing" id="ur6-oU-Ink"/>
                         <constraint firstItem="Kru-yJ-fCQ" firstAttribute="leading" secondItem="Ofl-0U-UDX" secondAttribute="leading" id="wKz-Yn-daD"/>
                         <constraint firstAttribute="trailing" secondItem="3MZ-GZ-ib4" secondAttribute="trailing" id="x6u-bL-Evc"/>
@@ -1253,7 +1296,7 @@ Gw
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="string" keyPath="tabTitle" value="Body"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="1410" y="190.5"/>
+            <point key="canvasLocation" x="1290" y="154.5"/>
         </customView>
         <customView id="uSQ-08-aoL" userLabel="Request Headers View" customClass="DMSlidingTabItemView">
             <rect key="frame" x="0.0" y="0.0" width="536" height="251"/>

@@ -120,6 +120,10 @@
 @property (strong) WelcomeController *welcomeController;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
+@property (weak) IBOutlet NSButton *rawInputButton;
+@property (weak) IBOutlet NSButton *fieldInputButton;
+@property (weak) IBOutlet NSButton *fileInputButton;
+
 - (IBAction) runSubmit:(id)sender;
 - (void) setResponseText:(NSString *)response;
 - (NSString *) getResponseText;
@@ -175,6 +179,8 @@
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
 - (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
+- (IBAction) requestBodyInputMode:(id)sender;
+- (void) selectRequestBodyInputMode;
 
 - (IBAction) findMenuItem:(id)sender;
 - (IBAction) findNextMenuItem:(id)sender;
