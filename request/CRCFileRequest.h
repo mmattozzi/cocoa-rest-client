@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CocoaRestClientAppDelegate.h"
 
 
 @interface CRCFileRequest : NSObject {
 
 }
 +(void)createRequest:(NSMutableURLRequest *)request;
++ (BOOL) currentRequestIsCRCFileRequest:(CocoaRestClientAppDelegate *)application;
 @end

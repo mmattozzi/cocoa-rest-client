@@ -72,6 +72,9 @@
 @synthesize themeMenuItem;
 @synthesize jsonWriter;
 @synthesize showLineNumbersMenuItem;
+@synthesize rawInputButton;
+@synthesize fieldInputButton;
+@synthesize fileInputButton;
 
 - (id) init {
 	self = [super init];
@@ -193,6 +196,8 @@
 	
 	[urlBox setNumberOfVisibleItems:10];
     [progressIndicator setHidden:YES];
+    
+    [self selectRequestBodyInputMode];
     
     NSSize drawerSize;
     drawerSize.width = 200;
@@ -341,7 +346,7 @@
     BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
 	if(rawRequestBody) {
 		if (![requestMethodsWithoutBody containsObject:method]) {
-			if([filesTable count] > 0 && [[self getRequestText] isEqualToString:@""]) {
+			if([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
 				[CRCFileRequest createRequest:request];
 			}
 			else  {
@@ -1260,7 +1265,14 @@
 	}
 	else if([request isKindOfClass:[CRCRequest class]]) {
 		[self loadSavedCRCRequest:(CRCRequest *)request];
+        if ([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
+        } else {
+            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
+        }
 	}
+    
+    [self selectRequestBodyInputMode];
 }
 
 // if it's a dictionary it's the old format, files, params, rawRequestInput will not be present
@@ -1639,6 +1651,32 @@
     NSString *curlCommand = [request generateCurlCommand:[[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]];
     NSLog(@"Generated curl command: %@", curlCommand);
     [pasteBoard setString:curlCommand forType:NSStringPboardType];
+}
+
+- (IBAction)requestBodyInputMode:(id)sender {
+    NSLog(@"Sender: %@", [sender identifier]);
+    if ([[sender identifier] isEqualToString:@"rawInput"]) {
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:RAW_REQUEST_BODY];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
+    } else if ([[sender identifier] isEqualToString:@"fieldInput"]) {
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:RAW_REQUEST_BODY];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
+    } else if ([[sender identifier] isEqualToString:@"fileInput"]) {
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:RAW_REQUEST_BODY];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
+    }
+}
+
+- (void) selectRequestBodyInputMode {
+    BOOL rawRequest = [[NSUserDefaults standardUserDefaults] boolForKey:RAW_REQUEST_BODY];
+    BOOL fileRequest = [[NSUserDefaults standardUserDefaults] boolForKey:FILE_REQUEST_BODY];
+    if (rawRequest && ! fileRequest) {
+        rawInputButton.state = NSOnState;
+    } else if (! rawRequest && ! fileRequest) {
+        fieldInputButton.state = NSOnState;
+    } else if (rawRequest && fileRequest) {
+        fileInputButton.state = NSOnState;
+    }
 }
 
 @end

@@ -24,4 +24,10 @@
 		[request setHTTPBody: body];
 	}
 }
+
++(BOOL) currentRequestIsCRCFileRequest:(CocoaRestClientAppDelegate *)application {
+    return [application.filesTable count] > 0 && [[application getRequestText] isEqualToString:@""] &&
+        [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
+}
+
 @end
