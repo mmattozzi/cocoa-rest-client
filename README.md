@@ -5,7 +5,7 @@ CocoaRestClient is a Mac OS X app for testing HTTP/Restful endpoints.
 I love curl, but sometimes I need my output XML or JSON pretty printed. I want to be able to save frequent PUT and POST bodies for later and copy and paste from responses easily. Think of this as curl with a light UI. 
 
 The goal of this project is to build a lightweight native Cocoa app for testing and debugging HTTP Restful services.
-This project was greatly inspired by the Java rest-client (http://code.google.com/p/rest-client/). 
+This project was greatly inspired by the Java rest-client (https://code.google.com/archive/p/rest-client). 
 
 Official project website: http://mmattozzi.github.io/cocoa-rest-client/
 
@@ -68,9 +68,9 @@ Screenshots
 
 Source and Contributions
 =================
-* Source code is hosted on Github: http://github.com/mmattozzi/cocoa-rest-client
+* Source code is hosted on Github: https://github.com/mmattozzi/cocoa-rest-client
 * If you would like to contribute, please fork and create a pull request on Github 
-* Source uses [Cocoapods](http://cocoapods.org/) for dependencies, to get started, [install CocoaPods](http://guides.cocoapods.org/using/getting-started.html) and in the main project directory run:
+* Source uses [Cocoapods](https://cocoapods.org/) for dependencies, to get started, [install CocoaPods](http://guides.cocoapods.org/using/getting-started.html) and in the main project directory run:
     
     ```
       pod install
@@ -79,10 +79,10 @@ Source and Contributions
 
 Credits
 =================
-* Contains json-framework/SBJSON library (http://code.google.com/p/json-framework/) embedded in it, source and all
+* Contains json-framework/SBJSON library (https://code.google.com/archive/p/json-framework) embedded in it, source and all
 * Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
-* Sparkle automatic update framework (https://github.com/andymatuschak/Sparkle)
-* ACEView syntax highlighting (https://github.com/faceleg/ACEView)
+* Sparkle automatic update framework (https://github.com/sparkle-project/Sparkle)
+* ACEView syntax highlighting (https://github.com/ACENative/ACEView)
 * Base64 encoding uses Matt Gallagher's NSData+Base64 code (http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html)
 * Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson, Diego Massanti, Robert Horvath
 
