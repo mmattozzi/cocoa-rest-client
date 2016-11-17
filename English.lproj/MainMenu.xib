@@ -1244,7 +1244,7 @@ Gw
                             <rect key="frame" x="81" y="1" width="86" height="20"/>
                             <buttonCell key="cell" type="radio" title="Field Input/Multipart File Upload" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nBe-dG-hdl">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="11"/>
+                                <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
                                 <action selector="requestBodyInputMode:" target="494" id="vcv-9X-wZX"/>
@@ -1254,7 +1254,7 @@ Gw
                             <rect key="frame" x="172" y="1" width="103" height="20"/>
                             <buttonCell key="cell" type="radio" title="Raw File Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="U8e-bH-sDC">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="11"/>
+                                <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
                                 <action selector="requestBodyInputMode:" target="494" id="aSW-Kw-iBs"/>

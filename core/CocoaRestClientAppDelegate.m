@@ -1665,6 +1665,8 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:RAW_REQUEST_BODY];
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
     }
+    
+    [self selectRequestBodyInputMode];
 }
 
 - (void) selectRequestBodyInputMode {
@@ -1672,10 +1674,15 @@
     BOOL fileRequest = [[NSUserDefaults standardUserDefaults] boolForKey:FILE_REQUEST_BODY];
     if (rawRequest && ! fileRequest) {
         rawInputButton.state = NSOnState;
+        [self.filesTable removeAllObjects];
+        [filesTableView reloadData];
     } else if (! rawRequest && ! fileRequest) {
         fieldInputButton.state = NSOnState;
     } else if (rawRequest && fileRequest) {
         fileInputButton.state = NSOnState;
+        // Clear out contents of raw request form
+        [self.requestTextPlain setString:@""];
+        [self.requestView setString:@""];
     }
 }
 
