@@ -1183,6 +1183,7 @@
 
 // Save an HTTP request into the request drawer
 - (IBAction) saveRequest:(id) sender {
+    [savedOutlineView deselectAll:nil];
 	[NSApp beginSheet:saveRequestSheet modalForWindow:window
         modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
