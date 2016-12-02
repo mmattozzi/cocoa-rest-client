@@ -56,7 +56,8 @@
     @private NSString *appDataFilePath;
     @private NSUInteger aceViewFontSize;
     
-    id eventMonitor;	
+    id eventMonitor;
+    id lastSelectedSavedOutlineViewItem;
 }
 
 @property (strong) SBJson4Writer *jsonWriter;

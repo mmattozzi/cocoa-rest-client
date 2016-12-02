@@ -121,6 +121,7 @@
     };
     
     eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:monitorHandler];
+    lastSelectedSavedOutlineViewItem = nil;
     
 	return self;
 }
@@ -1183,6 +1184,7 @@
 
 // Save an HTTP request into the request drawer
 - (IBAction) saveRequest:(id) sender {
+    lastSelectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
     [savedOutlineView deselectAll:nil];
 	[NSApp beginSheet:saveRequestSheet modalForWindow:window
         modalDelegate:self didEndSelector:NULL contextInfo:nil];
@@ -1193,9 +1195,8 @@
 	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
 		CRCRequest * request = [CRCRequest requestWithApplication:self];
 		
-        id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
-        if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
-            [selectedSavedOutlineViewItem addObject:request];
+        if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+            [lastSelectedSavedOutlineViewItem addObject:request];
         } else {
             [savedRequestsArray addObject:request];
         }
