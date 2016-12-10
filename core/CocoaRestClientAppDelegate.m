@@ -1686,6 +1686,12 @@
         [self.requestTextPlain setString:@""];
         [self.requestView setString:@""];
     }
+    
+    // Indeterminate input mode, default to field input
+    if (rawInputButton.state == NSOffState && fileInputButton.state == NSOffState && fieldInputButton.state == NSOffState) {
+        NSLog(@"Indeterminate input state");
+        fieldInputButton.state = NSOnState;
+    }
 }
 
 @end
