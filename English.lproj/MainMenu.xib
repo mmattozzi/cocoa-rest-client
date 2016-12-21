@@ -93,15 +93,14 @@
                                     <action selector="reloadLastRequest:" target="494" id="913"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save Request" keyEquivalent="s" id="717">
+                            <menuItem title="Save" keyEquivalent="s" id="717">
                                 <connections>
-                                    <action selector="saveRequest:" target="494" id="730"/>
+                                    <action selector="overwriteRequest:" target="494" id="6Xy-bG-JIn"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Overwrite Request" keyEquivalent="s" id="936">
-                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                            <menuItem title="Save As..." keyEquivalent="S" id="936">
                                 <connections>
-                                    <action selector="overwriteRequest:" target="494" id="937"/>
+                                    <action selector="saveRequest:" target="494" id="FEY-rg-7rd"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Delete Request" id="719">

@@ -1183,6 +1183,7 @@
 }
 
 // Save an HTTP request into the request drawer
+// This is the Save As menu option because the user will always have a chance to name the request.
 - (IBAction) saveRequest:(id) sender {
     lastSelectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
     [savedOutlineView deselectAll:nil];
@@ -1227,23 +1228,37 @@
 }
 
 //
+// Save menu option
 // Overwrite the selected request with the settings currently in the Application window, using the 
-// same name as the selected request.
+// same name as the selected request. Presents a confirmation. If no request is selected or if a
+// folder is selected, default to Save As behavior.
 //
 - (IBAction) overwriteRequest:(id)sender {
-    NSLog(@"Overwriting request");
     int row = [savedOutlineView selectedRow];
     if (row > -1) {
         CRCRequest * request = [CRCRequest requestWithApplication:self];
         
         id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
         if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
-            // TODO: doesn't make sense to overwrite a folder
+            return [self saveRequest:sender];
         } else {
-            [((CRCRequest *) selectedSavedOutlineViewItem) overwriteContentsWith:request];
-            [savedOutlineView reloadItem:nil reloadChildren:YES];
-            [self saveDataToDisk];
+            NSString *nameOfRequest = [selectedSavedOutlineViewItem name];
+            
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"Cancel"];
+            [alert addButtonWithTitle:@"Replace"];
+            [alert setMessageText:@"Overwrite request?"];
+            [alert setInformativeText:[NSString stringWithFormat:@"Would you like to overwrite the request '%@'?", nameOfRequest]];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            
+            if ([alert runModal] == NSAlertSecondButtonReturn) {
+                [((CRCRequest *) selectedSavedOutlineViewItem) overwriteContentsWith:request];
+                [savedOutlineView reloadItem:nil reloadChildren:YES];
+                [self saveDataToDisk];
+            }
         }
+    } else {
+        return [self saveRequest:sender];
     }
 }
 
