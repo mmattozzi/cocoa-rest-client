@@ -20,6 +20,7 @@
 #import "CRCConstants.h"
 #import "DMSlidingTabView.h"
 #import "DMSlidingTabItemView.h"
+#import "FastSearchSavedRequestsController.h"
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -41,6 +42,7 @@
 	ExportRequestsController *exportRequestsController;
     PreferencesController *preferencesController;
     WelcomeController *welcomeController;
+    FastSearchSavedRequestsController *fastSearchSavedRequestsController;
     
     BOOL allowSelfSignedCerts;
     NSURLRequest *currentRequest;
@@ -125,6 +127,9 @@
 @property (weak) IBOutlet NSButton *fieldInputButton;
 @property (weak) IBOutlet NSButton *fileInputButton;
 
+// Fast saved request search
+@property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
+
 - (IBAction) runSubmit:(id)sender;
 - (void) setResponseText:(NSString *)response;
 - (NSString *) getResponseText;
@@ -193,5 +198,8 @@
 - (IBAction) showLineNumbersToggled:(id)sender;
 
 - (IBAction) copyCurlCommand:(id)sender;
+
+// For opening fast saved request search
+- (IBAction) openFastSearchSavedRequestsPanel:(id)sender;
 
 @end

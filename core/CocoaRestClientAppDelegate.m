@@ -75,6 +75,7 @@
 @synthesize rawInputButton;
 @synthesize fieldInputButton;
 @synthesize fileInputButton;
+@synthesize fastSearchSavedRequestsController;
 
 - (id) init {
 	self = [super init];
@@ -107,6 +108,8 @@
     exportRequestsController.savedRequestsArray = savedRequestsArray;
     
     self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
+    
+    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
     // Register a key listener
     NSEvent * (^monitorHandler)(NSEvent *);
@@ -237,6 +240,8 @@
     
     // Enable Drag and Drop for outline view of saved requests
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    
+    self.fastSearchSavedRequestsController.parent = self.window;
     
     [self setupObservers];
     
@@ -1208,6 +1213,21 @@
     [self saveDataToDisk];
 }
 
+- (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
+    [savedOutlineView deselectAll:nil];
+    NSLog(@"Opening sheet");
+    [fastSearchSavedRequestsController setupWindow:savedRequestsArray];
+    [window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
+        NSLog(@"Done with sheet, got return code %ld", (long)returnCode);
+        if (returnCode == NSModalResponseOK) {
+            if (fastSearchSavedRequestsController.selectedRequest) {
+                NSLog(@"Saved request to load: %@", [( (CRCRequest *)fastSearchSavedRequestsController.selectedRequest) name]);
+                [self loadSavedRequest:fastSearchSavedRequestsController.selectedRequest];
+            }
+        }
+    }];
+}
+
 //
 // Find the name attribute of the given request, assuming the input object is a request.
 // On unknown input type, return "Unnamed". 
@@ -1548,6 +1568,11 @@
         [self deleteSavedRequest: sender];
         return;
     }
+    if ([[fastSearchSavedRequestsController window] firstResponder]) {
+        [fastSearchSavedRequestsController sendDeleteKey];
+        return;
+    }
+    
     BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
     
     NSString *currentTabLabel = [[tabView selectedTabViewItem] label];
