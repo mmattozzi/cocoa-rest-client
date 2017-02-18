@@ -206,9 +206,6 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Delete Table Row" id="941">
-                                <string key="keyEquivalent" base64-UTF8="YES">
-CA
-</string>
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="deleteRow:" target="494" id="943"/>

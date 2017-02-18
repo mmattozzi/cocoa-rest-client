@@ -43,10 +43,14 @@
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
     [fastSearchRequestsTableView selectRowIndexes:indexSet byExtendingSelection:NO];
 
+    [fastSearchRequestsTextField setStringValue:@""];
+    
     if (savedRequestsArray) {
         baseRequests = savedRequestsArray;
         [self refreshRequestList];
     }
+    
+    [self.window makeFirstResponder:fastSearchRequestsTextField];
 }
 
 - (void) refreshRequestList {
@@ -62,27 +66,36 @@
     NSString *currentSearchString = [fastSearchRequestsTextField stringValue];
     for (id req in savedRequestsArray) {
         if([req isKindOfClass:[CRCRequest class]]) {
-            if ([currentSearchString length] == 0 || [[req name] containsString:currentSearchString]) {
+            if (([currentSearchString length] == 0) || [[req name] rangeOfString:currentSearchString options:NSCaseInsensitiveSearch].location != NSNotFound) {
                 [requests addObject:req];
             }
         } else if ([req isKindOfClass:[CRCSavedRequestFolder class]]) {
-            if ([currentSearchString length] == 0 || [[req name] containsString:currentSearchString]) {
-                [self addSavedRequests:[((CRCSavedRequestFolder *) req) contents]];
-            }
+            [self addSavedRequests:[((CRCSavedRequestFolder *) req) contents]];
         }
     }
 }
 
 - (void)cancelOperation:(nullable id)sender {
-    NSLog(@"Closing because I got cancelOperation");
     [parent endSheet:self.window returnCode:NSModalResponseCancel];
+}
+
+- (void) pickedRow {
+    self.selectedRequest = [requests objectAtIndex:[fastSearchRequestsTableView selectedRow]];
+    [parent endSheet:self.window returnCode:NSModalResponseOK];
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
     NSLog(@"Got event with keycode: %hu", [theEvent keyCode]);
     if ([theEvent keyCode] == 36) {
-        self.selectedRequest = [requests objectAtIndex:[fastSearchRequestsTableView selectedRow]];
-        [parent endSheet:self.window returnCode:NSModalResponseOK];
+        // Return
+        [self pickedRow];
+    } else if ([theEvent keyCode] == 51) {
+        // Backspace
+        NSString *val = [fastSearchRequestsTextField stringValue];
+        [fastSearchRequestsTextField setStringValue:[val substringToIndex:([val length] - 1)]];
+        [self.window makeFirstResponder:fastSearchRequestsTextField];
+        [self deselectText];
+        [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
     } else {
         // TODO: make backspace work
         NSString *characterTyped = [theEvent charactersIgnoringModifiers];
@@ -93,6 +106,11 @@
         [self deselectText];
         [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
     }
+}
+
+- (IBAction)doubleClickOnTable:(id)sender {
+    NSLog(@"Got double click");
+    [self pickedRow];
 }
 
 - (void)sendDeleteKey {
@@ -109,16 +127,16 @@
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)fieldEditor
         doCommandBySelector:(SEL)commandSelector {
     if( commandSelector == @selector(moveUp:) ){
-        // Your increment code
-        NSLog(@"Pressed up");
-        [self.window makeFirstResponder:fastSearchRequestsTableView];
-        return YES;
+        if ([requests count] > 0) {
+            [self.window makeFirstResponder:fastSearchRequestsTableView];
+            return YES;
+        }
     }
     if( commandSelector == @selector(moveDown:) ){
-        // Your decrement code
-        NSLog(@"Press down");
-        [self.window makeFirstResponder:fastSearchRequestsTableView];
-        return YES;
+        if ([requests count] > 0) {
+            [self.window makeFirstResponder:fastSearchRequestsTableView];
+            return YES;
+        }
     }
     
     return NO;
@@ -126,7 +144,6 @@
 
 - (void)controlTextDidChange:(NSNotification *)notification {
     NSTextField *textField = [notification object];
-    NSLog(@"controlTextDidChange: stringValue == %@", [textField stringValue]);
     [self refreshRequestList];
 }
 

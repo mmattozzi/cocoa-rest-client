@@ -22,5 +22,6 @@
 
 - (void) setupWindow:(NSArray *)requests;
 - (void) sendDeleteKey;
+- (IBAction) doubleClickOnTable:(id)sender;
 
 @end

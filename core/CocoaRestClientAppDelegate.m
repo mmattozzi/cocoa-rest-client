@@ -1215,13 +1215,10 @@
 
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
     [savedOutlineView deselectAll:nil];
-    NSLog(@"Opening sheet");
     [fastSearchSavedRequestsController setupWindow:savedRequestsArray];
     [window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
-        NSLog(@"Done with sheet, got return code %ld", (long)returnCode);
         if (returnCode == NSModalResponseOK) {
             if (fastSearchSavedRequestsController.selectedRequest) {
-                NSLog(@"Saved request to load: %@", [( (CRCRequest *)fastSearchSavedRequestsController.selectedRequest) name]);
                 [self loadSavedRequest:fastSearchSavedRequestsController.selectedRequest];
             }
         }

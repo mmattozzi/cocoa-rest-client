@@ -51,6 +51,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
+                                        <action trigger="doubleAction" selector="doubleClickOnTable:" target="-2" id="Bej-NH-HUe"/>
                                         <outlet property="dataSource" destination="-2" id="PcG-dq-fcY"/>
                                         <outlet property="delegate" destination="-2" id="lr8-G6-NEG"/>
                                     </connections>
