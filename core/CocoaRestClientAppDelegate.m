@@ -245,6 +245,11 @@
     
     [self setupObservers];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deleteSavedRequest:)
+                                                 name:@"deleteDrawerRow"
+                                               object:nil];
+    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
@@ -1172,7 +1177,7 @@
 	[self loadSavedRequest:[savedOutlineView itemAtRow:[savedOutlineView selectedRow]]];
 }
 
-- (IBAction) deleteSavedRequest:(id) sender {
+- (void) deleteSavedRequest:(NSNotification *) notification  {
     id object = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
     if ([savedRequestsArray containsObject:object]) {
         [savedRequestsArray removeObject:object];
@@ -1562,7 +1567,7 @@
     NSLog(@"Calling delete row");
     
     if ([window firstResponder] == savedOutlineView) {
-        [self deleteSavedRequest: sender];
+        [self deleteSavedRequest:nil];
         return;
     }
     if ([[fastSearchSavedRequestsController window] firstResponder]) {

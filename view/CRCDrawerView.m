@@ -76,4 +76,14 @@
     return NO;
 }
 
+-(void)keyDown:(NSEvent *)theEvent {
+    NSLog(@"Drawer got event with keycode: %hu", [theEvent keyCode]);
+    // Backspace or delete key
+    if ([theEvent keyCode] == 51 || [theEvent keyCode] == 117) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteDrawerRow"
+                                                            object:theEvent
+                                                          userInfo:@{@"sender":self}];
+    }
+}
+
 @end

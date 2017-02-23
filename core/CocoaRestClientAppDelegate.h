@@ -145,7 +145,7 @@
 - (IBAction) doneSaveRequest:(id) sender;
 - (IBAction) createNewSavedFolder:(id)sender;
 - (void) loadSavedRequest:(NSDictionary *) request;
-- (IBAction) deleteSavedRequest:(id) sender;
+- (void) deleteSavedRequest: (NSNotification *) notification;
 - (NSString *) pathForDataFile;
 - (void) loadDataFromDisk;
 - (void) saveDataToDisk;
