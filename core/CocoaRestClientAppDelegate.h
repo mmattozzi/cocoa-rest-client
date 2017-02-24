@@ -172,7 +172,7 @@
 - (IBAction) exportRequests:(id)sender;
 - (void) importRequestsFromArray:(NSArray *)requests;
 - (void) invalidFileAlert;
-- (IBAction)deleteRow:(id)sender;
+- (void) deleteTableRow:(NSNotification *) notification;
 - (IBAction)showPreferences:(id)sender;
 - (void)syntaxHighlightingPreferenceChanged;
 - (IBAction) zoomIn:(id)sender;

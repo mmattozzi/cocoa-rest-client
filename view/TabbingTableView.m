@@ -35,4 +35,16 @@
     textDidEndEditingAction = action;
 }
 
+- (void)keyDown:(NSEvent *)theEvent {
+    // Backspace or delete key
+    if ([theEvent keyCode] == 51 || [theEvent keyCode] == 117) {
+        NSString *identifier = [self identifier];
+        NSDictionary *payload = @{@"sender":self, @"identifier": identifier};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteTableRow"
+                                                            object:theEvent userInfo:payload];
+    } else {
+        [super keyDown:theEvent];
+    }
+}
+
 @end

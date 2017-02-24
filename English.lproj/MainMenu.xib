@@ -202,15 +202,6 @@ CA
                                     <action selector="copyCurlCommand:" target="-1" id="3Qz-wu-K55"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="577">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Delete Table Row" id="941">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="deleteRow:" target="494" id="943"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="942"/>
                             <menuItem title="Find" id="571">
                                 <menu key="submenu" title="Find" id="581">
@@ -1145,7 +1136,7 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="phL-Sc-1tg" id="Aj0-kr-Xma" customClass="TabbingTableView">
+                                    <tableView identifier="RequestBody" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="phL-Sc-1tg" id="Aj0-kr-Xma" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="514" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>
@@ -1313,7 +1304,7 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="6Jl-lN-uQ5" id="nDG-11-7EZ" customClass="TabbingTableView">
+                                    <tableView identifier="RequestHeaders" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="6Jl-lN-uQ5" id="nDG-11-7EZ" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="494" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>
@@ -1546,7 +1537,7 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="eCC-oM-RmH" id="WGJ-ls-CgW" userLabel="filesTableView" customClass="TabbingTableView">
+                                    <tableView identifier="Files" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="eCC-oM-RmH" id="WGJ-ls-CgW" userLabel="filesTableView" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="551" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>

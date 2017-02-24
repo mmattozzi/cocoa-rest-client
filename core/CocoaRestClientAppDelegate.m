@@ -250,6 +250,8 @@
                                                  name:@"deleteDrawerRow"
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
+    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
@@ -1563,27 +1565,16 @@
 	}
 }
 
-- (IBAction)deleteRow:(id)sender {
-    NSLog(@"Calling delete row");
-    
-    if ([window firstResponder] == savedOutlineView) {
-        [self deleteSavedRequest:nil];
-        return;
-    }
-    if ([[fastSearchSavedRequestsController window] firstResponder]) {
-        [fastSearchSavedRequestsController sendDeleteKey];
-        return;
-    }
-    
+- (void)deleteTableRow:(NSNotification *)notification {
     BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
     
-    NSString *currentTabLabel = [[tabView selectedTabViewItem] label];
-    if ([currentTabLabel isEqualToString:@"Request Headers"] && [headersTableView selectedRow] > -1) {
-        [self minusHeaderRow:sender];
-    } else if ([currentTabLabel isEqualToString:@"Request Body"] && [paramsTableView selectedRow] > -1 && ! rawRequestBody) {
-        [self minusParamsRow:sender];
+    NSString *currentTabLabel = [[notification userInfo] valueForKey:@"identifier"];
+    if ([currentTabLabel isEqualToString:@"RequestHeaders"] && [headersTableView selectedRow] > -1) {
+        [self minusHeaderRow:nil];
+    } else if ([currentTabLabel isEqualToString:@"RequestBody"] && [paramsTableView selectedRow] > -1 && ! rawRequestBody) {
+        [self minusParamsRow:nil];
     } else if ([currentTabLabel isEqualToString:@"Files"] && [filesTableView selectedRow] > -1) {
-        [self minusFileRow:sender];
+        [self minusFileRow:nil];
     }
 }
 
