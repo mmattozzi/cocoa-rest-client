@@ -9,6 +9,8 @@
 #import "FastSearchSavedRequestsController.h"
 #import "CRCRequest.h"
 #import "CRCSavedRequestFolder.h"
+#import "SelectableSavedRequestWrapper.h"
+#import "FastSearchSavedRequestTextCellView.h"
 
 @interface FastSearchSavedRequestsController ()
 
@@ -55,11 +57,11 @@
 
 - (void) refreshRequestList {
     [requests removeAllObjects];
-    [self addSavedRequests:nil];
+    [self addSavedRequests:nil path:@"/"];
     [self.fastSearchRequestsTableView reloadData];
 }
 
-- (void) addSavedRequests:(NSArray *)savedRequestsArray {
+- (void) addSavedRequests:(NSArray *)savedRequestsArray path:(NSString *)path {
     if (! savedRequestsArray) {
         savedRequestsArray = baseRequests;
     }
@@ -67,10 +69,11 @@
     for (id req in savedRequestsArray) {
         if([req isKindOfClass:[CRCRequest class]]) {
             if (([currentSearchString length] == 0) || [[req name] rangeOfString:currentSearchString options:NSCaseInsensitiveSearch].location != NSNotFound) {
-                [requests addObject:req];
+                [requests addObject:[SelectableSavedRequestWrapper initWithRequest:req withPath:path]];
             }
         } else if ([req isKindOfClass:[CRCSavedRequestFolder class]]) {
-            [self addSavedRequests:[((CRCSavedRequestFolder *) req) contents]];
+            NSString* buildPath = [NSString stringWithFormat:@"%@%@/", path, [req name]];
+            [self addSavedRequests:[((CRCSavedRequestFolder *) req) contents] path:buildPath];
         }
     }
 }
@@ -80,7 +83,8 @@
 }
 
 - (void) pickedRow {
-    self.selectedRequest = [requests objectAtIndex:[fastSearchRequestsTableView selectedRow]];
+    SelectableSavedRequestWrapper *wrapper = [requests objectAtIndex:[fastSearchRequestsTableView selectedRow]];
+    self.selectedRequest = wrapper.request;
     [parent endSheet:self.window returnCode:NSModalResponseOK];
 }
 
@@ -151,14 +155,13 @@
     return [requests count];
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    CRCRequest *req = (CRCRequest *)[requests objectAtIndex:row];
-    return [req name];
-}
-
-- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject
-   forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-    
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    FastSearchSavedRequestTextCellView *result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    SelectableSavedRequestWrapper *wrapper = (SelectableSavedRequestWrapper *)[requests objectAtIndex:row];
+    // result.imageView.image = item.itemIcon;
+    result.textField.stringValue = wrapper.request.name;
+    result.detailTextField.stringValue = wrapper.path;
+    return result;
 }
 
 @end
