@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSPanel *fastSearchRequestsPanel;
 @property (strong) NSWindow *parent;
 @property (strong) id selectedRequest;
+@property (weak) IBOutlet NSScrollView *requestScrollView;
 
 - (void) setupWindow:(NSArray *)requests;
 - (void) sendDeleteKey;

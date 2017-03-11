@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="fastSearchRequestsTableView" destination="Coe-vh-GRi" id="9Dm-3J-35p"/>
                 <outlet property="fastSearchRequestsTextField" destination="XUL-9b-1I2" id="pz6-go-eH3"/>
+                <outlet property="requestScrollView" destination="ZKn-Tq-Ltf" id="aeW-We-8ea"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="QNy-SP-IBX"/>
             </connections>
         </customObject>

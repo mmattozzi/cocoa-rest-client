@@ -23,6 +23,7 @@
 @synthesize fastSearchRequestsTextField;
 @synthesize parent;
 @synthesize selectedRequest;
+@synthesize requestScrollView;
 
 - (id)initWithWindow:(NSWindow *)awindow {
     self = [super initWithWindow:awindow];
@@ -50,6 +51,14 @@
     if (savedRequestsArray) {
         baseRequests = savedRequestsArray;
         [self refreshRequestList];
+        
+        // Scroll the vertical scroller to top
+        if ([requestScrollView hasVerticalScroller]) {
+            requestScrollView.verticalScroller.floatValue = 0;
+        }
+        
+        // Scroll the content back to the top
+        [requestScrollView.contentView scrollToPoint:NSMakePoint(0, 0)];
     }
     
     [self.window makeFirstResponder:fastSearchRequestsTextField];
