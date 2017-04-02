@@ -25,6 +25,7 @@
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
 		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
+		AF9FE4281E9187A600415022 /* document-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9FE4261E9187A600415022 /* document-icon.png */; };
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
 		AFA11ACD15CF036300831738 /* motd.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFA11ACC15CF036300831738 /* motd.txt */; };
@@ -100,6 +101,7 @@
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClientAppDelegate.h; path = core/CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
 		AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaRestClientAppDelegate.m; path = core/CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
+		AF9FE4271E9187A600415022 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = "English.lproj/document-icon.png"; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
 		AFA11AB715CEDAE300831738 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeController.m; path = core/WelcomeController.m; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AF9FE4261E9187A600415022 /* document-icon.png */,
 				AFB3AA3E1A94051700012E04 /* Images.xcassets */,
 				AFCE79561419B54600E22468 /* dsa_pub.pem */,
 				AFE1837612E394E5001B1B29 /* LICENSE.txt */,
@@ -409,6 +412,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
+				AF9FE4281E9187A600415022 /* document-icon.png in Resources */,
 				AFE1837712E394E5001B1B29 /* LICENSE.txt in Resources */,
 				AFCE79571419B54600E22468 /* dsa_pub.pem in Resources */,
 				AFBF08BD14C1E9BB000E7411 /* ExportRequests.xib in Resources */,
@@ -567,6 +571,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AF9FE4261E9187A600415022 /* document-icon.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF9FE4271E9187A600415022 /* English */,
+			);
+			name = "document-icon.png";
 			sourceTree = "<group>";
 		};
 		AFA11AB315CEDA3600831738 /* Welcome.xib */ = {

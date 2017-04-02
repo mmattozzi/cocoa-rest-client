@@ -92,13 +92,15 @@
 }
 
 - (void) pickedRow {
-    SelectableSavedRequestWrapper *wrapper = [requests objectAtIndex:[fastSearchRequestsTableView selectedRow]];
-    self.selectedRequest = wrapper.request;
-    [parent endSheet:self.window returnCode:NSModalResponseOK];
+    NSInteger selectedRow = [fastSearchRequestsTableView selectedRow];
+    if (selectedRow > -1) {
+        SelectableSavedRequestWrapper *wrapper = [requests objectAtIndex:selectedRow];
+        self.selectedRequest = wrapper.request;
+        [parent endSheet:self.window returnCode:NSModalResponseOK];
+    }
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
-    NSLog(@"Got event with keycode: %hu", [theEvent keyCode]);
     if ([theEvent keyCode] == 36) {
         // Return
         [self pickedRow];
@@ -110,7 +112,6 @@
         [self deselectText];
         [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
     } else {
-        // TODO: make backspace work
         NSString *characterTyped = [theEvent charactersIgnoringModifiers];
         [fastSearchRequestsTextField setStringValue:[NSString stringWithFormat:@"%@%@", [fastSearchRequestsTextField stringValue], characterTyped]];
         [self.window makeFirstResponder:fastSearchRequestsTextField];
@@ -122,7 +123,6 @@
 }
 
 - (IBAction)doubleClickOnTable:(id)sender {
-    NSLog(@"Got double click");
     [self pickedRow];
 }
 
@@ -148,6 +148,9 @@
     if( commandSelector == @selector(moveDown:) ){
         if ([requests count] > 0) {
             [self.window makeFirstResponder:fastSearchRequestsTableView];
+            if ([fastSearchRequestsTableView selectedRow] == -1) {
+                [fastSearchRequestsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+            }
             return YES;
         }
     }
