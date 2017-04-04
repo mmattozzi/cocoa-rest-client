@@ -51,14 +51,6 @@
     if (savedRequestsArray) {
         baseRequests = savedRequestsArray;
         [self refreshRequestList];
-        
-        // Scroll the vertical scroller to top
-        if ([requestScrollView hasVerticalScroller]) {
-            requestScrollView.verticalScroller.floatValue = 0;
-        }
-        
-        // Scroll the content back to the top
-        [requestScrollView.contentView scrollToPoint:NSMakePoint(0, 0)];
     }
     
     [self.window makeFirstResponder:fastSearchRequestsTextField];
@@ -68,6 +60,7 @@
     [requests removeAllObjects];
     [self addSavedRequests:nil path:@"/"];
     [self.fastSearchRequestsTableView reloadData];
+    [self resetScrolling];
 }
 
 - (void) addSavedRequests:(NSArray *)savedRequestsArray path:(NSString *)path {
@@ -135,6 +128,16 @@
 - (void)deselectText {
     NSRange tRange = [[fastSearchRequestsTextField  currentEditor] selectedRange];
     [[fastSearchRequestsTextField  currentEditor] setSelectedRange:NSMakeRange(tRange.length,0)];
+}
+
+- (void)resetScrolling {
+    // Scroll the vertical scroller to top
+    if ([requestScrollView hasVerticalScroller]) {
+        requestScrollView.verticalScroller.floatValue = 0;
+    }
+    
+    // Scroll the content back to the top
+    [requestScrollView.contentView scrollToPoint:NSMakePoint(0, 0)];
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)fieldEditor
