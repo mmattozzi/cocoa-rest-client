@@ -93,6 +93,16 @@
     }
 }
 
+- (void)characterTypedInTable:(NSEvent *)theEvent {
+    NSString *characterTyped = [theEvent charactersIgnoringModifiers];
+    [fastSearchRequestsTextField setStringValue:[NSString stringWithFormat:@"%@%@", [fastSearchRequestsTextField stringValue], characterTyped]];
+    [self.window makeFirstResponder:fastSearchRequestsTextField];
+    
+    [fastSearchRequestsTextField performKeyEquivalent:theEvent];
+    [self deselectText];
+    [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
+}
+
 - (void)keyDown:(NSEvent *)theEvent {
     if ([theEvent keyCode] == 36) {
         // Return
@@ -105,14 +115,16 @@
         [self deselectText];
         [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
     } else {
-        NSString *characterTyped = [theEvent charactersIgnoringModifiers];
-        [fastSearchRequestsTextField setStringValue:[NSString stringWithFormat:@"%@%@", [fastSearchRequestsTextField stringValue], characterTyped]];
-        [self.window makeFirstResponder:fastSearchRequestsTextField];
-        
-        [fastSearchRequestsTextField performKeyEquivalent:theEvent];
-        [self deselectText];
-        [self controlTextDidChange:[NSNotification notificationWithName:@"TextChanged" object:fastSearchRequestsTextField]];
+        [self characterTypedInTable:theEvent];
     }
+}
+
+/** Handle strange case where type select swallows spacebar event, even if type select is disabled. */
+- (BOOL)tableView:(NSTableView *)tableView shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(NSString *)searchString {
+    if ([event.charactersIgnoringModifiers characterAtIndex:0] == 0x20) {
+        [self.window makeFirstResponder:fastSearchRequestsTextField];
+    }
+    return NO;
 }
 
 - (IBAction)doubleClickOnTable:(id)sender {
