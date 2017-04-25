@@ -38,7 +38,9 @@
 
 - (BOOL) isJson:(NSString *)contentType {
     return [jsonContentTypes containsObject:contentType] ||
-    ([contentType hasPrefix:@"application"] && [contentType hasSuffix:@"+json"]);}
+    ([contentType hasPrefix:@"application"] && [contentType hasSuffix:@"+json"]) ||
+    ([contentType containsString:@"/json+"]);
+}
 
 - (BOOL) isMsgPack:(NSString *)contentType {
     return [msgPackContentTypes containsObject:contentType];
