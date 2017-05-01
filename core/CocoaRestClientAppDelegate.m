@@ -1463,6 +1463,11 @@
 	savedRequestsArray = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
 }
 
+- (IBAction) reloadRequestsDrawer:(id)sender {
+    [self loadDataFromDisk];
+    [self.savedOutlineView reloadData];
+}
+
 - (void) importRequestsFromArray:(NSArray *)requests {
     [exportRequestsController prepareToDisplayImports:requests];
     [NSApp beginSheet: [exportRequestsController window]

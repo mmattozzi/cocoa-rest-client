@@ -124,6 +124,12 @@ CA
                                     <action selector="exportRequests:" target="494" id="928"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Reload Requests Drawer" id="EnJ-Z6-dT3">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reloadRequestsDrawer:" target="494" id="AfU-UO-B7d"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="1010"/>
                             <menuItem title="Export Response..." id="1011">
                                 <modifierMask key="keyEquivalentModifierMask"/>

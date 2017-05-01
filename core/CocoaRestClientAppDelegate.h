@@ -148,6 +148,7 @@
 - (void) deleteSavedRequest: (NSNotification *) notification;
 - (NSString *) pathForDataFile;
 - (void) loadDataFromDisk;
+- (IBAction) reloadRequestsDrawer:(id)sender;
 - (void) saveDataToDisk;
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (IBAction) openTimeoutDialog:(id) sender;
