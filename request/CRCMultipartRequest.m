@@ -9,9 +9,10 @@
 #import "CRCMultipartRequest.h"
 #import "CocoaRestClientAppDelegate.h"
 #import "NSData+gzip.h"
+#import "MainWindowController.h"
 
 @implementation CRCMultipartRequest
-+(void)createRequest:(NSMutableURLRequest *)request
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController
 {
 	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	
@@ -21,19 +22,19 @@
 	
 	[request addValue:headerfield forHTTPHeaderField:@"Content-Type"];
 	
-	if([delegate.paramsTable count] > 0)
+	if([windowController.paramsTable count] > 0)
 	{
-		for(NSDictionary * row in delegate.paramsTable)
+		for(NSDictionary * row in windowController.paramsTable)
 		{
 			[body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",formBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@", [row objectForKey:@"key"], [row objectForKey:@"value"]] dataUsingEncoding:NSUTF8StringEncoding]];
 		}
 	}
 	
-	NSInteger count = [delegate.filesTable count];
+	NSInteger count = [windowController.filesTable count];
 	if(count > 0)
 	{	
-		for(NSDictionary * row in delegate.filesTable)
+		for(NSDictionary * row in windowController.filesTable)
 		{
 			NSError *err = nil;
 			NSString *uti; 

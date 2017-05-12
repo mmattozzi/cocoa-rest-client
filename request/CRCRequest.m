@@ -8,35 +8,36 @@
 
 #import "CRCRequest.h"
 #import "CRCFormEncodedRequest.h"
+#import "MainWindowController.h"
 
 
 @implementation CRCRequest
 @synthesize name, url, method, rawRequestInput, requestText, username, password, headers, files, params, preemptiveBasicAuth;
 
-+ (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application
++ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController
 {
 	
 	CRCRequest * request    = [[CRCRequest alloc] init];
 	
-	request.name            = [application.saveRequestTextField stringValue];
-	request.url             = [application.urlBox stringValue];
-    request.method          = [application.methodButton stringValue];
-	request.username        = [application.username stringValue];
-	request.password        = [application.password stringValue];
+	request.name            = [mainWindowController.saveRequestTextField stringValue];
+	request.url             = [mainWindowController.urlBox stringValue];
+    request.method          = [mainWindowController.methodButton stringValue];
+	request.username        = [mainWindowController.username stringValue];
+	request.password        = [mainWindowController.password stringValue];
     request.rawRequestInput = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
-    request.preemptiveBasicAuth = application.preemptiveBasicAuth;
+    request.preemptiveBasicAuth = mainWindowController.preemptiveBasicAuth;
 	
 	if(request.rawRequestInput)
-		request.requestText = [application getRequestText];
+		request.requestText = [mainWindowController getRequestText];
 	
-	if([application.headersTable count] > 0)
-		request.headers = [[NSArray alloc] initWithArray:application.headersTable copyItems:YES];
+	if([mainWindowController.headersTable count] > 0)
+		request.headers = [[NSArray alloc] initWithArray:mainWindowController.headersTable copyItems:YES];
 	
-	if([application.paramsTable count] > 0 && !request.rawRequestInput)
-		request.params = [[NSArray alloc] initWithArray:application.paramsTable copyItems:YES];
+	if([mainWindowController.paramsTable count] > 0 && !request.rawRequestInput)
+		request.params = [[NSArray alloc] initWithArray:mainWindowController.paramsTable copyItems:YES];
 	
-	if([application.filesTable count] > 0)
-		request.files = [[NSArray alloc] initWithArray:application.filesTable copyItems:YES];
+	if([mainWindowController.filesTable count] > 0)
+		request.files = [[NSArray alloc] initWithArray:mainWindowController.filesTable copyItems:YES];
 	
 	return request;
 }

@@ -25,6 +25,8 @@
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
 		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
+		AF99ECAD1EC013A100101893 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECAB1EC013A100101893 /* MainWindowController.m */; };
+		AF99ECB11EC013EF00101893 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF99ECAF1EC013EF00101893 /* MainWindow.xib */; };
 		AF9FE4281E9187A600415022 /* document-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9FE4261E9187A600415022 /* document-icon.png */; };
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
@@ -101,6 +103,9 @@
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClientAppDelegate.h; path = core/CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
 		AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaRestClientAppDelegate.m; path = core/CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
+		AF99ECAA1EC013A100101893 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = core/MainWindowController.h; sourceTree = "<group>"; };
+		AF99ECAB1EC013A100101893 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = core/MainWindowController.m; sourceTree = "<group>"; };
+		AF99ECB01EC013EF00101893 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AF9FE4271E9187A600415022 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = "English.lproj/document-icon.png"; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
@@ -245,6 +250,7 @@
 				AFA11ACC15CF036300831738 /* motd.txt */,
 				985608C01C8FF3E700A3EB6E /* defaults.plist */,
 				AFF3B97C1E15A24600AA664C /* FastSearchSavedRequests.xib */,
+				AF99ECAF1EC013EF00101893 /* MainWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -305,6 +311,8 @@
 				AFA11AB715CEDAE300831738 /* WelcomeController.m */,
 				AFF3B9791E15A0DC00AA664C /* FastSearchSavedRequestsController.h */,
 				AFF3B97A1E15A0DC00AA664C /* FastSearchSavedRequestsController.m */,
+				AF99ECAA1EC013A100101893 /* MainWindowController.h */,
+				AF99ECAB1EC013A100101893 /* MainWindowController.m */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF99ECB11EC013EF00101893 /* MainWindow.xib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */,
@@ -540,6 +549,7 @@
 				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,
+				AF99ECAD1EC013A100101893 /* MainWindowController.m in Sources */,
 				AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */,
 				AFE908861E748C87006D9B91 /* SelectableSavedRequestWrapper.m in Sources */,
 				985608C71C90031300A3EB6E /* CRCConstants.m in Sources */,
@@ -571,6 +581,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		AF99ECAF1EC013EF00101893 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF99ECB01EC013EF00101893 /* English */,
+			);
+			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 		AF9FE4261E9187A600415022 /* document-icon.png */ = {

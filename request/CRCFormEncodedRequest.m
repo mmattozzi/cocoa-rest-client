@@ -7,19 +7,18 @@
 //
 
 #import "CRCFormEncodedRequest.h"
-#import "CocoaRestClientAppDelegate.h"
+#import "MainWindowController.h"
 
 @implementation CRCFormEncodedRequest
-+(void)createRequest:(NSMutableURLRequest *)request
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController
 {
-	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSData *body = nil;
 	NSString * headerfield  = @"application/x-www-form-urlencoded";
 	
 	[request addValue:headerfield forHTTPHeaderField:@"Content-Type"];
 	
-	if([delegate.paramsTable count] > 0) {
-        body = [self createRequestBody:delegate.paramsTable];
+	if([windowController.paramsTable count] > 0) {
+        body = [self createRequestBody:windowController.paramsTable];
         [request setHTTPBody:body];
     }
 	

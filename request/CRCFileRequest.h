@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "CocoaRestClientAppDelegate.h"
 
+@class MainWindowController;
 
 @interface CRCFileRequest : NSObject {
 
 }
-+(void)createRequest:(NSMutableURLRequest *)request;
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController;
 + (BOOL) currentRequestIsCRCFileRequest:(CocoaRestClientAppDelegate *)application;
 @end

@@ -19,6 +19,14 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(systemTintDidChange:)
+                                                name:NSControlTintDidChangeNotification
+                                              object:nil];
+    [self drawGradient];
+}
+
 - (void)drawGradient {
     
     NSColor *tintColor = [[NSColor colorForControlTint:[NSColor currentControlTint]]colorUsingColorSpaceName:NSDeviceRGBColorSpace];

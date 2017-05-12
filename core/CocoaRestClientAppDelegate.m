@@ -19,6 +19,7 @@
 #import "TableRowAndColumn.h"
 #import "CRCSavedRequestFolder.h"
 #import "ContentTypes.h"
+#import "MainWindowController.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -30,22 +31,12 @@
 @interface CocoaRestClientAppDelegate(Private)
 - (void)loadSavedDictionary:(NSDictionary *)request;
 - (void)loadSavedCRCRequest:(CRCRequest *)request;
+
 @end
 
 @implementation CocoaRestClientAppDelegate
 
-@synthesize window;
-@synthesize submitButton;
-@synthesize urlBox;
-@synthesize responseWebView;
-@synthesize responseTextHeaders;
-@synthesize requestView;
-@synthesize responseView;
-@synthesize methodButton;
-@synthesize headersTable, filesTable, paramsTable;
-@synthesize headersTableView, filesTableView, paramsTableView;
-@synthesize username;
-@synthesize password;
+@synthesize mainWindowControllers;
 @synthesize preemptiveBasicAuth;
 @synthesize savedOutlineView;
 @synthesize saveRequestSheet;
@@ -76,9 +67,14 @@
 @synthesize fieldInputButton;
 @synthesize fileInputButton;
 @synthesize fastSearchSavedRequestsController;
+@synthesize savedRequestsArray;
+@synthesize allowSelfSignedCerts;
+@synthesize aceViewFontSize;
 
 - (id) init {
 	self = [super init];
+    
+    self.mainWindowControllers = [[NSMutableArray alloc] init];
 	
     NSDictionary *defaults = [[NSMutableDictionary alloc] init];
     [defaults setValue:[NSNumber numberWithInt:30] forKey:RESPONSE_TIMEOUT];
@@ -92,31 +88,16 @@
 	allowSelfSignedCerts = YES;
     preemptiveBasicAuth = NO;
     
-	headersTable = [[NSMutableArray alloc] init];
-	filesTable   = [[NSMutableArray alloc] init];
-	paramsTable  = [[NSMutableArray alloc] init];
-	
-	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-	
-	[row setObject:@"Content-Type" forKey:@"key"];
-	[row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
-	[headersTable addObject:row];
 	
     [self loadDataFromDisk];
     
-    exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
-    exportRequestsController.savedRequestsArray = savedRequestsArray;
-    
-    self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
-    
-    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
     // Register a key listener
     NSEvent * (^monitorHandler)(NSEvent *);
     monitorHandler = ^NSEvent * (NSEvent * theEvent) {
         
         if (([theEvent modifierFlags] & NSCommandKeyMask) && [[theEvent characters] isEqualToString:@"l"]) {
-            [urlBox selectText:nil];
+            [currentWindowController.urlBox selectText:nil];
             return nil;
         } else {
             return theEvent;
@@ -129,23 +110,27 @@
 	return self;
 }
 
-- (void)setupObservers {
-    [[NSUserDefaults standardUserDefaults]addObserver:self
-                                           forKeyPath:SYNTAX_HIGHLIGHT
-                                              options:NSKeyValueObservingOptionNew
-                                              context:nil];
+- (void) addTabFromWindow:(NSWindow *)window {
+    MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    mainWindowController.appDelegate = self;
+    if (window) {
+        [window addTabbedWindow:[mainWindowController window] ordered:NSWindowAbove];
+        [mainWindowController.window orderFront:window];
+        [mainWindowController.window makeKeyWindow];
+    } else {
+        [mainWindowController showWindow:self];
+    }
+    [self.mainWindowControllers addObject:mainWindowController];
+    NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
+- (void) tabWasRemoved:(NSWindowController *)windowController {
+    [self.mainWindowControllers removeObject:windowController];
+    NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
+}
 
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
-        // This might come on a bg thread, good old foundation bug. Thats why the GCD call.
-        // Diego
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self syntaxHighlightingPreferenceChanged];
-        });
-    }
+- (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController {
+    currentWindowController = mainWindowController;
 }
 
 + (void) addBorderToView:(NSView *)view {
@@ -159,50 +144,22 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    [window setFrameUsingName:@"CRCMainWindow"];
-    [[window windowController] setShouldCascadeWindows:NO];
-    [window setFrameAutosaveName:@"CRCMainWindow"];
+    // [window setFrameUsingName:@"CRCMainWindow"];
+    // [[window windowController] setShouldCascadeWindows:NO];
+    // [window setFrameAutosaveName:@"CRCMainWindow"];
     
-    self.jsonWriter = [[SBJson4Writer alloc] init];
-    self.jsonWriter.humanReadable = YES;
-    self.jsonWriter.sortKeys = NO;
     
-    [self.requestTabView addItems:@[self.requestBodyItemView,
-                                    self.requestHeadersItemView,
-                                    self.requestAuthItemView,
-                                    self.requestFilesItemView]];
-    
-    [self.responseTabView addItems:@[self.responseBodyItemView,
-                                     self.responseHeadersItemView,
-                                     self.responseHeadersSentItemView]];
-  
     
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
-    [methodButton removeAllItems];
-	[methodButton addItemWithObjectValue:@"GET"];
-	[methodButton addItemWithObjectValue:@"POST"];
-	[methodButton addItemWithObjectValue:@"PUT"];
-	[methodButton addItemWithObjectValue:@"DELETE"];
-	[methodButton addItemWithObjectValue:@"HEAD"];
-	[methodButton addItemWithObjectValue:@"OPTIONS"];
-	[methodButton addItemWithObjectValue:@"PATCH"];
-	[methodButton addItemWithObjectValue:@"COPY"];
-	[methodButton addItemWithObjectValue:@"SEARCH"];
     
     
     
-	requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"HEAD", @"OPTIONS", nil];
+    
+	self.requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"HEAD", @"OPTIONS", nil];
 	
-	[responseTextHeaders setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];
-	[requestHeadersSentText setFont:[NSFont fontWithName:@"Courier New" size:DEFAULT_FONT_SIZE]];    
 	
-	[urlBox setNumberOfVisibleItems:10];
-    [progressIndicator setHidden:YES];
-    
-    [self selectRequestBodyInputMode];
-    
     NSSize drawerSize;
     drawerSize.width = 200;
     drawerSize.height = 0;    
@@ -217,23 +174,9 @@
     drawerView.cocoaRestClientAppDelegate = self;
     [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
     
-    [headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
-    [headersTableView setTextDidEndEditingAction:@selector(doneEditingHeaderRow:)];
-    [paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
-    [paramsTableView setTextDidEndEditingAction:@selector(doneEditingParamsRow:)];
-    [filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     
-    [filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
-    [filesTableView setDelegate: self];
-    [filesTableView setDataSource: self];
-    
-    [responseTextPlain setEditable:NO];
     [reGetResponseMenuItem setEnabled:NO];
     
-    [self.responseTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
-    [self.requestTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
-    
-    [self initHighlightedViews];
     
     //[self syntaxHighlightingPreferenceChanged];
     
@@ -241,241 +184,43 @@
     // Enable Drag and Drop for outline view of saved requests
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
     
-    self.fastSearchSavedRequestsController.parent = self.window;
     
-    [self setupObservers];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deleteSavedRequest:)
                                                  name:@"deleteDrawerRow"
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
+    [self addTabFromWindow:nil];
     
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
-    return !(flag || ([self.window makeKeyAndOrderFront: self], 0));
+    return !(flag || ([currentWindowController.window makeKeyAndOrderFront: self], 0));
 }
 
 
 - (void)syntaxHighlightingPreferenceChanged {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    if (! syntaxHighlighting) {
-        // Switch response from syntax highlighting to plain
-        [self.responseTextPlain setString:[self.responseView string]];
-        [self.responseView setString:@""];
-        // Switch request from syntax highlighting to plain
-        [self.requestTextPlain setString:[self.requestView string]];
-        [self.requestView setString:@""];
-    } else {
-        // Switch response from plain to syntax highlighting
-        [self.responseView setString:[self.responseTextPlain string]];
-        [self.responseTextPlain setString:@""];
-        
-        // Switch request from plain to syntax highlighting
-        [self.requestView setString:[self.requestTextPlain string]];
-        [self.requestTextPlain setString:@""];
-    }
 }
 
-- (void) setResponseText:(NSString *)response {
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-    syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    if (! syntaxHighlighting) {
-        [responseTextPlain setString:response];
-    } else {
-        [responseView setString:response];
-    }
-}
 
-- (NSString *) getResponseText {
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-    syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    if (! syntaxHighlighting) {
-        return responseTextPlain.string;
-    } else {
-        return self.responseView.string;
-    }
-}
-
-- (void) setRequestText:(NSString *)request {
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-    syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    if (! syntaxHighlighting) {
-        [self.requestTextPlain setString:request];
-    } else {
-        [self.requestView setString:request];
-    }
-}
-
-- (NSString *) getRequestText {
-    BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
-    syntaxHighlightingMenuItem.state = syntaxHighlighting;
-    if (! syntaxHighlighting) {
-        return [self.requestTextPlain string];
-    } else {
-        return [self.requestView string];
-    }
-}
-
-- (IBAction) runSubmit:(id)sender {
-    NSLog(@"Got submit press");
-    [progressIndicator setHidden:NO];
-    [progressIndicator startAnimation:self];
-	
-	// Append http if it's not there
-	NSString *urlStr = [urlBox stringValue];
-	if (! [urlStr hasPrefix:@"http"] && ! [urlStr hasPrefix:@"https"]) {
-		urlStr = [[NSString alloc] initWithFormat:@"http://%@", urlStr];
-		[urlBox setStringValue:urlStr];
-	}
-	
-	[self setResponseText:[NSString stringWithFormat:@"Loading %@", urlStr]];
-	[status setStringValue:@"Opening URL..."];
-	[responseTextHeaders setString:@""];
-	[headersTab setLabel:@"Response Headers"];
-	[urlBox insertItemWithObjectValue: [urlBox stringValue] atIndex:0];
-	
-	if (! receivedData) {
-		receivedData = [[NSMutableData alloc] init];
-	}
-	[receivedData setLength:0];
-	contentType = NULL;
-	
-	NSString *urlEscaped = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL *url = [NSURL URLWithString:urlEscaped];
-    NSString *method = [methodButton stringValue];
-	NSMutableURLRequest * request = nil;
-    
-	
-	// initialize request
-	request = [NSMutableURLRequest requestWithURL:url];
-	[request setHTTPMethod:method];
-	[request setTimeoutInterval:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
-	
-	BOOL contentTypeSet = NO;
-    BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
-	if(rawRequestBody) {
-		if (![requestMethodsWithoutBody containsObject:method]) {
-			if([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
-				[CRCFileRequest createRequest:request];
-			}
-			else  {
-				[CRCRawRequest createRequest:request];
-			}
-		}		
-	}
-	else {
-		if (![requestMethodsWithoutBody containsObject:method]) {
-            switch([CRCRequest determineRequestContentType:headersTable]) {
-				case CRCContentTypeFormEncoded:
-					[CRCFormEncodedRequest createRequest:request];
-                    contentTypeSet = YES;
-					break;
-				
-				case CRCContentTypeMultipart:
-					[CRCMultipartRequest createRequest:request];
-                    contentTypeSet = YES;
-					break;
-			}
-		}
-	}
-	
-    // Set headers
-	NSMutableDictionary *headersDictionary = [[NSMutableDictionary alloc] init];
-	
-	for(NSDictionary * row in headersTable) {
-        if (! [[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"] || ! contentTypeSet) {
-            [headersDictionary setObject:[row objectForKey:@"value"] 
-                                  forKey:[row objectForKey:@"key"]];
-        }
-	}
-    
-    // Pre-emptive HTTP Basic Auth
-    if (preemptiveBasicAuth && [username stringValue] && [password stringValue]) {
-        NSData *plainTextUserPass = [ [NSString stringWithFormat:@"%@:%@", [username stringValue], [password stringValue]] dataUsingEncoding:NSUTF8StringEncoding];
-        [headersDictionary setObject:[NSString stringWithFormat:@"Basic %@", [plainTextUserPass base64String]]
-                              forKey:@"Authorization"];
-    }
-    
-    [request setAllHTTPHeaderFields:headersDictionary];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DISABLE_COOKIES]) {
-        [request setHTTPShouldHandleCookies:NO];
-    }
-    
-	lastRequest = [CRCRequest requestWithApplication:self];
-	if ([method isEqualToString:@"GET"]) {
-        reGetResponseMenuItem.enabled = YES; 
-    } else {
-        reGetResponseMenuItem.enabled = NO;
-    }
-    
-	startDate = [NSDate date];
-    
-    currentRequest = [request copy];
-    
-	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-	if (! connection) {
-		NSLog(@"Could not open connection to resource");
-	}
-
-}
 
 
 
 #pragma mark -
 #pragma mark Highlighted Text Views
 
--(void) initHighlightedViews {
-    ACETheme aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
-    [[[themeMenuItem submenu] itemWithTag:aceTheme] setState:NSOnState];
-    
-    aceViewFontSize = 12;
-    
-    [responseView setDelegate:nil];
-    [responseView setMode:ACEModeJSON];
-    [responseView setTheme:aceTheme];
-    [responseView setShowInvisibles:NO];
-    [responseView setReadOnly:YES];
-    [responseView setFontSize:aceViewFontSize];
-    responseTypeManager = [[HighlightingTypeManager alloc] initWithView:responseView];
-    
-    [requestView setDelegate:nil];
-    [requestView setMode:ACEModeText];
-    [requestView setTheme:aceTheme];
-    [requestView setShowInvisibles:NO];
-    [requestView setFontSize:aceViewFontSize];
-    requestTypeManager = [[HighlightingTypeManager alloc] initWithView:requestView];
-    
-    BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:SHOW_LINE_NUMBERS];
-    [self applyShowLineNumbers:show];
-    if (show) {
-        [showLineNumbersMenuItem setState:NSOnState];
-    } else {
-        [showLineNumbersMenuItem setState:NSOffState];
-    }
-}
-
-- (void) applyShowLineNumbers:(BOOL)show {
-    [responseView setShowLineNumbers:show];
-    [responseView setShowFoldWidgets:show];
-    [responseView setShowGutter:show];
-    [requestView setShowLineNumbers:show];
-    [requestView setShowFoldWidgets:show];
-    [requestView setShowGutter:show];
-}
 
 - (void) showLineNumbersToggled:(id)sender {
     NSInteger state = [((NSMenuItem *) sender) state];
     if (state == NSOnState) {
-        [self applyShowLineNumbers:NO];
+        [currentWindowController applyShowLineNumbers:NO];
         [((NSMenuItem *) sender) setState:NO];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:SHOW_LINE_NUMBERS];
     } else if (state == NSOffState) {
-        [self applyShowLineNumbers:YES];
+        [currentWindowController applyShowLineNumbers:YES];
         [((NSMenuItem *) sender) setState:YES];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SHOW_LINE_NUMBERS];
     }
@@ -485,395 +230,56 @@
 #pragma mark Find Menu items
 
 -(IBAction) findMenuItem:(id)sender {
-    NSResponder *responder = [self.window firstResponder];
+    NSResponder *responder = [currentWindowController.window firstResponder];
     // Assume that in most cases the user wants to search in the response, unless they explicitly
     // have their focus on the request.
-    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
-        [requestView showFindInterface];
+    if ([currentWindowController.requestView ancestorSharedWithView:(NSView *)responder] == currentWindowController.requestView) {
+        [currentWindowController.requestView showFindInterface];
     } else {
-        [responseView showFindInterface];
+        [currentWindowController.responseView showFindInterface];
     }
 }
 
 - (IBAction) findNextMenuItem:(id)sender {
-    NSResponder *responder = [self.window firstResponder];
+    NSResponder *responder = [currentWindowController.window firstResponder];
     // Assume that in most cases the user wants to search in the response, unless they explicitly
     // have their focus on the request.
-    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
-        [requestView findNextMatch];
+    if ([currentWindowController.requestView ancestorSharedWithView:(NSView *)responder] == currentWindowController.requestView) {
+        [currentWindowController.requestView findNextMatch];
     } else {
-        [responseView findNextMatch];
+        [currentWindowController.responseView findNextMatch];
     }
 }
 
 - (IBAction) findPreviousMenuItem:(id)sender {
-    NSResponder *responder = [self.window firstResponder];
+    NSResponder *responder = [currentWindowController.window firstResponder];
     // Assume that in most cases the user wants to search in the response, unless they explicitly
     // have their focus on the request.
-    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
-        [requestView findPreviousMatch];
+    if ([currentWindowController.requestView ancestorSharedWithView:(NSView *)responder] == currentWindowController.requestView) {
+        [currentWindowController.requestView findPreviousMatch];
     } else {
-        [responseView findPreviousMatch];
+        [currentWindowController.responseView findPreviousMatch];
     }
 }
 
 - (IBAction) replaceMenuItem:(id)sender {
-    NSResponder *responder = [self.window firstResponder];
+    NSResponder *responder = [currentWindowController.window firstResponder];
     // Replace only makes sense for the requestView
-    if ([requestView ancestorSharedWithView:(NSView *)responder] == requestView) {
-        [requestView showReplaceInterface];
-    }
-}
-
-#pragma mark -
-#pragma mark Url Connection Delegate methods
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[receivedData appendData:data];
-}
-
--(NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                 willCacheResponse:(NSCachedURLResponse *)cachedResponse {
-    return nil;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"Did receive response");
-	
-	[status setStringValue:@"Receiving Data..."];
-	NSMutableString *headers = [[NSMutableString alloc] init];
-	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-	[headers appendFormat:@"HTTP %ld %@\n\n", [httpResponse statusCode], [[NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] capitalizedString]];
-	
-	[headersTab setLabel:[NSString stringWithFormat:@"Response Headers (%ld)", [httpResponse statusCode]]];
-    _responseHeadersItemView.tabTitle = [NSString stringWithFormat:@"Headers (%ld)", [httpResponse statusCode]];
-	
-	NSDictionary *headerDict = [httpResponse allHeaderFields];
-    contentType = nil;
-	for (NSString *key in headerDict) {
-		[headers appendFormat:@"%@: %@\n", key, [headerDict objectForKey:key]];
-		if ([key isEqualToString:@"Content-Type"]) {
-			NSString *contentTypeLine = [headerDict objectForKey:key];
-			NSArray *parts = [contentTypeLine componentsSeparatedByString:@";"];
-			contentType = [[NSString alloc] initWithString:[parts objectAtIndex:0]];
-            if ([parts count] > 1) {
-                charset = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"charset=" withString:@""];
-            }
-			NSLog(@"Got content type = %@", contentType);            
-		}
-	}
-	
-    // TODO self.responseView.syntaxMIME = contentType;
-    [responseTypeManager setModeForMimeType:contentType];
-    [responseTextHeaders setString:headers];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	NSLog(@"Did fail");
-	[headersTab setLabel:@"Response Headers (Failed)"];
-	[self setResponseText:[NSString stringWithFormat:@"Connection to %@ failed.", [urlBox stringValue]]];
-    [status setStringValue:@"Failed"];
-    [progressIndicator stopAnimation:self];
-    [progressIndicator setHidden:YES];
-}
-
-// This controls if HTTP redirects are followed
-- (NSURLRequest *)connection: (NSURLConnection *)inConnection
-             willSendRequest: (NSURLRequest *)inRequest
-            redirectResponse: (NSURLResponse *)inRedirectResponse;
-{
-    NSMutableString *headers = [[NSMutableString alloc] init];
-    if (inRequest) {
-        NSDictionary *sentHeaders = [inRequest allHTTPHeaderFields];
-        for (NSString *key in sentHeaders) {
-            [headers appendFormat:@"%@: %@\n", key, [sentHeaders objectForKey:key]];
-        }
-        [requestHeadersSentText setString:headers];
-    }
-    
-    if (inRedirectResponse) {
-        if (! [[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]) {
-            return nil;
-        } else {
-            NSMutableURLRequest *r = [inRequest mutableCopy]; // original request
-            [r setURL: [inRequest URL]];
-            
-            // For HTTP 301, 302, & 303s, there is w3c guidance about when the POST should be 
-            // propogated rather than converted into a GET on the target of the redirect. See:
-            // http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-            // Some users were not expecting this and (for better or worse) will be able to override
-            // the built-in rules and propogate the HTTP method to the target of the redirect no
-            // matter what the guidelines are.
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:APPLY_HTTP_METHOD_ON_REDIRECT]) {
-                [r setHTTPMethod:[currentRequest HTTPMethod]];
-            }
-            return r;
-        }
-    } else {
-        return inRequest;
-    }
-}
-
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {
-        return NO;
-    } else if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        return allowSelfSignedCerts;
-    } else {
-        return YES;
-    }
-}
-
--(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-        [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
-    } else {
-        if ([challenge previousFailureCount] == 0) {
-            NSURLCredential *newCredential;
-            newCredential = [NSURLCredential credentialWithUser:[username stringValue]
-                                                       password:[password stringValue]
-                                                    persistence:NSURLCredentialPersistenceNone];
-            [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-        } else {
-            [[challenge sender] cancelAuthenticationChallenge:challenge];
-            [self setResponseText:@"Authentication Failed"];
-        }
-    }
-}
-
-- (void)prettyPrintJsonResponseFromObject:(id)obj {
-    id data = [self.jsonWriter dataWithObject:obj];
-    NSString *responseFormattedString =
-    [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [self setResponseText:responseFormattedString];
-}
-
-- (void)prettyPrintJsonResponseFromString:(NSData*)jsonData {
-    NSLog(@"Attempting to pretty print JSON");
-    
-    id block = ^(id obj, BOOL *ignored) {
-        [self prettyPrintJsonResponseFromObject:obj];
-    };
-    
-    id eh = ^(NSError *err) {
-        NSLog(@"JSON parse error %@", err.description);
-        [self printResponsePlain];
-    };
-    
-    id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
-    SBJson4ParserStatus parseStatus = [parser parse:jsonData];
-    if (parseStatus == SBJson4ParserWaitingForData) {
-        NSLog(@"Unexpected end of JSON content");
-        [self printResponsePlain];
-    }
-}
-
-- (void)printResponsePlain {
-    // TODO: Use charset to select decoding
-    // Attempt to decode the text as UTF8
-    NSString *plainString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    if (! plainString) {
-        // If not UTF8 try ISO-8859-1
-        plainString = [[NSString alloc] initWithData:receivedData encoding:NSISOLatin1StringEncoding];
-    }
-    // Successfully decoded the response string
-    if (plainString) {
-        [self setResponseText:plainString];
-    } else {
-        [self setResponseText:@"Unable to decode charset of response to printable string."];
-    }
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSTimeInterval elapsed = [startDate timeIntervalSinceNow];
-	[status setStringValue:[NSString stringWithFormat:@"Finished in %f seconds", -1*elapsed]];
-	
-	BOOL needToPrintPlain = YES;
-	if (contentType != NULL) {
-        if ([[ContentTypes sharedContentTypes] isXml:contentType]) {
-			NSLog(@"Formatting XML");
-			NSError *error;
-			NSXMLDocument *responseXML = [[NSXMLDocument alloc] initWithData:receivedData options:NSXMLNodePreserveAll error:&error];
-			if (!responseXML) {
-				NSLog(@"Error reading response: %@", error);
-                needToPrintPlain = YES;
-			} else {
-                [self setResponseText:[responseXML XMLStringWithOptions:NSXMLNodePrettyPrint]];
-                needToPrintPlain = NO;
-            }
-		} else if ([[ContentTypes sharedContentTypes] isJson:contentType]) {
-            [self prettyPrintJsonResponseFromString:receivedData];
-            needToPrintPlain = NO;
-		} else if ([[ContentTypes sharedContentTypes] isMsgPack:contentType]) {
-            NSLog(@"Attempting to format MsgPack as JSON");
-            [self prettyPrintJsonResponseFromObject:[MsgPackSerialization MsgPackObjectWithData:receivedData options:0 error:nil]];
-            needToPrintPlain = NO;
-        }
-	} 
-	
-	// Bail out, just print the text
-	if (needToPrintPlain) {
-        [self printResponsePlain];
-	}
-    
-    [progressIndicator stopAnimation:self];
-    [progressIndicator setHidden:YES];
-}
-
-#pragma mark -
-#pragma mark Params
-
-- (IBAction) doubleClickedParamsRow:(id)sender {
-    NSInteger row = [paramsTableView clickedRow];
-    NSInteger col = [paramsTableView clickedColumn];
-    if (row == -1 && col == -1) {
-        [self plusParamsRow:sender];
-    } else {
-        [paramsTableView editColumn:col row:row withEvent:nil select:YES];
-    }
-}
-
-- (IBAction) plusParamsRow:(id)sender {
-	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-	[row setObject:@"Key" forKey:@"key"];
-	[row setObject:@"Value" forKey:@"value"];
-	
-	[paramsTable addObject:row];
-	[paramsTableView reloadData];
-	[paramsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([paramsTable count] - 1)] byExtendingSelection:NO];
-	[paramsTableView editColumn:0 row:([paramsTable count] - 1) withEvent:nil select:YES];
-}
-
-- (IBAction) minusParamsRow:(id)sender {
-    if (paramsTable.lastObject) {
-        [paramsTable removeObjectAtIndex:[paramsTableView selectedRow]];
-    }
-    [paramsTableView reloadData];
-}
-
-- (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn {
-    int lastTextMovement = [paramsTableView getLastTextMovement];
-    if (lastTextMovement == NSTabTextMovement && [[tableRowAndColumn.column identifier] isEqualToString:@"value"]) {
-        if (tableRowAndColumn.row == [[paramsTableView dataSource] numberOfRowsInTableView:paramsTableView] - 1) {
-            [self plusParamsRow:nil];
-        } else {
-            [paramsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:(tableRowAndColumn.row + 1)] byExtendingSelection:NO];
-            [paramsTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
-        }        
+    if ([currentWindowController.requestView ancestorSharedWithView:(NSView *)responder] == currentWindowController.requestView) {
+        [currentWindowController.requestView showReplaceInterface];
     }
 }
 
 
-#pragma mark -
-#pragma mark Files
-
-- (IBAction) doubleClickedFileRow:(id)sender {
-    NSInteger row = [filesTableView clickedRow];
-    NSInteger col = [filesTableView clickedColumn];
-    if (row == -1 && col == -1) {
-        [self plusFileRow:sender];
-    } else {
-        [filesTableView editColumn:col row:row withEvent:nil select:YES];
-    }
-}
-
-- (void) addFileToFilesTable: (NSURL*) fileUrl {
-    NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-    [row setObject:[fileUrl lastPathComponent] forKey:@"key"];
-    [row setObject:[fileUrl relativePath] forKey:@"value"];
-    [row setObject:fileUrl  forKey:@"url"];
-    
-    [filesTable addObject:row];
-    [filesTableView reloadData];
-    [filesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([filesTable count] - 1)] byExtendingSelection:NO];
-    [filesTableView editColumn:0 row:([filesTable count] - 1) withEvent:nil select:YES];
-}
-
-- (IBAction) plusFileRow:(id)sender {
-	
-	NSOpenPanel* picker = [NSOpenPanel openPanel];
-	
-	[picker setCanChooseFiles:YES];
-	[picker setCanChooseDirectories:NO];
-	[picker setAllowsMultipleSelection:NO];
-  
-	[picker beginSheetModalForWindow:self.window
-     completionHandler:^(NSModalResponse returnCode) {
-         if (returnCode == NSModalResponseOK) {
-             for(NSURL* url in [picker URLs]) {
-                 [self addFileToFilesTable:url];
-             }
-         }
-     }];
-
-}
-
-- (IBAction) minusFileRow:(id)sender {
-    if ([filesTable count] > [filesTableView selectedRow]) {
-        [filesTable removeObjectAtIndex:[filesTableView selectedRow]];
-        [filesTableView reloadData];
-    }
-}
-
-- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
-    
-    return NSDragOperationCopy;
-}
-
-- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
-    
-    if (tableView != filesTableView) {
-        return NO;
-    }
-
-    NSPasteboard *pboard = [info draggingPasteboard];
-    if ([[pboard types] containsObject: NSFilenamesPboardType]) {
-        NSArray *new_files = [pboard propertyListForType: NSFilenamesPboardType];
-        if (new_files.count > 0) {
-            [new_files enumerateObjectsUsingBlock:^(NSString* path, NSUInteger idx, BOOL *stop) {
-                [self addFileToFilesTable:[NSURL fileURLWithPath:path]];
-            }];
-            [filesTableView reloadData];
-            
-            return YES;
-        }
-    }
-    
-    return NO;
-}
 
 #pragma mark Menu methods
-- (IBAction) contentTypeMenuItemSelected:(id)sender
-{
-    [requestTypeManager setModeForMimeType:[sender title]];
-    
-	BOOL inserted = FALSE;
-	if([headersTable count] > 0) {
-		for(NSMutableDictionary * row in headersTable) {
-			if([[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"]) {
-				[row setObject:[sender title] forKey:@"value"];
-				[headersTableView reloadData];
-				inserted = TRUE;
-				break;
-			}	
-		}
-	}
-	
-	if (! inserted) {
-		NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-		[row setObject:@"Content-Type" forKey:@"key"];
-		[row setObject:[sender title] forKey:@"value"];
-		[headersTable addObject:row];
-		[headersTableView reloadData];
-	}
-
-	[tabView selectTabViewItem:reqHeadersTab];
+- (IBAction) contentTypeMenuItemSelected:(id)sender {
+    [currentWindowController contentTypeMenuItemSelected:sender];
 }
 
 - (IBAction) themeMenuItemSelected:(id)sender {
-    [responseView setTheme:[sender tag]];
-    [requestView setTheme:[sender tag]];
+    [currentWindowController.responseView setTheme:[sender tag]];
+    [currentWindowController.requestView setTheme:[sender tag]];
     
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
     
@@ -899,116 +305,6 @@
     }
 }
 
-#pragma mark Table view methods
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) tableView {
-	NSInteger count= nil;
-	
-	if(tableView == headersTableView)
-		count = [headersTable count];
-	
-	if(tableView == filesTableView)
-		count = [filesTable count];
-	
-	if(tableView == paramsTableView)
-		count = [paramsTable count];
-	
-	return count;
-	
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	
-	id object;
-	
-	if(tableView == headersTableView)
-		object = [[headersTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
-	
-	if(tableView == filesTableView)
-		object = [[filesTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
-	
-	if(tableView == paramsTableView)
-		object = [[paramsTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
-	
-	return object;
-}
-
-- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject 
-   forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-	
-	NSMutableDictionary *row;
-	
-	if(aTableView == headersTableView){
-		row = [headersTable objectAtIndex:rowIndex];
-		if (row == NULL) {
-			row = [[NSMutableDictionary alloc] init];
-		}
-		[row setObject:anObject forKey:[aTableColumn identifier]];
-		[headersTable replaceObjectAtIndex:rowIndex withObject:row];
-	}
-	
-	if(aTableView == filesTableView){
-		row = [filesTable objectAtIndex:rowIndex];
-		if (row == NULL) {
-			row = [[NSMutableDictionary alloc] init];
-		}
-		[row setObject:anObject forKey:[aTableColumn identifier]];
-		[filesTable replaceObjectAtIndex:rowIndex withObject:row];
-	}
-	
-	if(aTableView == paramsTableView){
-		row = [paramsTable objectAtIndex:rowIndex];
-		if (row == NULL) {
-			row = [[NSMutableDictionary alloc] init];
-		}
-		[row setObject:anObject forKey:[aTableColumn identifier]];
-		[paramsTable replaceObjectAtIndex:rowIndex withObject:row];
-	}
-
-}
-
-- (IBAction) doubleClickedHeaderRow:(id)sender {
-    NSInteger row = [headersTableView clickedRow];
-    NSInteger col = [headersTableView clickedColumn];
-    if (row == -1 && col == -1) {
-        [self plusHeaderRow:sender];
-    } else {
-        [headersTableView editColumn:col row:row withEvent:nil select:YES];
-    }
-}
-
-- (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn {
-    int lastTextMovement = [headersTableView getLastTextMovement];
-    if (lastTextMovement == NSTabTextMovement && [[tableRowAndColumn.column identifier] isEqualToString:@"value"]) {
-        if (tableRowAndColumn.row == [[headersTableView dataSource] numberOfRowsInTableView:headersTableView] - 1) {
-            [self plusHeaderRow:nil];
-        } else {
-            [headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:(tableRowAndColumn.row + 1)] byExtendingSelection:NO];
-            [headersTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
-        }        
-    }
-}
-
-- (IBAction) plusHeaderRow:(id)sender {
-	NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-    [row setObject:@"Key" forKey:@"key"];
-	[row setObject:@"Value" forKey:@"value"];
-	[headersTable addObject:row];
-	[headersTableView reloadData];
-	[headersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([headersTable count] - 1)] byExtendingSelection:NO];
-	[headersTableView editColumn:0 row:([headersTable count] - 1) withEvent:nil select:YES];
-}
-
-- (IBAction) minusHeaderRow:(id)sender {
-    if ([headersTable count] > [headersTableView selectedRow]) {
-        [headersTable removeObjectAtIndex:[headersTableView selectedRow]];
-        [headersTableView reloadData];
-    }
-}
-
-- (IBAction) clearAuth:(id)sender {
-	[username setStringValue:@""];
-	[password setStringValue:@""];
-}
 
 #pragma mark OutlineViewDataSource methods
 - (NSInteger) outlineView: (NSOutlineView *)outlineView numberOfChildrenOfItem: (id)item {
@@ -1199,14 +495,14 @@
 - (IBAction) saveRequest:(id) sender {
     lastSelectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
     [savedOutlineView deselectAll:nil];
-	[NSApp beginSheet:saveRequestSheet modalForWindow:window
+	[NSApp beginSheet:saveRequestSheet modalForWindow:currentWindowController.window
         modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
 // Dispose of save request sheet
 - (IBAction) doneSaveRequest:(id) sender {
 	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
-		CRCRequest * request = [CRCRequest requestWithApplication:self];
+		CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
 		
         if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
             [lastSelectedSavedOutlineViewItem addObject:request];
@@ -1223,7 +519,7 @@
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
     [savedOutlineView deselectAll:nil];
     [fastSearchSavedRequestsController setupWindow:savedRequestsArray];
-    [window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
+    [currentWindowController.window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (fastSearchSavedRequestsController.selectedRequest) {
                 [self loadSavedRequest:fastSearchSavedRequestsController.selectedRequest];
@@ -1260,7 +556,7 @@
 - (IBAction) overwriteRequest:(id)sender {
     int row = [savedOutlineView selectedRow];
     if (row > -1) {
-        CRCRequest * request = [CRCRequest requestWithApplication:self];
+        CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
         
         id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
         if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
@@ -1288,7 +584,7 @@
 
 - (IBAction) openTimeoutDialog:(id) sender {
 	[timeoutField setIntValue:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
-	[NSApp beginSheet:timeoutSheet modalForWindow:window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+	[NSApp beginSheet:timeoutSheet modalForWindow:currentWindowController.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
 - (IBAction) closeTimoutDialog:(id) sender {
@@ -1306,117 +602,14 @@
 	}
 	else if([request isKindOfClass:[CRCRequest class]]) {
 		[self loadSavedCRCRequest:(CRCRequest *)request];
-        if ([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
+        if ([CRCFileRequest currentRequestIsCRCFileRequest:currentWindowController]) {
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
         } else {
             [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
         }
 	}
     
-    [self selectRequestBodyInputMode];
-}
-
-// if it's a dictionary it's the old format, files, params, rawRequestInput will not be present
-- (void)loadSavedDictionary:(NSDictionary *)request
-{
-	[urlBox setStringValue:[request objectForKey:@"url"]];
-    [methodButton setStringValue:[request objectForKey:@"method"]];
-	[username setStringValue:[request objectForKey:@"username"]];
-	[password setStringValue:[request objectForKey:@"password"]];
-	
-	//self.rawRequestInput = YES;
-    self.preemptiveBasicAuth = NO;
-	
-	if ([request objectForKey:@"body"]) {
-		[self setRequestText:[request objectForKey:@"body"]];
-	} 
-	else {
-        [self setRequestText:@""];
-	}
-	
-	NSArray *headers = [request objectForKey:@"headers"];
-	
-	NSMutableArray *headersTranslated = [[NSMutableArray alloc] init];
-	for(NSDictionary *header in headers) {
-		if ([header objectForKey:@"header-name"]) {
-			NSMutableDictionary *headerTranslated = [[NSMutableDictionary alloc] init];
-			[headerTranslated setObject:[header objectForKey:@"header-name"] forKey:@"key"];
-			[headerTranslated setObject:[header objectForKey:@"header-value"] forKey:@"value"];
-			[headersTranslated addObject:headerTranslated];
-		} else {
-			[headersTranslated addObject:header];
-		}
-	}
-	
-	[headersTable removeAllObjects];
-	[paramsTable removeAllObjects];
-	[filesTable removeAllObjects];
-	
-	if (headers)
-		[headersTable addObjectsFromArray:headersTranslated];
-	
-	[headersTableView reloadData];
-	[filesTableView reloadData];
-	[paramsTableView reloadData];
-}
-
-- (void)loadSavedCRCRequest:(CRCRequest *)request
-{
-	[urlBox setStringValue:request.url];
-    [methodButton setStringValue:request.method];
-	[username setStringValue:request.username];
-	[password setStringValue:request.password];
-	
-	[[NSUserDefaults standardUserDefaults]setBool:request.rawRequestInput
-                                            forKey:RAW_REQUEST_BODY];
-    self.preemptiveBasicAuth = request.preemptiveBasicAuth;
-	
-	if([[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY])
-	{
-        [self setRequestText:request.requestText];
-	}
-	else 
-	{
-		[self setRequestText:@""];
-	}
-	
-	NSArray *headers = [[NSArray alloc] initWithArray:request.headers copyItems:YES];
-	NSArray *params = [[NSArray alloc] initWithArray:request.params copyItems:YES];
-	NSArray *files = [[NSArray alloc] initWithArray:request.files copyItems:YES];
-	
-	[headersTable removeAllObjects];
-	[paramsTable removeAllObjects];
-	[filesTable removeAllObjects];
-	
-	// Make headers, params, and files mutable dictionaries when they get loaded so that 
-	// they can still be updated after being loaded.
-	if (headers) {
-		for(NSDictionary *header in headers) {
-			NSMutableDictionary *headerTranslated = [[NSMutableDictionary alloc] initWithDictionary:header];
-			[headersTable addObject:headerTranslated];
-            if ([((NSString *)[header objectForKey:@"key"]) isEqualToString:@"Content-Type"]) {
-                [requestTypeManager setModeForMimeType:[header objectForKey:@"value"]];
-            }
-		}
-	}
-	
-	if (params) {
-		for(NSDictionary *param in params) {
-			NSMutableDictionary *paramTranslated = [[NSMutableDictionary alloc] initWithDictionary:param];
-			[paramsTable addObject:paramTranslated];
-		}
-	}
-	
-	if (files) {
-		for(NSDictionary *file in files) {
-			NSMutableDictionary *fileTranslated = [[NSMutableDictionary alloc] initWithDictionary:file];
-			[filesTable addObject:fileTranslated];
-		}
-	}
-	
-	[headersTableView reloadData];
-	[filesTableView reloadData];
-	[paramsTableView reloadData];
+    [currentWindowController selectRequestBodyInputMode];
 }
 
 - (NSString *) pathForDataFile {
@@ -1471,7 +664,7 @@
 - (void) importRequestsFromArray:(NSArray *)requests {
     [exportRequestsController prepareToDisplayImports:requests];
     [NSApp beginSheet: [exportRequestsController window]
-       modalForWindow: window
+       modalForWindow: currentWindowController.window
         modalDelegate: exportRequestsController
        didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
           contextInfo: nil];
@@ -1483,7 +676,7 @@
     [alert setMessageText:@"Invalid file"];
     [alert setInformativeText:@"Unable to read stored requests from file."];
     [alert setAlertStyle:NSWarningAlertStyle];
-    [alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:nil contextInfo:nil];
+    [alert beginSheetModalForWindow:currentWindowController.window modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 - (IBAction) importRequests:(id)sender {
@@ -1495,7 +688,7 @@
 	[picker setAllowsMultipleSelection:NO];
     
     NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
-    [picker beginSheetModalForWindow:self.window
+    [picker beginSheetModalForWindow:currentWindowController.window
                    completionHandler:^(NSInteger result) {
                        if (result == NSFileHandlingPanelOKButton) {
                            @try {
@@ -1521,18 +714,18 @@
 - (IBAction) exportRequests:(id)sender {
     [exportRequestsController prepareToDisplayExports];
     [NSApp beginSheet: [exportRequestsController window]
-       modalForWindow: window
+       modalForWindow: currentWindowController.window
         modalDelegate: exportRequestsController
        didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
           contextInfo: nil];
 }
 
 - (IBAction) handleOpenWindow:(id)sender {
-	[window makeKeyAndOrderFront:self];
+	[currentWindowController.window makeKeyAndOrderFront:self];
 }
 
 - (IBAction) handleCloseWindow:(id)sender {
-    [window close];
+    [currentWindowController.window close];
 }
 
 // Including this to disable Open Window menu item when window is already open
@@ -1541,9 +734,9 @@
 	//check to see if the Main Menu NSMenuItem is
 	//being validcated
 	if([item tag] == MAIN_WINDOW_MENU_TAG) {
-		return ![window isVisible];
+		return ![currentWindowController.window isVisible];
 	} else if ([item tag] == REGET_MENU_TAG) {
-        return (lastRequest != nil && [lastRequest.method isEqualToString:@"GET"]);
+        return (currentWindowController.lastRequest != nil && [currentWindowController.lastRequest.method isEqualToString:@"GET"]);
     }
 	
 	return TRUE;
@@ -1564,12 +757,13 @@
 }
 
 - (IBAction) reloadLastRequest:(id)sender {
-	if (lastRequest != nil) {
-		[self loadSavedCRCRequest:(CRCRequest *)lastRequest];
-		[self runSubmit: self];
+	if (currentWindowController.lastRequest != nil) {
+		[currentWindowController loadSavedCRCRequest:(CRCRequest *)currentWindowController.lastRequest];
+		[currentWindowController runSubmit: self];
 	}
 }
 
+/*
 - (void)deleteTableRow:(NSNotification *)notification {
     BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
     
@@ -1582,6 +776,7 @@
         [self minusFileRow:nil];
     }
 }
+ */
 
 - (IBAction) showPreferences:(id)sender {
     NSLog(@"Check for updates: %d", [[SUUpdater sharedUpdater] automaticallyChecksForUpdates]);
@@ -1596,19 +791,19 @@
 
 - (IBAction)zoomIn:(id)sender {
     aceViewFontSize += 2;
-    [responseView setFontSize:aceViewFontSize];
-    [requestView setFontSize:aceViewFontSize];
+    [currentWindowController.responseView setFontSize:aceViewFontSize];
+    [currentWindowController.requestView setFontSize:aceViewFontSize];
 }
 
 - (IBAction)zoomOut:(id)sender{
     aceViewFontSize -= 2;
-    [responseView setFontSize:aceViewFontSize];
-    [requestView setFontSize:aceViewFontSize];
+    [currentWindowController.responseView setFontSize:aceViewFontSize];
+    [currentWindowController.requestView setFontSize:aceViewFontSize];
 }
 
 - (IBAction) zoomDefault:(id)sender {
-    [responseView setFontSize:DEFAULT_FONT_SIZE];
-    [requestView setFontSize:DEFAULT_FONT_SIZE];
+    [currentWindowController.responseView setFontSize:DEFAULT_FONT_SIZE];
+    [currentWindowController.requestView setFontSize:DEFAULT_FONT_SIZE];
 }
 
 - (IBAction) exportResponse:(id)sender {
@@ -1619,7 +814,7 @@
         NSLog(@"Saving requests to %@", path.absoluteString);
         
         NSError *error;
-        BOOL savedOK = [[self getResponseText] writeToFile:path.absoluteString atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        BOOL savedOK = [[currentWindowController getResponseText] writeToFile:path.absoluteString atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         if (! savedOK) {
             NSLog(@"Error writing file at %@\n%@", path.absoluteString, [error localizedFailureReason]);
@@ -1647,7 +842,7 @@
     
     NSLog(@"Saving to %@", path);
     NSError *error;
-    BOOL savedOK = [[self getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    BOOL savedOK = [[currentWindowController getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     if (! savedOK) {
         NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
@@ -1674,8 +869,8 @@
 }
 
 - (IBAction) reGetResponseInBrowser:(id)sender {
-    if (lastRequest != nil && [lastRequest.method isEqualToString:@"GET"]) {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:lastRequest.url]];
+    if (currentWindowController.lastRequest != nil && [currentWindowController.lastRequest.method isEqualToString:@"GET"]) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:currentWindowController.lastRequest.url]];
     }
 }
 
@@ -1685,7 +880,7 @@
 }
 
 - (IBAction) copyCurlCommand:(id)sender {
-    CRCRequest * request = [CRCRequest requestWithApplication:self];
+    CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
     NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
     [pasteBoard declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
     NSString *curlCommand = [request generateCurlCommand:[[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]];
@@ -1706,30 +901,8 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
     }
     
-    [self selectRequestBodyInputMode];
+    [currentWindowController selectRequestBodyInputMode];
 }
 
-- (void) selectRequestBodyInputMode {
-    BOOL rawRequest = [[NSUserDefaults standardUserDefaults] boolForKey:RAW_REQUEST_BODY];
-    BOOL fileRequest = [[NSUserDefaults standardUserDefaults] boolForKey:FILE_REQUEST_BODY];
-    if (rawRequest && ! fileRequest) {
-        rawInputButton.state = NSOnState;
-        [self.filesTable removeAllObjects];
-        [filesTableView reloadData];
-    } else if (! rawRequest && ! fileRequest) {
-        fieldInputButton.state = NSOnState;
-    } else if (rawRequest && fileRequest) {
-        fileInputButton.state = NSOnState;
-        // Clear out contents of raw request form
-        [self.requestTextPlain setString:@""];
-        [self.requestView setString:@""];
-    }
-    
-    // Indeterminate input mode, default to field input
-    if (rawInputButton.state == NSOffState && fileInputButton.state == NSOffState && fieldInputButton.state == NSOffState) {
-        NSLog(@"Indeterminate input state");
-        fieldInputButton.state = NSOnState;
-    }
-}
 
 @end

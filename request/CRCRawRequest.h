@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class MainWindowController;
 
 @interface CRCRawRequest : NSObject {
 
 }
-+(void)createRequest:(NSMutableURLRequest *)request;
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController;
 @end

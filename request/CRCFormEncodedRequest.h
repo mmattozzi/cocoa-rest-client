@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class MainWindowController;
 
 @interface CRCFormEncodedRequest : NSObject {
 
 }
-+(void)createRequest:(NSMutableURLRequest *)request;
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController;
 +(NSData *) createRequestBody:(NSArray *)params;
 @end

@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class MainWindowController;
 
 @interface CRCMultipartRequest : NSObject {
 
 }
-+(void)createRequest:(NSMutableURLRequest *)request;
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController;
 +(NSString *)generateBoundary;
 @end

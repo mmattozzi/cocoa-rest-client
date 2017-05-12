@@ -8,13 +8,13 @@
 
 #import "CRCRawRequest.h"
 #import "CocoaRestClientAppDelegate.h"
+#import "MainWindowController.h"
 
 @implementation CRCRawRequest
-+(void)createRequest:(NSMutableURLRequest *)request
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController
 {
-	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMutableData * body    = [NSMutableData data];
-	[body appendData:[[delegate getRequestText] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[[windowController getRequestText] dataUsingEncoding:NSUTF8StringEncoding]];
 	[request setHTTPBody: body];
 }
 @end

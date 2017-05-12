@@ -8,14 +8,14 @@
 
 #import "CRCFileRequest.h"
 #import "CocoaRestClientAppDelegate.h"
+#import "MainWindowController.h"
 
 @implementation CRCFileRequest
-+(void)createRequest:(NSMutableURLRequest *)request
++(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController
 {
-	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
 	NSMutableData * body    = [NSMutableData data];
 	
-	NSURL * path = [[delegate.filesTable objectAtIndex:0] objectForKey:@"url"];
+	NSURL * path = [[windowController.filesTable objectAtIndex:0] objectForKey:@"url"];
 	
 	if([[NSFileManager defaultManager] fileExistsAtPath:[path relativePath]])
 	{
@@ -25,8 +25,8 @@
 	}
 }
 
-+(BOOL) currentRequestIsCRCFileRequest:(CocoaRestClientAppDelegate *)application {
-    return [application.filesTable count] > 0 && [[application getRequestText] isEqualToString:@""] &&
++(BOOL) currentRequestIsCRCFileRequest:(MainWindowController *)windowController {
+    return [windowController.filesTable count] > 0 && [[windowController getRequestText] isEqualToString:@""] &&
         [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
 }
 

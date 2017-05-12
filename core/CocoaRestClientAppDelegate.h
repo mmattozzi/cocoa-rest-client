@@ -24,39 +24,20 @@
 
 @class CRCRequest;
 @class CRCDrawerView;
+@class MainWindowController;
 
 @interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
-    
-    BOOL preemptiveBasicAuth;
-	
-	NSMutableData *receivedData;
-	NSString *contentType;
-    NSString *charset;
-	
-	NSMutableArray *headersTable;
-	NSMutableArray *filesTable;
-	NSMutableArray *paramsTable;
-	
-	NSMutableArray *savedRequestsArray;
-	
-	ExportRequestsController *exportRequestsController;
+    ExportRequestsController *exportRequestsController;
     PreferencesController *preferencesController;
     WelcomeController *welcomeController;
     FastSearchSavedRequestsController *fastSearchSavedRequestsController;
     
-    BOOL allowSelfSignedCerts;
-    NSURLRequest *currentRequest;
-    
-	NSDate *startDate;
-	
-    @private CRCRequest *lastRequest;
-    @private NSSet *requestMethodsWithoutBody;
+    MainWindowController *currentWindowController;
     
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
     
     @private NSString *appDataFilePath;
-    @private NSUInteger aceViewFontSize;
     
     id eventMonitor;
     id lastSelectedSavedOutlineViewItem;
@@ -64,39 +45,16 @@
 
 @property (strong) SBJson4Writer *jsonWriter;
 
-@property (nonatomic, readonly) NSMutableArray *headersTable;
-@property (nonatomic, readonly) NSMutableArray *filesTable;
-@property (nonatomic, readonly) NSMutableArray *paramsTable;
-
-// Request Outlets
-@property IBOutlet DMSlidingTabView             *requestTabView;
-@property IBOutlet DMSlidingTabItemView         *requestBodyItemView;
-@property IBOutlet DMSlidingTabItemView         *requestAuthItemView;
-@property IBOutlet DMSlidingTabItemView         *requestFilesItemView;
-@property IBOutlet DMSlidingTabItemView         *requestHeadersItemView;
-
-// Response Outlets
-@property IBOutlet DMSlidingTabView             *responseTabView;
-@property IBOutlet DMSlidingTabItemView         *responseBodyItemView;
-@property IBOutlet DMSlidingTabItemView         *responseHeadersItemView;
-@property IBOutlet DMSlidingTabItemView         *responseHeadersSentItemView;
+@property (strong) NSMutableArray *savedRequestsArray;
+@property (strong) NSSet *requestMethodsWithoutBody;
+@property (atomic) BOOL allowSelfSignedCerts;
+@property (atomic) NSUInteger aceViewFontSize;
 
 
-@property (weak) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSComboBox *urlBox;
-@property (weak) IBOutlet NSButton *submitButton;
+@property (retain) NSMutableArray *mainWindowControllers;
 
-@property (weak) IBOutlet WebView *responseWebView;
-@property (weak) IBOutlet ACEView *responseView;
-@property (weak) IBOutlet ACEView *requestView;
-@property (unsafe_unretained) IBOutlet NSTextView *responseTextHeaders;
-@property (weak) IBOutlet NSComboBox *methodButton;
-@property (weak) IBOutlet TabbingTableView *headersTableView;
-@property (weak) IBOutlet TabbingTableView *filesTableView;
-@property (weak) IBOutlet TabbingTableView *paramsTableView;
-@property (weak) IBOutlet NSTextField *username;
-@property (weak) IBOutlet NSTextField *password;
 @property (assign) BOOL preemptiveBasicAuth;
+
 @property (weak) IBOutlet NSOutlineView *savedOutlineView;
 @property (weak) IBOutlet NSPanel *saveRequestSheet;
 @property (weak) IBOutlet NSTextField *saveRequestTextField;
@@ -130,15 +88,10 @@
 // Fast saved request search
 @property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
 
-- (IBAction) runSubmit:(id)sender;
-- (void) setResponseText:(NSString *)response;
-- (NSString *) getResponseText;
-- (void) setRequestText:(NSString *)request;
-- (NSString *) getRequestText;
-- (IBAction) doubleClickedHeaderRow:(id)sender;
-- (IBAction) plusHeaderRow:(id)sender;
-- (IBAction) minusHeaderRow:(id)sender;
-- (IBAction) clearAuth:(id)sender;
+- (void) addTabFromWindow:(NSWindow *)window;
+- (void) tabWasRemoved:(NSWindowController *)windowController;
+- (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
+
 - (IBAction) outlineClick:(id)sender;
 - (IBAction) saveRequest:(id) sender;
 - (IBAction) overwriteRequest:(id) sender;
@@ -184,17 +137,13 @@
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
-- (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
-- (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
 - (IBAction) requestBodyInputMode:(id)sender;
-- (void) selectRequestBodyInputMode;
 
 - (IBAction) findMenuItem:(id)sender;
 - (IBAction) findNextMenuItem:(id)sender;
 - (IBAction) findPreviousMenuItem:(id)sender;
 - (IBAction) replaceMenuItem:(id)sender;
 
-- (void) initHighlightedViews;
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;
 

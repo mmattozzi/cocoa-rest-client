@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CocoaRestClientAppDelegate.h"
 #import "CRCConstants.h"
+
+@class MainWindowController;
 
 enum {
     CRCContentTypeMultipart,
@@ -46,7 +47,7 @@ typedef NSInteger CRCContentType;
 @property(nonatomic, copy) NSArray * params;
 @property BOOL preemptiveBasicAuth;
 
-+ (CRCRequest *)requestWithApplication:(CocoaRestClientAppDelegate *)application;
++ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController;
 - (CRCRequest *)overwriteContentsWith:(CRCRequest *)request;
 - (NSString *) generateCurlCommand:(bool)followRedirects;
 + (CRCContentType) determineRequestContentType:(NSArray *)headers;
