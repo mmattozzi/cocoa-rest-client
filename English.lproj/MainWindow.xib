@@ -4,6 +4,7 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
@@ -60,7 +61,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
                             <clipView key="contentView" id="h4Y-h1-wie">
                                 <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="RequestHeaders" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="63H-55-EM8" id="zdU-Dw-3zr" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="494" height="228"/>
@@ -178,7 +179,7 @@
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <clipView key="contentView" id="gKJ-Gr-UxR">
                                 <rect key="frame" x="1" y="1" width="539" height="184"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Jq8-pk-8m8">
                                         <rect key="frame" x="0.0" y="0.0" width="539" height="184"/>
@@ -207,7 +208,7 @@
                             <rect key="frame" x="0.0" y="25" width="514" height="186"/>
                             <clipView key="contentView" copiesOnScroll="NO" id="BDy-en-Kua">
                                 <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="RequestBody" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="24t-Y4-cPJ" id="dib-cT-zCK" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="514" height="163"/>
@@ -359,7 +360,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="362" height="221"/>
                             <clipView key="contentView" id="Plj-4e-4pO">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="221"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="wB6-9z-wxF">
                                         <rect key="frame" x="0.0" y="0.0" width="347" height="221"/>
@@ -412,7 +413,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="357" height="261"/>
                             <clipView key="contentView" id="7xx-Yg-eQM">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="261"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="v7I-bk-RaS">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="261"/>
@@ -575,7 +576,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
                             <clipView key="contentView" id="Hl3-RQ-czX">
                                 <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="Files" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="7Oi-Cb-mDl" id="qEb-fx-M57" userLabel="filesTableView" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="551" height="182"/>
@@ -776,7 +777,7 @@
                             <constraint firstAttribute="trailing" secondItem="HRn-fG-MnP" secondAttribute="trailing" constant="20" id="rw4-7M-rVj"/>
                         </constraints>
                     </customView>
-                    <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="fYb-eA-aZb">
+                    <progressIndicator wantsLayer="YES" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="fYb-eA-aZb">
                         <rect key="frame" x="1108" y="16" width="96" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="CyA-6U-8F1"/>
@@ -790,45 +791,155 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <splitView translatesAutoresizingMaskIntoConstraints="NO" id="fhE-Ua-WbC">
-                        <rect key="frame" x="20" y="45" width="1182" height="618"/>
+                    <splitView ambiguous="YES" arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IIw-6L-Kew">
+                        <rect key="frame" x="0.0" y="43" width="1222" height="616"/>
                         <subviews>
-                            <customView id="SWZ-2F-L17">
-                                <rect key="frame" x="0.0" y="0.0" width="1182" height="298"/>
+                            <customView id="0xb-Zo-den">
+                                <rect key="frame" x="0.0" y="0.0" width="174" height="616"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zvk-V8-5ap" customClass="DMSlidingTabView">
-                                        <rect key="frame" x="0.0" y="10" width="1182" height="288"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="REQUEST"/>
-                                        </userDefinedRuntimeAttributes>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tkI-i7-sOk" userLabel="Drawer Content View" customClass="CRCDrawerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="616"/>
+                                        <subviews>
+                                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRo-0a-2GC">
+                                                <rect key="frame" x="0.0" y="-591" width="223" height="591"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <clipView key="contentView" ambiguous="YES" id="Tgm-bO-THA">
+                                                    <rect key="frame" x="1" y="0.0" width="221" height="590"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="EBR-Me-W0N" indentationPerLevel="14" autoresizesOutlineColumn="YES" outlineTableColumn="Nyj-2X-QCq" id="6EW-S5-dUa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="221" height="567"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <size key="intercellSpacing" width="3" height="2"/>
+                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                            <tableColumns>
+                                                                <tableColumn width="180" minWidth="16" maxWidth="1000" id="Nyj-2X-QCq">
+                                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Saved Requests">
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </tableHeaderCell>
+                                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingMiddle" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="41I-jh-YL9">
+                                                                        <font key="font" metaFont="systemLight" size="12"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                </tableColumn>
+                                                            </tableColumns>
+                                                        </outlineView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="tDQ-dF-cyU">
+                                                    <rect key="frame" x="-7" y="8" width="0.0" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="tOj-lU-fCD">
+                                                    <rect key="frame" x="-14" y="16" width="15" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <tableHeaderView key="headerView" id="EBR-Me-W0N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableHeaderView>
+                                            </scrollView>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="I4a-rp-hXs" userLabel="Plus Saved Request">
+                                                <rect key="frame" x="130" y="6" width="17" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="6xW-yt-08Z"/>
+                                                    <constraint firstAttribute="width" constant="17" id="eUs-z6-FY8"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oLk-W7-Mha">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="3CH-NO-E3o" userLabel="Minus Saved Request">
+                                                <rect key="frame" x="153" y="6" width="17" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="I5r-me-EC4"/>
+                                                    <constraint firstAttribute="width" constant="17" id="rDo-Xo-IJI"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XRf-Az-fQ9">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3CH-NO-E3o" secondAttribute="trailing" constant="4" id="4DV-ue-Jnh"/>
+                                            <constraint firstItem="I4a-rp-hXs" firstAttribute="trailing" secondItem="3CH-NO-E3o" secondAttribute="leading" constant="-6" id="8Xf-d9-ENK"/>
+                                            <constraint firstAttribute="bottom" secondItem="3CH-NO-E3o" secondAttribute="bottom" constant="6" id="eDQ-Tr-BMH"/>
+                                            <constraint firstAttribute="bottom" secondItem="I4a-rp-hXs" secondAttribute="bottom" constant="6" id="fMm-XZ-Ree"/>
+                                        </constraints>
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zvk-V8-5ap" firstAttribute="leading" secondItem="SWZ-2F-L17" secondAttribute="leading" id="BCc-Ad-dgc"/>
-                                    <constraint firstAttribute="bottom" secondItem="zvk-V8-5ap" secondAttribute="bottom" constant="10" id="E8b-XK-RgZ"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="LOL-MT-2Ko"/>
-                                    <constraint firstAttribute="trailing" secondItem="zvk-V8-5ap" secondAttribute="trailing" id="ijD-iA-h2I"/>
-                                    <constraint firstItem="zvk-V8-5ap" firstAttribute="top" secondItem="SWZ-2F-L17" secondAttribute="top" id="vzA-bY-EdO"/>
+                                    <constraint firstAttribute="trailing" secondItem="tkI-i7-sOk" secondAttribute="trailing" id="Hpp-CB-qpP"/>
+                                    <constraint firstAttribute="bottom" secondItem="tkI-i7-sOk" secondAttribute="bottom" id="KyB-Ka-XMO"/>
+                                    <constraint firstItem="tkI-i7-sOk" firstAttribute="leading" secondItem="0xb-Zo-den" secondAttribute="leading" id="rk0-Ye-hym"/>
+                                    <constraint firstItem="tkI-i7-sOk" firstAttribute="top" secondItem="0xb-Zo-den" secondAttribute="top" id="u72-GG-cjw"/>
                                 </constraints>
                             </customView>
-                            <customView id="E2a-zD-IXV">
-                                <rect key="frame" x="0.0" y="307" width="1182" height="311"/>
+                            <customView id="6Fc-54-Tpc">
+                                <rect key="frame" x="175" y="0.0" width="1047" height="616"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="r0Q-DV-0f4" customClass="DMSlidingTabView">
-                                        <rect key="frame" x="0.0" y="0.0" width="1182" height="311"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="RESPONSE"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
+                                    <splitView translatesAutoresizingMaskIntoConstraints="NO" id="fhE-Ua-WbC">
+                                        <rect key="frame" x="20" y="8" width="1007" height="600"/>
+                                        <subviews>
+                                            <customView id="SWZ-2F-L17">
+                                                <rect key="frame" x="0.0" y="0.0" width="1007" height="289"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zvk-V8-5ap" customClass="DMSlidingTabView">
+                                                        <rect key="frame" x="0.0" y="10" width="1007" height="279"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="REQUEST"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="zvk-V8-5ap" firstAttribute="leading" secondItem="SWZ-2F-L17" secondAttribute="leading" id="BCc-Ad-dgc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zvk-V8-5ap" secondAttribute="bottom" constant="10" id="E8b-XK-RgZ"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="LOL-MT-2Ko"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zvk-V8-5ap" secondAttribute="trailing" id="ijD-iA-h2I"/>
+                                                    <constraint firstItem="zvk-V8-5ap" firstAttribute="top" secondItem="SWZ-2F-L17" secondAttribute="top" id="vzA-bY-EdO"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView id="E2a-zD-IXV">
+                                                <rect key="frame" x="0.0" y="298" width="1007" height="302"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="r0Q-DV-0f4" customClass="DMSlidingTabView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="1007" height="302"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="RESPONSE"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="r0Q-DV-0f4" firstAttribute="leading" secondItem="E2a-zD-IXV" secondAttribute="leading" id="9Af-8A-d3d"/>
+                                                    <constraint firstAttribute="bottom" secondItem="r0Q-DV-0f4" secondAttribute="bottom" id="DEE-Wz-FLO"/>
+                                                    <constraint firstItem="r0Q-DV-0f4" firstAttribute="top" secondItem="E2a-zD-IXV" secondAttribute="top" id="KaX-kt-Ly7"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="oOD-oz-gEL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="r0Q-DV-0f4" secondAttribute="trailing" id="v0O-hA-dWz"/>
+                                                </constraints>
+                                            </customView>
+                                        </subviews>
+                                        <holdingPriorities>
+                                            <real value="250"/>
+                                            <real value="250"/>
+                                        </holdingPriorities>
+                                    </splitView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="r0Q-DV-0f4" firstAttribute="leading" secondItem="E2a-zD-IXV" secondAttribute="leading" id="9Af-8A-d3d"/>
-                                    <constraint firstAttribute="bottom" secondItem="r0Q-DV-0f4" secondAttribute="bottom" id="DEE-Wz-FLO"/>
-                                    <constraint firstItem="r0Q-DV-0f4" firstAttribute="top" secondItem="E2a-zD-IXV" secondAttribute="top" id="KaX-kt-Ly7"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="oOD-oz-gEL"/>
-                                    <constraint firstAttribute="trailing" secondItem="r0Q-DV-0f4" secondAttribute="trailing" id="v0O-hA-dWz"/>
+                                    <constraint firstItem="fhE-Ua-WbC" firstAttribute="leading" secondItem="6Fc-54-Tpc" secondAttribute="leading" constant="20" id="0v1-6o-nua"/>
+                                    <constraint firstItem="fhE-Ua-WbC" firstAttribute="top" secondItem="6Fc-54-Tpc" secondAttribute="top" constant="8" id="MXS-aO-cX0"/>
+                                    <constraint firstAttribute="trailing" secondItem="fhE-Ua-WbC" secondAttribute="trailing" constant="20" id="WXn-KR-aAZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="fhE-Ua-WbC" secondAttribute="bottom" constant="8" id="jgE-n9-UjI"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -840,16 +951,15 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Amy-4t-3GA" secondAttribute="trailing" id="0iN-DI-sLo"/>
+                    <constraint firstItem="o8R-4b-dZa" firstAttribute="top" secondItem="IIw-6L-Kew" secondAttribute="bottom" constant="6" id="2OR-We-Ac7"/>
                     <constraint firstItem="o8R-4b-dZa" firstAttribute="leading" secondItem="g2R-ky-lLK" secondAttribute="leading" constant="20" id="86Z-ih-fo3"/>
-                    <constraint firstItem="fhE-Ua-WbC" firstAttribute="leading" secondItem="g2R-ky-lLK" secondAttribute="leading" constant="20" id="B3Y-n2-32T"/>
                     <constraint firstAttribute="bottom" secondItem="fYb-eA-aZb" secondAttribute="bottom" constant="17" id="D5J-i1-5a1"/>
                     <constraint firstAttribute="trailing" secondItem="fYb-eA-aZb" secondAttribute="trailing" constant="18" id="FAl-AE-AfJ"/>
                     <constraint firstItem="Amy-4t-3GA" firstAttribute="top" secondItem="g2R-ky-lLK" secondAttribute="top" id="OHh-wo-9mn"/>
                     <constraint firstItem="Amy-4t-3GA" firstAttribute="leading" secondItem="g2R-ky-lLK" secondAttribute="leading" id="Wmu-x5-i3j"/>
-                    <constraint firstAttribute="trailing" secondItem="fhE-Ua-WbC" secondAttribute="trailing" constant="20" id="ZF1-Aq-fpg"/>
                     <constraint firstItem="fYb-eA-aZb" firstAttribute="leading" secondItem="o8R-4b-dZa" secondAttribute="trailing" constant="8" id="dif-0C-YRl"/>
-                    <constraint firstItem="fhE-Ua-WbC" firstAttribute="top" secondItem="Amy-4t-3GA" secondAttribute="bottom" constant="8" id="itU-qf-11M"/>
-                    <constraint firstAttribute="bottom" secondItem="fhE-Ua-WbC" secondAttribute="bottom" constant="45" id="uKx-xM-7ah"/>
+                    <constraint firstItem="IIw-6L-Kew" firstAttribute="width" secondItem="g2R-ky-lLK" secondAttribute="width" id="it0-43-Z3W"/>
+                    <constraint firstItem="IIw-6L-Kew" firstAttribute="top" secondItem="Amy-4t-3GA" secondAttribute="bottom" constant="12" id="ugh-C8-y0d"/>
                     <constraint firstAttribute="bottom" secondItem="o8R-4b-dZa" secondAttribute="bottom" constant="20" id="zZi-JM-3PL"/>
                 </constraints>
             </view>
@@ -986,7 +1096,7 @@ Gw
                             <rect key="frame" x="0.0" y="0.0" width="362" height="243"/>
                             <clipView key="contentView" id="MEV-WD-mmO">
                                 <rect key="frame" x="1" y="1" width="345" height="241"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8IA-oo-6cZ">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="241"/>
@@ -1036,4 +1146,8 @@ Gw
             <point key="canvasLocation" x="1184" y="-73.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>
