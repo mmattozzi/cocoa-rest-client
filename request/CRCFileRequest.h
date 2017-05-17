@@ -15,5 +15,5 @@
 
 }
 +(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController;
-+ (BOOL) currentRequestIsCRCFileRequest:(CocoaRestClientAppDelegate *)application;
++ (BOOL) currentRequestIsCRCFileRequest:(MainWindowController *)windowController;
 @end

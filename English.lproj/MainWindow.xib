@@ -201,6 +201,14 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <connections>
+                                <binding destination="-2" name="hidden3" keyPath="self.fileRequestBody" previousBinding="wj4-SH-eLr" id="kVd-UB-cVf">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="hidden2" keyPath="self.rawRequestBody" previousBinding="f5o-a4-yGQ" id="wj4-SH-eLr">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -210,29 +218,12 @@
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="hidden3" keyPath="self.fileRequestBody" previousBinding="wj4-SH-eLr" id="kVd-UB-cVf">
-                                    <dictionary key="options">
-                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                        <integer key="NSNullPlaceholder" value="-1"/>
-                                    </dictionary>
-                                </binding>
                                 <binding destination="RYn-xP-nq1" name="hidden" keyPath="values.UIMenuSyntaxHighlight" id="f5o-a4-yGQ"/>
                             </connections>
                         </scrollView>
                         <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-Va-TVT" userLabel="SyntaxHL SV" customClass="ACEView">
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <connections>
-                                <binding destination="RYn-xP-nq1" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="Znm-JJ-0FY" id="EbN-7G-vOP">
-                                    <dictionary key="options">
-                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                        <integer key="NSNullPlaceholder" value="-1"/>
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
                                 <binding destination="-2" name="hidden3" keyPath="self.fileRequestBody" previousBinding="EbN-7G-vOP" id="5sB-uu-iEe">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -243,6 +234,15 @@
                                 </binding>
                                 <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="Znm-JJ-0FY">
                                     <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="RYn-xP-nq1" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="Znm-JJ-0FY" id="EbN-7G-vOP">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
@@ -332,6 +332,7 @@
                             </buttonCell>
                             <connections>
                                 <action selector="plusParamsRow:" target="-2" id="PPN-HA-gdR"/>
+                                <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="BYY-qg-7u4"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mfy-wA-gbw">
@@ -345,6 +346,7 @@
                             </buttonCell>
                             <connections>
                                 <action selector="minusParamsRow:" target="-2" id="Xti-cb-F55"/>
+                                <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="wVn-Ob-rZg"/>
                             </connections>
                         </button>
                         <button identifier="fieldInput" toolTip="For simulating form input and multipart file upload" misplaced="YES" tag="10002" translatesAutoresizingMaskIntoConstraints="NO" id="5iC-Z2-zpW">

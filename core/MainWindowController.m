@@ -29,27 +29,6 @@
 @synthesize rawRequestBody;
 @synthesize fileRequestBody;
 
-- (id) init {
-    self = [super init];
-    
-    self.headersTable = [[NSMutableArray alloc] init];
-    self.filesTable   = [[NSMutableArray alloc] init];
-    self.paramsTable  = [[NSMutableArray alloc] init];
-    
-    NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
-    
-    [row setObject:@"Content-Type" forKey:@"key"];
-    [row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
-    [self.headersTable addObject:row];
-    
-    self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
-    
-    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
-    
-    
-    return self;
-}
-
 - (void)setupObservers {
     [[NSUserDefaults standardUserDefaults]addObserver:self
                                            forKeyPath:SYNTAX_HIGHLIGHT
@@ -70,6 +49,20 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    self.headersTable = [[NSMutableArray alloc] init];
+    self.filesTable   = [[NSMutableArray alloc] init];
+    self.paramsTable  = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+    
+    [row setObject:@"Content-Type" forKey:@"key"];
+    [row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
+    [self.headersTable addObject:row];
+    
+    self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
+    
+    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     self.jsonWriter = [[SBJson4Writer alloc] init];
@@ -224,10 +217,9 @@
     [request setTimeoutInterval:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
     
     BOOL contentTypeSet = NO;
-    BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
-    if(rawRequestBody) {
+    if(self.rawRequestBody) {
         if (![self.appDelegate.requestMethodsWithoutBody containsObject:method]) {
-            if([CRCFileRequest currentRequestIsCRCFileRequest:self.appDelegate]) {
+            if([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
                 [CRCFileRequest createRequest:request withWindow:self];
             }
             else  {
