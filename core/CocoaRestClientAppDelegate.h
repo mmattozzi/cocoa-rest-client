@@ -137,7 +137,6 @@
 - (IBAction) viewResponseInBrowser:(id)sender;
 - (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
-- (IBAction) requestBodyInputMode:(id)sender;
 
 - (IBAction) findMenuItem:(id)sender;
 - (IBAction) findNextMenuItem:(id)sender;

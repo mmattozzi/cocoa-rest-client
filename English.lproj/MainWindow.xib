@@ -200,9 +200,53 @@
                                 <rect key="frame" x="540" y="1" width="15" height="184"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
+                            <connections>
+                                <binding destination="-2" name="hidden2" keyPath="self.rawRequestBody" previousBinding="f5o-a4-yGQ" id="wj4-SH-eLr">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="hidden3" keyPath="self.fileRequestBody" previousBinding="wj4-SH-eLr" id="kVd-UB-cVf">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="RYn-xP-nq1" name="hidden" keyPath="values.UIMenuSyntaxHighlight" id="f5o-a4-yGQ"/>
+                            </connections>
                         </scrollView>
                         <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-Va-TVT" userLabel="SyntaxHL SV" customClass="ACEView">
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
+                            <connections>
+                                <binding destination="RYn-xP-nq1" name="hidden2" keyPath="values.UIMenuSyntaxHighlight" previousBinding="Znm-JJ-0FY" id="EbN-7G-vOP">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="hidden3" keyPath="self.fileRequestBody" previousBinding="EbN-7G-vOP" id="5sB-uu-iEe">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="Znm-JJ-0FY">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </customView>
                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6Y-d9-iBP">
                             <rect key="frame" x="0.0" y="25" width="514" height="186"/>
@@ -263,6 +307,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="514" height="23"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </tableHeaderView>
+                            <connections>
+                                <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="Hnr-aq-r4e"/>
+                            </connections>
                         </scrollView>
                         <button identifier="rawInput" toolTip="The above text will be the HTTP body of the request" misplaced="YES" tag="10001" translatesAutoresizingMaskIntoConstraints="NO" id="OxI-dI-vf3">
                             <rect key="frame" x="-2" y="3" width="72" height="16"/>
@@ -270,6 +317,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="requestBodyInputMode:" target="-2" id="Huz-m3-mis"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ahS-ju-Qmu">
                             <rect key="frame" x="515" y="183" width="47" height="32"/>
@@ -303,6 +353,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="requestBodyInputMode:" target="-2" id="iVQ-Pw-iLb"/>
+                            </connections>
                         </button>
                         <button identifier="fileInput" toolTip="A file specified in the files table will be the body of the request" misplaced="YES" tag="10003" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-aj-uRN">
                             <rect key="frame" x="172" y="1" width="103" height="20"/>
@@ -310,6 +363,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="requestBodyInputMode:" target="-2" id="VFF-c0-c0c"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -827,7 +883,7 @@
                                                 <rect key="frame" x="0.0" y="31" width="174" height="585"/>
                                                 <clipView key="contentView" id="Tgm-bO-THA">
                                                     <rect key="frame" x="1" y="0.0" width="172" height="584"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="EBR-Me-W0N" indentationPerLevel="14" autoresizesOutlineColumn="YES" outlineTableColumn="Nyj-2X-QCq" id="6EW-S5-dUa">
                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="561"/>
@@ -1150,6 +1206,7 @@ Gw
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="1184" y="-73.5"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="RYn-xP-nq1"/>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

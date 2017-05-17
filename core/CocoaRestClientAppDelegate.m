@@ -888,21 +888,6 @@
     [pasteBoard setString:curlCommand forType:NSStringPboardType];
 }
 
-- (IBAction)requestBodyInputMode:(id)sender {
-    NSLog(@"Sender: %@", [sender identifier]);
-    if ([[sender identifier] isEqualToString:@"rawInput"]) {
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:RAW_REQUEST_BODY];
-        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
-    } else if ([[sender identifier] isEqualToString:@"fieldInput"]) {
-        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:RAW_REQUEST_BODY];
-        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
-    } else if ([[sender identifier] isEqualToString:@"fileInput"]) {
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:RAW_REQUEST_BODY];
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
-    }
-    
-    [currentWindowController selectRequestBodyInputMode];
-}
 
 
 @end

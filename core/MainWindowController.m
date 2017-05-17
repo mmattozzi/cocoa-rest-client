@@ -26,6 +26,8 @@
 @synthesize paramsTable;
 @synthesize filesTable;
 @synthesize headersTable;
+@synthesize rawRequestBody;
+@synthesize fileRequestBody;
 
 - (id) init {
     self = [super init];
@@ -100,6 +102,8 @@
     [self.urlBox setNumberOfVisibleItems:10];
     [self.progressIndicator setHidden:YES];
     
+    self.rawRequestBody = [[NSUserDefaults standardUserDefaults] boolForKey:RAW_REQUEST_BODY];
+    self.fileRequestBody = [[NSUserDefaults standardUserDefaults] boolForKey:FILE_REQUEST_BODY];
     [self selectRequestBodyInputMode];
     
     [self.headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
@@ -859,29 +863,6 @@
     [self.paramsTableView reloadData];
 }
 
-- (void) selectRequestBodyInputMode {
-    BOOL rawRequest = [[NSUserDefaults standardUserDefaults] boolForKey:RAW_REQUEST_BODY];
-    BOOL fileRequest = [[NSUserDefaults standardUserDefaults] boolForKey:FILE_REQUEST_BODY];
-    if (rawRequest && ! fileRequest) {
-        self.rawInputButton.state = NSOnState;
-        [self.filesTable removeAllObjects];
-        [self.filesTableView reloadData];
-    } else if (! rawRequest && ! fileRequest) {
-        self.fieldInputButton.state = NSOnState;
-    } else if (rawRequest && fileRequest) {
-        self.fileInputButton.state = NSOnState;
-        // Clear out contents of raw request form
-        [self.requestTextPlain setString:@""];
-        [self.requestView setString:@""];
-    }
-    
-    // Indeterminate input mode, default to field input
-    if (self.rawInputButton.state == NSOffState && self.fileInputButton.state == NSOffState && self.fieldInputButton.state == NSOffState) {
-        NSLog(@"Indeterminate input state");
-        self.fieldInputButton.state = NSOnState;
-    }
-}
-
 - (void) contentTypeMenuItemSelected:(id)sender
 {
     [requestTypeManager setModeForMimeType:[sender title]];
@@ -907,6 +888,48 @@
     }
     
     [self.tabView selectTabViewItem:self.reqHeadersTab];
+}
+
+- (IBAction)requestBodyInputMode:(id)sender {
+    NSLog(@"Sender: %@", [sender identifier]);
+    if ([[sender identifier] isEqualToString:@"rawInput"]) {
+        self.rawRequestBody = YES;
+        self.fileRequestBody = NO;
+    } else if ([[sender identifier] isEqualToString:@"fieldInput"]) {
+        self.rawRequestBody = NO;
+        self.fileRequestBody = NO;
+    } else if ([[sender identifier] isEqualToString:@"fileInput"]) {
+        self.rawRequestBody = YES;
+        self.fileRequestBody = YES;
+        
+    }
+    
+    // Set the user preference to the most recently picked value
+    [[NSUserDefaults standardUserDefaults]setBool:self.rawRequestBody forKey:RAW_REQUEST_BODY];
+    [[NSUserDefaults standardUserDefaults]setBool:self.fileRequestBody forKey:FILE_REQUEST_BODY];
+    
+    [self selectRequestBodyInputMode];
+}
+
+- (void) selectRequestBodyInputMode {
+    if (self.rawRequestBody && ! self.fileRequestBody) {
+        self.rawInputButton.state = NSOnState;
+        [self.filesTable removeAllObjects];
+        [self.filesTableView reloadData];
+    } else if (! self.rawRequestBody && ! self.fileRequestBody) {
+        self.fieldInputButton.state = NSOnState;
+    } else if (self.rawRequestBody && self.fileRequestBody) {
+        self.fileInputButton.state = NSOnState;
+        // Clear out contents of raw request form
+        [self.requestTextPlain setString:@""];
+        [self.requestView setString:@""];
+    }
+    
+    // Indeterminate input mode, default to field input
+    if (self.rawInputButton.state == NSOffState && self.fileInputButton.state == NSOffState && self.fieldInputButton.state == NSOffState) {
+        NSLog(@"Indeterminate input state");
+        self.fieldInputButton.state = NSOnState;
+    }
 }
 
 - (void)windowWillClose:(NSNotification *)notification {

@@ -51,6 +51,8 @@
 @property (nonatomic) NSMutableArray *paramsTable;
 
 @property (nonatomic) BOOL preemptiveBasicAuth;
+@property (nonatomic) BOOL rawRequestBody;
+@property (nonatomic) BOOL fileRequestBody;
 
 @property (retain) CRCRequest *lastRequest;
 
@@ -131,7 +133,9 @@
 
 - (void) doneEditingHeaderRow:(TableRowAndColumn *)tableRowAndColumn;
 - (void) doneEditingParamsRow:(TableRowAndColumn *)tableRowAndColumn;
+
 - (void) selectRequestBodyInputMode;
+- (IBAction)requestBodyInputMode:(id)sender;
 
 - (void)loadSavedCRCRequest:(CRCRequest *)request;
 - (void) applyShowLineNumbers:(BOOL)show;
