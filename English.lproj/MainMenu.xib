@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -610,119 +608,18 @@ CA
         </menu>
         <customObject id="494" customClass="CocoaRestClientAppDelegate">
             <connections>
-                <outlet property="drawerView" destination="686" id="940"/>
                 <outlet property="reGetResponseMenuItem" destination="1011" id="1017"/>
-                <outlet property="savedOutlineView" destination="698" id="706"/>
                 <outlet property="savedRequestsDrawer" destination="687" id="747"/>
                 <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
                 <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <customView id="686" userLabel="Drawer Content View" customClass="CRCDrawerView">
-            <rect key="frame" x="0.0" y="0.0" width="352" height="700"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="695">
-                    <rect key="frame" x="0.0" y="25" width="352" height="675"/>
-                    <clipView key="contentView" id="fph-9H-fA9">
-                        <rect key="frame" x="1" y="0.0" width="350" height="674"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="699" indentationPerLevel="14" autoresizesOutlineColumn="YES" outlineTableColumn="700" id="698">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="651"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn width="180" minWidth="16" maxWidth="1000" id="700">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Saved Requests">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingMiddle" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="703">
-                                            <font key="font" metaFont="systemLight" size="12"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                </tableColumns>
-                                <connections>
-                                    <action selector="outlineClick:" target="494" id="708"/>
-                                    <outlet property="dataSource" destination="494" id="705"/>
-                                    <outlet property="delegate" destination="494" id="707"/>
-                                </connections>
-                            </outlineView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="697">
-                        <rect key="frame" x="1" y="686" width="336" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="696">
-                        <rect key="frame" x="336" y="17" width="15" height="668"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <tableHeaderView key="headerView" id="699">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
-                </scrollView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="1049">
-                    <rect key="frame" x="308" y="5" width="17" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="17" id="1wK-eI-BJ0"/>
-                        <constraint firstAttribute="width" constant="17" id="8wY-cF-72x"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1050">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <action selector="createNewSavedFolder:" target="494" id="1051"/>
-                        </connections>
-                    </buttonCell>
-                </button>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="1056">
-                    <rect key="frame" x="330" y="5" width="17" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="17" id="F9M-HM-puC"/>
-                        <constraint firstAttribute="height" constant="17" id="kkM-kF-RtN"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1057">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="deleteSavedRequest:" target="494" id="1058"/>
-                    </connections>
-                </button>
-            </subviews>
-            <constraints>
-                <constraint firstItem="695" firstAttribute="top" secondItem="686" secondAttribute="top" id="560-uM-U10"/>
-                <constraint firstAttribute="trailing" secondItem="1049" secondAttribute="trailing" constant="27" id="Dzz-Tw-Ix0"/>
-                <constraint firstItem="1056" firstAttribute="top" secondItem="695" secondAttribute="bottom" constant="3" id="Hmn-RP-uYF"/>
-                <constraint firstAttribute="bottom" secondItem="1049" secondAttribute="bottom" constant="5" id="Qs3-mo-b5h"/>
-                <constraint firstAttribute="bottom" secondItem="1056" secondAttribute="bottom" constant="5" id="dUp-SW-Bdp"/>
-                <constraint firstItem="695" firstAttribute="leading" secondItem="686" secondAttribute="leading" id="o1A-qF-348"/>
-                <constraint firstAttribute="trailing" secondItem="1056" secondAttribute="trailing" constant="5" id="yBs-dB-6NY"/>
-                <constraint firstAttribute="trailing" secondItem="695" secondAttribute="trailing" id="zQ6-fB-vXz"/>
-            </constraints>
-        </customView>
         <drawer trailingOffset="15" id="687">
             <size key="contentSize" width="100" height="100"/>
             <size key="maxContentSize" width="10000" height="10000"/>
-            <connections>
-                <outlet property="contentView" destination="686" id="690"/>
-            </connections>
         </drawer>
         <userDefaultsController representsSharedInstance="YES" id="833"/>
         <customObject id="914" customClass="SUUpdater"/>
     </objects>
-    <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
-    </resources>
 </document>

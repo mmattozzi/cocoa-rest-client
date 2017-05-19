@@ -27,6 +27,7 @@
 		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
 		AF99ECAD1EC013A100101893 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECAB1EC013A100101893 /* MainWindowController.m */; };
 		AF99ECB11EC013EF00101893 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF99ECAF1EC013EF00101893 /* MainWindow.xib */; };
+		AF99ECB71ECD302400101893 /* SavedRequestsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */; };
 		AF9FE4281E9187A600415022 /* document-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9FE4261E9187A600415022 /* document-icon.png */; };
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
@@ -106,6 +107,8 @@
 		AF99ECAA1EC013A100101893 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = core/MainWindowController.h; sourceTree = "<group>"; };
 		AF99ECAB1EC013A100101893 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = core/MainWindowController.m; sourceTree = "<group>"; };
 		AF99ECB01EC013EF00101893 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		AF99ECB51ECD302400101893 /* SavedRequestsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedRequestsDataSource.h; path = core/SavedRequestsDataSource.h; sourceTree = "<group>"; };
+		AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedRequestsDataSource.m; path = core/SavedRequestsDataSource.m; sourceTree = "<group>"; };
 		AF9FE4271E9187A600415022 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = "English.lproj/document-icon.png"; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				AFF3B97A1E15A0DC00AA664C /* FastSearchSavedRequestsController.m */,
 				AF99ECAA1EC013A100101893 /* MainWindowController.h */,
 				AF99ECAB1EC013A100101893 /* MainWindowController.m */,
+				AF99ECB51ECD302400101893 /* SavedRequestsDataSource.h */,
+				AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */,
 				AFF3B97B1E15A0DC00AA664C /* FastSearchSavedRequestsController.m in Sources */,
 				AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */,
+				AF99ECB71ECD302400101893 /* SavedRequestsDataSource.m in Sources */,
 				AFBBA03E18D4AB93002E7036 /* CRCSavedRequestFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

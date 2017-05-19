@@ -20,13 +20,11 @@
 #import "CRCSavedRequestFolder.h"
 #import "ContentTypes.h"
 #import "MainWindowController.h"
+#import "SavedRequestsDataSource.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
 
-#define APPLICATION_NAME @"CocoaRestClient"
-#define DATAFILE_NAME @"CocoaRestClient.savedRequests"
-#define BACKUP_DATAFILE_1_3_8 @"CocoaRestClient.savedRequests.backup-1.3.8"
 
 @interface CocoaRestClientAppDelegate(Private)
 - (void)loadSavedDictionary:(NSDictionary *)request;
@@ -38,7 +36,6 @@
 
 @synthesize mainWindowControllers;
 @synthesize preemptiveBasicAuth;
-@synthesize savedOutlineView;
 @synthesize saveRequestSheet;
 @synthesize saveRequestTextField;
 @synthesize savedRequestsDrawer;
@@ -67,7 +64,6 @@
 @synthesize fieldInputButton;
 @synthesize fileInputButton;
 @synthesize fastSearchSavedRequestsController;
-@synthesize savedRequestsArray;
 @synthesize allowSelfSignedCerts;
 @synthesize aceViewFontSize;
 
@@ -88,8 +84,8 @@
 	allowSelfSignedCerts = YES;
     preemptiveBasicAuth = NO;
     
-	
-    [self loadDataFromDisk];
+    self.savedRequestsDataSource = [[SavedRequestsDataSource alloc] init];
+    [self.savedRequestsDataSource loadDataFromDisk];
     
     
     // Register a key listener
@@ -113,6 +109,7 @@
 - (void) addTabFromWindow:(NSWindow *)window {
     MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
     mainWindowController.appDelegate = self;
+    mainWindowController.savedRequestsDataSource = self.savedRequestsDataSource;
     if (window) {
         [window addTabbedWindow:[mainWindowController window] ordered:NSWindowAbove];
         [mainWindowController.window orderFront:window];
@@ -169,7 +166,7 @@
     [savedRequestsDrawer setContentSize:drawerSize];
     [savedRequestsDrawer open];
     
-    exportRequestsController.savedOutlineView = savedOutlineView;
+    // TODO exportRequestsController.savedOutlineView = savedOutlineView;
     
     drawerView.cocoaRestClientAppDelegate = self;
     [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
@@ -181,8 +178,7 @@
     //[self syntaxHighlightingPreferenceChanged];
     
     
-    // Enable Drag and Drop for outline view of saved requests
-    [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    
     
     
     
@@ -294,6 +290,7 @@
     [((NSMenuItem *) sender) setState:NSOnState];
 }
 
+// TODO
 - (IBAction) allowSelfSignedCerts:(id)sender {
     NSMenuItem* menuItemSender = (NSMenuItem *) sender;
     if ([menuItemSender state] == NSOnState) {
@@ -306,197 +303,31 @@
 }
 
 
-#pragma mark OutlineViewDataSource methods
-- (NSInteger) outlineView: (NSOutlineView *)outlineView numberOfChildrenOfItem: (id)item {
-	if (item == nil) {
-		return [savedRequestsArray count];
-	} else {
-		return [item count];
-	}
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if (item == nil) return NO;
-    return [item isKindOfClass:[CRCSavedRequestFolder class]];
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if (item == nil) {
-        return [savedRequestsArray objectAtIndex:index];
-    } else {
-        return [item objectAtIndex:index];
-    }
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    if ([item isKindOfClass:[CRCRequest class]])
-	{
-		CRCRequest * req = (CRCRequest *)item;
-		return req.name;
-	}
-	else if ([item isKindOfClass:[CRCSavedRequestFolder class]])
-	{
-		return ((CRCSavedRequestFolder *)item).name;
-	}
-	else if (item == savedRequestsArray) {
-		return savedRequestsArray;
-    }
-    
-    return nil;
-}
-
-- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    if ([item isKindOfClass:[CRCRequest class]]) {
-		CRCRequest * req = (CRCRequest *)item;
-		req.name = object;
-	}
-	else if ([item isKindOfClass:[CRCSavedRequestFolder class]]) {
-		((CRCSavedRequestFolder *)item).name = object;
-	}
-}
-
-#pragma mark OutlineView drag and drop methods
-- (id <NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView pasteboardWriterForItem:(id)item{
-    // No dragging if <some condition isn't met>
-    BOOL dragAllowed = YES;
-    if (!dragAllowed)  {
-        return nil;
-    }
-    
-    NSPasteboardItem *pboardItem = [[NSPasteboardItem alloc] init];
-    NSString *idStr = [NSString stringWithFormat:@"%ld", (long) item];
-    [pboardItem setString:idStr forType: @"public.text"];
-    NSLog(@"%@", idStr);
-    
-    return pboardItem;
-}
 
 
-- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)targetItem proposedChildIndex:(NSInteger)index{
-    
-    if (index >= 0) {
-        return NSDragOperationMove;
-    } else {
-        return NSDragOperationNone;
-    }
-}
 
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)targetItem childIndex:(NSInteger)targetIndex{
-    
-    NSPasteboard *p = [info draggingPasteboard];
-    NSString *objId = [p stringForType:@"public.text"];
-    NSLog(@"Pasteboad item = %@", objId);
-    
-    id sourceItem = nil;
-    CRCSavedRequestFolder *sourceParentFolder = nil;
-    int sourceIndex = -1;
-    
-    for (id entry in savedRequestsArray) {
-        if ([[NSString stringWithFormat:@"%ld", (long) entry] isEqualToString:objId]) {
-            sourceItem = entry;
-            sourceIndex = [savedRequestsArray indexOfObject:sourceItem];
-        } else if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
-            id recursiveParent = [((CRCSavedRequestFolder *)entry) findParentOfObjectWith:objId];
-            if (recursiveParent) {
-                sourceParentFolder = recursiveParent;
-                sourceItem = [((CRCSavedRequestFolder *)sourceParentFolder) findObjectWith:objId];
-                sourceIndex = [((CRCSavedRequestFolder *)sourceParentFolder) findIndexOfObject:sourceItem];
-            }
-        }
-    }
-    
-    // Unclear how this would happen, but we don't know what we are moving
-    if (! sourceItem) {
-        NSLog(@"Unable to find source item dropped into list");
-        return NO;
-    }
-    
-    if (sourceIndex == -1) {
-        NSLog(@"Unable to find index of moving item");
-        return NO;
-    }
-    
-    if (targetItem == sourceItem) {
-        return NO;
-    }
-        
-    if (sourceParentFolder) {
-        [((CRCSavedRequestFolder *) sourceParentFolder) removeObject:sourceItem];
-    } else {
-        [savedRequestsArray removeObject:sourceItem];
-    }    
-    
-    NSLog(@"Found source item of drop: %@ with parent %@", sourceItem, sourceParentFolder);
-    
-    if (! targetItem) {
-        // Saving into the top level array
-        if (sourceParentFolder == nil && (targetIndex > sourceIndex)) {
-            targetIndex--;
-        }
-        [savedRequestsArray insertObject:sourceItem atIndex:targetIndex];
-        [savedOutlineView reloadItem:nil reloadChildren:YES];
-        [self saveDataToDisk];
-        return YES;
-    } else {
-        // Saving into a sub-folder
-        NSLog(@"TargetIndex = %ld and sourceIndex = %d", targetIndex, sourceIndex);
-        if (sourceParentFolder == targetItem && (targetIndex > sourceIndex)) {
-            targetIndex--;
-        }
-        [((CRCSavedRequestFolder *) targetItem) insertObject:sourceItem atIndex:targetIndex];
-        [savedOutlineView reloadItem:nil reloadChildren:YES];
-        [self saveDataToDisk];
-        return YES;
-    }
-    
-}
-
-
-- (IBAction) createNewSavedFolder:(id)sender {
-    CRCSavedRequestFolder *folder = [[CRCSavedRequestFolder alloc] init];
-    folder.name = @"New folder";
-    // [savedRequestsArray addObject:folder];
-    
-    id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
-    if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
-        [selectedSavedOutlineViewItem addObject:folder];
-    } else {
-        [savedRequestsArray addObject:folder];
-    }
-    
-    [savedOutlineView reloadItem:nil reloadChildren:YES];
-    [savedOutlineView expandItem:folder expandChildren:YES];
-    [savedOutlineView editColumn:0 row:[savedOutlineView rowForItem:folder] withEvent:nil select:YES];
-}
-
-// Respond to click on a row of the saved requests outline view
-- (IBAction) outlineClick:(id)sender {
-	[self loadSavedRequest:[savedOutlineView itemAtRow:[savedOutlineView selectedRow]]];
-}
-
-- (void) deleteSavedRequest:(NSNotification *) notification  {
-    id object = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
-    if ([savedRequestsArray containsObject:object]) {
-        [savedRequestsArray removeObject:object];
-    } else {
-        for (id entry in savedRequestsArray) {
-            if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
-                [entry removeObject:object];
-            }
-        }
-    }
-    [savedOutlineView reloadItem:nil reloadChildren:YES];
-    [self saveDataToDisk];
-}
 
 // Save an HTTP request into the request drawer
 // This is the Save As menu option because the user will always have a chance to name the request.
 - (IBAction) saveRequest:(id) sender {
-    lastSelectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
-    [savedOutlineView deselectAll:nil];
-	[NSApp beginSheet:saveRequestSheet modalForWindow:currentWindowController.window
-        modalDelegate:self didEndSelector:NULL contextInfo:nil];
+    lastSelectedSavedOutlineViewItem = [currentWindowController.savedOutlineView itemAtRow:[currentWindowController.savedOutlineView selectedRow]];
+    [currentWindowController.savedOutlineView deselectAll:nil];
+	/* [NSApp beginSheet:saveRequestSheet modalForWindow:[currentWindowController window]
+        modalDelegate:self didEndSelector:NULL contextInfo:nil]; */
+    
+    [currentWindowController.window beginSheet:saveRequestSheet completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
+            
+            if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+                [lastSelectedSavedOutlineViewItem addObject:request];
+            } else {
+                [SavedRequestsDataSource.savedRequestsArray addObject:request];
+            }
+            [self redrawRequestViews];
+            [self.savedRequestsDataSource saveDataToDisk];
+        }
+    }];
 }
 
 // Dispose of save request sheet
@@ -507,18 +338,18 @@
         if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
             [lastSelectedSavedOutlineViewItem addObject:request];
         } else {
-            [savedRequestsArray addObject:request];
+            [SavedRequestsDataSource.savedRequestsArray addObject:request];
         }
-		[savedOutlineView reloadItem:nil reloadChildren:YES];
+		[self redrawRequestViews];
 	}
 	[saveRequestSheet orderOut:nil];
     [NSApp endSheet:saveRequestSheet];
-    [self saveDataToDisk];
+    [self.savedRequestsDataSource saveDataToDisk];
 }
 
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
-    [savedOutlineView deselectAll:nil];
-    [fastSearchSavedRequestsController setupWindow:savedRequestsArray];
+    [currentWindowController.savedOutlineView deselectAll:nil];
+    [fastSearchSavedRequestsController setupWindow:SavedRequestsDataSource.savedRequestsArray];
     [currentWindowController.window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (fastSearchSavedRequestsController.selectedRequest) {
@@ -554,11 +385,11 @@
 // folder is selected, default to Save As behavior.
 //
 - (IBAction) overwriteRequest:(id)sender {
-    int row = [savedOutlineView selectedRow];
+    int row = [currentWindowController.savedOutlineView selectedRow];
     if (row > -1) {
         CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
         
-        id selectedSavedOutlineViewItem = [savedOutlineView itemAtRow:[savedOutlineView selectedRow]];
+        id selectedSavedOutlineViewItem = [currentWindowController.savedOutlineView itemAtRow:[currentWindowController.savedOutlineView selectedRow]];
         if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
             return [self saveRequest:sender];
         } else {
@@ -573,8 +404,8 @@
             
             if ([alert runModal] == NSAlertSecondButtonReturn) {
                 [((CRCRequest *) selectedSavedOutlineViewItem) overwriteContentsWith:request];
-                [savedOutlineView reloadItem:nil reloadChildren:YES];
-                [self saveDataToDisk];
+                [currentWindowController.savedOutlineView reloadItem:nil reloadChildren:YES];
+                [self.savedRequestsDataSource saveDataToDisk];
             }
         }
     } else {
@@ -595,70 +426,13 @@
     [NSApp endSheet:timeoutSheet];
 }
 
-- (void)loadSavedRequest:(id)request {
-	
-	if([request isKindOfClass:[NSDictionary class]]) {
-		[self loadSavedDictionary:(NSDictionary *)request];
-	}
-	else if([request isKindOfClass:[CRCRequest class]]) {
-		[self loadSavedCRCRequest:(CRCRequest *)request];
-        if ([CRCFileRequest currentRequestIsCRCFileRequest:currentWindowController]) {
-            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:FILE_REQUEST_BODY];
-        } else {
-            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:FILE_REQUEST_BODY];
-        }
-	}
-    
-    [currentWindowController selectRequestBodyInputMode];
-}
 
-- (NSString *) pathForDataFile {
-    if (!appDataFilePath) {
-        NSArray *allPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-        NSString *dir = [[allPaths objectAtIndex: 0] stringByAppendingPathComponent: APPLICATION_NAME];
-        if (!dir) {
-            NSLog(@"Can not locate the Application Support directory. Weird.");
-            return nil;
-        }
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSError *error = nil;
-        BOOL success = [fileManager createDirectoryAtPath: dir withIntermediateDirectories: YES
-                                               attributes: nil error: &error];
-        if (!success) {
-            NSLog(@"Can not create a support directory.\n%@", [error localizedDescription]);
-            return nil;
-        }
-        appDataFilePath = [dir stringByAppendingPathComponent: DATAFILE_NAME];
-        
-        // On first time startup of version 1.3.8 of the app, backup the data file since the format
-        // will make it backwards incompatible.
-        NSString *backupDataFilePath = [dir stringByAppendingPathComponent:BACKUP_DATAFILE_1_3_8];
-        if (! [fileManager fileExistsAtPath:backupDataFilePath]) {
-            NSError *error = nil;
-            [fileManager copyItemAtPath:appDataFilePath toPath:backupDataFilePath error:&error];
-            if (! error) {
-                NSLog(@"Successfully backed up 1.3.8 datafile as: %@", backupDataFilePath);
-            } else {
-                NSLog(@"Error backing up old data file: %@", [error localizedDescription]);
-            }
-        }
-    }
-    return appDataFilePath;  
-}
 
-- (void) saveDataToDisk {
-	NSString *path = [self pathForDataFile];
-	[NSKeyedArchiver archiveRootObject:savedRequestsArray toFile:path];
-}
 
-- (void) loadDataFromDisk {
-	NSString *path = [self pathForDataFile];
-	savedRequestsArray = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
-}
 
 - (IBAction) reloadRequestsDrawer:(id)sender {
-    [self loadDataFromDisk];
-    [self.savedOutlineView reloadData];
+    [self.savedRequestsDataSource loadDataFromDisk];
+    [self redrawRequestViews];
 }
 
 - (void) importRequestsFromArray:(NSArray *)requests {
@@ -743,7 +517,7 @@
 }
 
 - (void) applicationWillTerminate: (NSNotification *)note {
-	[self saveDataToDisk];
+	[self.savedRequestsDataSource saveDataToDisk];
     [[NSUserDefaults standardUserDefaults] setInteger:[savedRequestsDrawer contentSize].width forKey:SAVED_DRAWER_SIZE];
     [NSEvent removeMonitor:eventMonitor];
 }
@@ -888,6 +662,14 @@
     [pasteBoard setString:curlCommand forType:NSStringPboardType];
 }
 
+- (void) redrawRequestViews {
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController).savedOutlineView reloadItem:nil reloadChildren:YES];
+    }
+}
 
+- (void) deleteSavedRequest: (NSNotification *) notification {
+    [currentWindowController deleteSavedRequestFromButton:nil];
+}
 
 @end

@@ -44,6 +44,7 @@
 }
 
 @property (retain) CocoaRestClientAppDelegate *appDelegate;
+@property IBOutlet SavedRequestsDataSource *savedRequestsDataSource;
 @property (strong) SBJson4Writer *jsonWriter;
 
 @property (nonatomic) NSMutableArray *headersTable;
@@ -106,6 +107,8 @@
 @property (weak) IBOutlet NSButton *fieldInputButton;
 @property (weak) IBOutlet NSButton *fileInputButton;
 
+@property (weak) IBOutlet NSOutlineView *savedOutlineView;
+
 // Fast saved request search
 @property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
 
@@ -126,7 +129,10 @@
 - (IBAction) doubleClickedParamsRow:(id)sender;
 - (IBAction) plusParamsRow:(id)sender;
 - (IBAction) minusParamsRow:(id)sender;
+- (void) loadSavedRequest:(id)request;
 
+- (IBAction) createNewSavedFolder:(id)sender;
+- (IBAction) deleteSavedRequestFromButton:(id) sender;
 
 // - (void) deleteTableRow:(NSNotification *) notification;
 - (void)syntaxHighlightingPreferenceChanged;

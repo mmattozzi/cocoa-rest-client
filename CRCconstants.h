@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define APPLICATION_NAME @"CocoaRestClient"
+#define DATAFILE_NAME @"CocoaRestClient.savedRequests"
+#define BACKUP_DATAFILE_1_3_8 @"CocoaRestClient.savedRequests.backup-1.3.8"
+
 FOUNDATION_EXPORT NSString * const FOLLOW_REDIRECTS;
 FOUNDATION_EXPORT NSString * const APPLY_HTTP_METHOD_ON_REDIRECT;
 FOUNDATION_EXPORT NSString * const SYNTAX_HIGHLIGHT;

@@ -14,6 +14,8 @@
 #import "MF_Base64Additions.h"
 #import "ContentTypes.h"
 #import "MsgPackSerialization.h"
+#import "CRCSavedRequestFolder.h"
+#import "SavedRequestsDataSource.h"
 
 @interface MainWindowController ()
 
@@ -122,6 +124,9 @@
     [self setupObservers];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
+
+    // Enable Drag and Drop for outline view of saved requests
+    [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
 }
 
 - (void)syntaxHighlightingPreferenceChanged {
@@ -759,11 +764,10 @@
     [self.username setStringValue:request.username];
     [self.password setStringValue:request.password];
     
-    [[NSUserDefaults standardUserDefaults]setBool:request.rawRequestInput
-                                           forKey:RAW_REQUEST_BODY];
+    self.rawRequestBody = request.rawRequestInput;
     self.appDelegate.preemptiveBasicAuth = request.preemptiveBasicAuth;
     
-    if([[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY])
+    if(self.rawRequestBody)
     {
         [self setRequestText:request.requestText];
     }
@@ -936,6 +940,60 @@
 - (void)windowDidBecomeKey:(NSNotification *)notification {
     NSLog(@"I'm the key window!");
     [appDelegate setCurrentMainWindowController:self];
+}
+
+- (void)loadSavedRequest:(id)request {
+    
+    if([request isKindOfClass:[NSDictionary class]]) {
+        [self loadSavedDictionary:(NSDictionary *)request];
+    }
+    else if([request isKindOfClass:[CRCRequest class]]) {
+        [self loadSavedCRCRequest:(CRCRequest *)request];
+        if ([CRCFileRequest currentRequestIsCRCFileRequest:self]) {
+            self.fileRequestBody = YES;
+        } else {
+            self.fileRequestBody = NO;
+        }
+    }
+    
+    [self selectRequestBodyInputMode];
+}
+
+- (IBAction) createNewSavedFolder:(id)sender {
+    CRCSavedRequestFolder *folder = [[CRCSavedRequestFolder alloc] init];
+    folder.name = @"New folder";
+    // [savedRequestsArray addObject:folder];
+    
+    id selectedSavedOutlineViewItem = [self.savedOutlineView itemAtRow:[self.savedOutlineView selectedRow]];
+    if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
+        [selectedSavedOutlineViewItem addObject:folder];
+    } else {
+        [SavedRequestsDataSource.savedRequestsArray addObject:folder];
+    }
+    
+    [self.appDelegate redrawRequestViews];
+    [self.savedOutlineView expandItem:folder expandChildren:YES];
+    [self.savedOutlineView editColumn:0 row:[self.savedOutlineView rowForItem:folder] withEvent:nil select:YES];
+}
+
+// Respond to click on a row of the saved requests outline view
+- (IBAction) outlineClick:(id)sender {
+    [self loadSavedRequest:[self.savedOutlineView itemAtRow:[self.savedOutlineView selectedRow]]];
+}
+
+- (IBAction) deleteSavedRequestFromButton:(id) sender {
+    id object = [self.savedOutlineView itemAtRow:[self.savedOutlineView selectedRow]];
+    if ([SavedRequestsDataSource.savedRequestsArray containsObject:object]) {
+        [SavedRequestsDataSource.savedRequestsArray removeObject:object];
+    } else {
+        for (id entry in SavedRequestsDataSource.savedRequestsArray) {
+            if ([entry isKindOfClass:[CRCSavedRequestFolder class]]) {
+                [entry removeObject:object];
+            }
+        }
+    }
+    [self.appDelegate redrawRequestViews];
+    [self.savedRequestsDataSource saveDataToDisk];
 }
 
 @end

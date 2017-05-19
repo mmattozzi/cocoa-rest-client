@@ -25,6 +25,7 @@
 @class CRCRequest;
 @class CRCDrawerView;
 @class MainWindowController;
+@class SavedRequestsDataSource;
 
 @interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
     ExportRequestsController *exportRequestsController;
@@ -37,7 +38,7 @@
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
     
-    @private NSString *appDataFilePath;
+    
     
     id eventMonitor;
     id lastSelectedSavedOutlineViewItem;
@@ -45,7 +46,8 @@
 
 @property (strong) SBJson4Writer *jsonWriter;
 
-@property (strong) NSMutableArray *savedRequestsArray;
+@property (strong) SavedRequestsDataSource *savedRequestsDataSource;
+
 @property (strong) NSSet *requestMethodsWithoutBody;
 @property (atomic) BOOL allowSelfSignedCerts;
 @property (atomic) NSUInteger aceViewFontSize;
@@ -55,7 +57,6 @@
 
 @property (assign) BOOL preemptiveBasicAuth;
 
-@property (weak) IBOutlet NSOutlineView *savedOutlineView;
 @property (weak) IBOutlet NSPanel *saveRequestSheet;
 @property (weak) IBOutlet NSTextField *saveRequestTextField;
 @property (weak) IBOutlet NSDrawer *savedRequestsDrawer;
@@ -99,10 +100,10 @@
 - (IBAction) createNewSavedFolder:(id)sender;
 - (void) loadSavedRequest:(NSDictionary *) request;
 - (void) deleteSavedRequest: (NSNotification *) notification;
-- (NSString *) pathForDataFile;
-- (void) loadDataFromDisk;
 - (IBAction) reloadRequestsDrawer:(id)sender;
-- (void) saveDataToDisk;
+
+- (void) redrawRequestViews;
+
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (IBAction) openTimeoutDialog:(id) sender;
 - (IBAction) closeTimoutDialog:(id) sender;
@@ -142,6 +143,8 @@
 - (IBAction) findNextMenuItem:(id)sender;
 - (IBAction) findPreviousMenuItem:(id)sender;
 - (IBAction) replaceMenuItem:(id)sender;
+
+- (void) deleteSavedRequest: (NSNotification *) notification;
 
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;
