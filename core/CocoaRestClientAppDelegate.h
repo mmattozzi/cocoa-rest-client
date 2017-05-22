@@ -57,34 +57,13 @@
 
 @property (assign) BOOL preemptiveBasicAuth;
 
-@property (weak) IBOutlet NSPanel *saveRequestSheet;
-@property (weak) IBOutlet NSTextField *saveRequestTextField;
-@property (weak) IBOutlet NSDrawer *savedRequestsDrawer;
-@property (weak) IBOutlet NSTabViewItem *headersTab;
-@property (weak) IBOutlet NSPanel *timeoutSheet;
-@property (weak) IBOutlet NSTextField *timeoutField;
-@property (weak) IBOutlet NSButton *plusParam;
-@property (weak) IBOutlet NSButton *minusParam;
-@property (weak) IBOutlet NSTabView *tabView;
-@property (weak) IBOutlet NSTabViewItem *reqHeadersTab;
-@property (weak) IBOutlet NSTextField *status;
-@property (unsafe_unretained) IBOutlet NSTextView *requestHeadersSentText;
-@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
-@property (weak) IBOutlet CRCDrawerView *drawerView;
 @property (strong) PreferencesController *preferencesController;
-@property (unsafe_unretained) IBOutlet NSTextView *requestTextPlain;
-@property (unsafe_unretained) IBOutlet NSTextView *responseTextPlain;
-@property (weak) IBOutlet NSScrollView *responseTextPlainView;
-@property (weak) IBOutlet NSScrollView *requestTextPlainView;
 @property (weak) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
 @property (weak) IBOutlet NSMenuItem *showLineNumbersMenuItem;
 @property (strong) WelcomeController *welcomeController;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
-@property (weak) IBOutlet NSButton *rawInputButton;
-@property (weak) IBOutlet NSButton *fieldInputButton;
-@property (weak) IBOutlet NSButton *fileInputButton;
 
 // Fast saved request search
 @property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
@@ -145,6 +124,7 @@
 - (IBAction) replaceMenuItem:(id)sender;
 
 - (void) deleteSavedRequest: (NSNotification *) notification;
+- (void) deselectSavedRequest:(NSNotification *)notification;
 
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 - (IBAction) showLineNumbersToggled:(id)sender;

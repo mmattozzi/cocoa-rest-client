@@ -21,6 +21,7 @@
 #import "ContentTypes.h"
 #import "MainWindowController.h"
 #import "SavedRequestsDataSource.h"
+#import "SaveRequestPanelController.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -36,33 +37,13 @@
 
 @synthesize mainWindowControllers;
 @synthesize preemptiveBasicAuth;
-@synthesize saveRequestSheet;
-@synthesize saveRequestTextField;
-@synthesize savedRequestsDrawer;
-@synthesize headersTab;
-@synthesize timeoutSheet;
-@synthesize timeoutField;
-@synthesize plusParam, minusParam;
-@synthesize tabView;
-@synthesize reqHeadersTab;
-@synthesize status;
-@synthesize requestHeadersSentText;
-@synthesize progressIndicator;
-@synthesize drawerView;
 @synthesize preferencesController;
-@synthesize responseTextPlain;
-@synthesize requestTextPlain;
-@synthesize responseTextPlainView;
-@synthesize requestTextPlainView;
 @synthesize syntaxHighlightingMenuItem;
 @synthesize reGetResponseMenuItem;
 @synthesize welcomeController;
 @synthesize themeMenuItem;
 @synthesize jsonWriter;
 @synthesize showLineNumbersMenuItem;
-@synthesize rawInputButton;
-@synthesize fieldInputButton;
-@synthesize fileInputButton;
 @synthesize fastSearchSavedRequestsController;
 @synthesize allowSelfSignedCerts;
 @synthesize aceViewFontSize;
@@ -157,19 +138,12 @@
 	self.requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"HEAD", @"OPTIONS", nil];
 	
 	
-    NSSize drawerSize;
-    drawerSize.width = 200;
-    drawerSize.height = 0;    
-    if ([[NSUserDefaults standardUserDefaults] integerForKey:SAVED_DRAWER_SIZE]) {
-        drawerSize.width = [[NSUserDefaults standardUserDefaults] integerForKey:SAVED_DRAWER_SIZE];
-    }
-    [savedRequestsDrawer setContentSize:drawerSize];
-    [savedRequestsDrawer open];
     
     // TODO exportRequestsController.savedOutlineView = savedOutlineView;
     
-    drawerView.cocoaRestClientAppDelegate = self;
-    [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
+    // TODO
+    // drawerView.cocoaRestClientAppDelegate = self;
+    // [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
     
     
     [reGetResponseMenuItem setEnabled:NO];
@@ -185,6 +159,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deleteSavedRequest:)
                                                  name:@"deleteDrawerRow"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deselectSavedRequest:)
+                                                 name:@"deselectSavedRequest"
                                                object:nil];
     
     [self addTabFromWindow:nil];
@@ -315,9 +294,11 @@
 	/* [NSApp beginSheet:saveRequestSheet modalForWindow:[currentWindowController window]
         modalDelegate:self didEndSelector:NULL contextInfo:nil]; */
     
-    [currentWindowController.window beginSheet:saveRequestSheet completionHandler:^(NSModalResponse returnCode) {
+    [currentWindowController.window beginSheet:currentWindowController.saveRequestSheet completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
+            SaveRequestPanelController *panelController = (SaveRequestPanelController *) [currentWindowController.saveRequestSheet delegate];
+            CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController
+                                                           named:[panelController.saveRequestTextField stringValue]];
             
             if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
                 [lastSelectedSavedOutlineViewItem addObject:request];
@@ -328,23 +309,6 @@
             [self.savedRequestsDataSource saveDataToDisk];
         }
     }];
-}
-
-// Dispose of save request sheet
-- (IBAction) doneSaveRequest:(id) sender {
-	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
-		CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
-		
-        if ([lastSelectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
-            [lastSelectedSavedOutlineViewItem addObject:request];
-        } else {
-            [SavedRequestsDataSource.savedRequestsArray addObject:request];
-        }
-		[self redrawRequestViews];
-	}
-	[saveRequestSheet orderOut:nil];
-    [NSApp endSheet:saveRequestSheet];
-    [self.savedRequestsDataSource saveDataToDisk];
 }
 
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
@@ -387,7 +351,7 @@
 - (IBAction) overwriteRequest:(id)sender {
     int row = [currentWindowController.savedOutlineView selectedRow];
     if (row > -1) {
-        CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
+        CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController named:nil];
         
         id selectedSavedOutlineViewItem = [currentWindowController.savedOutlineView itemAtRow:[currentWindowController.savedOutlineView selectedRow]];
         if ([selectedSavedOutlineViewItem isKindOfClass:[CRCSavedRequestFolder class]]) {
@@ -414,16 +378,16 @@
 }
 
 - (IBAction) openTimeoutDialog:(id) sender {
-	[timeoutField setIntValue:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
-	[NSApp beginSheet:timeoutSheet modalForWindow:currentWindowController.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+	[currentWindowController.timeoutField setIntValue:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
+	[NSApp beginSheet:currentWindowController.timeoutSheet modalForWindow:currentWindowController.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
 }
 
 - (IBAction) closeTimoutDialog:(id) sender {
 	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
-		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[timeoutField intValue]] forKey:RESPONSE_TIMEOUT];
+		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[currentWindowController.timeoutField intValue]] forKey:RESPONSE_TIMEOUT];
 	}
-	[timeoutSheet orderOut:nil];
-    [NSApp endSheet:timeoutSheet];
+	[currentWindowController.timeoutSheet orderOut:nil];
+    [NSApp endSheet:currentWindowController.timeoutSheet];
 }
 
 
@@ -518,7 +482,6 @@
 
 - (void) applicationWillTerminate: (NSNotification *)note {
 	[self.savedRequestsDataSource saveDataToDisk];
-    [[NSUserDefaults standardUserDefaults] setInteger:[savedRequestsDrawer contentSize].width forKey:SAVED_DRAWER_SIZE];
     [NSEvent removeMonitor:eventMonitor];
 }
 
@@ -654,7 +617,7 @@
 }
 
 - (IBAction) copyCurlCommand:(id)sender {
-    CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController];
+    CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController named:nil];
     NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
     [pasteBoard declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
     NSString *curlCommand = [request generateCurlCommand:[[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]];
@@ -670,6 +633,10 @@
 
 - (void) deleteSavedRequest: (NSNotification *) notification {
     [currentWindowController deleteSavedRequestFromButton:nil];
+}
+
+- (void) deselectSavedRequest:(NSNotification *)notification {
+    [currentWindowController.savedOutlineView deselectAll:nil];
 }
 
 @end

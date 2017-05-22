@@ -84,11 +84,7 @@
 @property (weak) IBOutlet TabbingTableView *paramsTableView;
 @property (weak) IBOutlet NSTextField *username;
 @property (weak) IBOutlet NSTextField *password;
-@property (weak) IBOutlet NSPanel *saveRequestSheet;
-@property (weak) IBOutlet NSTextField *saveRequestTextField;
 @property (weak) IBOutlet NSTabViewItem *headersTab;
-@property (weak) IBOutlet NSPanel *timeoutSheet;
-@property (weak) IBOutlet NSTextField *timeoutField;
 @property (weak) IBOutlet NSButton *plusParam;
 @property (weak) IBOutlet NSButton *minusParam;
 @property (weak) IBOutlet NSTabView *tabView;
@@ -96,6 +92,12 @@
 @property (weak) IBOutlet NSTextField *status;
 @property (unsafe_unretained) IBOutlet NSTextView *requestHeadersSentText;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+
+// For modal dialogs
+@property (weak) IBOutlet NSPanel *saveRequestSheet;
+@property (weak) IBOutlet NSPanel *timeoutSheet;
+@property (weak) IBOutlet NSTextField *timeoutField;
+
 
 @property (unsafe_unretained) IBOutlet NSTextView *requestTextPlain;
 @property (unsafe_unretained) IBOutlet NSTextView *responseTextPlain;

@@ -28,6 +28,7 @@
 		AF99ECAD1EC013A100101893 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECAB1EC013A100101893 /* MainWindowController.m */; };
 		AF99ECB11EC013EF00101893 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF99ECAF1EC013EF00101893 /* MainWindow.xib */; };
 		AF99ECB71ECD302400101893 /* SavedRequestsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */; };
+		AF99ECBA1ED289E100101893 /* SaveRequestPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECB91ED289E100101893 /* SaveRequestPanelController.m */; };
 		AF9FE4281E9187A600415022 /* document-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9FE4261E9187A600415022 /* document-icon.png */; };
 		AFA11AB515CEDA3600831738 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA11AB315CEDA3600831738 /* Welcome.xib */; };
 		AFA11AB815CEDAE300831738 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA11AB715CEDAE300831738 /* WelcomeController.m */; };
@@ -109,6 +110,8 @@
 		AF99ECB01EC013EF00101893 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AF99ECB51ECD302400101893 /* SavedRequestsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedRequestsDataSource.h; path = core/SavedRequestsDataSource.h; sourceTree = "<group>"; };
 		AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedRequestsDataSource.m; path = core/SavedRequestsDataSource.m; sourceTree = "<group>"; };
+		AF99ECB81ED289E100101893 /* SaveRequestPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveRequestPanelController.h; path = core/SaveRequestPanelController.h; sourceTree = "<group>"; };
+		AF99ECB91ED289E100101893 /* SaveRequestPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SaveRequestPanelController.m; path = core/SaveRequestPanelController.m; sourceTree = "<group>"; };
 		AF9FE4271E9187A600415022 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = "English.lproj/document-icon.png"; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 				AF99ECAB1EC013A100101893 /* MainWindowController.m */,
 				AF99ECB51ECD302400101893 /* SavedRequestsDataSource.h */,
 				AF99ECB61ECD302400101893 /* SavedRequestsDataSource.m */,
+				AF99ECB81ED289E100101893 /* SaveRequestPanelController.h */,
+				AF99ECB91ED289E100101893 /* SaveRequestPanelController.m */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
 				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
 				AFBF08C514C32D30000E7411 /* ExportRequestsController.m in Sources */,
+				AF99ECBA1ED289E100101893 /* SaveRequestPanelController.m in Sources */,
 				AFBF08E214C4D7EE000E7411 /* CRCDrawerView.m in Sources */,
 				AFBB7D4714F9587A00424C12 /* TabbingTableView.m in Sources */,
 				AFBB7D4E14F98C1B00424C12 /* PreferencesController.m in Sources */,

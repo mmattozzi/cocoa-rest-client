@@ -47,7 +47,7 @@ typedef NSInteger CRCContentType;
 @property(nonatomic, copy) NSArray * params;
 @property BOOL preemptiveBasicAuth;
 
-+ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController;
++ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController named:(NSString *)name;
 - (CRCRequest *)overwriteContentsWith:(CRCRequest *)request;
 - (NSString *) generateCurlCommand:(bool)followRedirects;
 + (CRCContentType) determineRequestContentType:(NSArray *)headers;

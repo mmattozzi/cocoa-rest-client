@@ -83,6 +83,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteDrawerRow"
                                                             object:theEvent
                                                           userInfo:@{@"sender":self}];
+    } else if ([theEvent keyCode] == 53) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deselectSavedRequest"
+                                                            object:theEvent
+                                                          userInfo:@{@"sender":self}];
     }
 }
 

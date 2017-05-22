@@ -271,7 +271,7 @@
         [request setHTTPShouldHandleCookies:NO];
     }
     
-    lastRequest = [CRCRequest requestWithWindow:self];
+    lastRequest = [CRCRequest requestWithWindow:self named:nil];
     if ([method isEqualToString:@"GET"]) {
         self.appDelegate.reGetResponseMenuItem.enabled = YES;
     } else {

@@ -14,17 +14,17 @@
 @implementation CRCRequest
 @synthesize name, url, method, rawRequestInput, requestText, username, password, headers, files, params, preemptiveBasicAuth;
 
-+ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController
++ (CRCRequest *)requestWithWindow:(MainWindowController *)mainWindowController named:(NSString *)name
 {
 	
 	CRCRequest * request    = [[CRCRequest alloc] init];
 	
-	request.name            = [mainWindowController.saveRequestTextField stringValue];
+	request.name            = name;
 	request.url             = [mainWindowController.urlBox stringValue];
     request.method          = [mainWindowController.methodButton stringValue];
 	request.username        = [mainWindowController.username stringValue];
 	request.password        = [mainWindowController.password stringValue];
-    request.rawRequestInput = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
+    request.rawRequestInput = mainWindowController.rawRequestBody;
     request.preemptiveBasicAuth = mainWindowController.preemptiveBasicAuth;
 	
 	if(request.rawRequestInput)
