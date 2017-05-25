@@ -87,6 +87,11 @@
                                     <action selector="handleCloseWindow:" target="494" id="1022"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="New Tab" keyEquivalent="t" id="CEd-7c-u3D">
+                                <connections>
+                                    <action selector="newTab:" target="494" id="WoI-tb-CoP"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="1021"/>
                             <menuItem title="Reload Request" keyEquivalent="r" id="911">
                                 <connections>
@@ -322,6 +327,7 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem title="Search Saved Requests" keyEquivalent="t" id="z9V-Oo-vFv">
+                                <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 <connections>
                                     <action selector="openFastSearchSavedRequestsPanel:" target="494" id="kK7-l4-Msr"/>
                                 </connections>

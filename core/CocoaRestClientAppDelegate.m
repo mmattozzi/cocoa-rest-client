@@ -106,6 +106,12 @@
     NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
+- (IBAction) newTab:(id)sender {
+    if (currentWindowController) {
+        [self addTabFromWindow:[currentWindowController window]];
+    }
+}
+
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController {
     currentWindowController = mainWindowController;
 }

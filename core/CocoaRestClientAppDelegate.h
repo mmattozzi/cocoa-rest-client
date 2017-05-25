@@ -70,6 +70,7 @@
 - (void) addTabFromWindow:(NSWindow *)window;
 - (void) tabWasRemoved:(NSWindowController *)windowController;
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
+- (IBAction) newTab:(id)sender;
 
 - (IBAction) outlineClick:(id)sender;
 - (IBAction) saveRequest:(id) sender;
