@@ -14,8 +14,6 @@
 @implementation CRCMultipartRequest
 +(void)createRequest:(NSMutableURLRequest *)request withWindow:(MainWindowController *)windowController
 {
-	CocoaRestClientAppDelegate * delegate = (CocoaRestClientAppDelegate *)[[NSApplication sharedApplication] delegate];
-	
 	NSMutableData * body    = [NSMutableData data];
 	NSString * formBoundary = [CRCMultipartRequest generateBoundary];
 	NSString * headerfield  = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", formBoundary];

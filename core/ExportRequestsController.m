@@ -58,7 +58,7 @@
     
     NSSavePanel* picker = [NSSavePanel savePanel];
 	
-    if ([picker runModal] != NSOKButton) return;
+    if ([picker runModal] != NSModalResponseOK) return;
 
     NSString* path = [[picker URL] path];
     NSLog(@"Saving requests to %@", path);

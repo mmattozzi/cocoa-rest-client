@@ -547,15 +547,15 @@
 - (IBAction) exportResponse:(id)sender {
     NSSavePanel* picker = [NSSavePanel savePanel];
 	
-    if ( [picker runModal] == NSOKButton ) {
-		NSURL* path = [picker URL];
-        NSLog(@"Saving requests to %@", path.absoluteString);
+    if ( [picker runModal] == NSModalResponseOK ) {
+		NSString* path = [[picker URL] path];
+        NSLog(@"Saving requests to %@", path);
         
         NSError *error;
-        BOOL savedOK = [[currentWindowController getResponseText] writeToFile:path.absoluteString atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        BOOL savedOK = [[currentWindowController getResponseText] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         if (! savedOK) {
-            NSLog(@"Error writing file at %@\n%@", path.absoluteString, [error localizedFailureReason]);
+            NSLog(@"Error writing file at %@\n%@", path, [error localizedFailureReason]);
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"OK"];
             [alert setMessageText:@"Unable to save response"];

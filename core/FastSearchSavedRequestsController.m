@@ -174,7 +174,6 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-    NSTextField *textField = [notification object];
     [self refreshRequestList];
 }
 

@@ -72,12 +72,8 @@
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
 - (IBAction) newTab:(id)sender;
 
-- (IBAction) outlineClick:(id)sender;
 - (IBAction) saveRequest:(id) sender;
 - (IBAction) overwriteRequest:(id) sender;
-- (IBAction) doneSaveRequest:(id) sender;
-- (IBAction) createNewSavedFolder:(id)sender;
-- (void) loadSavedRequest:(NSDictionary *) request;
 - (void) deleteSavedRequest: (NSNotification *) notification;
 - (IBAction) reloadRequestsDrawer:(id)sender;
 
@@ -85,14 +81,6 @@
 
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (IBAction) openTimeoutDialog:(id) sender;
-- (IBAction) closeTimoutDialog:(id) sender;
-- (IBAction) doubleClickedFileRow:(id)sender;
-- (IBAction) plusFileRow:(id)sender;
-- (IBAction) minusFileRow:(id)sender;
-- (void) addFileToFilesTable: (NSURL*) fileUrl;
-- (IBAction) doubleClickedParamsRow:(id)sender;
-- (IBAction) plusParamsRow:(id)sender;
-- (IBAction) minusParamsRow:(id)sender;
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
 - (IBAction) themeMenuItemSelected:(id)sender;
 - (IBAction) handleOpenWindow:(id)sender;
