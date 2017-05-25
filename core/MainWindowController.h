@@ -19,7 +19,6 @@
 #import "CRCConstants.h"
 #import "DMSlidingTabView.h"
 #import "DMSlidingTabItemView.h"
-#import "FastSearchSavedRequestsController.h"
 #import "CRCRequest.h"
 
 @class CocoaRestClientAppDelegate;
@@ -101,16 +100,12 @@
 @property (unsafe_unretained) IBOutlet NSTextView *responseTextPlain;
 @property (weak) IBOutlet NSScrollView *responseTextPlainView;
 @property (weak) IBOutlet NSScrollView *requestTextPlainView;
-@property (strong) WelcomeController *welcomeController;
 
 @property (weak) IBOutlet NSButton *rawInputButton;
 @property (weak) IBOutlet NSButton *fieldInputButton;
 @property (weak) IBOutlet NSButton *fileInputButton;
 
 @property (weak) IBOutlet NSOutlineView *savedOutlineView;
-
-// Fast saved request search
-@property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
 
 - (IBAction) runSubmit:(id)sender;
 - (void) setResponseText:(NSString *)response;

@@ -40,7 +40,6 @@
 @synthesize preferencesController;
 @synthesize syntaxHighlightingMenuItem;
 @synthesize reGetResponseMenuItem;
-@synthesize welcomeController;
 @synthesize themeMenuItem;
 @synthesize jsonWriter;
 @synthesize showLineNumbersMenuItem;
@@ -143,6 +142,8 @@
     
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
+    
+    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
     // TODO
     // drawerView.cocoaRestClientAppDelegate = self;
@@ -312,12 +313,13 @@
 }
 
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender {
+    fastSearchSavedRequestsController.parent = [currentWindowController window];
     [currentWindowController.savedOutlineView deselectAll:nil];
     [fastSearchSavedRequestsController setupWindow:SavedRequestsDataSource.savedRequestsArray];
     [currentWindowController.window beginSheet:[fastSearchSavedRequestsController window] completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (fastSearchSavedRequestsController.selectedRequest) {
-                [self loadSavedRequest:fastSearchSavedRequestsController.selectedRequest];
+                [currentWindowController loadSavedRequest:fastSearchSavedRequestsController.selectedRequest];
             }
         }
     }];

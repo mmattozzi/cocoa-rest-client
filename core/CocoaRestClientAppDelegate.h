@@ -30,7 +30,6 @@
 @interface CocoaRestClientAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
     ExportRequestsController *exportRequestsController;
     PreferencesController *preferencesController;
-    WelcomeController *welcomeController;
     FastSearchSavedRequestsController *fastSearchSavedRequestsController;
     
     MainWindowController *currentWindowController;
@@ -62,7 +61,6 @@
 @property (weak) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
 @property (weak) IBOutlet NSMenuItem *showLineNumbersMenuItem;
-@property (strong) WelcomeController *welcomeController;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
 

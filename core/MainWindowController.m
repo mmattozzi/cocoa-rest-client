@@ -62,10 +62,6 @@
     [row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
     [self.headersTable addObject:row];
     
-    self.welcomeController = [[WelcomeController alloc] initWithWindowNibName:@"Welcome"];
-    
-    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
-    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     self.jsonWriter = [[SBJson4Writer alloc] init];
     self.jsonWriter.humanReadable = YES;
@@ -112,8 +108,6 @@
     [self.filesTableView setDataSource: self];
     
     [self.responseTextPlain setEditable:NO];
-    
-    self.fastSearchSavedRequestsController.parent = self.window;
     
     [self.responseTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
     [self.requestTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
