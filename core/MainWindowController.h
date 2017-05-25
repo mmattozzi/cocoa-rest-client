@@ -26,8 +26,6 @@
 
 @interface MainWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
     
-    CocoaRestClientAppDelegate *appDelegate;
-    
     NSMutableData *receivedData;
     NSString *contentType;
     NSString *charset;
@@ -43,7 +41,7 @@
     id lastSelectedSavedOutlineViewItem;
 }
 
-@property (retain) CocoaRestClientAppDelegate *appDelegate;
+@property (weak) CocoaRestClientAppDelegate *appDelegate;
 @property IBOutlet SavedRequestsDataSource *savedRequestsDataSource;
 @property (strong) SBJson4Writer *jsonWriter;
 

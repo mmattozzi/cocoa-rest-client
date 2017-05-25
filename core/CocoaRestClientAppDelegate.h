@@ -35,6 +35,7 @@
     
     MainWindowController *currentWindowController;
     
+    // TODO put this in each mainwindowcontroller
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
     

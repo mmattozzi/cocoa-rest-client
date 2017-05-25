@@ -87,6 +87,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"deselectSavedRequest"
                                                             object:theEvent
                                                           userInfo:@{@"sender":self}];
+    } else {
+        [super keyDown:theEvent];
     }
 }
 

@@ -291,10 +291,7 @@
 - (IBAction) saveRequest:(id) sender {
     lastSelectedSavedOutlineViewItem = [currentWindowController.savedOutlineView itemAtRow:[currentWindowController.savedOutlineView selectedRow]];
     [currentWindowController.savedOutlineView deselectAll:nil];
-	/* [NSApp beginSheet:saveRequestSheet modalForWindow:[currentWindowController window]
-        modalDelegate:self didEndSelector:NULL contextInfo:nil]; */
-    
-    [currentWindowController.window beginSheet:currentWindowController.saveRequestSheet completionHandler:^(NSModalResponse returnCode) {
+	[currentWindowController.window beginSheet:currentWindowController.saveRequestSheet completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             SaveRequestPanelController *panelController = (SaveRequestPanelController *) [currentWindowController.saveRequestSheet delegate];
             CRCRequest * request = [CRCRequest requestWithWindow:currentWindowController
@@ -379,20 +376,12 @@
 
 - (IBAction) openTimeoutDialog:(id) sender {
 	[currentWindowController.timeoutField setIntValue:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
-	[NSApp beginSheet:currentWindowController.timeoutSheet modalForWindow:currentWindowController.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+	[currentWindowController.window beginSheet:currentWindowController.timeoutSheet completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[currentWindowController.timeoutField intValue]] forKey:RESPONSE_TIMEOUT];
+        }
+    }];
 }
-
-- (IBAction) closeTimoutDialog:(id) sender {
-	if ([sender isKindOfClass:[NSTextField class]] || ! [[sender title] isEqualToString:@"Cancel"]) {
-		[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[currentWindowController.timeoutField intValue]] forKey:RESPONSE_TIMEOUT];
-	}
-	[currentWindowController.timeoutSheet orderOut:nil];
-    [NSApp endSheet:currentWindowController.timeoutSheet];
-}
-
-
-
-
 
 - (IBAction) reloadRequestsDrawer:(id)sender {
     [self.savedRequestsDataSource loadDataFromDisk];
