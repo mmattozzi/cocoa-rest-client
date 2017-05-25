@@ -13,8 +13,8 @@
     NSWindow *parent;
 }
 
-@property (strong) IBOutlet NSTextField *timeoutTextField;
-@property (strong) IBOutlet NSWindow *parent;
+@property (strong, nonnull) IBOutlet NSTextField *timeoutTextField;
+@property (strong, nonnull) IBOutlet NSWindow *parent;
 
 - (IBAction) ok:(nullable id)sender;
 - (IBAction) cancel:(nullable id)sender;

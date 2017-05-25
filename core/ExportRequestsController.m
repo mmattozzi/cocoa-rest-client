@@ -18,8 +18,8 @@
 @synthesize importButton;
 @synthesize exportButton;
 @synthesize allButton;
-@synthesize savedOutlineView;
 @synthesize label;
+@synthesize parent;
 
 - (id)initWithWindow:(NSWindow *)awindow {
     self = [super initWithWindow:awindow];
@@ -68,7 +68,7 @@
         [NSKeyedArchiver archiveRootObject:requestsToExport toFile:path];
     }
     
-    [NSApp endSheet:[self window]];
+    [parent endSheet:[self window] returnCode:NSModalResponseOK];
 }
 
 - (NSMutableArray *) selectedRequests {
@@ -102,13 +102,11 @@
         [savedRequestsArray addObject:request];
     }
     
-    [savedOutlineView reloadItem:nil reloadChildren:YES];
-    
-    [NSApp endSheet:[self window]];
+    [parent endSheet:[self window] returnCode:NSModalResponseOK];
 }
 
 - (IBAction) cancelExport:(id)sender {
-    [NSApp endSheet:[self window]];
+    [parent endSheet:[self window] returnCode:NSModalResponseCancel];
 }
 
 - (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {

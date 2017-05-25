@@ -139,7 +139,10 @@
 	
 	
     
-    // TODO exportRequestsController.savedOutlineView = savedOutlineView;
+    // TODO
+    
+    exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
+    exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
     
     // TODO
     // drawerView.cocoaRestClientAppDelegate = self;
@@ -389,12 +392,14 @@
 }
 
 - (void) importRequestsFromArray:(NSArray *)requests {
+    exportRequestsController.parent = currentWindowController.window;
     [exportRequestsController prepareToDisplayImports:requests];
-    [NSApp beginSheet: [exportRequestsController window]
-       modalForWindow: currentWindowController.window
-        modalDelegate: exportRequestsController
-       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-          contextInfo: nil];
+    [currentWindowController.window beginSheet:[exportRequestsController window] completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            NSLog(@"Import request sheet ended with OK");
+            [self redrawRequestViews];
+        }
+    }];
 }
 
 - (void) invalidFileAlert {
@@ -403,11 +408,10 @@
     [alert setMessageText:@"Invalid file"];
     [alert setInformativeText:@"Unable to read stored requests from file."];
     [alert setAlertStyle:NSWarningAlertStyle];
-    [alert beginSheetModalForWindow:currentWindowController.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+    [alert beginSheetModalForWindow:currentWindowController.window completionHandler:nil];
 }
 
 - (IBAction) importRequests:(id)sender {
-    
     NSOpenPanel* picker = [NSOpenPanel openPanel];
 	
 	[picker setCanChooseFiles:YES];
@@ -415,36 +419,36 @@
 	[picker setAllowsMultipleSelection:NO];
     
     NSMutableArray *loadedRequests = [[NSMutableArray alloc] init];
-    [picker beginSheetModalForWindow:currentWindowController.window
-                   completionHandler:^(NSInteger result) {
-                       if (result == NSFileHandlingPanelOKButton) {
-                           @try {
-                               for(NSURL* url in [picker URLs]) {
-                                   NSString *path = [url path];
-                                   NSLog(@"Loading requests from %@", path);
-                                   [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
-                                   
-                                   if ([loadedRequests count] > 0) {
-                                       [self importRequestsFromArray:loadedRequests];
-                                   }
-                               }
-                           }
-                           @catch (NSException *exception) {
-                               [self invalidFileAlert];
-                           }
-                       }
-                   }];
-    
-    
+    [picker beginSheetModalForWindow:currentWindowController.window completionHandler:^(NSInteger result) {
+       if (result == NSFileHandlingPanelOKButton) {
+           @try {
+               for(NSURL* url in [picker URLs]) {
+                   NSString *path = [url path];
+                   NSLog(@"Loading requests from %@", path);
+                   [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:path]];
+                   
+                   if ([loadedRequests count] > 0) {
+                       [self importRequestsFromArray:loadedRequests];
+                   } else {
+                       [self invalidFileAlert];
+                   }
+               }
+           }
+           @catch (NSException *exception) {
+               [self invalidFileAlert];
+           }
+       }
+   }];
 }
 
 - (IBAction) exportRequests:(id)sender {
+    exportRequestsController.parent = currentWindowController.window;
     [exportRequestsController prepareToDisplayExports];
-    [NSApp beginSheet: [exportRequestsController window]
-       modalForWindow: currentWindowController.window
-        modalDelegate: exportRequestsController
-       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-          contextInfo: nil];
+    [currentWindowController.window beginSheet:[exportRequestsController window] completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            NSLog(@"Export request sheet ended with OK");
+        }
+    }];
 }
 
 - (IBAction) handleOpenWindow:(id)sender {

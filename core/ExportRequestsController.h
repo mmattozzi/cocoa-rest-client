@@ -12,7 +12,6 @@
     NSMutableArray *savedRequestsArray;
     NSMutableArray *requestsTableModel;
     NSTableView *tableView;
-    NSOutlineView *savedOutlineView;
     
     NSButton *importButton;
     NSButton *exportButton;
@@ -22,7 +21,7 @@
 }
 
 @property (strong, atomic) NSMutableArray *savedRequestsArray;
-@property (strong, atomic) NSOutlineView *savedOutlineView;
+@property (weak, nullable) IBOutlet NSWindow *parent;
 
 @property (strong) IBOutlet NSTableView *tableView;
 @property (strong) IBOutlet NSButton *importButton;

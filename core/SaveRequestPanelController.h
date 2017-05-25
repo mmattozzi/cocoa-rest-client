@@ -13,8 +13,8 @@
     NSWindow *parent;
 }
 
-@property (strong) IBOutlet NSTextField *saveRequestTextField;
-@property (strong) IBOutlet NSWindow *parent;
+@property (strong, nonnull) IBOutlet NSTextField *saveRequestTextField;
+@property (strong, nonnull) IBOutlet NSWindow *parent;
 
 - (IBAction) save:(nullable id)sender;
 - (IBAction) cancel:(nullable id)sender;
