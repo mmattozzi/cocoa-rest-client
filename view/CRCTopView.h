@@ -4,7 +4,7 @@
 
 @interface CRCTopView : NSView {
     NSGradient                  *_bgGradient;
-    
+    NSBezierPath *line;
 }
 
 @end
