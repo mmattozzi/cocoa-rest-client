@@ -29,6 +29,8 @@
 
 - (void)drawGradient {
     
+    NSLog(@"View identifier = %@", [self identifier]);
+    
     NSColor *tintColor = [[NSColor colorForControlTint:[NSColor currentControlTint]]colorUsingColorSpaceName:NSDeviceRGBColorSpace];
     NSColor *tintDarkerColor = [NSColor colorWithRed:tintColor.redComponent - 0.2
                                                green:tintColor.greenComponent - 0.2

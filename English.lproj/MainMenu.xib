@@ -309,11 +309,7 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="722">
                         <items>
-                            <menuItem title="Show Request Drawer" keyEquivalent="d" id="724">
-                                <connections>
-                                    <action selector="toggle:" target="687" id="741"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Show Request Drawer" keyEquivalent="d" id="724"/>
                             <menuItem title="Syntax Highlighting" id="977">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -615,16 +611,11 @@ CA
         <customObject id="494" customClass="CocoaRestClientAppDelegate">
             <connections>
                 <outlet property="reGetResponseMenuItem" destination="1011" id="1017"/>
-                <outlet property="savedRequestsDrawer" destination="687" id="747"/>
                 <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
                 <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <drawer trailingOffset="15" id="687">
-            <size key="contentSize" width="100" height="100"/>
-            <size key="maxContentSize" width="10000" height="10000"/>
-        </drawer>
         <userDefaultsController representsSharedInstance="YES" id="833"/>
         <customObject id="914" customClass="SUUpdater"/>
     </objects>

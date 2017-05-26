@@ -90,6 +90,7 @@
     MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
     mainWindowController.appDelegate = self;
     mainWindowController.savedRequestsDataSource = self.savedRequestsDataSource;
+    mainWindowController.window.title = @"CocoaRestClient";
     if (window) {
         [window addTabbedWindow:[mainWindowController window] ordered:NSWindowAbove];
         [mainWindowController.window orderFront:window];

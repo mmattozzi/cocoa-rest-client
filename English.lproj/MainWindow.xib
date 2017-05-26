@@ -766,7 +766,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="1222" height="734"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Amy-4t-3GA" customClass="CRCTopView">
+                    <customView identifier="topview" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Amy-4t-3GA" customClass="CRCTopView">
                         <rect key="frame" x="0.0" y="671" width="1222" height="63"/>
                         <subviews>
                             <comboBox verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGC-FZ-Inl">
