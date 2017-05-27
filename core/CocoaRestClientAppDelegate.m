@@ -502,21 +502,6 @@
 	}
 }
 
-/*
-- (void)deleteTableRow:(NSNotification *)notification {
-    BOOL rawRequestBody = [[NSUserDefaults standardUserDefaults]boolForKey:RAW_REQUEST_BODY];
-    
-    NSString *currentTabLabel = [[notification userInfo] valueForKey:@"identifier"];
-    if ([currentTabLabel isEqualToString:@"RequestHeaders"] && [headersTableView selectedRow] > -1) {
-        [self minusHeaderRow:nil];
-    } else if ([currentTabLabel isEqualToString:@"RequestBody"] && [paramsTableView selectedRow] > -1 && ! rawRequestBody) {
-        [self minusParamsRow:nil];
-    } else if ([currentTabLabel isEqualToString:@"Files"] && [filesTableView selectedRow] > -1) {
-        [self minusFileRow:nil];
-    }
-}
- */
-
 - (IBAction) showPreferences:(id)sender {
     NSLog(@"Check for updates: %d", [[SUUpdater sharedUpdater] automaticallyChecksForUpdates]);
     NSLog(@"Downloads updates: %d", [[SUUpdater sharedUpdater] automaticallyDownloadsUpdates]);

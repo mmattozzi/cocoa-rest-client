@@ -992,4 +992,17 @@
     [self.savedRequestsDataSource saveDataToDisk];
 }
 
+ - (void)deleteTableRow:(NSNotification *)notification {
+     if ([[self window] isKeyWindow]) {
+        NSString *currentTabLabel = [[notification userInfo] valueForKey:@"identifier"];
+         if ([currentTabLabel isEqualToString:@"RequestHeaders"] && [self.headersTableView selectedRow] > -1) {
+             [self minusHeaderRow:nil];
+         } else if ([currentTabLabel isEqualToString:@"RequestBody"] && [self.paramsTableView selectedRow] > -1 && ! self.rawRequestBody) {
+             [self minusParamsRow:nil];
+         } else if ([currentTabLabel isEqualToString:@"Files"] && [self.filesTableView selectedRow] > -1) {
+             [self minusFileRow:nil];
+         }
+     }
+}
+
 @end

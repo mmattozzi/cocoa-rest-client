@@ -855,7 +855,7 @@
                                                     <constraint firstAttribute="height" constant="17" id="6xW-yt-08Z"/>
                                                     <constraint firstAttribute="width" constant="17" id="eUs-z6-FY8"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oLk-W7-Mha">
+                                                <buttonCell key="cell" type="square" title="+" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="oLk-W7-Mha">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -918,7 +918,7 @@
                                                 </constraints>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XRf-Az-fQ9">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="system" size="8"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="deleteSavedRequestFromButton:" target="-2" id="c5g-3V-hQj"/>
@@ -1272,7 +1272,6 @@ Gw
         </customObject>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>
