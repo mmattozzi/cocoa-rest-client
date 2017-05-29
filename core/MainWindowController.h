@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ExportRequestsController.h"
-#import "CRCDrawerView.h"
 #import "TabbingTableView.h"
 #import "PreferencesController.h"
 #import "WelcomeController.h"
@@ -22,6 +21,8 @@
 #import "CRCRequest.h"
 
 @class CocoaRestClientAppDelegate;
+@class SavedRequestsDataSource;
+@class CRCDrawerView;
 
 @interface MainWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
     
@@ -89,6 +90,8 @@
 @property (weak) IBOutlet NSTextField *status;
 @property (unsafe_unretained) IBOutlet NSTextView *requestHeadersSentText;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+
+@property (weak) IBOutlet CRCDrawerView *savedRequestsView;
 
 // For modal dialogs
 @property (weak) IBOutlet NSPanel *saveRequestSheet;

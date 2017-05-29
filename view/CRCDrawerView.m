@@ -7,10 +7,12 @@
 //
 
 #import "CRCDrawerView.h"
+#import "MainWindowController.h"
+#import "CocoaRestClientAppDelegate.h"
 
 @implementation CRCDrawerView
 
-@synthesize cocoaRestClientAppDelegate;
+@synthesize mainWindowController;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -61,12 +63,14 @@
                     [loadedRequests addObjectsFromArray:[NSKeyedUnarchiver unarchiveObjectWithFile:file]];
                 }
                 @catch (NSException *exception) {
-                    [cocoaRestClientAppDelegate invalidFileAlert];
+                    [mainWindowController.appDelegate invalidFileAlert];
                 }
             }
             
             if ([loadedRequests count] > 0) {
-                [cocoaRestClientAppDelegate importRequestsFromArray:loadedRequests];
+                [mainWindowController.appDelegate importRequestsFromArray:loadedRequests];
+            } else {
+                [mainWindowController.appDelegate invalidFileAlert];
             }
             
             return YES;

@@ -34,92 +34,103 @@
     
     MainWindowController *currentWindowController;
     
-    // TODO put this in each mainwindowcontroller
-    @private HighlightingTypeManager *responseTypeManager;
-    @private HighlightingTypeManager *requestTypeManager;
-    
-    
-    
     id eventMonitor;
     id lastSelectedSavedOutlineViewItem;
 }
 
-@property (strong) SBJson4Writer *jsonWriter;
+// Reference to WindowControllers of all windows that are open
+@property (retain) NSMutableArray *mainWindowControllers;
 
+// Manages saved request outline view data across all windows
 @property (strong) SavedRequestsDataSource *savedRequestsDataSource;
 
+// Used throughout by all application windows
 @property (strong) NSSet *requestMethodsWithoutBody;
 @property (atomic) BOOL allowSelfSignedCerts;
 @property (atomic) NSUInteger aceViewFontSize;
 
-
-@property (retain) NSMutableArray *mainWindowControllers;
-
-@property (assign) BOOL preemptiveBasicAuth;
-
-@property (strong) PreferencesController *preferencesController;
+// Menu Items that need to be checked, unchecked, enabled, or disabled
 @property (weak) IBOutlet NSMenuItem *syntaxHighlightingMenuItem;
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
 @property (weak) IBOutlet NSMenuItem *showLineNumbersMenuItem;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
 
-
-// Fast saved request search
-@property (strong) FastSearchSavedRequestsController *fastSearchSavedRequestsController;
-
+// Window management methods
 - (void) addTabFromWindow:(NSWindow *)window;
 - (void) tabWasRemoved:(NSWindowController *)windowController;
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
-- (IBAction) newTab:(id)sender;
-
-- (IBAction) saveRequest:(id) sender;
-- (IBAction) overwriteRequest:(id) sender;
-- (void) deleteSavedRequest: (NSNotification *) notification;
-- (IBAction) reloadRequestsDrawer:(id)sender;
-
-- (void) redrawRequestViews;
-
 - (void) applicationWillTerminate: (NSNotification *)note;
-- (IBAction) openTimeoutDialog:(id) sender;
-- (IBAction) contentTypeMenuItemSelected:(id)sender;
-- (IBAction) themeMenuItemSelected:(id)sender;
+
+// Saved requests management
+- (void) redrawRequestViews;
+- (void) deselectSavedRequest:(NSNotification *)notification;
+- (void) importRequestsFromArray:(NSArray *)requests;
+- (void) deleteSavedRequest: (NSNotification *) notification;
+
+// Utility Methods
+- (void) invalidFileAlert;
+- (NSString *) saveResponseToTempFile;
+
+//
+// Actions driven from Menu Items
+//
+
+/* Application Menu */
+- (IBAction)showPreferences:(id)sender;
+
+/* File Menu */
 - (IBAction) handleOpenWindow:(id)sender;
 - (IBAction) handleCloseWindow:(id)sender;
-- (BOOL)validateMenuItem:(NSMenuItem *)item;
-- (IBAction) helpInfo:(id)sender;
-- (IBAction) licenseInfo:(id)sender;
+- (IBAction) newTab:(id)sender;
 - (IBAction) reloadLastRequest:(id)sender;
-- (IBAction) allowSelfSignedCerts:(id)sender;
+- (IBAction) overwriteRequest:(id) sender; // Save
+- (IBAction) saveRequest:(id) sender; // Save As...
+- (IBAction) deleteSavedRequestFromMenu:(id) sender;
 - (IBAction) importRequests:(id)sender;
 - (IBAction) exportRequests:(id)sender;
-- (void) importRequestsFromArray:(NSArray *)requests;
-- (void) invalidFileAlert;
-- (void) deleteTableRow:(NSNotification *) notification;
-- (IBAction)showPreferences:(id)sender;
-- (void)syntaxHighlightingPreferenceChanged;
-- (IBAction) zoomIn:(id)sender;
-- (IBAction) zoomOut:(id)sender;
-- (IBAction) zoomDefault:(id)sender;
-- (NSString *) saveResponseToTempFile;
+- (IBAction) reloadRequestsDrawer:(id)sender;
 - (IBAction) exportResponse:(id)sender;
 - (IBAction) viewResponseInBrowser:(id)sender;
-- (IBAction) reGetResponseInBrowser:(id)sender;
 - (IBAction) viewResponseInDefaultApplication:(id)sender;
+- (IBAction) reGetResponseInBrowser:(id)sender;
 
+/* Edit Menu */
+- (IBAction) copyCurlCommand:(id)sender;
 - (IBAction) findMenuItem:(id)sender;
+- (IBAction) replaceMenuItem:(id)sender;
 - (IBAction) findNextMenuItem:(id)sender;
 - (IBAction) findPreviousMenuItem:(id)sender;
-- (IBAction) replaceMenuItem:(id)sender;
 
-- (void) deleteSavedRequest: (NSNotification *) notification;
-- (void) deselectSavedRequest:(NSNotification *)notification;
+/* Options Menu */
+- (IBAction) openTimeoutDialog:(id) sender;
+// Rest of Option MenuItems just set SharedUserDefaults in IB
 
-//- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+/* View Menu */
 - (IBAction) showLineNumbersToggled:(id)sender;
-
-- (IBAction) copyCurlCommand:(id)sender;
-
-// For opening fast saved request search
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender;
+- (IBAction) zoomDefault:(id)sender;
+- (IBAction) zoomIn:(id)sender;
+- (IBAction) zoomOut:(id)sender;
+- (IBAction) themeMenuItemSelected:(id)sender;
+
+/* Content Type Menu */
+- (IBAction) contentTypeMenuItemSelected:(id)sender;
+
+/* Help Menu */
+- (IBAction) helpInfo:(id)sender;
+- (IBAction) licenseInfo:(id)sender;
+
+// Called for all menu enabled/disabled status
+- (BOOL)validateMenuItem:(NSMenuItem *)item;
+
+// ??
+
+// Whatever happened to this menu item?
+- (IBAction) allowSelfSignedCerts:(id)sender;
+
+
+- (void)syntaxHighlightingPreferenceChanged;
+//- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
+
 
 @end

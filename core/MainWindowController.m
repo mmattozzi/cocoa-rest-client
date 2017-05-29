@@ -16,6 +16,7 @@
 #import "MsgPackSerialization.h"
 #import "CRCSavedRequestFolder.h"
 #import "SavedRequestsDataSource.h"
+#import "CRCDrawerView.h"
 
 @interface MainWindowController ()
 
@@ -30,6 +31,7 @@
 @synthesize headersTable;
 @synthesize rawRequestBody;
 @synthesize fileRequestBody;
+@synthesize savedRequestsView;
 
 - (void)setupObservers {
     [[NSUserDefaults standardUserDefaults]addObserver:self
@@ -119,8 +121,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
 
-    // Enable Drag and Drop for outline view of saved requests
+    // Enable Drag and Drop for outline view of saved requests WITHIN the outline view
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    
+    // Enable Drag and Drop of external files into CRC
+    [self.savedRequestsView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
 }
 
 - (void)syntaxHighlightingPreferenceChanged {
@@ -255,7 +260,7 @@
     }
     
     // Pre-emptive HTTP Basic Auth
-    if (self.appDelegate.preemptiveBasicAuth && [self.username stringValue] && [self.password stringValue]) {
+    if (self.preemptiveBasicAuth && [self.username stringValue] && [self.password stringValue]) {
         NSData *plainTextUserPass = [ [NSString stringWithFormat:@"%@:%@", [self.username stringValue], [self.password stringValue]] dataUsingEncoding:NSUTF8StringEncoding];
         [headersDictionary setObject:[NSString stringWithFormat:@"Basic %@", [plainTextUserPass base64String]]
                               forKey:@"Authorization"];
@@ -761,7 +766,7 @@
     [self.password setStringValue:request.password];
     
     self.rawRequestBody = request.rawRequestInput;
-    self.appDelegate.preemptiveBasicAuth = request.preemptiveBasicAuth;
+    self.preemptiveBasicAuth = request.preemptiveBasicAuth;
     
     if(self.rawRequestBody)
     {
@@ -819,8 +824,8 @@
     [self.username setStringValue:[request objectForKey:@"username"]];
     [self.password setStringValue:[request objectForKey:@"password"]];
     
-    //self.rawRequestInput = YES;
-    self.appDelegate.preemptiveBasicAuth = NO;
+    self.rawRequestBody = YES;
+    self.preemptiveBasicAuth = NO;
     
     if ([request objectForKey:@"body"]) {
         [self setRequestText:[request objectForKey:@"body"]];

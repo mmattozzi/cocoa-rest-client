@@ -7,14 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CocoaRestClientAppDelegate.h"
 
-@class CocoaRestClientAppDelegate;
+@class MainWindowController;
 
-@interface CRCDrawerView : NSView {
-    CocoaRestClientAppDelegate *cocoaRestClientAppDelegate;
-}
+@interface CRCDrawerView : NSView
 
-@property (strong, atomic) CocoaRestClientAppDelegate *cocoaRestClientAppDelegate;
+@property (weak, nonatomic) IBOutlet MainWindowController *mainWindowController;
 
 @end

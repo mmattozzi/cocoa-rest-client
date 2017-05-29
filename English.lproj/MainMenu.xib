@@ -113,7 +113,7 @@
 CA
 </string>
                                 <connections>
-                                    <action selector="deleteSavedRequest:" target="494" id="745"/>
+                                    <action selector="deleteSavedRequestFromMenu:" target="494" id="1Qr-DI-fp8"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="924"/>

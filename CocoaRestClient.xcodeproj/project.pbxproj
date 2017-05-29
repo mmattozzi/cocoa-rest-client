@@ -665,7 +665,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
 			};
@@ -690,7 +690,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "CocoaRestClient-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
 			};

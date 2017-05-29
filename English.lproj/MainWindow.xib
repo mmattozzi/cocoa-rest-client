@@ -40,6 +40,7 @@
                 <outlet property="saveRequestSheet" destination="FYI-kr-p7V" id="srr-5G-aKQ"/>
                 <outlet property="savedOutlineView" destination="6EW-S5-dUa" id="8w9-Va-ixQ"/>
                 <outlet property="savedRequestsDataSource" destination="j9L-nT-ahO" id="n5a-vj-9tY"/>
+                <outlet property="savedRequestsView" destination="tkI-i7-sOk" id="uaI-Ib-3tu"/>
                 <outlet property="status" destination="o8R-4b-dZa" id="RqO-Q2-5W0"/>
                 <outlet property="submitButton" destination="HRn-fG-MnP" id="c4r-vK-5O6"/>
                 <outlet property="timeoutField" destination="rVK-IK-JAi" id="k0n-qk-G3u"/>
@@ -62,7 +63,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
                             <clipView key="contentView" id="h4Y-h1-wie">
                                 <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="RequestHeaders" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="63H-55-EM8" id="zdU-Dw-3zr" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="494" height="228"/>
@@ -180,7 +181,7 @@
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <clipView key="contentView" id="gKJ-Gr-UxR">
                                 <rect key="frame" x="1" y="1" width="539" height="184"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Jq8-pk-8m8">
                                         <rect key="frame" x="0.0" y="0.0" width="539" height="184"/>
@@ -253,7 +254,7 @@
                             <rect key="frame" x="0.0" y="25" width="514" height="186"/>
                             <clipView key="contentView" copiesOnScroll="NO" id="BDy-en-Kua">
                                 <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="RequestBody" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="24t-Y4-cPJ" id="dib-cT-zCK" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="514" height="163"/>
@@ -472,7 +473,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="357" height="261"/>
                             <clipView key="contentView" id="7xx-Yg-eQM">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="261"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="v7I-bk-RaS">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="261"/>
@@ -635,7 +636,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
                             <clipView key="contentView" id="Hl3-RQ-czX">
                                 <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="Files" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="7Oi-Cb-mDl" id="qEb-fx-M57" userLabel="filesTableView" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="551" height="182"/>
@@ -935,6 +936,9 @@
                                             <constraint firstAttribute="bottom" secondItem="I4a-rp-hXs" secondAttribute="bottom" constant="8" id="fMm-XZ-Ree"/>
                                             <constraint firstItem="kRo-0a-2GC" firstAttribute="leading" secondItem="tkI-i7-sOk" secondAttribute="leading" constant="4" id="j6u-61-n6k"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="mainWindowController" destination="-2" id="FKz-MT-HN9"/>
+                                        </connections>
                                     </customView>
                                 </subviews>
                                 <constraints>
@@ -1053,7 +1057,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="NBg-Mw-JLG"/>
             </connections>
-            <point key="canvasLocation" x="295" y="24"/>
+            <point key="canvasLocation" x="206" y="-59"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="FYI-kr-p7V" userLabel="Panel (Save request sheet)" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>

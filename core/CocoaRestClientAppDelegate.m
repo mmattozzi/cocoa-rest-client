@@ -26,24 +26,13 @@
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
 
-
-@interface CocoaRestClientAppDelegate(Private)
-- (void)loadSavedDictionary:(NSDictionary *)request;
-- (void)loadSavedCRCRequest:(CRCRequest *)request;
-
-@end
-
 @implementation CocoaRestClientAppDelegate
 
 @synthesize mainWindowControllers;
-@synthesize preemptiveBasicAuth;
-@synthesize preferencesController;
 @synthesize syntaxHighlightingMenuItem;
 @synthesize reGetResponseMenuItem;
 @synthesize themeMenuItem;
-@synthesize jsonWriter;
 @synthesize showLineNumbersMenuItem;
-@synthesize fastSearchSavedRequestsController;
 @synthesize allowSelfSignedCerts;
 @synthesize aceViewFontSize;
 
@@ -62,16 +51,13 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
 	allowSelfSignedCerts = YES;
-    preemptiveBasicAuth = NO;
     
     self.savedRequestsDataSource = [[SavedRequestsDataSource alloc] init];
     [self.savedRequestsDataSource loadDataFromDisk];
     
-    
-    // Register a key listener
+    // Register a key listener: Command-L highlights contents of URL box in current window
     NSEvent * (^monitorHandler)(NSEvent *);
     monitorHandler = ^NSEvent * (NSEvent * theEvent) {
-        
         if (([theEvent modifierFlags] & NSCommandKeyMask) && [[theEvent characters] isEqualToString:@"l"]) {
             [currentWindowController.urlBox selectText:nil];
             return nil;
@@ -132,25 +118,15 @@
     // [[window windowController] setShouldCascadeWindows:NO];
     // [window setFrameAutosaveName:@"CRCMainWindow"];
     
-    
-    
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
-    
-    
-    
-    
+    // Used by all windows of application
 	self.requestMethodsWithoutBody = [NSSet setWithObjects:@"GET", @"HEAD", @"OPTIONS", nil];
 	
-	
-    
-    // TODO
-    
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
-    
-    self.fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
+    fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
     // TODO
     // drawerView.cocoaRestClientAppDelegate = self;
@@ -161,11 +137,6 @@
     
     
     //[self syntaxHighlightingPreferenceChanged];
-    
-    
-    
-    
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deleteSavedRequest:)
@@ -178,22 +149,16 @@
                                                object:nil];
     
     [self addTabFromWindow:nil];
-    
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
     return !(flag || ([currentWindowController.window makeKeyAndOrderFront: self], 0));
 }
 
-
 - (void)syntaxHighlightingPreferenceChanged {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
 }
-
-
-
-
 
 #pragma mark -
 #pragma mark Highlighted Text Views
@@ -376,7 +341,7 @@
             [alert addButtonWithTitle:@"Replace"];
             [alert setMessageText:@"Overwrite request?"];
             [alert setInformativeText:[NSString stringWithFormat:@"Would you like to overwrite the request '%@'?", nameOfRequest]];
-            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert setAlertStyle:NSAlertStyleWarning];
             
             if ([alert runModal] == NSAlertSecondButtonReturn) {
                 [((CRCRequest *) selectedSavedOutlineViewItem) overwriteContentsWith:request];
@@ -419,7 +384,7 @@
     [alert addButtonWithTitle:@"OK"];
     [alert setMessageText:@"Invalid file"];
     [alert setInformativeText:@"Unable to read stored requests from file."];
-    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
     [alert beginSheetModalForWindow:currentWindowController.window completionHandler:nil];
 }
 
@@ -510,27 +475,34 @@
     NSLog(@"Downloads updates: %d", [[SUUpdater sharedUpdater] automaticallyDownloadsUpdates]);
     NSLog(@"Update check freq: %f", [[SUUpdater sharedUpdater] updateCheckInterval]);
     
-    if(!self.preferencesController)
-        self.preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
+    if(! preferencesController)
+        preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
     
-    [self.preferencesController showWindow:self];
+    [preferencesController showWindow:self];
 }
 
 - (IBAction)zoomIn:(id)sender {
     aceViewFontSize += 2;
-    [currentWindowController.responseView setFontSize:aceViewFontSize];
-    [currentWindowController.requestView setFontSize:aceViewFontSize];
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController).responseView setFontSize:aceViewFontSize];
+        [((MainWindowController *)mainWindowController).requestView setFontSize:aceViewFontSize];
+    }
 }
 
 - (IBAction)zoomOut:(id)sender{
     aceViewFontSize -= 2;
-    [currentWindowController.responseView setFontSize:aceViewFontSize];
-    [currentWindowController.requestView setFontSize:aceViewFontSize];
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController).responseView setFontSize:aceViewFontSize];
+        [((MainWindowController *)mainWindowController).requestView setFontSize:aceViewFontSize];
+    }
 }
 
 - (IBAction) zoomDefault:(id)sender {
-    [currentWindowController.responseView setFontSize:DEFAULT_FONT_SIZE];
-    [currentWindowController.requestView setFontSize:DEFAULT_FONT_SIZE];
+    aceViewFontSize = DEFAULT_FONT_SIZE;
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController).responseView setFontSize:DEFAULT_FONT_SIZE];
+        [((MainWindowController *)mainWindowController).requestView setFontSize:DEFAULT_FONT_SIZE];
+    }
 }
 
 - (IBAction) exportResponse:(id)sender {
@@ -549,7 +521,7 @@
             [alert addButtonWithTitle:@"OK"];
             [alert setMessageText:@"Unable to save response"];
             [alert setInformativeText:[error localizedFailureReason]];
-            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert setAlertStyle:NSAlertStyleWarning];
             [alert runModal];
         }
     }
@@ -577,7 +549,7 @@
         [alert addButtonWithTitle:@"OK"];
         [alert setMessageText:@"Unable to save response as temp file"];
         [alert setInformativeText:[error localizedFailureReason]];
-        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert setAlertStyle:NSAlertStyleWarning];
         [alert runModal];
         return nil;
     } else {
@@ -623,6 +595,10 @@
 
 - (void) deleteSavedRequest: (NSNotification *) notification {
     [currentWindowController deleteSavedRequestFromButton:nil];
+}
+
+- (IBAction) deleteSavedRequestFromMenu:(id) sender {
+    [self deleteSavedRequest:nil];
 }
 
 - (void) deselectSavedRequest:(NSNotification *)notification {
