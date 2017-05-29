@@ -926,6 +926,7 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
     NSLog(@"Window is about to close!");
+    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:SYNTAX_HIGHLIGHT context:nil];
     [appDelegate tabWasRemoved:self];
 }
 
