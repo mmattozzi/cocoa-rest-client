@@ -264,8 +264,11 @@
 }
 
 - (IBAction) themeMenuItemSelected:(id)sender {
-    [currentWindowController.responseView setTheme:[sender tag]];
-    [currentWindowController.requestView setTheme:[sender tag]];
+    // Update theme in all open windows
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController).responseView setTheme:[sender tag]];
+        [((MainWindowController *)mainWindowController).requestView setTheme:[sender tag]];
+    }
     
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
     
