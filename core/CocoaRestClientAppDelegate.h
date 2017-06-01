@@ -106,6 +106,7 @@
 // Rest of Option MenuItems just set SharedUserDefaults in IB
 
 /* View Menu */
+- (IBAction) syntaxHighlightingToggled:(id)sender;
 - (IBAction) showLineNumbersToggled:(id)sender;
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender;
 - (IBAction) zoomDefault:(id)sender;
@@ -129,7 +130,7 @@
 - (IBAction) allowSelfSignedCerts:(id)sender;
 
 
-- (void)syntaxHighlightingPreferenceChanged;
+// - (void)syntaxHighlightingPreferenceChanged;
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 
 

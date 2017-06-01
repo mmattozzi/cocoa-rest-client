@@ -128,15 +128,10 @@
     exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
     fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
     
-    // TODO
-    // drawerView.cocoaRestClientAppDelegate = self;
-    // [drawerView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
-    
-    
     [reGetResponseMenuItem setEnabled:NO];
     
-    
-    //[self syntaxHighlightingPreferenceChanged];
+    [showLineNumbersMenuItem setState:[[NSUserDefaults standardUserDefaults] boolForKey:SHOW_LINE_NUMBERS]];
+    [syntaxHighlightingMenuItem setState:[[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deleteSavedRequest:)
@@ -155,10 +150,12 @@
     return !(flag || ([currentWindowController.window makeKeyAndOrderFront: self], 0));
 }
 
+/*
 - (void)syntaxHighlightingPreferenceChanged {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     syntaxHighlightingMenuItem.state = syntaxHighlighting;
 }
+ */
 
 #pragma mark -
 #pragma mark Highlighted Text Views
@@ -166,14 +163,32 @@
 
 - (void) showLineNumbersToggled:(id)sender {
     NSInteger state = [((NSMenuItem *) sender) state];
+    BOOL lineNumberState;
     if (state == NSOnState) {
-        [currentWindowController applyShowLineNumbers:NO];
-        [((NSMenuItem *) sender) setState:NO];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:SHOW_LINE_NUMBERS];
+        lineNumberState = NO;
     } else if (state == NSOffState) {
-        [currentWindowController applyShowLineNumbers:YES];
+        lineNumberState = YES;
+    }
+    
+    [((NSMenuItem *) sender) setState:lineNumberState];
+    [[NSUserDefaults standardUserDefaults] setBool:lineNumberState forKey:SHOW_LINE_NUMBERS];
+    
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController) applyShowLineNumbers:lineNumberState];
+    }
+}
+
+- (IBAction) syntaxHighlightingToggled:(id)sender {
+    NSInteger state = [((NSMenuItem *) sender) state];
+    if (state == NSOnState) {
+        [((NSMenuItem *) sender) setState:NO];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:SYNTAX_HIGHLIGHT];
+    } else if (state == NSOffState) {
         [((NSMenuItem *) sender) setState:YES];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SHOW_LINE_NUMBERS];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SYNTAX_HIGHLIGHT];
+    }
+    for (id mainWindowController in mainWindowControllers) {
+        [((MainWindowController *)mainWindowController) syntaxHighlightingPreferenceChanged];
     }
 }
 

@@ -33,23 +33,6 @@
 @synthesize fileRequestBody;
 @synthesize savedRequestsView;
 
-- (void)setupObservers {
-    [[NSUserDefaults standardUserDefaults]addObserver:self
-                                           forKeyPath:SYNTAX_HIGHLIGHT
-                                              options:NSKeyValueObservingOptionNew
-                                              context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:SYNTAX_HIGHLIGHT]) {
-        // This might come on a bg thread, good old foundation bug. Thats why the GCD call.
-        // Diego
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self syntaxHighlightingPreferenceChanged];
-        });
-    }
-}
-
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -115,9 +98,6 @@
     [self.requestTextPlain setFont:[NSFont fontWithName:@"Courier" size:12]];
     
     [self initHighlightedViews];
-    
-    
-    [self setupObservers];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
 
@@ -931,7 +911,6 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
     NSLog(@"Window is about to close!");
-    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:SYNTAX_HIGHLIGHT context:nil];
     [appDelegate tabWasRemoved:self];
 }
 

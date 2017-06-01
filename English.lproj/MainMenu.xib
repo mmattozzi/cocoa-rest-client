@@ -310,10 +310,10 @@ CA
                     <menu key="submenu" title="View" id="722">
                         <items>
                             <menuItem title="Show Request Drawer" keyEquivalent="d" id="724"/>
-                            <menuItem title="Syntax Highlighting" id="977">
+                            <menuItem title="Syntax Highlighting" state="on" id="977">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <binding destination="833" name="value" keyPath="values.UIMenuSyntaxHighlight" id="2im-Sp-zt1"/>
+                                    <action selector="syntaxHighlightingToggled:" target="494" id="Mqp-ii-tdX"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show Line Numbers" state="on" id="oAI-Y9-WOk">
@@ -612,6 +612,7 @@ CA
             <connections>
                 <outlet property="reGetResponseMenuItem" destination="1011" id="1017"/>
                 <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
+                <outlet property="syntaxHighlightingMenuItem" destination="977" id="Iks-gq-rra"/>
                 <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
             </connections>
         </customObject>
