@@ -401,7 +401,7 @@
     if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {
         return NO;
     } else if ([protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        return self.appDelegate.allowSelfSignedCerts;
+        return [[NSUserDefaults standardUserDefaults] boolForKey:ALLOW_SELF_SIGNED_CERTS];
     } else {
         return YES;
     }

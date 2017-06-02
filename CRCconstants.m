@@ -22,6 +22,6 @@ NSString * const SHOW_LINE_NUMBERS = @"showLineNumbers";
 NSString * const DISABLE_ANIMATIONS = @"UIDisableAnimations";
 NSString * const DISABLE_COOKIES = @"disableCookies";
 NSString * const FILE_REQUEST_BODY = @"UIFileRequestBody";
-
+NSString * const ALLOW_SELF_SIGNED_CERTS = @"allowSelfSignedCerts";
 
 @end

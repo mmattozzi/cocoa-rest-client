@@ -302,6 +302,13 @@ CA
                                     <binding destination="833" name="value" keyPath="values.disableCookies" id="a3d-5k-v7E"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Allow self-signed SSL certificates" identifier="allowSelfSignedCerts" id="RSW-uk-mhP">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="restartRequiredAlert:" target="494" id="G6U-Ir-Xpq"/>
+                                    <binding destination="833" name="value" keyPath="values.allowSelfSignedCerts" id="84k-8i-K8u"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

@@ -46,7 +46,6 @@
 
 // Used throughout by all application windows
 @property (strong) NSSet *requestMethodsWithoutBody;
-@property (atomic) BOOL allowSelfSignedCerts;
 @property (atomic) NSUInteger aceViewFontSize;
 
 // Menu Items that need to be checked, unchecked, enabled, or disabled
@@ -69,6 +68,7 @@
 
 // Utility Methods
 - (void) invalidFileAlert;
+- (IBAction) restartRequiredAlert:(id)sender;
 - (NSString *) saveResponseToTempFile;
 + (NSString *) nameForRequest:(id)object;
 + (void) addBorderToView:(NSView *)view;
@@ -126,13 +126,6 @@
 // Called for all menu enabled/disabled status
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 
-// ??
-
-// Whatever happened to this menu item?
-- (IBAction) allowSelfSignedCerts:(id)sender;
-
-
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
-
 
 @end

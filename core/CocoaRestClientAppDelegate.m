@@ -33,7 +33,6 @@
 @synthesize reGetResponseMenuItem;
 @synthesize themeMenuItem;
 @synthesize showLineNumbersMenuItem;
-@synthesize allowSelfSignedCerts;
 @synthesize aceViewFontSize;
 
 #pragma mark -
@@ -51,9 +50,8 @@
     [defaults setValue:[NSNumber numberWithInteger:ACEThemeChrome] forKey:THEME];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SHOW_LINE_NUMBERS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:DISABLE_COOKIES];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:ALLOW_SELF_SIGNED_CERTS];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-    
-	allowSelfSignedCerts = YES;
     
     self.savedRequestsDataSource = [[SavedRequestsDataSource alloc] init];
     [self.savedRequestsDataSource loadDataFromDisk];
@@ -179,6 +177,17 @@
     [alert addButtonWithTitle:@"OK"];
     [alert setMessageText:@"Invalid file"];
     [alert setInformativeText:@"Unable to read stored requests from file."];
+    [alert setAlertStyle:NSAlertStyleWarning];
+    [alert beginSheetModalForWindow:currentWindowController.window completionHandler:nil];
+}
+
+- (IBAction) restartRequiredAlert:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"Restart Required"];
+    if ([[sender identifier] isEqualToString:@"allowSelfSignedCerts"]) {
+        [alert setInformativeText:@"Restart the app for changes to take effect for hosts that have already been visted."];
+    }
     [alert setAlertStyle:NSAlertStyleWarning];
     [alert beginSheetModalForWindow:currentWindowController.window completionHandler:nil];
 }
@@ -625,18 +634,6 @@
     }
     
     return TRUE;
-}
-
-// TODO
-- (IBAction) allowSelfSignedCerts:(id)sender {
-    NSMenuItem* menuItemSender = (NSMenuItem *) sender;
-    if ([menuItemSender state] == NSOnState) {
-        allowSelfSignedCerts = NO;
-        [menuItemSender setState:NSOffState];
-    } else {
-        allowSelfSignedCerts = YES;
-        [menuItemSender setState:NSOnState];
-    }
 }
 
 @end
