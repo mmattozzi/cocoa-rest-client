@@ -77,7 +77,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="File" id="716">
                         <items>
-                            <menuItem title="Open Window" tag="150" keyEquivalent="o" id="891">
+                            <menuItem title="New Window" tag="150" keyEquivalent="n" id="891">
                                 <connections>
                                     <action selector="handleOpenWindow:" target="494" id="892"/>
                                 </connections>
@@ -208,7 +208,7 @@ CA
                                     <action selector="selectAll:" target="-1" id="605"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Copy Curl Command (beta)" keyEquivalent="k" id="d1z-PZ-ZgI">
+                            <menuItem title="Copy Curl Command" keyEquivalent="k" id="d1z-PZ-ZgI">
                                 <connections>
                                     <action selector="copyCurlCommand:" target="-1" id="3Qz-wu-K55"/>
                                 </connections>
@@ -322,8 +322,7 @@ CA
                                     <action selector="showLineNumbersToggled:" target="494" id="Ufi-cI-nl8"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Search Saved Requests" keyEquivalent="t" id="z9V-Oo-vFv">
-                                <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                            <menuItem title="Search Saved Requests" keyEquivalent="o" id="z9V-Oo-vFv">
                                 <connections>
                                     <action selector="openFastSearchSavedRequestsPanel:" target="494" id="kK7-l4-Msr"/>
                                 </connections>

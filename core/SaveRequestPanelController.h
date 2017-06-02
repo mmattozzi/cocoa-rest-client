@@ -10,11 +10,10 @@
 
 @interface SaveRequestPanelController : NSWindowController {
     NSTextField *saveRequestTextField;
-    NSWindow *parent;
 }
 
 @property (strong, nonnull) IBOutlet NSTextField *saveRequestTextField;
-@property (strong, nonnull) IBOutlet NSWindow *parent;
+@property (weak) IBOutlet NSWindow *parent;
 
 - (IBAction) save:(nullable id)sender;
 - (IBAction) cancel:(nullable id)sender;

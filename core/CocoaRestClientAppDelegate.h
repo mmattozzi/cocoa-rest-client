@@ -70,6 +70,8 @@
 // Utility Methods
 - (void) invalidFileAlert;
 - (NSString *) saveResponseToTempFile;
++ (NSString *) nameForRequest:(id)object;
++ (void) addBorderToView:(NSView *)view;
 
 //
 // Actions driven from Menu Items
@@ -130,7 +132,6 @@
 - (IBAction) allowSelfSignedCerts:(id)sender;
 
 
-// - (void)syntaxHighlightingPreferenceChanged;
 //- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
 
 

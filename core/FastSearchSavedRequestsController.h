@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface FastSearchSavedRequestsController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
-    NSWindow *parent;
     NSMutableArray *requests;
     NSArray *baseRequests;
 }
@@ -17,7 +16,7 @@
 @property (weak) IBOutlet NSTableView *fastSearchRequestsTableView;
 @property (weak) IBOutlet NSTextField *fastSearchRequestsTextField;
 @property (weak) IBOutlet NSPanel *fastSearchRequestsPanel;
-@property (strong) NSWindow *parent;
+@property (weak) NSWindow *parent;
 @property (strong) id selectedRequest;
 @property (weak) IBOutlet NSScrollView *requestScrollView;
 

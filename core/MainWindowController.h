@@ -42,7 +42,7 @@
 }
 
 @property (weak) CocoaRestClientAppDelegate *appDelegate;
-@property IBOutlet SavedRequestsDataSource *savedRequestsDataSource;
+@property (weak) IBOutlet SavedRequestsDataSource *savedRequestsDataSource;
 @property (strong) SBJson4Writer *jsonWriter;
 
 @property (nonatomic) NSMutableArray *headersTable;
