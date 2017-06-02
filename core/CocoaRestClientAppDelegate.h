@@ -126,6 +126,4 @@
 // Called for all menu enabled/disabled status
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 
-//- (void) setHighlightSyntaxForMIME:(NSString*) mimeType;
-
 @end
