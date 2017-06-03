@@ -75,10 +75,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    // [window setFrameUsingName:@"CRCMainWindow"];
-    // [[window windowController] setShouldCascadeWindows:NO];
-    // [window setFrameAutosaveName:@"CRCMainWindow"];
-    
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];
     
@@ -103,7 +99,8 @@
                                              selector:@selector(deselectSavedRequest:)
                                                  name:@"deselectSavedRequest"
                                                object:nil];
-    
+
+    windowNumber = 0;
     [self addTabFromWindow:nil];
 }
 
@@ -117,6 +114,18 @@
         [mainWindowController.window orderFront:window];
         [mainWindowController.window makeKeyWindow];
     } else {
+        if (windowNumber == 0) {
+            [mainWindowController.window setFrameUsingName:@"CRCMainWindow"];
+            [[mainWindowController.window windowController] setShouldCascadeWindows:NO];
+            [mainWindowController.window setFrameAutosaveName:@"CRCMainWindow"];
+        } else {
+            CGPoint currentOrigin = [currentWindowController.window frame].origin;
+            currentOrigin.x += 20;
+            currentOrigin.y -= 20;
+            [mainWindowController.window setFrameOrigin:currentOrigin];
+        }
+        windowNumber++;
+        
         [mainWindowController showWindow:self];
     }
     [self.mainWindowControllers addObject:mainWindowController];
@@ -269,13 +278,7 @@
 
 - (IBAction) handleOpenWindow:(id)sender {
     if (currentWindowController.window.screen) {
-        MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
-        mainWindowController.appDelegate = self;
-        mainWindowController.savedRequestsDataSource = self.savedRequestsDataSource;
-        mainWindowController.window.title = @"CocoaRestClient";
-        [mainWindowController showWindow:self];
-        [self.mainWindowControllers addObject:mainWindowController];
-        [mainWindowController showWindow:self];
+        [self addTabFromWindow:nil];
     } else {
         [currentWindowController.window makeKeyAndOrderFront:self];
     }

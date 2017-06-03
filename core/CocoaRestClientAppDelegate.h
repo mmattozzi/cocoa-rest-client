@@ -36,6 +36,7 @@
     
     id eventMonitor;
     id lastSelectedSavedOutlineViewItem;
+    NSUInteger windowNumber;
 }
 
 // Reference to WindowControllers of all windows that are open
