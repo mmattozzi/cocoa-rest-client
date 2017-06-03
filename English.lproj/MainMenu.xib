@@ -316,7 +316,11 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="722">
                         <items>
-                            <menuItem title="Show Request Drawer" keyEquivalent="d" id="724"/>
+                            <menuItem title="Hide Saved Requests" keyEquivalent="d" id="724">
+                                <connections>
+                                    <action selector="toggleVerticalSplitView:" target="494" id="k67-0K-c34"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Syntax Highlighting" state="on" id="977">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -618,6 +622,7 @@ CA
             <connections>
                 <outlet property="reGetResponseMenuItem" destination="1011" id="1017"/>
                 <outlet property="showLineNumbersMenuItem" destination="oAI-Y9-WOk" id="wYQ-JM-AIF"/>
+                <outlet property="showSavedRequestsMenuItem" destination="724" id="7io-Rr-E9d"/>
                 <outlet property="syntaxHighlightingMenuItem" destination="977" id="Iks-gq-rra"/>
                 <outlet property="themeMenuItem" destination="kVo-uI-8oy" id="fMz-e7-adV"/>
             </connections>

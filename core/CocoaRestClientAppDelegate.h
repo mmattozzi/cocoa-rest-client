@@ -54,6 +54,7 @@
 @property (weak) IBOutlet NSMenuItem *reGetResponseMenuItem;
 @property (weak) IBOutlet NSMenuItem *showLineNumbersMenuItem;
 @property (weak) IBOutlet NSMenuItem *themeMenuItem;
+@property (weak) IBOutlet NSMenuItem *showSavedRequestsMenuItem;
 
 // Window management methods
 - (void) addTabFromWindow:(NSWindow *)window;
@@ -109,6 +110,7 @@
 // Rest of Option MenuItems just set SharedUserDefaults in IB
 
 /* View Menu */
+- (IBAction) toggleVerticalSplitView:(id)sender;
 - (IBAction) syntaxHighlightingToggled:(id)sender;
 - (IBAction) showLineNumbersToggled:(id)sender;
 - (IBAction) openFastSearchSavedRequestsPanel:(id)sender;

@@ -34,6 +34,7 @@
 @synthesize themeMenuItem;
 @synthesize showLineNumbersMenuItem;
 @synthesize aceViewFontSize;
+@synthesize showSavedRequestsMenuItem;
 
 #pragma mark -
 #pragma mark Window Management
@@ -139,6 +140,12 @@
 
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController {
     currentWindowController = mainWindowController;
+    if ([currentWindowController.savedRequestsOuterView isHidden]) {
+        [self.showSavedRequestsMenuItem setTitle:SHOW_SAVED_REQUESTS_MENU_TITLE];
+    }
+    else {
+        [self.showSavedRequestsMenuItem setTitle:HIDE_SAVED_REQUESTS_MENU_TITLE];
+    }
 }
 
 - (void) applicationWillTerminate: (NSNotification *)note {
@@ -518,6 +525,22 @@
 
 #pragma mark -
 #pragma mark View Menu
+
+- (IBAction) toggleVerticalSplitView:(id)sender {
+    if ([currentWindowController.savedRequestsOuterView isHidden]) {
+        [currentWindowController.savedRequestsOuterView setHidden:NO];
+        [currentWindowController.verticalSplitView
+         setPosition:currentWindowController.lastSavedRequestsViewWidth
+         ofDividerAtIndex:0];
+        [self.showSavedRequestsMenuItem setTitle:HIDE_SAVED_REQUESTS_MENU_TITLE];
+    }
+    else {
+        currentWindowController.lastSavedRequestsViewWidth = [currentWindowController.savedRequestsOuterView frame].size.width;
+        [currentWindowController.savedRequestsOuterView setHidden:YES];
+        [self.showSavedRequestsMenuItem setTitle:SHOW_SAVED_REQUESTS_MENU_TITLE];
+    }
+    [currentWindowController.verticalSplitView adjustSubviews];
+}
 
 - (IBAction) syntaxHighlightingToggled:(id)sender {
     NSInteger state = [((NSMenuItem *) sender) state];

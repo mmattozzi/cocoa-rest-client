@@ -91,6 +91,9 @@
 // Saved Requests
 @property (weak) IBOutlet CRCDrawerView *savedRequestsView;
 @property (weak) IBOutlet NSOutlineView *savedOutlineView;
+@property (weak) IBOutlet NSSplitView *verticalSplitView;
+@property (weak) IBOutlet NSView *savedRequestsOuterView;
+@property CGFloat lastSavedRequestsViewWidth;
 
 // For modal dialogs
 @property (weak) IBOutlet NSPanel *saveRequestSheet;

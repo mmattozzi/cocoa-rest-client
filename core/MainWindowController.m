@@ -28,6 +28,9 @@
 @synthesize rawRequestBody;
 @synthesize fileRequestBody;
 @synthesize savedRequestsView;
+@synthesize verticalSplitView;
+@synthesize savedRequestsOuterView;
+@synthesize lastSavedRequestsViewWidth;
 
 #pragma mark -
 #pragma mark Init and Window Methods

@@ -23,5 +23,7 @@ NSString * const DISABLE_ANIMATIONS = @"UIDisableAnimations";
 NSString * const DISABLE_COOKIES = @"disableCookies";
 NSString * const FILE_REQUEST_BODY = @"UIFileRequestBody";
 NSString * const ALLOW_SELF_SIGNED_CERTS = @"allowSelfSignedCerts";
+NSString * const SHOW_SAVED_REQUESTS_MENU_TITLE = @"Show Saved Requests Sidebar";
+NSString * const HIDE_SAVED_REQUESTS_MENU_TITLE = @"Hide Saved Requests Sidebar";
 
 @end
