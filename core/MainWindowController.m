@@ -18,10 +18,6 @@
 #import "SavedRequestsDataSource.h"
 #import "CRCDrawerView.h"
 
-@interface MainWindowController ()
-
-@end
-
 @implementation MainWindowController
 
 @synthesize appDelegate;
