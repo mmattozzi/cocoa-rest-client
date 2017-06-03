@@ -42,34 +42,30 @@ Features
 * SSL Support (including untrusted certificates)
 * Optionally follows HTTP redirects
 * Import and export requests
+* New in version 1.4: Uses native macOS tabs and windows. 
 
 Screenshots
 =================
 
-![Screenshot 2](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-2.png)
+<img src="https://mmattozzi.github.io/cocoa-rest-client/screenshots/screenshot-1.png" width=400/>
 
 *Pretty print JSON content. Set and save HTTP headers.*
 
-![Screenshot 1](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-1.png)
+<img src="https://mmattozzi.github.io/cocoa-rest-client/screenshots/screenshot-4.png" width=400/>
 
 *Pretty print XML content. Quick save of request URLs, body, and headers in one convenient drawer.*
 
-![Screenshot 3](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-3.png)
+<img src="https://mmattozzi.github.io/cocoa-rest-client/screenshots/screenshot-5.png" width=400/>
 
 *Set HTTP Basic or Digest Auth. Displays HTTP response headers.*
 
-![Screenshot 4](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-4.png)
-
-*Set HTTP request body content to a raw text blob or a list of parameters.*
-
-![Screenshot 5](https://github.com/mmattozzi/cocoa-rest-client/raw/master/screenshots/cocoa-rest-client-5.png)
+<img src="https://mmattozzi.github.io/cocoa-rest-client/screenshots/screenshot-2.png" width=400/>
 
 *Upload files using HTTP multipart requests. HTTP form encoding also supported.*
 
 Source and Contributions
 =================
-* Source code is hosted on Github: https://github.com/mmattozzi/cocoa-rest-client
-* If you would like to contribute, please fork and create a pull request on Github 
+* Contributions are always welcome! Please fork and create a pull request.
 * Source uses [Cocoapods](https://cocoapods.org/) for dependencies, to get started, [install CocoaPods](http://guides.cocoapods.org/using/getting-started.html) and in the main project directory run:
     
     ```
