@@ -33,12 +33,12 @@ Features
 * Auto-format (pretty print) XML, JSON, and MsgPack responses
 * Some cool Ace Editor themes for syntax highlighting
 * Display response headers
-* Quick save requests in a handy drawer using folder organization
+* Quick save requests in a handy sidebar using folder organization
 * Upload files and form data via multipart/form-data
 * Enter POST/PUT input as raw input or key/value pairs
 * Reports response latency
 * Command-R reloads last request
-* Lightweight: Low real memory usage
+* Lightweight: Low real memory usage and < 6mb DMG
 * SSL Support (including untrusted certificates)
 * Optionally follows HTTP redirects
 * Import and export requests
