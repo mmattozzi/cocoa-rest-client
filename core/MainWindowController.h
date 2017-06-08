@@ -125,6 +125,7 @@
 
 // Request submission and Response Handling
 - (IBAction) runSubmit:(id)sender;
+- (NSString *) getValueForHeader:(NSString *)headerName;
 - (void) setResponseText:(NSString *)response;
 - (NSString *) getResponseText;
 - (void) prettyPrintJsonResponseFromObject:(id)obj;

@@ -490,6 +490,15 @@
     
 }
 
+- (NSString *) getValueForHeader:(NSString *)headerName {
+    for(NSDictionary * row in self.headersTable) {
+        if ([[[row objectForKey:@"key"] lowercaseString] isEqualToString:[headerName lowercaseString]]) {
+            return [row valueForKey:@"value"];
+        }
+    }
+    return nil;
+}
+
 - (void) setResponseText:(NSString *)response {
     BOOL syntaxHighlighting = [[NSUserDefaults standardUserDefaults] boolForKey:SYNTAX_HIGHLIGHT];
     if (! syntaxHighlighting) {
@@ -794,14 +803,29 @@
     [self.progressIndicator setHidden:YES];
 }
 
-// This controls if HTTP redirects are followed
+// This controls if HTTP redirects are followed. This method (as of macOS 10.12 is called before *every*
+// request is issued. This gives us a chance to make final modifications to the request that NSURLConnection
+// has constructed. 
 - (NSURLRequest *)connection: (NSURLConnection *)inConnection
              willSendRequest: (NSURLRequest *)inRequest
             redirectResponse: (NSURLResponse *)inRedirectResponse;
 {
+    NSMutableURLRequest *modifiedRequest = nil;
     NSMutableString *headers = [[NSMutableString alloc] init];
     if (inRequest) {
-        NSDictionary *sentHeaders = [inRequest allHTTPHeaderFields];
+        modifiedRequest = [inRequest mutableCopy];
+        
+        // NSURLConnection seems to automatically append these headers to its requests,
+        // normally OK but not good for an HTTP tester. Strip them out if the user didn't
+        // specify them in the headers table.
+        if (! [self getValueForHeader:@"Accept-Encoding"]) {
+            [modifiedRequest setValue:nil forHTTPHeaderField:@"Accept-Encoding"];
+        }
+        if (! [self getValueForHeader:@"Accept-Language"]) {
+            [modifiedRequest setValue:nil forHTTPHeaderField:@"Accept-Language"];
+        }
+        
+        NSDictionary *sentHeaders = [modifiedRequest allHTTPHeaderFields];
         for (NSString *key in sentHeaders) {
             [headers appendFormat:@"%@: %@\n", key, [sentHeaders objectForKey:key]];
         }
@@ -812,8 +836,7 @@
         if (! [[NSUserDefaults standardUserDefaults] boolForKey:FOLLOW_REDIRECTS]) {
             return nil;
         } else {
-            NSMutableURLRequest *r = [inRequest mutableCopy]; // original request
-            [r setURL: [inRequest URL]];
+            [modifiedRequest setURL: [inRequest URL]];
             
             // For HTTP 301, 302, & 303s, there is w3c guidance about when the POST should be
             // propogated rather than converted into a GET on the target of the redirect. See:
@@ -822,13 +845,12 @@
             // the built-in rules and propogate the HTTP method to the target of the redirect no
             // matter what the guidelines are.
             if ([[NSUserDefaults standardUserDefaults] boolForKey:APPLY_HTTP_METHOD_ON_REDIRECT]) {
-                [r setHTTPMethod:[currentRequest HTTPMethod]];
+                [modifiedRequest setHTTPMethod:[currentRequest HTTPMethod]];
             }
-            return r;
         }
-    } else {
-        return inRequest;
     }
+    
+    return modifiedRequest;
 }
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
