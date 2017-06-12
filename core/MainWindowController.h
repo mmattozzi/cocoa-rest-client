@@ -139,6 +139,7 @@
 - (void)loadSavedCRCRequest:(CRCRequest *)request;
 - (IBAction) outlineClick:(id)sender;
 - (void)loadSavedDictionary:(NSDictionary *)request __deprecated;
+- (void) adjustSavedRequestsViewWidth:(id)object;
 
 // Handling preference updates
 - (void)syntaxHighlightingPreferenceChanged;

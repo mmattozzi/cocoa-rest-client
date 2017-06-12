@@ -99,7 +99,20 @@
     
     [self initHighlightedViews];
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:SAVED_REQUESTS_VIEW_WIDTH]) {
+        CGFloat width = [[NSUserDefaults standardUserDefaults]
+                         floatForKey:SAVED_REQUESTS_VIEW_WIDTH];
+        NSLog(@"width of saved requests divider = %f", width);
+        [self.verticalSplitView setPosition:[[NSUserDefaults standardUserDefaults]
+             floatForKey:SAVED_REQUESTS_VIEW_WIDTH] ofDividerAtIndex:0];
+        [self.verticalSplitView adjustSubviews];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteTableRow:) name:@"deleteTableRow" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adjustSavedRequestsViewWidth:)
+                                                 name:NSSplitViewDidResizeSubviewsNotification
+                                               object:verticalSplitView];
 
     // Enable Drag and Drop for outline view of saved requests WITHIN the outline view
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
@@ -718,6 +731,10 @@
     [self.headersTableView reloadData];
     [self.filesTableView reloadData];
     [self.paramsTableView reloadData];
+}
+
+- (void) adjustSavedRequestsViewWidth:(id)object {
+    [[NSUserDefaults standardUserDefaults] setFloat:[self.savedRequestsOuterView frame].size.width forKey:SAVED_REQUESTS_VIEW_WIDTH];
 }
 
 #pragma mark -
