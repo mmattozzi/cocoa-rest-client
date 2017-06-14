@@ -93,6 +93,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1021"/>
+                            <menuItem title="Submit Request" keyEquivalent="s" id="4fQ-Sf-1l1">
+                                <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                                <connections>
+                                    <action selector="submitRequest:" target="494" id="jYJ-I3-gAq"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Reload Request" keyEquivalent="r" id="911">
                                 <connections>
                                     <action selector="reloadLastRequest:" target="494" id="913"/>

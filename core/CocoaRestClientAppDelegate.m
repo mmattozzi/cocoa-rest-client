@@ -301,6 +301,10 @@
     }
 }
 
+- (IBAction) submitRequest:(id)sender {
+    [currentWindowController runSubmit:sender];
+}
+
 - (IBAction) reloadLastRequest:(id)sender {
     if (currentWindowController.lastRequest != nil) {
         [currentWindowController loadSavedCRCRequest:(CRCRequest *)currentWindowController.lastRequest];

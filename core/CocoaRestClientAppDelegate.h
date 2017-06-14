@@ -86,6 +86,7 @@
 - (IBAction) handleOpenWindow:(id)sender;
 - (IBAction) handleCloseWindow:(id)sender;
 - (IBAction) newTab:(id)sender;
+- (IBAction) submitRequest:(id)sender;
 - (IBAction) reloadLastRequest:(id)sender;
 - (IBAction) overwriteRequest:(id) sender; // Save
 - (IBAction) saveRequest:(id) sender; // Save As...
