@@ -183,7 +183,7 @@
                             <rect key="frame" x="0.0" y="25" width="556" height="186"/>
                             <clipView key="contentView" id="gKJ-Gr-UxR">
                                 <rect key="frame" x="1" y="1" width="539" height="184"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView focusRingType="none" importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Jq8-pk-8m8">
                                         <rect key="frame" x="0.0" y="0.0" width="539" height="184"/>
@@ -256,7 +256,7 @@
                             <rect key="frame" x="0.0" y="25" width="514" height="186"/>
                             <clipView key="contentView" copiesOnScroll="NO" id="BDy-en-Kua">
                                 <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="RequestBody" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="24t-Y4-cPJ" id="dib-cT-zCK" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="514" height="163"/>
@@ -780,7 +780,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="4K6-Zh-8YV"/>
                                 </constraints>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="GET" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="A07-rn-r8P">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="GET" drawsBackground="YES" completes="NO" numberOfVisibleItems="10" id="A07-rn-r8P">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
