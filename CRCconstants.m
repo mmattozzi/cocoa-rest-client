@@ -26,5 +26,6 @@ NSString * const ALLOW_SELF_SIGNED_CERTS = @"allowSelfSignedCerts";
 NSString * const SHOW_SAVED_REQUESTS_MENU_TITLE = @"Show Saved Requests Sidebar";
 NSString * const HIDE_SAVED_REQUESTS_MENU_TITLE = @"Hide Saved Requests Sidebar";
 NSString * const SAVED_REQUESTS_VIEW_WIDTH = @"savedRequestsViewWidth";
+NSString * const DEFAULT_CONTENT_TYPE = @"defaultContentType";
 
 @end

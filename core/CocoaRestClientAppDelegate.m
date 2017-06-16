@@ -52,6 +52,7 @@
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:SHOW_LINE_NUMBERS];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:DISABLE_COOKIES];
     [defaults setValue:[NSNumber numberWithBool:YES] forKey:ALLOW_SELF_SIGNED_CERTS];
+    [defaults setValue:@"application/x-www-form-urlencoded" forKey:DEFAULT_CONTENT_TYPE];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     self.savedRequestsDataSource = [[SavedRequestsDataSource alloc] init];

@@ -45,7 +45,7 @@
     NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
     
     [row setObject:@"Content-Type" forKey:@"key"];
-    [row setObject:@"application/x-www-form-urlencoded" forKey:@"value"];
+    [row setObject:[[NSUserDefaults standardUserDefaults] valueForKey:DEFAULT_CONTENT_TYPE] forKey:@"value"];
     [self.headersTable addObject:row];
     
     jsonWriter = [[SBJson4Writer alloc] init];
@@ -381,6 +381,8 @@
         [self.headersTable addObject:row];
         [self.headersTableView reloadData];
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[sender title] forKey:DEFAULT_CONTENT_TYPE];
 }
 
 - (void)deleteTableRow:(NSNotification *)notification {
