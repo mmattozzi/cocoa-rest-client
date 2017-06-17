@@ -416,6 +416,7 @@
 
 - (IBAction) reloadRequestsDrawer:(id)sender {
     [self.savedRequestsDataSource loadDataFromDisk];
+    exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
     [self redrawRequestViews];
 }
 
