@@ -150,6 +150,12 @@
     }
     
     for (NSDictionary *header in headers) {
+        if ([[[header valueForKey:@"key"] lowercaseString] isEqualToString:@"accept-encoding"]) {
+            [command appendString:@"--compressed "];
+        }
+    }
+    
+    for (NSDictionary *header in headers) {
         [command appendString:[NSString stringWithFormat:@"-H '%@: %@' ", [header valueForKey:@"key"], [header valueForKey:@"value"]]];
     }
     
