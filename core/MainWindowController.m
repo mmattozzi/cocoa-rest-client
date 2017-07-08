@@ -41,6 +41,7 @@
     self.headersTable = [[NSMutableArray alloc] init];
     self.filesTable   = [[NSMutableArray alloc] init];
     self.paramsTable  = [[NSMutableArray alloc] init];
+    self.urlParamsTable = [[NSMutableArray alloc] init];
     
     NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
     
@@ -55,7 +56,8 @@
     [self.requestTabView addItems:@[self.requestBodyItemView,
                                     self.requestHeadersItemView,
                                     self.requestAuthItemView,
-                                    self.requestFilesItemView]];
+                                    self.requestFilesItemView,
+                                    self.urlParametersItemView]];
     
     [self.responseTabView addItems:@[self.responseBodyItemView,
                                      self.responseHeadersItemView,
@@ -113,6 +115,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adjustSavedRequestsViewWidth:)
                                                  name:NSSplitViewDidResizeSubviewsNotification
                                                object:verticalSplitView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(urlBoxTextEdited:) name:NSTextDidChangeNotification object:nil];
 
     // Enable Drag and Drop for outline view of saved requests WITHIN the outline view
     [self.savedOutlineView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
@@ -398,6 +402,56 @@
     }
 }
 
+- (IBAction) plusUrlParamsRow:(id)sender {
+    NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+    [row setObject:@"Key" forKey:@"key"];
+    [row setObject:@"Value" forKey:@"value"];
+    
+    [self.urlParamsTable addObject:row];
+    [self.urlParametersTableView reloadData];
+    [self.urlParametersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([self.urlParamsTable count] - 1)] byExtendingSelection:NO];
+    [self.urlParametersTableView editColumn:0 row:([self.urlParamsTable count] - 1) withEvent:nil select:YES];
+}
+
+- (IBAction) minusUrlParamsRow:(id)sender {
+    if (self.urlParamsTable.lastObject) {
+        [self.urlParamsTable removeObjectAtIndex:[self.urlParametersTableView selectedRow]];
+    }
+    [self.urlParametersTableView reloadData];
+}
+
+- (BOOL) updateParamsTableFromUrl {
+    NSString *urlEscaped = [[self.urlBox stringValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlEscaped];
+
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
+                                                resolvingAgainstBaseURL:NO];
+    NSArray *queryItems = urlComponents.queryItems;
+    
+    for (NSURLQueryItem *item in queryItems) {
+        NSMutableDictionary *row = [[NSMutableDictionary alloc] init];
+        if (item.name) {
+            [row setObject:item.name forKey:@"key"];
+            if (item.value) [row setObject:item.value forKey:@"value"];
+            if (! item.value) [row setObject:@"" forKey:@"value"];
+            [self.urlParamsTable addObject:row];
+        }
+    }
+    
+    return YES;
+}
+
+- (void) urlBoxTextEdited:(NSNotification *)notification {
+    NSTextView *object = [notification object];
+    if ([[object superview] superview] == self.urlBox) {
+        NSLog(@"Updating params table from url box");
+        [self.urlParamsTable removeAllObjects];
+        if ([self updateParamsTableFromUrl]) {
+            [self.urlParametersTableView reloadData];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Request Submission and Response Handling
 
@@ -654,6 +708,7 @@
     [self.headersTable removeAllObjects];
     [self.paramsTable removeAllObjects];
     [self.filesTable removeAllObjects];
+    [self.urlParamsTable removeAllObjects];
     
     // Make headers, params, and files mutable dictionaries when they get loaded so that
     // they can still be updated after being loaded.
@@ -681,9 +736,12 @@
         }
     }
     
+    [self updateParamsTableFromUrl];
+    
     [self.headersTableView reloadData];
     [self.filesTableView reloadData];
     [self.paramsTableView reloadData];
+    [self.urlParametersTableView reloadData];
 }
 
 // Respond to click on a row of the saved requests outline view
@@ -979,6 +1037,9 @@
     if(tableView == self.paramsTableView)
         count = [self.paramsTable count];
     
+    if(tableView == self.urlParametersTableView)
+        count = [self.urlParamsTable count];
+    
     return count;
     
 }
@@ -995,6 +1056,9 @@
     
     if(tableView == self.paramsTableView)
         object = [[self.paramsTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
+    
+    if(tableView == self.urlParametersTableView)
+        object = [[self.urlParamsTable objectAtIndex:row] objectForKey:[tableColumn identifier]];
     
     return object;
 }
@@ -1031,6 +1095,14 @@
         [self.paramsTable replaceObjectAtIndex:rowIndex withObject:row];
     }
     
+    if(aTableView == self.urlParametersTableView) {
+        row = [self.urlParamsTable objectAtIndex:rowIndex];
+        if (row == NULL) {
+            row = [[NSMutableDictionary alloc] init];
+        }
+        [row setObject:anObject forKey:[aTableColumn identifier]];
+        [self.urlParamsTable replaceObjectAtIndex:rowIndex withObject:row];
+    }
 }
 
 @end

@@ -45,6 +45,7 @@
 @property (nonatomic) NSMutableArray *headersTable;
 @property (nonatomic) NSMutableArray *filesTable;
 @property (nonatomic) NSMutableArray *paramsTable;
+@property (nonatomic) NSMutableArray *urlParamsTable;
 @property (nonatomic) BOOL preemptiveBasicAuth;
 @property (nonatomic) BOOL rawRequestBody;
 @property (nonatomic) BOOL fileRequestBody;
@@ -59,11 +60,13 @@
 @property IBOutlet DMSlidingTabItemView *requestAuthItemView;
 @property IBOutlet DMSlidingTabItemView *requestFilesItemView;
 @property IBOutlet DMSlidingTabItemView *requestHeadersItemView;
+@property IBOutlet DMSlidingTabItemView *urlParametersItemView;
 @property (weak) IBOutlet ACEView *requestView;
 @property (weak) IBOutlet NSComboBox *methodButton;
 @property (weak) IBOutlet TabbingTableView *headersTableView;
 @property (weak) IBOutlet TabbingTableView *filesTableView;
 @property (weak) IBOutlet TabbingTableView *paramsTableView;
+@property (weak) IBOutlet TabbingTableView *urlParametersTableView;
 @property (weak) IBOutlet NSTextField *username;
 @property (weak) IBOutlet NSTextField *password;
 @property (weak) IBOutlet NSButton *plusParam;
@@ -74,6 +77,8 @@
 @property (weak) IBOutlet NSButton *rawInputButton;
 @property (weak) IBOutlet NSButton *fieldInputButton;
 @property (weak) IBOutlet NSButton *fileInputButton;
+@property (weak) IBOutlet NSButton *plusUrlParameterButton;
+@property (weak) IBOutlet NSButton *minusUrlParameterButton;
 
 // Response Outlets
 @property IBOutlet DMSlidingTabView *responseTabView;
@@ -122,6 +127,11 @@
 - (IBAction)requestBodyInputMode:(id)sender;
 - (void) contentTypeMenuItemSelected:(id)sender;
 - (void)deleteTableRow:(NSNotification *)notification;
+- (IBAction) plusUrlParamsRow:(id)sender;
+- (IBAction) minusUrlParamsRow:(id)sender;
+- (void) updateUrlFromParamsTable;
+- (BOOL) updateParamsTableFromUrl;
+- (void) urlBoxTextEdited:(NSNotification *)notification;
 
 // Request submission and Response Handling
 - (IBAction) runSubmit:(id)sender;
