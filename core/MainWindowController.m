@@ -416,8 +416,28 @@
 - (IBAction) minusUrlParamsRow:(id)sender {
     if (self.urlParamsTable.lastObject) {
         [self.urlParamsTable removeObjectAtIndex:[self.urlParametersTableView selectedRow]];
+        [self updateUrlFromParamsTable];
     }
     [self.urlParametersTableView reloadData];
+}
+
+- (void) updateUrlFromParamsTable {
+    NSString *urlEscaped = [[self.urlBox stringValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlEscaped];
+    
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
+                                                resolvingAgainstBaseURL:NO];
+    
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    
+    for (NSMutableDictionary *dict in self.urlParamsTable) {
+        NSURLQueryItem *queryItem = [[NSURLQueryItem alloc] initWithName:[dict objectForKey:@"key"] value:[dict objectForKey:@"value"]];
+        [queryItems addObject:queryItem];
+    }
+    
+    urlComponents.queryItems = queryItems;
+    
+    [self.urlBox setStringValue:[[urlComponents URL] absoluteString]];
 }
 
 - (BOOL) updateParamsTableFromUrl {
@@ -444,7 +464,6 @@
 - (void) urlBoxTextEdited:(NSNotification *)notification {
     NSTextView *object = [notification object];
     if ([[object superview] superview] == self.urlBox) {
-        NSLog(@"Updating params table from url box");
         [self.urlParamsTable removeAllObjects];
         if ([self updateParamsTableFromUrl]) {
             [self.urlParametersTableView reloadData];
@@ -1102,6 +1121,7 @@
         }
         [row setObject:anObject forKey:[aTableColumn identifier]];
         [self.urlParamsTable replaceObjectAtIndex:rowIndex withObject:row];
+        [self updateUrlFromParamsTable];
     }
 }
 
