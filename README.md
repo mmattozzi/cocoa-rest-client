@@ -29,6 +29,7 @@ Features
 * Make GET, PUT, POST, DELETE, HEAD calls
 * Set request body to arbitrary content
 * Set request headers
+* Edit URL parameters in an easy to read table
 * Set HTTP basic & digest auth
 * Auto-format (pretty print) XML, JSON, and MsgPack responses
 * Some cool Ace Editor themes for syntax highlighting
