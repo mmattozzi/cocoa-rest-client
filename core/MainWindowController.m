@@ -89,6 +89,7 @@
     [self.paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [self.paramsTableView setTextDidEndEditingAction:@selector(doneEditingParamsRow:)];
     [self.filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
+    [self.urlParametersTableView setDoubleAction:@selector(doubleClickedUrlRow:)];
     
     [self.filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
     [self.filesTableView setDelegate: self];
@@ -468,6 +469,16 @@
         if ([self updateParamsTableFromUrl]) {
             [self.urlParametersTableView reloadData];
         }
+    }
+}
+
+- (IBAction) doubleClickedUrlRow:(id)sender {
+    NSInteger row = [self.urlParametersTableView clickedRow];
+    NSInteger col = [self.urlParametersTableView clickedColumn];
+    if (row == -1 && col == -1) {
+        [self plusUrlParamsRow:sender];
+    } else {
+        [self.urlParametersTableView editColumn:col row:row withEvent:nil select:YES];
     }
 }
 

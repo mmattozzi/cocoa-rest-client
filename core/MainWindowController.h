@@ -132,6 +132,7 @@
 - (void) updateUrlFromParamsTable;
 - (BOOL) updateParamsTableFromUrl;
 - (void) urlBoxTextEdited:(NSNotification *)notification;
+- (IBAction) doubleClickedUrlRow:(id)sender;
 
 // Request submission and Response Handling
 - (IBAction) runSubmit:(id)sender;
