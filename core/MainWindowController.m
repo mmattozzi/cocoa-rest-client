@@ -90,6 +90,7 @@
     [self.paramsTableView setTextDidEndEditingAction:@selector(doneEditingParamsRow:)];
     [self.filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
     [self.urlParametersTableView setDoubleAction:@selector(doubleClickedUrlRow:)];
+    [self.urlParametersTableView setTextDidEndEditingAction:@selector(doneEditingUrlParamsRow:)];
     
     [self.filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
     [self.filesTableView setDelegate: self];
@@ -412,6 +413,8 @@
     [self.urlParametersTableView reloadData];
     [self.urlParametersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([self.urlParamsTable count] - 1)] byExtendingSelection:NO];
     [self.urlParametersTableView editColumn:0 row:([self.urlParamsTable count] - 1) withEvent:nil select:YES];
+    
+    [self updateUrlFromParamsTable];
 }
 
 - (IBAction) minusUrlParamsRow:(id)sender {
@@ -479,6 +482,18 @@
         [self plusUrlParamsRow:sender];
     } else {
         [self.urlParametersTableView editColumn:col row:row withEvent:nil select:YES];
+    }
+}
+
+- (void) doneEditingUrlParamsRow:(TableRowAndColumn *)tableRowAndColumn {
+    int lastTextMovement = [self.urlParametersTableView getLastTextMovement];
+    if (lastTextMovement == NSTabTextMovement && [[tableRowAndColumn.column identifier] isEqualToString:@"value"]) {
+        if (tableRowAndColumn.row == [[self.urlParametersTableView dataSource] numberOfRowsInTableView:self.urlParametersTableView] - 1) {
+            [self plusUrlParamsRow:nil];
+        } else {
+            [self.urlParametersTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:(tableRowAndColumn.row + 1)] byExtendingSelection:NO];
+            [self.urlParametersTableView editColumn:0 row:(tableRowAndColumn.row + 1) withEvent:nil select:YES];
+        }
     }
 }
 
