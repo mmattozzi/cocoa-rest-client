@@ -86,6 +86,7 @@
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
     fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
+    diffWindowController = [[DiffWindowController alloc] initWithWindowNibName:@"DiffWindow"];
     
     [reGetResponseMenuItem setEnabled:NO];
     
@@ -634,6 +635,10 @@
     
     // Enable the relevant theme MenuItem
     [((NSMenuItem *) sender) setState:NSOnState];
+}
+
+- (IBAction) diffTwoResponses:(id)sender {
+    [diffWindowController showWindow:self];
 }
 
 #pragma mark -

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DiffWindowController">
+            <connections>
+                <outlet property="diffSourceLeft" destination="0Z5-ro-fgT" id="vKy-vw-Wvx"/>
+                <outlet property="diffSourceRight" destination="Ypc-je-YIe" id="4X3-yU-BHM"/>
+                <outlet property="diffView" destination="JNe-Z3-w4x" id="tNB-oS-2Pi"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="ud6-bc-x11"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="CocoaRestClient Response Diff" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="710" height="403"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="710" height="403"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Z5-ro-fgT">
+                        <rect key="frame" x="18" y="359" width="334" height="26"/>
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cZA-91-ZTp" id="ZrP-GU-29m">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="V31-id-qc7">
+                                <items>
+                                    <menuItem title="Item 1" state="on" id="cZA-91-ZTp"/>
+                                    <menuItem title="Item 2" id="RNj-f4-xgb"/>
+                                    <menuItem title="Item 3" id="Gmz-MY-mav"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-je-YIe">
+                        <rect key="frame" x="376" y="359" width="316" height="26"/>
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fK9-jh-3Cv" id="JJH-B6-N7A">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="LkV-sK-Dch">
+                                <items>
+                                    <menuItem title="Item 1" state="on" id="fK9-jh-3Cv"/>
+                                    <menuItem title="Item 2" id="3dN-1F-006"/>
+                                    <menuItem title="Item 3" id="Gda-TM-aDO"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-Z3-w4x">
+                        <rect key="frame" x="20" y="20" width="670" height="322"/>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                    </wkWebView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Ypc-je-YIe" secondAttribute="trailing" constant="20" id="1Ht-C1-mHz"/>
+                    <constraint firstItem="Ypc-je-YIe" firstAttribute="leading" secondItem="0Z5-ro-fgT" secondAttribute="trailing" constant="20" id="D5x-JN-qbq"/>
+                    <constraint firstAttribute="bottom" secondItem="JNe-Z3-w4x" secondAttribute="bottom" constant="20" id="DpI-uU-y6w"/>
+                    <constraint firstItem="0Z5-ro-fgT" firstAttribute="width" secondItem="Ypc-je-YIe" secondAttribute="width" id="N29-yk-2JP"/>
+                    <constraint firstItem="Ypc-je-YIe" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="OsR-oR-0xv"/>
+                    <constraint firstItem="JNe-Z3-w4x" firstAttribute="top" secondItem="0Z5-ro-fgT" secondAttribute="bottom" constant="20" id="Wcm-e3-Z07"/>
+                    <constraint firstItem="0Z5-ro-fgT" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="eJB-2V-cix"/>
+                    <constraint firstAttribute="trailing" secondItem="JNe-Z3-w4x" secondAttribute="trailing" constant="20" id="iKY-np-nZj"/>
+                    <constraint firstItem="JNe-Z3-w4x" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="qtg-N5-7TG"/>
+                    <constraint firstItem="0Z5-ro-fgT" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="uPQ-0h-7wn"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="139.5" y="143.5"/>
+        </window>
+    </objects>
+</document>

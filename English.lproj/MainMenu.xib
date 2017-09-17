@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -342,6 +342,12 @@ CA
                             <menuItem title="Search Saved Requests" keyEquivalent="o" id="z9V-Oo-vFv">
                                 <connections>
                                     <action selector="openFastSearchSavedRequestsPanel:" target="494" id="kK7-l4-Msr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Diff Two Responses" id="06c-Ol-sE0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="diffTwoResponses:" target="494" id="fl0-22-S6b"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1006"/>
