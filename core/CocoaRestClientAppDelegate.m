@@ -132,11 +132,13 @@
         [mainWindowController showWindow:self];
     }
     [self.mainWindowControllers addObject:mainWindowController];
+    [diffWindowController setup:self.mainWindowControllers];
     NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
 - (void) tabWasRemoved:(NSWindowController *)windowController {
     [self.mainWindowControllers removeObject:windowController];
+    [diffWindowController setup:self.mainWindowControllers];
     NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
@@ -639,6 +641,7 @@
 
 - (IBAction) diffTwoResponses:(id)sender {
     [diffWindowController showWindow:self];
+    [diffWindowController setup:mainWindowControllers];
 }
 
 #pragma mark -
