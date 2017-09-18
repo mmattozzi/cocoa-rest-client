@@ -56,7 +56,6 @@
         } else {
             NSArray *diffs = diff_diffsBetweenTextsWithOptions(leftIndexResponseText, rightIndexResponseText, YES, 0.0);
             NSString *htmlDiff = diff_prettyHTMLFromDiffs(diffs);
-            NSLog(@"%@", htmlDiff);
             [self.diffView loadHTMLString:[NSString stringWithFormat:@"%@%@", DIFF_STYLE, htmlDiff] baseURL:nil];
         }
     }

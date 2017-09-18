@@ -161,6 +161,10 @@
     return !(flag || ([currentWindowController.window makeKeyAndOrderFront: self], 0));
 }
 
+- (void) windowSubmittedRequest:(MainWindowController *)mainWindowController {
+    [diffWindowController setup:mainWindowControllers];
+}
+
 #pragma mark -
 #pragma mark Saved Requests Management
 

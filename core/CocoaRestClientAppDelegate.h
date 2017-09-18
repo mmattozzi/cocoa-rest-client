@@ -63,6 +63,7 @@
 - (void) tabWasRemoved:(NSWindowController *)windowController;
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
 - (void) applicationWillTerminate: (NSNotification *)note;
+- (void) windowSubmittedRequest:(MainWindowController *)mainWindowController;
 
 // Saved requests management
 - (void) redrawRequestViews;
