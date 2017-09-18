@@ -26,8 +26,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="710" height="403"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Z5-ro-fgT">
-                        <rect key="frame" x="18" y="359" width="334" height="26"/>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Z5-ro-fgT">
+                        <rect key="frame" x="18" y="359" width="295" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cZA-91-ZTp" id="ZrP-GU-29m">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -39,9 +39,12 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="updateDiff:" target="-2" id="DOt-tP-gXR"/>
+                        </connections>
                     </popUpButton>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-je-YIe">
-                        <rect key="frame" x="376" y="359" width="316" height="26"/>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-je-YIe">
+                        <rect key="frame" x="328" y="359" width="295" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fK9-jh-3Cv" id="JJH-B6-N7A">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -53,6 +56,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="updateDiff:" target="-2" id="672-aF-Wjt"/>
+                        </connections>
                     </popUpButton>
                     <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-Z3-w4x">
                         <rect key="frame" x="20" y="20" width="670" height="322"/>
@@ -61,21 +67,37 @@
                             <wkPreferences key="preferences"/>
                         </wkWebViewConfiguration>
                     </wkWebView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mZ-y2-rFJ">
+                        <rect key="frame" x="634" y="355" width="62" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Iqk-Ba-f4u"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Diff" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MSO-vw-Jci">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="updateDiff:" target="-2" id="7zG-Sf-tHJ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Ypc-je-YIe" secondAttribute="trailing" constant="20" id="1Ht-C1-mHz"/>
+                    <constraint firstItem="4mZ-y2-rFJ" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="C4g-Fq-Rkn"/>
                     <constraint firstItem="Ypc-je-YIe" firstAttribute="leading" secondItem="0Z5-ro-fgT" secondAttribute="trailing" constant="20" id="D5x-JN-qbq"/>
                     <constraint firstAttribute="bottom" secondItem="JNe-Z3-w4x" secondAttribute="bottom" constant="20" id="DpI-uU-y6w"/>
                     <constraint firstItem="0Z5-ro-fgT" firstAttribute="width" secondItem="Ypc-je-YIe" secondAttribute="width" id="N29-yk-2JP"/>
                     <constraint firstItem="Ypc-je-YIe" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="OsR-oR-0xv"/>
+                    <constraint firstAttribute="trailing" secondItem="4mZ-y2-rFJ" secondAttribute="trailing" constant="20" id="PYH-4j-tAg"/>
                     <constraint firstItem="JNe-Z3-w4x" firstAttribute="top" secondItem="0Z5-ro-fgT" secondAttribute="bottom" constant="20" id="Wcm-e3-Z07"/>
+                    <constraint firstItem="JNe-Z3-w4x" firstAttribute="top" secondItem="4mZ-y2-rFJ" secondAttribute="bottom" constant="20" id="cRt-5B-5mi"/>
                     <constraint firstItem="0Z5-ro-fgT" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="eJB-2V-cix"/>
                     <constraint firstAttribute="trailing" secondItem="JNe-Z3-w4x" secondAttribute="trailing" constant="20" id="iKY-np-nZj"/>
+                    <constraint firstItem="4mZ-y2-rFJ" firstAttribute="leading" secondItem="Ypc-je-YIe" secondAttribute="trailing" constant="20" id="jck-0I-z4B"/>
                     <constraint firstItem="JNe-Z3-w4x" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="qtg-N5-7TG"/>
                     <constraint firstItem="0Z5-ro-fgT" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="uPQ-0h-7wn"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="139.5" y="143.5"/>
+            <point key="canvasLocation" x="139" y="143.5"/>
         </window>
     </objects>
 </document>

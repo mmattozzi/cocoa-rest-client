@@ -20,5 +20,6 @@
 
 - (void) setup:(NSArray<MainWindowController *> *)openWindows;
 - (IBAction) updateDiff:(id)sender;
+- (IBAction) clearDiff:(id)sender;
 
 @end
