@@ -86,6 +86,7 @@
     exportRequestsController = [[ExportRequestsController alloc] initWithWindowNibName:@"ExportRequests"];
     exportRequestsController.savedRequestsArray = SavedRequestsDataSource.savedRequestsArray;
     fastSearchSavedRequestsController = [[FastSearchSavedRequestsController alloc] initWithWindowNibName:@"FastSearchSavedRequests"];
+    diffWindowController = [[DiffWindowController alloc] initWithWindowNibName:@"DiffWindow"];
     
     [reGetResponseMenuItem setEnabled:NO];
     
@@ -131,11 +132,13 @@
         [mainWindowController showWindow:self];
     }
     [self.mainWindowControllers addObject:mainWindowController];
+    [diffWindowController setup:self.mainWindowControllers];
     NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
 - (void) tabWasRemoved:(NSWindowController *)windowController {
     [self.mainWindowControllers removeObject:windowController];
+    [diffWindowController setup:self.mainWindowControllers];
     NSLog(@"Managing %lu window controllers", (unsigned long)[self.mainWindowControllers count]);
 }
 
@@ -156,6 +159,10 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
     return !(flag || ([currentWindowController.window makeKeyAndOrderFront: self], 0));
+}
+
+- (void) windowSubmittedRequest:(MainWindowController *)mainWindowController {
+    [diffWindowController setup:mainWindowControllers];
 }
 
 #pragma mark -
@@ -634,6 +641,11 @@
     
     // Enable the relevant theme MenuItem
     [((NSMenuItem *) sender) setState:NSOnState];
+}
+
+- (IBAction) diffTwoResponses:(id)sender {
+    [diffWindowController showWindow:self];
+    [diffWindowController setup:mainWindowControllers];
 }
 
 #pragma mark -

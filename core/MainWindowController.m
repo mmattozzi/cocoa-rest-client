@@ -602,6 +602,7 @@
         NSLog(@"Could not open connection to resource");
     }
     
+    [self.appDelegate windowSubmittedRequest:self];
 }
 
 - (NSString *) getValueForHeader:(NSString *)headerName {

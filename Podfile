@@ -7,6 +7,8 @@ pod 'Base64', '~> 1.0'
 pod 'SBJson', :git => 'https://github.com/mmattozzi/json-framework.git'
 pod 'MsgPackSerialization', '~> 0.0.1'
 pod 'Sparkle'
+pod 'DiffMatchPatch-ObjC', '~> 1.0.0'
+
 target 'CocoaRestClient' do
 
 end

@@ -21,6 +21,7 @@
 #import "DMSlidingTabView.h"
 #import "DMSlidingTabItemView.h"
 #import "FastSearchSavedRequestsController.h"
+#import "DiffWindowController.h"
 
 @class CRCRequest;
 @class CRCDrawerView;
@@ -31,6 +32,7 @@
     ExportRequestsController *exportRequestsController;
     PreferencesController *preferencesController;
     FastSearchSavedRequestsController *fastSearchSavedRequestsController;
+    DiffWindowController *diffWindowController;
     
     MainWindowController *currentWindowController;
     
@@ -61,6 +63,7 @@
 - (void) tabWasRemoved:(NSWindowController *)windowController;
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
 - (void) applicationWillTerminate: (NSNotification *)note;
+- (void) windowSubmittedRequest:(MainWindowController *)mainWindowController;
 
 // Saved requests management
 - (void) redrawRequestViews;
@@ -119,6 +122,7 @@
 - (IBAction) zoomIn:(id)sender;
 - (IBAction) zoomOut:(id)sender;
 - (IBAction) themeMenuItemSelected:(id)sender;
+- (IBAction) diffTwoResponses:(id)sender;
 
 /* Content Type Menu */
 - (IBAction) contentTypeMenuItemSelected:(id)sender;
