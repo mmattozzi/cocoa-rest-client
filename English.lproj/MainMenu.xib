@@ -344,7 +344,7 @@ CA
                                     <action selector="openFastSearchSavedRequestsPanel:" target="494" id="kK7-l4-Msr"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Diff Two Responses" id="06c-Ol-sE0">
+                            <menuItem title="Diff Two Responses (Beta)" id="06c-Ol-sE0">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="diffTwoResponses:" target="494" id="fl0-22-S6b"/>
