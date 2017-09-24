@@ -534,7 +534,7 @@
     [request setHTTPMethod:method];
     [request setTimeoutInterval:[[NSUserDefaults standardUserDefaults] integerForKey:RESPONSE_TIMEOUT]];
     
-    self.window.title = url.host;
+    [self.appDelegate setWindowTitle:self withBaseTitle:url.host];
     
     BOOL contentTypeSet = NO;
     if(self.rawRequestBody) {

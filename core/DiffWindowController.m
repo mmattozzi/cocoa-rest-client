@@ -30,11 +30,9 @@
     self.windows = openWindows;
     [diffSourceLeft removeAllItems];
     [diffSourceRight removeAllItems];
-    NSInteger index = 1;
     for (MainWindowController* window in openWindows) {
-        [diffSourceLeft addItemWithTitle:[NSString stringWithFormat:@"%ld: %@", (long)index, window.window.title]];
-        [diffSourceRight addItemWithTitle:[NSString stringWithFormat:@"%ld: %@", (long)index, window.window.title]];
-        index++;
+        [diffSourceLeft addItemWithTitle:window.window.title];
+        [diffSourceRight addItemWithTitle:window.window.title];
     }
     [self clearDiff:nil];
 }

@@ -111,7 +111,7 @@
     MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
     mainWindowController.appDelegate = self;
     mainWindowController.savedRequestsDataSource = self.savedRequestsDataSource;
-    mainWindowController.window.title = @"CocoaRestClient";
+    [self setWindowTitle:mainWindowController withBaseTitle:@"CocoaRestClient"];
     if (window) {
         [window addTabbedWindow:[mainWindowController window] ordered:NSWindowAbove];
         [mainWindowController.window orderFront:window];
@@ -163,6 +163,31 @@
 
 - (void) windowSubmittedRequest:(MainWindowController *)mainWindowController {
     [diffWindowController setup:mainWindowControllers];
+}
+
+- (void) setWindowTitle:(MainWindowController *)mainWindowController withBaseTitle:(NSString *)title {
+    [self setWindowTitle:mainWindowController withBaseTitle:title index:1];
+}
+
+/**
+ * Given a possible window/tab title, append incremental numbers until it is unique across the application.
+ */
+- (void) setWindowTitle:(MainWindowController *)mainWindowController withBaseTitle:(NSString *)title index:(NSUInteger)index {
+    BOOL foundConflict = NO;
+    NSString *possibleTitle = title;
+    if (index > 1) {
+        possibleTitle = [NSString stringWithFormat:@"%@ %ld", title, index];
+    }
+    for (id windowController in mainWindowControllers) {
+        if ([((MainWindowController *)windowController).window.title isEqualToString:possibleTitle] && (windowController != mainWindowController)) {
+            foundConflict = YES;
+        }
+    }
+    if (foundConflict) {
+        [self setWindowTitle:mainWindowController withBaseTitle:title index:++index];
+    } else {
+        mainWindowController.window.title = possibleTitle;
+    }
 }
 
 #pragma mark -

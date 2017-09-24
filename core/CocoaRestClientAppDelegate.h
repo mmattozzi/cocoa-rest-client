@@ -64,6 +64,8 @@
 - (void) setCurrentMainWindowController:(MainWindowController *)mainWindowController;
 - (void) applicationWillTerminate: (NSNotification *)note;
 - (void) windowSubmittedRequest:(MainWindowController *)mainWindowController;
+- (void) setWindowTitle:(MainWindowController *)mainWindowController withBaseTitle:(NSString *)title;
+- (void) setWindowTitle:(MainWindowController *)mainWindowController withBaseTitle:(NSString *)title index:(NSUInteger)index;
 
 // Saved requests management
 - (void) redrawRequestViews;
