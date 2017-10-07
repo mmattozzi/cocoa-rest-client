@@ -44,6 +44,7 @@ Features
 * Optionally follows HTTP redirects
 * Import and export requests
 * New in version 1.4: Uses native macOS tabs and windows. 
+* New in version 1.4.3: Generate a unified diff between two response body tabs
 
 Screenshots
 =================
