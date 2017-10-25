@@ -65,6 +65,10 @@ Screenshots
 
 *Upload files using HTTP multipart requests. HTTP form encoding also supported.*
 
+<img src="https://mmattozzi.github.io/cocoa-rest-client/screenshots/screenshot-6.png" width=400/>
+
+*Unified diff tool for comparing response bodies.*
+
 Source and Contributions
 =================
 * Contributions are always welcome! Please fork and create a pull request.
