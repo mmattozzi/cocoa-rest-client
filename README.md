@@ -19,6 +19,8 @@ You can also install it through [homebrew](http://brew.sh/) as a [cask](http://c
 
 ```sh
 # install cask if necessary
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client?ref=badge_shield)
+
 brew install caskroom/cask/brew-cask
 # install CocoaRestClient
 brew cask install cocoarestclient
@@ -88,3 +90,7 @@ Credits
 * Base64 encoding uses Matt Gallagher's NSData+Base64 code (http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html)
 * Code & testing contributions: Adam Venturella, Sergey Klimov, Cory Alder, Tito Ciuro, Eric Broska, Nicholas Robinson, Diego Massanti, Robert Horvath
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client?ref=badge_large)
