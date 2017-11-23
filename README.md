@@ -9,6 +9,8 @@ This project was greatly inspired by the Java rest-client (https://code.google.c
 
 Official project website: http://mmattozzi.github.io/cocoa-rest-client/
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client?ref=badge_shield)
+
 Download
 =================
 If you're not looking to compile from source and only want to use this tool, latest releases are here:
@@ -19,8 +21,6 @@ You can also install it through [homebrew](http://brew.sh/) as a [cask](http://c
 
 ```sh
 # install cask if necessary
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client?ref=badge_shield)
-
 brew install caskroom/cask/brew-cask
 # install CocoaRestClient
 brew cask install cocoarestclient
@@ -93,4 +93,6 @@ Credits
 
 
 ## License
+See [LICENSE.txt](https://github.com/mmattozzi/cocoa-rest-client/blob/master/LICENSE.txt)
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmattozzi%2Fcocoa-rest-client?ref=badge_large)
