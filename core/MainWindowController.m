@@ -652,9 +652,15 @@
     };
     
     id parser = [SBJson4Parser parserWithBlock:block allowMultiRoot:NO unwrapRootArray:NO errorHandler:eh];
-    SBJson4ParserStatus parseStatus = [parser parse:jsonData];
-    if (parseStatus == SBJson4ParserWaitingForData) {
-        NSLog(@"Unexpected end of JSON content");
+    @try {
+        SBJson4ParserStatus parseStatus = [parser parse:jsonData];
+        if (parseStatus == SBJson4ParserWaitingForData) {
+            NSLog(@"Unexpected end of JSON content");
+            [self printResponsePlain];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Unexpected error parsing JSON content");
         [self printResponsePlain];
     }
 }
