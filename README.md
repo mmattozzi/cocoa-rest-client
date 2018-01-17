@@ -1,11 +1,11 @@
 About
 =================
-CocoaRestClient is a Mac OS X app for testing HTTP/Restful endpoints. 
+CocoaRestClient is a Mac OS X app for testing HTTP/Restful endpoints.
 
-I love curl, but sometimes I need my output XML or JSON pretty printed. I want to be able to save frequent PUT and POST bodies for later and copy and paste from responses easily. Think of this as curl with a light UI. 
+I love curl, but sometimes I need my output XML or JSON pretty printed. I want to be able to save frequent PUT and POST bodies for later and copy and paste from responses easily. Think of this as curl with a light UI.
 
 The goal of this project is to build a lightweight native Cocoa app for testing and debugging HTTP Restful services.
-This project was greatly inspired by the Java rest-client (https://code.google.com/archive/p/rest-client). 
+This project was greatly inspired by the Java rest-client (https://code.google.com/archive/p/rest-client).
 
 Official project website: http://mmattozzi.github.io/cocoa-rest-client/
 
@@ -17,11 +17,11 @@ If you're not looking to compile from source and only want to use this tool, lat
 
 [Download List](https://github.com/mmattozzi/cocoa-rest-client/releases)
 
-You can also install it through [homebrew](http://brew.sh/) as a [cask](http://caskroom.io/):
+You can also install it through [homebrew](https://brew.sh/) as a [cask](https://caskroom.github.io):
 
 ```sh
 # install cask if necessary
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 # install CocoaRestClient
 brew cask install cocoarestclient
 ```
@@ -45,7 +45,7 @@ Features
 * SSL Support (including untrusted certificates)
 * Optionally follows HTTP redirects
 * Import and export requests
-* New in version 1.4: Uses native macOS tabs and windows. 
+* New in version 1.4: Uses native macOS tabs and windows.
 * New in version 1.4.3: Generate a unified diff between two response body tabs
 
 Screenshots
@@ -75,11 +75,11 @@ Source and Contributions
 =================
 * Contributions are always welcome! Please fork and create a pull request.
 * Source uses [Cocoapods](https://cocoapods.org/) for dependencies, to get started, [install CocoaPods](http://guides.cocoapods.org/using/getting-started.html) and in the main project directory run:
-    
+
     ```
       pod install
     ```
-  * Note that you must have a github account and a public key registered with github so that CocoaPods can pull down a github-hosted dependency. 
+  * Note that you must have a github account and a public key registered with github so that CocoaPods can pull down a github-hosted dependency.
 
 Credits
 =================
