@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -607,6 +607,31 @@ CA
                         <connections>
                             <outlet property="delegate" destination="494" id="879"/>
                         </connections>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="D5g-vY-AMg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="2yx-Ng-bxt">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="jbM-bZ-SOo">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="pX1-Ux-hKJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="1em-ob-CY2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="A5e-8n-nbF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="XaK-yP-68O"/>
+                            <menuItem title="Bring All to Front" id="gfo-x3-gkH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="nZQ-9r-YYa"/>
+                                </connections>
+                            </menuItem>
+                        </items>
                     </menu>
                 </menuItem>
                 <menuItem title="Help" id="903">
