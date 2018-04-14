@@ -19,18 +19,27 @@
 #import "DMSlidingTabView.h"
 #import "DMSlidingTabItemView.h"
 #import "CRCRequest.h"
+#import "ACEView+TouchBarExtension.h"
 
 @class CocoaRestClientAppDelegate;
 @class SavedRequestsDataSource;
 @class CRCDrawerView;
 
-@interface MainWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
+@interface MainWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSTouchBarDelegate> {
     
     NSMutableData *receivedData;
     NSString *contentType;
     NSString *charset;
     NSURLRequest *currentRequest;
     NSDate *startDate;
+    
+    @private NSTouchBarCustomizationIdentifier touchBarIdentifier;
+    @private NSTouchBarItemIdentifier touchBarSaveIdentifier;
+    @private NSTouchBarItemIdentifier touchBarSaveAsIdentifier;
+    @private NSTouchBarItemIdentifier touchBarGetIdentifier;
+    @private NSTouchBarItemIdentifier touchBarPostIdentifier;
+    @private NSTouchBarItemIdentifier touchBarPutIdentifier;
+    @private NSTouchBarItemIdentifier touchBarCopyCurlIdentifier;
     
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
@@ -137,6 +146,9 @@
 
 // Request submission and Response Handling
 - (IBAction) runSubmit:(id)sender;
+- (void) runGetSubmit;
+- (void) runPostSubmit;
+- (void) runPutSubmit;
 - (NSString *) getValueForHeader:(NSString *)headerName;
 - (void) setResponseText:(NSString *)response;
 - (NSString *) getResponseText;

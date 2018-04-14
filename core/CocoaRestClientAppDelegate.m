@@ -22,6 +22,8 @@
 #import "MainWindowController.h"
 #import "SavedRequestsDataSource.h"
 #import "SaveRequestPanelController.h"
+#import "NSTextView+TouchBarExtension.h"
+#import "ACEView+TouchBarExtension.h"
 
 #define MAIN_WINDOW_MENU_TAG 150
 #define REGET_MENU_TAG 151
@@ -76,6 +78,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+    [NSApplication sharedApplication].automaticCustomizeTouchBarMenuItemEnabled = YES;
     
     // Sync default params from defaults.plist
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithContentsOfFile:@"defaults.plist"]];

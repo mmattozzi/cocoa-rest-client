@@ -38,6 +38,14 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    touchBarIdentifier = @"org.restlesscode.TouchBar";
+    touchBarSaveIdentifier = @"org.restlesscode.TouchBar.save";
+    touchBarSaveAsIdentifier = @"org.restlesscode.TouchBar.saveAs";
+    touchBarGetIdentifier = @"org.restlesscode.TouchBar.get";
+    touchBarPostIdentifier = @"org.restlesscode.TouchBar.post";
+    touchBarPutIdentifier = @"org.restlesscode.TouchBar.put";
+    touchBarCopyCurlIdentifier = @"org.restlesscode.TouchBar.copyCurl";
+    
     self.headersTable = [[NSMutableArray alloc] init];
     self.filesTable   = [[NSMutableArray alloc] init];
     self.paramsTable  = [[NSMutableArray alloc] init];
@@ -137,6 +145,55 @@
 
 - (void)windowDidBecomeKey:(NSNotification *)notification {
     [appDelegate setCurrentMainWindowController:self];
+}
+
+- (NSTouchBar *) makeTouchBar {
+    NSTouchBar *touchBar = [[NSTouchBar alloc] init];
+    touchBar.delegate = self;
+    touchBar.customizationIdentifier = touchBarIdentifier;
+    touchBar.defaultItemIdentifiers = @[ touchBarSaveIdentifier, touchBarSaveAsIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
+                                         touchBarGetIdentifier, touchBarPostIdentifier, touchBarPutIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
+                                         touchBarCopyCurlIdentifier ];
+    touchBar.customizationAllowedItemIdentifiers = @[ touchBarSaveIdentifier, touchBarGetIdentifier ];
+    return touchBar;
+}
+
+- (NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {
+    if (identifier == touchBarSaveIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarSaveIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"Save" target:self.appDelegate action:@selector(overwriteRequest:)];
+        [button setBezelColor:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00]];
+        item.view = button;
+        return item;
+    } else if (identifier == touchBarSaveAsIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarSaveAsIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"Save As" target:self.appDelegate action:@selector(saveRequest:)];
+        [button setBezelColor:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00]];
+        item.view = button;
+        return item;
+    } else if (identifier == touchBarGetIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarGetIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"GET" target:self action:@selector(runGetSubmit)];
+        item.view = button;
+        return item;
+    } else if (identifier == touchBarPostIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarPostIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"POST" target:self action:@selector(runPostSubmit)];
+        item.view = button;
+        return item;
+    } else if (identifier == touchBarPutIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarPutIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"PUT" target:self action:@selector(runPutSubmit)];
+        item.view = button;
+        return item;
+    } else if (identifier == touchBarCopyCurlIdentifier) {
+        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarCopyCurlIdentifier];
+        NSButton *button = [NSButton buttonWithTitle:@"Copy Curl" target:self.appDelegate action:@selector(copyCurlCommand:)];
+        item.view = button;
+        return item;
+    } else {
+        return nil;
+    }
 }
 
 -(void) initHighlightedViews {
@@ -603,6 +660,21 @@
     }
     
     [self.appDelegate windowSubmittedRequest:self];
+}
+
+- (void) runGetSubmit {
+    self.methodButton.stringValue = @"GET";
+    [self runSubmit:nil];
+}
+
+- (void) runPostSubmit {
+    self.methodButton.stringValue = @"POST";
+    [self runSubmit:nil];
+}
+
+- (void) runPutSubmit {
+    self.methodButton.stringValue = @"PUT";
+    [self runSubmit:nil];
 }
 
 - (NSString *) getValueForHeader:(NSString *)headerName {

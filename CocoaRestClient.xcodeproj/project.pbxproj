@@ -25,6 +25,8 @@
 		AF3FE7CA1F6B7D67003ED6BA /* DiffWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3FE7C91F6B7D67003ED6BA /* DiffWindowController.m */; };
 		AF7A149B113B583A00F0D6F5 /* cocoaRestClient.icns in Resources */ = {isa = PBXBuildFile; fileRef = AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */; };
 		AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */; };
+		AF85365520692190002A8D0C /* NSTextView+TouchBarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF85365420692190002A8D0C /* NSTextView+TouchBarExtension.m */; };
+		AF8536582069238F002A8D0C /* ACEView+TouchBarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8536572069238F002A8D0C /* ACEView+TouchBarExtension.m */; };
 		AF89587615608E9D0079B379 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF895874156088610079B379 /* QuartzCore.framework */; };
 		AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */; };
 		AF99ECAD1EC013A100101893 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF99ECAB1EC013A100101893 /* MainWindowController.m */; };
@@ -108,6 +110,10 @@
 		AF7A149A113B583A00F0D6F5 /* cocoaRestClient.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = cocoaRestClient.icns; path = English.lproj/cocoaRestClient.icns; sourceTree = "<group>"; };
 		AF7CE5C51766CBC10080363B /* TableRowAndColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableRowAndColumn.h; path = view/TableRowAndColumn.h; sourceTree = "<group>"; };
 		AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableRowAndColumn.m; path = view/TableRowAndColumn.m; sourceTree = "<group>"; };
+		AF85365320692190002A8D0C /* NSTextView+TouchBarExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSTextView+TouchBarExtension.h"; path = "view/NSTextView+TouchBarExtension.h"; sourceTree = "<group>"; };
+		AF85365420692190002A8D0C /* NSTextView+TouchBarExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSTextView+TouchBarExtension.m"; path = "view/NSTextView+TouchBarExtension.m"; sourceTree = "<group>"; };
+		AF8536562069238F002A8D0C /* ACEView+TouchBarExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACEView+TouchBarExtension.h"; path = "view/ACEView+TouchBarExtension.h"; sourceTree = "<group>"; };
+		AF8536572069238F002A8D0C /* ACEView+TouchBarExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACEView+TouchBarExtension.m"; path = "view/ACEView+TouchBarExtension.m"; sourceTree = "<group>"; };
 		AF895874156088610079B379 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AF90070316AC43A80012C758 /* CocoaRestClientAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaRestClientAppDelegate.h; path = core/CocoaRestClientAppDelegate.h; sourceTree = "<group>"; };
 		AF90070416AC43A80012C758 /* CocoaRestClientAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaRestClientAppDelegate.m; path = core/CocoaRestClientAppDelegate.m; sourceTree = "<group>"; };
@@ -378,6 +384,10 @@
 				AF7CE5C61766CBC10080363B /* TableRowAndColumn.m */,
 				AFB3AA3B1A87E43400012E04 /* HighlightingTypeManager.h */,
 				AFB3AA3C1A87E43400012E04 /* HighlightingTypeManager.m */,
+				AF85365320692190002A8D0C /* NSTextView+TouchBarExtension.h */,
+				AF85365420692190002A8D0C /* NSTextView+TouchBarExtension.m */,
+				AF8536562069238F002A8D0C /* ACEView+TouchBarExtension.h */,
+				AF8536572069238F002A8D0C /* ACEView+TouchBarExtension.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -567,6 +577,7 @@
 				D7AC588711E60DDA00D67635 /* CRCMultipartRequest.m in Sources */,
 				D714A01D11E8BF7700F5A80B /* CRCFormEncodedRequest.m in Sources */,
 				D714A02011E8C0F400F5A80B /* CRCRawRequest.m in Sources */,
+				AF8536582069238F002A8D0C /* ACEView+TouchBarExtension.m in Sources */,
 				D714A03111E8F61D00F5A80B /* CRCFileRequest.m in Sources */,
 				D714A0A211E901FB00F5A80B /* CRCRequest.m in Sources */,
 				D7D998B411EAA29B005B8811 /* CRCTopView.m in Sources */,
@@ -584,6 +595,7 @@
 				AFE908891E748F0A006D9B91 /* FastSearchSavedRequestTextCellView.m in Sources */,
 				AF90070516AC43A80012C758 /* CocoaRestClientAppDelegate.m in Sources */,
 				2C954AFA16B9799D00C8D54B /* NSData+gzip.m in Sources */,
+				AF85365520692190002A8D0C /* NSTextView+TouchBarExtension.m in Sources */,
 				2C03E34F16CA2E0F00C7608A /* CRCHTTPHeaderCell.m in Sources */,
 				AFF3B97B1E15A0DC00AA664C /* FastSearchSavedRequestsController.m in Sources */,
 				AF7CE5C71766CBC10080363B /* TableRowAndColumn.m in Sources */,
