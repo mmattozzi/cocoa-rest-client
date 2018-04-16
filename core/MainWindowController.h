@@ -40,6 +40,7 @@
     @private NSTouchBarItemIdentifier touchBarPostIdentifier;
     @private NSTouchBarItemIdentifier touchBarPutIdentifier;
     @private NSTouchBarItemIdentifier touchBarCopyCurlIdentifier;
+    @private NSDictionary *touchBarIdentifierToItemMap;
     
     @private HighlightingTypeManager *responseTypeManager;
     @private HighlightingTypeManager *requestTypeManager;
@@ -115,6 +116,8 @@
 @property (weak) IBOutlet NSTextField *timeoutField;
 
 - (void) initHighlightedViews;
+- (NSTouchBarItem *) touchBarButtonWithTitle:(NSString *)title color:(NSColor *)color identifier:(NSTouchBarItemIdentifier)identifier
+                                      target:(id)target selector:(SEL)selector;
 
 // Request Manipulation
 - (void) setRequestText:(NSString *)request;

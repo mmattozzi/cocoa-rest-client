@@ -46,6 +46,15 @@
     touchBarPutIdentifier = @"org.restlesscode.TouchBar.put";
     touchBarCopyCurlIdentifier = @"org.restlesscode.TouchBar.copyCurl";
     
+    touchBarIdentifierToItemMap = @{
+        touchBarSaveIdentifier: [self touchBarButtonWithTitle:@"Save" color:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00] identifier:touchBarSaveIdentifier target:self.appDelegate selector:@selector(overwriteRequest:)],
+        touchBarSaveAsIdentifier: [self touchBarButtonWithTitle:@"Save As" color:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00] identifier:touchBarSaveAsIdentifier target:self.appDelegate selector:@selector(saveRequest:)],
+        touchBarGetIdentifier: [self touchBarButtonWithTitle:@"GET" color:nil identifier:touchBarGetIdentifier target:self selector:@selector(runGetSubmit)],
+        touchBarPostIdentifier: [self touchBarButtonWithTitle:@"POST" color:nil identifier:touchBarPostIdentifier target:self selector:@selector(runPostSubmit)],
+        touchBarPutIdentifier: [self touchBarButtonWithTitle:@"PUT" color:nil identifier:touchBarPutIdentifier target:self selector:@selector(runPutSubmit)],
+        touchBarCopyCurlIdentifier: [self touchBarButtonWithTitle:@"Copy Curl" color:nil identifier:touchBarCopyCurlIdentifier target:self.appDelegate  selector:@selector(copyCurlCommand:)]
+    };
+    
     self.headersTable = [[NSMutableArray alloc] init];
     self.filesTable   = [[NSMutableArray alloc] init];
     self.paramsTable  = [[NSMutableArray alloc] init];
@@ -158,42 +167,19 @@
     return touchBar;
 }
 
-- (NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {
-    if (identifier == touchBarSaveIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarSaveIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"Save" target:self.appDelegate action:@selector(overwriteRequest:)];
-        [button setBezelColor:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00]];
-        item.view = button;
-        return item;
-    } else if (identifier == touchBarSaveAsIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarSaveAsIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"Save As" target:self.appDelegate action:@selector(saveRequest:)];
-        [button setBezelColor:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00]];
-        item.view = button;
-        return item;
-    } else if (identifier == touchBarGetIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarGetIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"GET" target:self action:@selector(runGetSubmit)];
-        item.view = button;
-        return item;
-    } else if (identifier == touchBarPostIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarPostIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"POST" target:self action:@selector(runPostSubmit)];
-        item.view = button;
-        return item;
-    } else if (identifier == touchBarPutIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarPutIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"PUT" target:self action:@selector(runPutSubmit)];
-        item.view = button;
-        return item;
-    } else if (identifier == touchBarCopyCurlIdentifier) {
-        NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:touchBarCopyCurlIdentifier];
-        NSButton *button = [NSButton buttonWithTitle:@"Copy Curl" target:self.appDelegate action:@selector(copyCurlCommand:)];
-        item.view = button;
-        return item;
-    } else {
-        return nil;
+- (NSTouchBarItem *) touchBarButtonWithTitle:(NSString *)title color:(NSColor *)color identifier:(NSTouchBarItemIdentifier)identifier
+                                      target:(id)target selector:(SEL)selector {
+    NSCustomTouchBarItem *item = [[NSCustomTouchBarItem alloc] initWithIdentifier:identifier];
+    NSButton *button = [NSButton buttonWithTitle:title target:target action:selector];
+    if (color) {
+        [button setBezelColor:color];
     }
+    item.view = button;
+    return item;
+}
+
+- (NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier {
+    return [touchBarIdentifierToItemMap valueForKey:identifier];
 }
 
 -(void) initHighlightedViews {
