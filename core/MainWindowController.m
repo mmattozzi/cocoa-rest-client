@@ -160,10 +160,12 @@
     NSTouchBar *touchBar = [[NSTouchBar alloc] init];
     touchBar.delegate = self;
     touchBar.customizationIdentifier = touchBarIdentifier;
-    touchBar.defaultItemIdentifiers = @[ touchBarSaveIdentifier, touchBarSaveAsIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
-                                         touchBarGetIdentifier, touchBarPostIdentifier, touchBarPutIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
-                                         touchBarCopyCurlIdentifier ];
-    touchBar.customizationAllowedItemIdentifiers = @[ touchBarSaveIdentifier, touchBarGetIdentifier ];
+    NSArray<NSTouchBarItemIdentifier> *defaultItemIdentifiers =
+        @[ touchBarSaveIdentifier, touchBarSaveAsIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
+           touchBarGetIdentifier, touchBarPostIdentifier, touchBarPutIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
+           touchBarCopyCurlIdentifier ];
+    touchBar.defaultItemIdentifiers = defaultItemIdentifiers;
+    touchBar.customizationAllowedItemIdentifiers = defaultItemIdentifiers;
     return touchBar;
 }
 
