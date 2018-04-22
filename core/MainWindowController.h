@@ -36,6 +36,7 @@
     @private NSTouchBarCustomizationIdentifier touchBarIdentifier;
     @private NSTouchBarItemIdentifier touchBarSaveIdentifier;
     @private NSTouchBarItemIdentifier touchBarSaveAsIdentifier;
+    @private NSTouchBarItemIdentifier touchBarOpenIdentifier;
     @private NSTouchBarItemIdentifier touchBarGetIdentifier;
     @private NSTouchBarItemIdentifier touchBarPostIdentifier;
     @private NSTouchBarItemIdentifier touchBarPutIdentifier;

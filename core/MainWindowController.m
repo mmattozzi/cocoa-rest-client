@@ -41,6 +41,7 @@
     touchBarIdentifier = @"org.restlesscode.TouchBar";
     touchBarSaveIdentifier = @"org.restlesscode.TouchBar.save";
     touchBarSaveAsIdentifier = @"org.restlesscode.TouchBar.saveAs";
+    touchBarOpenIdentifier = @"org.restlesscode.TouchBar.open";
     touchBarGetIdentifier = @"org.restlesscode.TouchBar.get";
     touchBarPostIdentifier = @"org.restlesscode.TouchBar.post";
     touchBarPutIdentifier = @"org.restlesscode.TouchBar.put";
@@ -49,6 +50,7 @@
     touchBarIdentifierToItemMap = @{
         touchBarSaveIdentifier: [self touchBarButtonWithTitle:@"Save" color:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00] identifier:touchBarSaveIdentifier target:self.appDelegate selector:@selector(overwriteRequest:)],
         touchBarSaveAsIdentifier: [self touchBarButtonWithTitle:@"Save As" color:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00] identifier:touchBarSaveAsIdentifier target:self.appDelegate selector:@selector(saveRequest:)],
+        touchBarOpenIdentifier: [self touchBarButtonWithTitle:@"Open" color:[NSColor colorWithRed:0.35 green:0.61 blue:0.35 alpha:1.00] identifier:touchBarOpenIdentifier target:self.appDelegate selector:@selector(openFastSearchSavedRequestsPanel:)],
         touchBarGetIdentifier: [self touchBarButtonWithTitle:@"GET" color:nil identifier:touchBarGetIdentifier target:self selector:@selector(runGetSubmit)],
         touchBarPostIdentifier: [self touchBarButtonWithTitle:@"POST" color:nil identifier:touchBarPostIdentifier target:self selector:@selector(runPostSubmit)],
         touchBarPutIdentifier: [self touchBarButtonWithTitle:@"PUT" color:nil identifier:touchBarPutIdentifier target:self selector:@selector(runPutSubmit)],
@@ -161,7 +163,7 @@
     touchBar.delegate = self;
     touchBar.customizationIdentifier = touchBarIdentifier;
     NSArray<NSTouchBarItemIdentifier> *defaultItemIdentifiers =
-        @[ touchBarSaveIdentifier, touchBarSaveAsIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
+        @[ touchBarSaveIdentifier, touchBarSaveAsIdentifier, touchBarOpenIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
            touchBarGetIdentifier, touchBarPostIdentifier, touchBarPutIdentifier, NSTouchBarItemIdentifierFlexibleSpace,
            touchBarCopyCurlIdentifier ];
     touchBar.defaultItemIdentifiers = defaultItemIdentifiers;
