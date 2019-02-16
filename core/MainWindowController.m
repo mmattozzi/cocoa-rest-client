@@ -488,7 +488,7 @@
     
     urlComponents.queryItems = queryItems;
     
-    [self.urlBox setStringValue:[[urlComponents URL] absoluteString]];
+    [self.urlBox setStringValue:[[[urlComponents URL] absoluteString] stringByRemovingPercentEncoding]];
 }
 
 - (BOOL) updateParamsTableFromUrl {
