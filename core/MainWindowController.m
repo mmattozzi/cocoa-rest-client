@@ -613,9 +613,27 @@
     // Set headers
     NSMutableDictionary *headersDictionary = [[NSMutableDictionary alloc] init];
     
+    NSDictionary *environmentVariables = [[NSProcessInfo processInfo] environment];
+    
+    NSError *regexError = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\$\\{(.*?)\\}"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&regexError];
+    
     for(NSDictionary * row in self.headersTable) {
         if (! [[[row objectForKey:@"key"] lowercaseString] isEqualToString:@"content-type"] || ! contentTypeSet) {
-            [headersDictionary setObject:[row objectForKey:@"value"]
+            NSString *value = [row objectForKey:@"value"];
+            NSTextCheckingResult *match = [regex firstMatchInString:value
+                                                           options:0
+                                                             range:NSMakeRange(0, [value length])];
+            if (match) {
+                NSRange range = [match rangeAtIndex:1];
+                NSString *envVar = [value substringWithRange:range];
+                if ([environmentVariables objectForKey:envVar]) {
+                    value = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:[environmentVariables objectForKey:envVar]];
+                }
+            }
+            [headersDictionary setObject:value
                                   forKey:[row objectForKey:@"key"]];
         }
     }
