@@ -15,7 +15,6 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		90655CEF553E08EB04167E1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C15A15CB9C1B4386B81228 /* libPods.a */; };
 		985608C11C8FF3E700A3EB6E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985608C01C8FF3E700A3EB6E /* defaults.plist */; };
 		985608C71C90031300A3EB6E /* CRCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 985608C61C90031300A3EB6E /* CRCConstants.m */; };
 		AF0A96BE1CC86E1A001870FC /* DMSlidingTabItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A96B81CC86D57001870FC /* DMSlidingTabItemView.m */; };
@@ -185,7 +184,6 @@
 				5704EED0155C7BF400C55656 /* WebKit.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F84CC2410A93E76AA17BDE2D /* libPods-CocoaRestClient.a in Frameworks */,
-				90655CEF553E08EB04167E1F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +397,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CocoaRestClient" */;
 			buildPhases = (
+				BFD29973DF6B632BA7758274 /* [CP] Check Pods Manifest.lock */,
 				EDD115E02121420F8D3A0921 /* Check Pods Manifest.lock */,
 				FCAEBE35430B94C6C1587894 /* 📦 Check Pods Manifest.lock */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -409,6 +408,8 @@
 				6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */,
 				6D54EE5330DE6A1B2E789668 /* Embed Pods Frameworks */,
 				447589E7CC1305ED0F1EF474 /* Copy Pods Resources */,
+				331C591BC9449CB150594566 /* [CP] Embed Pods Frameworks */,
+				BFF36EB5C7D0EFB57584BD12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,6 +438,7 @@
 				English,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaRestClient */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -486,6 +488,26 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		331C591BC9449CB150594566 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		447589E7CC1305ED0F1EF474 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,7 +520,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6250BD2BBA69C29720A4E395 /* 📦 Embed Pods Frameworks */ = {
@@ -528,7 +550,407 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFD29973DF6B632BA7758274 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CocoaRestClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFF36EB5C7D0EFB57584BD12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ace.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-beautify.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-chromevox.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-elastic_tabstops_lite.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-emmet.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-error_marker.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-keybinding_menu.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-language_tools.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-linking.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-modelist.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-old_ie.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-searchbox.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-settings_menu.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-spellcheck.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-split.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-static_highlight.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-statusbar.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-textarea.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-themelist.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/ext-whitespace.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/keybinding-emacs.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/keybinding-vim.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-abap.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-actionscript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ada.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-apache_conf.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-applescript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-asciidoc.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-assembly_x86.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-autohotkey.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-batchfile.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-c9search.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-cirru.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-clojure.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-cobol.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-coffee.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-coldfusion.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-csharp.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-css.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-curly.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-c_cpp.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-d.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-dart.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-diff.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-django.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-dockerfile.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-dot.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-eiffel.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ejs.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-elixir.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-elm.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-erlang.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-forth.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ftl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-gcode.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-gherkin.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-gitignore.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-glsl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-golang.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-groovy.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-haml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-handlebars.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-haskell.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-haxe.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-html.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-html_ruby.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ini.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-io.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-jack.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-jade.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-java.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-javascript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-json.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-jsoniq.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-jsp.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-jsx.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-julia.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-latex.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-less.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-liquid.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-lisp.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-livescript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-logiql.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-lsl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-lua.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-luapage.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-lucene.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-makefile.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-markdown.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-mask.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-matlab.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-mel.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-mushcode.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-mysql.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-nix.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-objectivec.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ocaml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-pascal.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-perl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-pgsql.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-php.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-plain_text.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-powershell.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-praat.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-prolog.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-properties.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-protobuf.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-python.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-r.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-rdoc.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-rhtml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-ruby.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-rust.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-sass.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-scad.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-scala.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-scheme.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-scss.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-sh.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-sjs.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-smarty.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-snippets.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-soy_template.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-space.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-sql.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-stylus.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-svg.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-tcl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-tex.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-text.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-textile.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-toml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-twig.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-typescript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-vala.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-vbscript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-velocity.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-verilog.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-vhdl.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-xml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-xquery.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/mode-yaml.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-ambiance.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-chaos.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-chrome.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-clouds.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-clouds_midnight.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-cobalt.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-crimson_editor.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-dawn.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-dreamweaver.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-eclipse.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-github.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-idle_fingers.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-katzenmilch.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-kr_theme.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-kuroir.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-merbivore.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-merbivore_soft.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-monokai.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-mono_industrial.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-pastel_on_dark.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-solarized_dark.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-solarized_light.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-terminal.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-textmate.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-tomorrow.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-tomorrow_night.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-tomorrow_night_blue.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-tomorrow_night_bright.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-tomorrow_night_eighties.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-twilight.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-vibrant_ink.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/theme-xcode.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-coffee.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-css.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-html.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-javascript.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-json.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-lua.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-php.js",
+				"${PODS_ROOT}/ACEView/ACEView/Dependencies/ace/src/worker-xquery.js",
+				"${PODS_ROOT}/ACEView/ACEView/HTML/index.html",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ace.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-beautify.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-chromevox.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-elastic_tabstops_lite.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-emmet.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-error_marker.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-keybinding_menu.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-language_tools.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-linking.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-modelist.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-old_ie.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-searchbox.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-settings_menu.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-spellcheck.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-split.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-static_highlight.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-statusbar.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-textarea.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-themelist.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ext-whitespace.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/keybinding-emacs.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/keybinding-vim.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-abap.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-actionscript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ada.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-apache_conf.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-applescript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-asciidoc.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-assembly_x86.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-autohotkey.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-batchfile.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-c9search.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-cirru.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-clojure.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-cobol.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-coffee.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-coldfusion.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-csharp.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-css.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-curly.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-c_cpp.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-d.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-dart.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-diff.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-django.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-dockerfile.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-dot.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-eiffel.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ejs.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-elixir.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-elm.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-erlang.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-forth.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ftl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-gcode.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-gherkin.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-gitignore.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-glsl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-golang.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-groovy.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-haml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-handlebars.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-haskell.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-haxe.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-html.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-html_ruby.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ini.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-io.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-jack.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-jade.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-java.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-javascript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-json.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-jsoniq.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-jsp.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-jsx.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-julia.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-latex.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-less.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-liquid.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-lisp.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-livescript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-logiql.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-lsl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-lua.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-luapage.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-lucene.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-makefile.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-markdown.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-mask.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-matlab.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-mel.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-mushcode.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-mysql.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-nix.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-objectivec.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ocaml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-pascal.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-perl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-pgsql.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-php.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-plain_text.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-powershell.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-praat.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-prolog.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-properties.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-protobuf.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-python.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-r.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-rdoc.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-rhtml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-ruby.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-rust.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-sass.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-scad.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-scala.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-scheme.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-scss.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-sh.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-sjs.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-smarty.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-snippets.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-soy_template.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-space.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-sql.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-stylus.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-svg.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-tcl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-tex.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-text.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-textile.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-toml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-twig.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-typescript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-vala.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-vbscript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-velocity.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-verilog.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-vhdl.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-xml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-xquery.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mode-yaml.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-ambiance.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-chaos.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-chrome.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-clouds.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-clouds_midnight.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-cobalt.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-crimson_editor.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-dawn.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-dreamweaver.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-eclipse.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-github.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-idle_fingers.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-katzenmilch.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-kr_theme.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-kuroir.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-merbivore.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-merbivore_soft.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-monokai.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-mono_industrial.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-pastel_on_dark.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-solarized_dark.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-solarized_light.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-terminal.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-textmate.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-tomorrow.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-tomorrow_night.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-tomorrow_night_blue.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-tomorrow_night_bright.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-tomorrow_night_eighties.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-twilight.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-vibrant_ink.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/theme-xcode.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-coffee.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-css.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-html.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-javascript.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-json.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-lua.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-php.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/worker-xquery.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/index.html",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CocoaRestClient/Pods-CocoaRestClient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EDD115E02121420F8D3A0921 /* Check Pods Manifest.lock */ = {
