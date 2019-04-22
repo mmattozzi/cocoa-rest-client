@@ -11,3 +11,6 @@ target 'CocoaRestClient' do
   pod 'DiffMatchPatch-ObjC', '~> 1.0.0'
 end
 
+target 'CocoaRestClientTests' do
+  pod 'ACEView', :git => 'https://github.com/mmattozzi/ACEView.git', :submodules => true
+end

@@ -159,6 +159,7 @@
 - (void) prettyPrintJsonResponseFromObject:(id)obj;
 - (void) prettyPrintJsonResponseFromString:(NSData*)jsonData;
 - (void) printResponsePlain;
+- (NSString *) substituteEnvVariables:(NSString *)stringTemplate;
 
 // Saved request handling
 - (void) loadSavedRequest:(id)request;
