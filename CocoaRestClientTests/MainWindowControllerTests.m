@@ -37,4 +37,15 @@
     XCTAssertEqualObjects(expected, result);
 }
 
+- (void)testEnvVariableTwoSubstitutions {
+    NSDictionary *environmentVariables = [[NSProcessInfo processInfo] environment];
+    NSString *user = [environmentVariables objectForKey:@"USER"];
+    NSString *shell = [environmentVariables objectForKey:@"SHELL"];
+    NSString *expected = [NSString stringWithFormat:@"User has %@ username, and shell %@", user, shell];
+    
+    NSString *result = [mainWindowController substituteEnvVariables:@"User has ${USER} username, and shell ${SHELL}"];
+    
+    XCTAssertEqualObjects(expected, result);
+}
+
 @end

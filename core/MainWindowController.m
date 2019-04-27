@@ -752,13 +752,20 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\$\\{(.*?)\\}"
        options:NSRegularExpressionCaseInsensitive error:&regexError];
     
-    NSTextCheckingResult *match = [regex firstMatchInString:stringTemplate options:0 range:NSMakeRange(0, [stringTemplate length])];
-    if (match) {
-        NSRange range = [match rangeAtIndex:1];
-        NSString *envVar = [stringTemplate substringWithRange:range];
-        if ([environmentVariables objectForKey:envVar]) {
-            stringTemplate = [regex stringByReplacingMatchesInString:stringTemplate options:0
-               range:NSMakeRange(0, [stringTemplate length]) withTemplate:[environmentVariables objectForKey:envVar]];
+    BOOL keepMatching = YES;
+    
+    // Look for substitutions one at a time, replacing them as we go
+    while (keepMatching) {
+        NSTextCheckingResult *match = [regex firstMatchInString:stringTemplate options:0 range:NSMakeRange(0, [stringTemplate length])];
+        if (match) {
+            NSRange varNameRange = [match rangeAtIndex:1];
+            NSRange range = [match rangeAtIndex:0];
+            NSString *envVar = [stringTemplate substringWithRange:varNameRange];
+            if ([environmentVariables objectForKey:envVar]) {
+                stringTemplate = [stringTemplate stringByReplacingCharactersInRange:range withString:[environmentVariables objectForKey:envVar]];
+            }
+        } else {
+            keepMatching = NO;
         }
     }
     
