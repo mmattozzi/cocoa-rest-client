@@ -38,7 +38,7 @@
                                                alpha:1];
     } else {
         tintColor = [NSColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
-        tintDarkerColor = [NSColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1.0];
+        tintDarkerColor = [NSColor colorWithRed:1.0 green:0.2 blue:1.0 alpha:1.0];
     }
     _bgGradient = [[NSGradient alloc]initWithStartingColor:tintDarkerColor
                                                endingColor:tintColor];
