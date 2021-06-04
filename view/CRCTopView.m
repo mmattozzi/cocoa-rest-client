@@ -53,20 +53,26 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     
-    [_bgGradient drawInRect:self.bounds angle:90];
-    if ([[self identifier] isEqualToString:@"statusbar"]) {
-        [[NSColor darkGrayColor] set];
-        [line stroke];
-        [line setLineWidth:1.0];
-        NSPoint start;
-        start.x = self.bounds.origin.x;
-        start.y = self.bounds.origin.y + self.bounds.size.height;
-        NSPoint end;
-        end.x = self.bounds.origin.x + self.bounds.size.width;
-        end.y = self.bounds.origin.y + self.bounds.size.height;
-        [line moveToPoint:start];
-        [line lineToPoint:end];
-        [line closePath];
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if (! [osxMode isEqualToString:@"Dark"]) {
+        [_bgGradient drawInRect:self.bounds angle:90];
+        if ([[self identifier] isEqualToString:@"statusbar"]) {
+            [[NSColor darkGrayColor] set];
+            [line stroke];
+            [line setLineWidth:1.0];
+            NSPoint start;
+            start.x = self.bounds.origin.x;
+            start.y = self.bounds.origin.y + self.bounds.size.height;
+            NSPoint end;
+            end.x = self.bounds.origin.x + self.bounds.size.width;
+            end.y = self.bounds.origin.y + self.bounds.size.height;
+            [line moveToPoint:start];
+            [line lineToPoint:end];
+            [line closePath];
+        }
+    } else {
+        [[NSColor clearColor] set];
+        NSRectFill(dirtyRect);
     }
 }
 

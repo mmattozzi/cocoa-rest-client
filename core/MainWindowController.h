@@ -90,6 +90,8 @@
 @property (weak) IBOutlet NSButton *fileInputButton;
 @property (weak) IBOutlet NSButton *plusUrlParameterButton;
 @property (weak) IBOutlet NSButton *minusUrlParameterButton;
+@property (weak) IBOutlet NSVisualEffectView *mainBodyView;
+@property (weak) IBOutlet NSVisualEffectView *topView;
 
 // Response Outlets
 @property IBOutlet DMSlidingTabView *responseTabView;
@@ -108,7 +110,7 @@
 @property (weak) IBOutlet CRCDrawerView *savedRequestsView;
 @property (weak) IBOutlet NSOutlineView *savedOutlineView;
 @property (weak) IBOutlet NSSplitView *verticalSplitView;
-@property (weak) IBOutlet NSView *savedRequestsOuterView;
+@property (weak) IBOutlet NSVisualEffectView *savedRequestsOuterView;
 @property CGFloat lastSavedRequestsViewWidth;
 
 // For modal dialogs
