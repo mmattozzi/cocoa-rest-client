@@ -31,7 +31,7 @@
     controlTitle = [[NSTextField alloc]init];
     controlTitle.editable = NO;
     controlTitle.font = [NSFont systemFontOfSize:18];
-    controlTitle.textColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//    controlTitle.textColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     controlTitle.bezeled = NO;
     controlTitle.drawsBackground = NO;
     controlTitle.selectable = NO;
