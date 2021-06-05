@@ -111,6 +111,7 @@
 @property (weak) IBOutlet NSOutlineView *savedOutlineView;
 @property (weak) IBOutlet NSSplitView *verticalSplitView;
 @property (weak) IBOutlet NSVisualEffectView *savedRequestsOuterView;
+@property (weak) IBOutlet NSVisualEffectView *savedRequestsInnerView;
 @property CGFloat lastSavedRequestsViewWidth;
 
 // For modal dialogs

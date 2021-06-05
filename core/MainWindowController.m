@@ -112,11 +112,14 @@
     [self.urlParametersTableView setTextDidEndEditingAction:@selector(doneEditingUrlParamsRow:)];
     
     [self.mainBodyView setState:NSVisualEffectStateFollowsWindowActiveState];
-    [self.mainBodyView setMaterial:NSVisualEffectMaterialUnderPageBackground];
+    [self.mainBodyView setMaterial:NSVisualEffectMaterialUnderWindowBackground];
     [self.mainBodyView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsOuterView setState:NSVisualEffectStateActive];
-    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialContentBackground];
+    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialTitlebar];
     [self.savedRequestsOuterView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    [self.savedRequestsInnerView setState:NSVisualEffectStateActive];
+    [self.savedRequestsInnerView setMaterial:NSVisualEffectMaterialContentBackground];
+    [self.savedRequestsInnerView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     
     [self.filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
     [self.filesTableView setDelegate: self];
