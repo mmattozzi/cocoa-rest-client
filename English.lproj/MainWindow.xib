@@ -921,8 +921,8 @@
                                                             <action selector="deleteSavedRequestFromButton:" target="-2" id="c5g-3V-hQj"/>
                                                         </connections>
                                                     </button>
-                                                    <box verticalHuggingPriority="750" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2eh-PN-Joo">
-                                                        <rect key="frame" x="0.0" y="33" width="174" height="5"/>
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2eh-PN-Joo">
+                                                        <rect key="frame" x="8" y="33" width="158" height="5"/>
                                                     </box>
                                                     <customView identifier="Holds Saved Requests View" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-mg-BYF" userLabel="Saved Requests Holder" customClass="NSVisualEffectView">
                                                         <rect key="frame" x="6" y="42" width="162" height="581"/>
@@ -988,10 +988,12 @@
                                                     <constraint firstItem="I4a-rp-hXs" firstAttribute="trailing" secondItem="3CH-NO-E3o" secondAttribute="leading" constant="-6" id="8Xf-d9-ENK"/>
                                                     <constraint firstItem="I4a-rp-hXs" firstAttribute="leading" secondItem="tkI-i7-sOk" secondAttribute="leading" constant="8" id="CKL-Fc-BsT"/>
                                                     <constraint firstItem="fl8-mg-BYF" firstAttribute="top" secondItem="tkI-i7-sOk" secondAttribute="top" constant="6" id="Iza-m1-OhA"/>
+                                                    <constraint firstItem="2eh-PN-Joo" firstAttribute="leading" secondItem="tkI-i7-sOk" secondAttribute="leading" constant="8" id="KwR-Xh-zJD"/>
                                                     <constraint firstAttribute="trailing" secondItem="fl8-mg-BYF" secondAttribute="trailing" constant="6" id="Wn2-7p-Of6"/>
                                                     <constraint firstAttribute="bottom" secondItem="3CH-NO-E3o" secondAttribute="bottom" constant="8" id="eDQ-Tr-BMH"/>
                                                     <constraint firstItem="3CH-NO-E3o" firstAttribute="top" secondItem="2eh-PN-Joo" secondAttribute="bottom" constant="6" id="ek4-YP-LEt"/>
                                                     <constraint firstAttribute="bottom" secondItem="I4a-rp-hXs" secondAttribute="bottom" constant="8" id="fMm-XZ-Ree"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2eh-PN-Joo" secondAttribute="trailing" constant="8" id="fYc-mK-94D"/>
                                                     <constraint firstItem="2eh-PN-Joo" firstAttribute="top" secondItem="fl8-mg-BYF" secondAttribute="bottom" constant="6" id="yYM-qs-7L3"/>
                                                 </constraints>
                                                 <connections>
