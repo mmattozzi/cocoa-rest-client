@@ -91,7 +91,7 @@
 @property (weak) IBOutlet NSButton *plusUrlParameterButton;
 @property (weak) IBOutlet NSButton *minusUrlParameterButton;
 @property (weak) IBOutlet NSVisualEffectView *mainBodyView;
-@property (weak) IBOutlet NSVisualEffectView *topView;
+@property (weak) IBOutlet NSVisualEffectView *topOuterView;
 
 // Response Outlets
 @property IBOutlet DMSlidingTabView *responseTabView;
@@ -176,5 +176,6 @@
 // Handling preference updates
 - (void)syntaxHighlightingPreferenceChanged;
 - (void) applyShowLineNumbers:(BOOL)show;
+- (void) darkModeChanged:(id) sender;
 
 @end

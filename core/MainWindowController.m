@@ -115,11 +115,18 @@
     [self.mainBodyView setMaterial:NSVisualEffectMaterialUnderWindowBackground];
     [self.mainBodyView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsOuterView setState:NSVisualEffectStateActive];
-    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialTitlebar];
+    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialSidebar];
     [self.savedRequestsOuterView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     [self.savedRequestsInnerView setState:NSVisualEffectStateActive];
     [self.savedRequestsInnerView setMaterial:NSVisualEffectMaterialContentBackground];
     [self.savedRequestsInnerView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    [self.topOuterView setState:NSVisualEffectStateActive];
+    [self.topOuterView setMaterial:NSVisualEffectMaterialContentBackground];
+    [self.topOuterView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    
+    [self darkModeChanged:self];
+    
+    [NSDistributedNotificationCenter.defaultCenter addObserver:self selector:@selector(darkModeChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
     
     [self.filesTableView registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
     [self.filesTableView setDelegate: self];
@@ -979,6 +986,19 @@
         // Switch request from plain to syntax highlighting
         [self.requestView setString:[self.requestTextPlain string]];
         [self.requestTextPlain setString:@""];
+    }
+}
+
+- (void)darkModeChanged:(id)sender {
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if ([osxMode isEqualToString:@"Dark"]) {
+        self.submitButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+        self.urlBox.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+        self.methodButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+    } else {
+        self.submitButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        self.urlBox.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        self.methodButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     }
 }
 
