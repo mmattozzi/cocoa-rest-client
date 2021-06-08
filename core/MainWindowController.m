@@ -112,11 +112,11 @@
     [self.urlParametersTableView setTextDidEndEditingAction:@selector(doneEditingUrlParamsRow:)];
     
     [self.mainBodyView setState:NSVisualEffectStateFollowsWindowActiveState];
-    [self.mainBodyView setMaterial:NSVisualEffectMaterialUnderWindowBackground];
+    [self.mainBodyView setMaterial:NSVisualEffectMaterialTitlebar];
     [self.mainBodyView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsOuterView setState:NSVisualEffectStateActive];
-    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialSidebar];
-    [self.savedRequestsOuterView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialTitlebar];
+    [self.savedRequestsOuterView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsInnerView setState:NSVisualEffectStateActive];
     [self.savedRequestsInnerView setMaterial:NSVisualEffectMaterialContentBackground];
     [self.savedRequestsInnerView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
