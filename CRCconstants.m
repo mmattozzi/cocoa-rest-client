@@ -17,6 +17,7 @@ NSString * const RAW_REQUEST_BODY = @"UIRawRequestBody";
 NSString * const RESPONSE_TIMEOUT = @"responseTimeout";
 NSString * const SAVED_DRAWER_SIZE = @"savedDrawerSize";
 NSString * const THEME = @"theme";
+NSString * const DARK_THEME = @"darkTheme";
 NSUInteger const DEFAULT_FONT_SIZE = 12;
 NSString * const SHOW_LINE_NUMBERS = @"showLineNumbers";
 NSString * const DISABLE_ANIMATIONS = @"UIDisableAnimations";

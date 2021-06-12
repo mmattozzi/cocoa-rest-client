@@ -659,7 +659,12 @@
         [((MainWindowController *)mainWindowController).requestView setTheme:[sender tag]];
     }
     
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if ([osxMode isEqualToString:@"Dark"]) {
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:DARK_THEME];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:[sender tag]] forKey:THEME];
+    }
     
     // Unselect all theme MenuItems
     NSMenuItem *themeMenu = [((NSMenuItem *) sender) parentItem];

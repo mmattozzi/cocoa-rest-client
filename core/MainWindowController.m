@@ -204,7 +204,19 @@
 }
 
 -(void) initHighlightedViews {
-    ACETheme aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    ACETheme aceTheme;
+    if ([osxMode isEqualToString:@"Dark"]) {
+        aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:DARK_THEME];
+        if (! aceTheme) {
+            aceTheme = ACEThemeTomorrowNightEighties;
+        }
+    } else {
+        aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
+        if (! aceTheme) {
+            aceTheme = ACEThemeChrome;
+        }
+    }
     [[[self.appDelegate.themeMenuItem submenu] itemWithTag:aceTheme] setState:NSOnState];
     
     self.appDelegate.aceViewFontSize = 12;
@@ -991,15 +1003,26 @@
 
 - (void)darkModeChanged:(id)sender {
     NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    ACETheme aceTheme;
     if ([osxMode isEqualToString:@"Dark"]) {
         self.submitButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
         self.urlBox.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
         self.methodButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+        aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:DARK_THEME];
+        if (! aceTheme) {
+            aceTheme = ACEThemeTomorrowNightEighties;
+        }
     } else {
         self.submitButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
         self.urlBox.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
         self.methodButton.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        aceTheme = [[NSUserDefaults standardUserDefaults] integerForKey:THEME];
+        if (! aceTheme) {
+            aceTheme = ACEThemeChrome;
+        }
     }
+    [self.responseView setTheme:aceTheme];
+    [self.requestView setTheme:aceTheme];
 }
 
 #pragma mark -
