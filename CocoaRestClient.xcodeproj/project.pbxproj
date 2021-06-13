@@ -139,6 +139,7 @@
 		AF99ECB91ED289E100101893 /* SaveRequestPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SaveRequestPanelController.m; path = core/SaveRequestPanelController.m; sourceTree = "<group>"; };
 		AF99ECBB1ED5B73C00101893 /* TimeoutPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeoutPanelController.h; path = core/TimeoutPanelController.h; sourceTree = "<group>"; };
 		AF99ECBC1ED5B73C00101893 /* TimeoutPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeoutPanelController.m; path = core/TimeoutPanelController.m; sourceTree = "<group>"; };
+		AF9F0F802676ABD80078FAB8 /* CocoaRestClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = CocoaRestClient.entitlements; path = CocoaRestClient/CocoaRestClient.entitlements; sourceTree = "<group>"; };
 		AF9FE4271E9187A600415022 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = "English.lproj/document-icon.png"; sourceTree = "<group>"; };
 		AFA11AB415CEDA3600831738 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Welcome.xib; sourceTree = "<group>"; };
 		AFA11AB615CEDAE300831738 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeController.h; path = core/WelcomeController.h; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 		29B97314FDCFA39411CA2CEA /* CocoaRestClient */ = {
 			isa = PBXGroup;
 			children = (
+				AF9F0F802676ABD80078FAB8 /* CocoaRestClient.entitlements */,
 				AF895874156088610079B379 /* QuartzCore.framework */,
 				5704EECF155C7BF400C55656 /* WebKit.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -489,6 +491,10 @@
 			attributes = {
 				LastUpgradeCheck = 1170;
 				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = V3RDC2WXT3;
+						ProvisioningStyle = Automatic;
+					};
 					AFD637A3226D693B00CD89D5 = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Manual;
@@ -1712,8 +1718,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CocoaRestClient/CocoaRestClient.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = V3RDC2WXT3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1730,6 +1741,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1739,8 +1751,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CocoaRestClient/CocoaRestClient.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = V3RDC2WXT3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1755,6 +1772,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restlesscode.cocoarestclient;
 				PRODUCT_NAME = CocoaRestClient;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
