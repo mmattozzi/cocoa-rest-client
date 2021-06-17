@@ -112,16 +112,16 @@
     [self.urlParametersTableView setTextDidEndEditingAction:@selector(doneEditingUrlParamsRow:)];
     
     [self.mainBodyView setState:NSVisualEffectStateFollowsWindowActiveState];
-    [self.mainBodyView setMaterial:NSVisualEffectMaterialTitlebar];
+    [self.mainBodyView setMaterial:NSVisualEffectMaterialWindowBackground];
     [self.mainBodyView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsOuterView setState:NSVisualEffectStateActive];
-    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialTitlebar];
+    [self.savedRequestsOuterView setMaterial:NSVisualEffectMaterialWindowBackground];
     [self.savedRequestsOuterView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     [self.savedRequestsInnerView setState:NSVisualEffectStateActive];
     [self.savedRequestsInnerView setMaterial:NSVisualEffectMaterialContentBackground];
     [self.savedRequestsInnerView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     [self.topOuterView setState:NSVisualEffectStateActive];
-    [self.topOuterView setMaterial:NSVisualEffectMaterialContentBackground];
+    [self.topOuterView setMaterial:NSVisualEffectMaterialTitlebar];
     [self.topOuterView setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
     
     [self darkModeChanged:self];

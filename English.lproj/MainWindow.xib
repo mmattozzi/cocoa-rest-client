@@ -69,7 +69,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
                             <clipView key="contentView" id="h4Y-h1-wie">
                                 <rect key="frame" x="0.0" y="0.0" width="494" height="251"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView identifier="RequestHeaders" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="63H-55-EM8" id="zdU-Dw-3zr" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="494" height="228"/>
