@@ -23,7 +23,7 @@ You can also install it through [homebrew](https://brew.sh/) as a [cask](https:/
 # install cask if necessary
 brew tap caskroom/cask
 # install CocoaRestClient
-brew cask install cocoarestclient
+brew install --cask cocoarestclient
 ```
 
 Features
