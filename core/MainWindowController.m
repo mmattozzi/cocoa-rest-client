@@ -105,11 +105,19 @@
     
     [self.headersTableView setDoubleAction:@selector(doubleClickedHeaderRow:)];
     [self.headersTableView setTextDidEndEditingAction:@selector(doneEditingHeaderRow:)];
+    [self.headersTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
+    [self.headersTableView sizeToFit];
     [self.paramsTableView setDoubleAction:@selector(doubleClickedParamsRow:)];
     [self.paramsTableView setTextDidEndEditingAction:@selector(doneEditingParamsRow:)];
+    [self.paramsTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
+    [self.paramsTableView sizeToFit];
     [self.filesTableView setDoubleAction:@selector(doubleClickedFileRow:)];
+    [self.filesTableView setColumnAutoresizingStyle:NSTableViewReverseSequentialColumnAutoresizingStyle];
+    [self.filesTableView sizeToFit];
     [self.urlParametersTableView setDoubleAction:@selector(doubleClickedUrlRow:)];
     [self.urlParametersTableView setTextDidEndEditingAction:@selector(doneEditingUrlParamsRow:)];
+    [self.urlParametersTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
+    [self.urlParametersTableView sizeToFit];
     
     [self.mainBodyView setState:NSVisualEffectStateFollowsWindowActiveState];
     [self.mainBodyView setMaterial:NSVisualEffectMaterialWindowBackground];
