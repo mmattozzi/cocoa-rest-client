@@ -47,6 +47,8 @@ Features
 * Import and export requests
 * New in version 1.4: Uses native macOS tabs and windows.
 * New in version 1.4.3: Generate a unified diff between two response body tabs
+* Supports native MacOS dark mode
+* Mac M1/arm and intel processor support
 
 Screenshots
 =================
@@ -83,7 +85,7 @@ Source and Contributions
 
 Credits
 =================
-* Contains json-framework/SBJSON library (https://code.google.com/archive/p/json-framework) embedded in it, source and all
+* Uses a very lightly modified fork of SBJson (https://github.com/SBJson/SBJson) for pretty printing JSON
 * Much guidance from Adrian Kosmaczewski blog (http://kosmaczewski.net/playing-with-http-libraries/)
 * Sparkle automatic update framework (https://github.com/sparkle-project/Sparkle)
 * ACEView syntax highlighting (https://github.com/ACENative/ACEView)
