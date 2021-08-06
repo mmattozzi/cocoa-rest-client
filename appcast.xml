@@ -6,6 +6,17 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
 		<item>
+			<title>Version 1.4.7</title>
+			<sparkle:releaseNotesLink>https://raw.githubusercontent.com/mmattozzi/cocoa-rest-client/master/ReleaseNotes/1.4.7.html</sparkle:releaseNotesLink>
+			<pubDate>Thu, 05 Aug 2021 22:49:00 -0400</pubDate>
+			<sparkle:minimumSystemVersion>10.14.0</sparkle:minimumSystemVersion>
+			<enclosure url="https://github.com/mmattozzi/cocoa-rest-client/releases/download/1.4.7/CocoaRestClient-1.4.7.dmg"
+				sparkle:version="30" length="6776617"
+				sparkle:shortVersionString="1.4.7"
+				type="application/octet-stream"
+				sparkle:dsaSignature="MCwCFAYupCLBjde7n5cw2GB2OyDsV+T/AhQ9OkJG9hODZh8Muz/zzo8L6z0yJg==" />
+		</item>
+		<item>
 			<title>Version 1.4.6</title>
 			<sparkle:releaseNotesLink>https://raw.githubusercontent.com/mmattozzi/cocoa-rest-client/master/ReleaseNotes/1.4.6.html</sparkle:releaseNotesLink>
 			<pubDate>Tue, 22 Jun 2021 19:45:00 -0400</pubDate>
