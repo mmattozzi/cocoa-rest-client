@@ -928,6 +928,10 @@
     [self loadSavedRequest:[self.savedOutlineView itemAtRow:[self.savedOutlineView selectedRow]]];
 }
 
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    [self loadSavedRequest:[self.savedOutlineView itemAtRow:[self.savedOutlineView selectedRow]]];
+}
+
 // if it's a dictionary it's the old format, files, params, rawRequestInput will not be present
 - (void)loadSavedDictionary:(NSDictionary *)request
 {

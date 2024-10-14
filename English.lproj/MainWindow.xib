@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -125,28 +125,28 @@
                         </scrollView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lE8-35-omI">
                             <rect key="frame" x="494" y="195" width="49" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="LaO-KP-5sN"/>
-                                <constraint firstAttribute="width" constant="35" id="Xnc-tB-SYg"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" id="F4w-i8-zRM">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="LaO-KP-5sN"/>
+                                <constraint firstAttribute="width" constant="35" id="Xnc-tB-SYg"/>
+                            </constraints>
                             <connections>
                                 <action selector="minusHeaderRow:" target="-2" id="NzJ-lu-BYM"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RGT-H7-Qd1">
                             <rect key="frame" x="494" y="223" width="49" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Akv-ny-Mkh"/>
-                                <constraint firstAttribute="width" constant="35" id="aoU-In-kK1"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" id="w9f-YP-D2p">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Akv-ny-Mkh"/>
+                                <constraint firstAttribute="width" constant="35" id="aoU-In-kK1"/>
+                            </constraints>
                             <connections>
                                 <action selector="plusHeaderRow:" target="-2" id="oMl-DH-Wem"/>
                             </connections>
@@ -317,7 +317,7 @@
                                 <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="Hnr-aq-r4e"/>
                             </connections>
                         </scrollView>
-                        <button identifier="rawInput" toolTip="The above text will be the HTTP body of the request" misplaced="YES" tag="10001" translatesAutoresizingMaskIntoConstraints="NO" id="OxI-dI-vf3">
+                        <button identifier="rawInput" toolTip="The above text will be the HTTP body of the request" tag="10001" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OxI-dI-vf3">
                             <rect key="frame" x="-2" y="3.5" width="72" height="16"/>
                             <buttonCell key="cell" type="radio" title="Raw Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="OIg-VL-as7">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -329,13 +329,13 @@
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ahS-ju-Qmu">
                             <rect key="frame" x="514" y="184" width="49" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="35" id="MXc-eD-JFd"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" id="IKj-Af-JzQ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="MXc-eD-JFd"/>
+                            </constraints>
                             <connections>
                                 <action selector="plusParamsRow:" target="-2" id="PPN-HA-gdR"/>
                                 <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="BYY-qg-7u4"/>
@@ -343,19 +343,19 @@
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mfy-wA-gbw">
                             <rect key="frame" x="514" y="157" width="49" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="35" id="BN8-fs-dtR"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" id="DtM-D4-3pC">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="BN8-fs-dtR"/>
+                            </constraints>
                             <connections>
                                 <action selector="minusParamsRow:" target="-2" id="Xti-cb-F55"/>
                                 <binding destination="-2" name="hidden" keyPath="self.rawRequestBody" id="wVn-Ob-rZg"/>
                             </connections>
                         </button>
-                        <button identifier="fieldInput" toolTip="For simulating form input and multipart file upload" misplaced="YES" tag="10002" translatesAutoresizingMaskIntoConstraints="NO" id="5iC-Z2-zpW">
+                        <button identifier="fieldInput" toolTip="For simulating form input and multipart file upload" tag="10002" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5iC-Z2-zpW">
                             <rect key="frame" x="81" y="1.5" width="86" height="20"/>
                             <buttonCell key="cell" type="radio" title="Field Input/Multipart File Upload" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="B0L-ud-cIO">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -365,7 +365,7 @@
                                 <action selector="requestBodyInputMode:" target="-2" id="iVQ-Pw-iLb"/>
                             </connections>
                         </button>
-                        <button identifier="fileInput" toolTip="A file specified in the files table will be the body of the request" misplaced="YES" tag="10003" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-aj-uRN">
+                        <button identifier="fileInput" toolTip="A file specified in the files table will be the body of the request" tag="10003" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-aj-uRN">
                             <rect key="frame" x="172" y="1.5" width="103" height="20"/>
                             <buttonCell key="cell" type="radio" title="Raw File Input" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="A84-5D-S9l">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -526,7 +526,7 @@
                 <view translatesAutoresizingMaskIntoConstraints="NO" id="13T-Ac-QU6">
                     <rect key="frame" x="0.0" y="0.0" width="580" height="281"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-A7-OYI">
+                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-A7-OYI">
                             <rect key="frame" x="-2" y="238" width="66" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username" id="u1f-M9-BGj">
                                 <font key="font" metaFont="system"/>
@@ -562,7 +562,7 @@
                                 <outlet property="nextKeyView" destination="ch1-QE-uW9" id="bNk-7t-m7n"/>
                             </connections>
                         </secureTextField>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hRF-5G-OHY">
+                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hRF-5G-OHY">
                             <rect key="frame" x="-2" y="264" width="365" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Enter credentials for HTTP Basic Auth or HTTP Digest Auth:" id="TQ9-qG-ej7">
                                 <font key="font" metaFont="system"/>
@@ -590,7 +590,7 @@
                                 </connections>
                             </buttonCell>
                         </button>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ISh-TF-Ff2">
+                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ISh-TF-Ff2">
                             <rect key="frame" x="-2" y="210" width="63" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password" id="kTU-8Y-ho5">
                                 <font key="font" metaFont="system"/>
@@ -643,7 +643,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
                             <clipView key="contentView" id="Hl3-RQ-czX">
                                 <rect key="frame" x="0.0" y="0.0" width="550" height="205"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tableView identifier="Files" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="7Oi-Cb-mDl" id="qEb-fx-M57" userLabel="filesTableView" customClass="TabbingTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="550" height="182"/>
@@ -711,28 +711,28 @@
                         </scrollView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3GN-ug-gOP" userLabel="fileTableViewMinus">
                             <rect key="frame" x="550" y="149" width="49" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="35" id="UCb-za-Zh1"/>
-                                <constraint firstAttribute="height" constant="21" id="n8w-8l-Juq"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" id="SUY-e6-EXH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="UCb-za-Zh1"/>
+                                <constraint firstAttribute="height" constant="21" id="n8w-8l-Juq"/>
+                            </constraints>
                             <connections>
                                 <action selector="minusFileRow:" target="-2" id="bwQ-hB-Zov"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yAP-Bs-Ycu" userLabel="fileTableViewPlus">
                             <rect key="frame" x="550" y="177" width="49" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="35" id="1Lw-n7-zk6"/>
-                                <constraint firstAttribute="height" constant="21" id="JTN-ji-V7o"/>
-                            </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" id="8WR-TR-ARs">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="1Lw-n7-zk6"/>
+                                <constraint firstAttribute="height" constant="21" id="JTN-ji-V7o"/>
+                            </constraints>
                             <connections>
                                 <action selector="plusFileRow:" target="-2" id="MQQ-P8-BMr"/>
                             </connections>
@@ -779,7 +779,7 @@
                                 <rect key="frame" x="-3" y="0.0" width="1228" height="63"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-mh-sgS">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-mh-sgS">
                                         <rect key="frame" x="18" y="24" width="34" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL:" id="8Ka-PW-OwG">
                                             <font key="font" metaFont="system"/>
@@ -788,7 +788,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iUA-xE-Nsl">
-                                        <rect key="frame" x="58" y="18" width="891" height="25"/>
+                                        <rect key="frame" x="57" y="20" width="892" height="23"/>
                                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ayn-iy-T9W">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -798,7 +798,7 @@
                                             <action selector="runSubmit:" target="-2" id="lFE-j7-KJC"/>
                                         </connections>
                                     </comboBox>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBo-hr-1N8">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBo-hr-1N8">
                                         <rect key="frame" x="952" y="24" width="56" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="52" id="4UI-BV-JaC"/>
@@ -809,8 +809,8 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGC-FZ-Inl">
-                                        <rect key="frame" x="1014" y="18" width="99" height="25"/>
+                                    <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGC-FZ-Inl">
+                                        <rect key="frame" x="1013" y="20" width="100" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="96" id="4K6-Zh-8YV"/>
                                         </constraints>
@@ -822,13 +822,13 @@
                                     </comboBox>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HRn-fG-MnP">
                                         <rect key="frame" x="1117" y="15" width="98" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="84" id="vmT-dy-3cd"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="push" title="Submit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jWv-wz-7hM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="84" id="vmT-dy-3cd"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="runSubmit:" target="-2" id="VNz-uO-MZf"/>
                                         </connections>
@@ -862,7 +862,7 @@
                                     <constraint firstAttribute="width" constant="96" id="CyA-6U-8F1"/>
                                 </constraints>
                             </progressIndicator>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-4b-dZa">
+                            <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-4b-dZa">
                                 <rect key="frame" x="18" y="4" width="710" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ready" id="c4F-QD-1gE">
                                     <font key="font" metaFont="smallSystem"/>
@@ -895,28 +895,28 @@
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-rp-hXs" userLabel="Plus Saved Request">
                                                         <rect key="frame" x="1" y="1" width="49" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="21" id="6xW-yt-08Z"/>
-                                                            <constraint firstAttribute="width" constant="35" id="eUs-z6-FY8"/>
-                                                        </constraints>
                                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="oLk-W7-Mha">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="6xW-yt-08Z"/>
+                                                            <constraint firstAttribute="width" constant="35" id="eUs-z6-FY8"/>
+                                                        </constraints>
                                                         <connections>
                                                             <action selector="createNewSavedFolder:" target="-2" id="6IE-xG-n44"/>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3CH-NO-E3o" userLabel="Minus Saved Request">
                                                         <rect key="frame" x="42" y="1" width="49" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="21" id="I5r-me-EC4"/>
-                                                            <constraint firstAttribute="width" constant="35" id="rDo-Xo-IJI"/>
-                                                        </constraints>
                                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XRf-Az-fQ9">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="I5r-me-EC4"/>
+                                                            <constraint firstAttribute="width" constant="35" id="rDo-Xo-IJI"/>
+                                                        </constraints>
                                                         <connections>
                                                             <action selector="deleteSavedRequestFromButton:" target="-2" id="c5g-3V-hQj"/>
                                                         </connections>
@@ -956,6 +956,7 @@
                                                                             <connections>
                                                                                 <action selector="outlineClick:" target="-2" id="I7z-qK-kcv"/>
                                                                                 <outlet property="dataSource" destination="j9L-nT-ahO" id="fXi-6U-k0I"/>
+                                                                                <outlet property="delegate" destination="-2" id="qX2-Kd-9sA"/>
                                                                             </connections>
                                                                         </outlineView>
                                                                     </subviews>
@@ -1106,22 +1107,19 @@
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aS-ae-aJJ">
                         <rect key="frame" x="369" y="15" width="98" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="LcL-Ci-mEj"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pdn-8A-pkN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="LcL-Ci-mEj"/>
+                        </constraints>
                         <connections>
                             <action selector="save:" target="8Tn-QE-BAa" id="wAh-Ck-fLL"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7xA-cT-CQL">
                         <rect key="frame" x="469" y="15" width="98" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="VlB-9D-xkh"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WRG-Qc-sCX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1129,11 +1127,14 @@
 Gw
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="VlB-9D-xkh"/>
+                        </constraints>
                         <connections>
                             <action selector="cancel:" target="8Tn-QE-BAa" id="X3S-YN-1VJ"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wxv-WQ-YoV">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wxv-WQ-YoV">
                         <rect key="frame" x="20" y="21" width="341" height="21"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Request name" drawsBackground="YES" id="h4G-Kp-xOg">
                             <font key="font" metaFont="system"/>
@@ -1171,22 +1172,19 @@ Gw
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJf-Bg-Vlv">
                         <rect key="frame" x="369" y="15" width="98" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="fhi-P1-2qM"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ukw-8D-wjK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="fhi-P1-2qM"/>
+                        </constraints>
                         <connections>
                             <action selector="ok:" target="h4j-u8-V3A" id="zPH-br-6do"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uMP-dt-8Cv">
                         <rect key="frame" x="469" y="15" width="98" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="87j-3I-cbW"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r8d-2E-ae6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1194,11 +1192,14 @@ Gw
 Gw
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="87j-3I-cbW"/>
+                        </constraints>
                         <connections>
                             <action selector="cancel:" target="h4j-u8-V3A" id="wb9-cW-8d6"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVK-IK-JAi">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVK-IK-JAi">
                         <rect key="frame" x="155" y="21" width="206" height="21"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Request name" drawsBackground="YES" id="BSL-gf-R0V">
                             <font key="font" metaFont="system"/>
@@ -1209,7 +1210,7 @@ Gw
                             <action selector="ok:" target="h4j-u8-V3A" id="IbG-44-wfc"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-fb-I7e">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-fb-I7e">
                         <rect key="frame" x="16" y="24" width="133" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="129" id="M6d-Q1-Uee"/>
@@ -1425,7 +1426,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSRemoveTemplate" width="14" height="4"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
+        <image name="NSRemoveTemplate" width="18" height="5"/>
     </resources>
 </document>
